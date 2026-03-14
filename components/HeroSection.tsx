@@ -21,7 +21,7 @@ const BLOBS = [
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, ease: 'easeOut', delay },
+  transition: { duration: 0.55, ease: 'easeOut' as const, delay },
 });
 
 export default function HeroSection({ lang }: Props) {
@@ -365,7 +365,7 @@ export default function HeroSection({ lang }: Props) {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+          transition={{ duration: 0.6, ease: 'easeOut' as const, delay: 0.5 }}
           style={{
             position: 'absolute',
             right: '60px',
@@ -413,7 +413,7 @@ export default function HeroSection({ lang }: Props) {
         <motion.div
           initial={{ opacity: 0, y: 18, rotate: -4 }}
           animate={{ opacity: 1, y: 0, rotate: -4 }}
-          transition={{ duration: 0.65, delay: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.65, delay: 0.5, ease: 'easeOut' as const }}
           style={{
             position: 'absolute',
             bottom: '52px',

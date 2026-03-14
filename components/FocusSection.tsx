@@ -103,7 +103,7 @@ function FocusCard({
   isMobile,
   total,
 }: {
-  item: (typeof CONTENT.focus.items)[0];
+  item: (typeof CONTENT.focus.items)[number];
   lang: Lang;
   index: number;
   inView: boolean;
