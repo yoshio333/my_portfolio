@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer 配色 3プラン比較</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: #F5F5F0; }
+
+  .plan-header {
+    padding: 48px 48px 0;
+  }
+  .plan-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 6px;
+  }
+  .plan-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .plan-desc {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ── Footer block ── */
+  .footer {
+    border-top: 2px solid #000;
+    position: relative;
+    overflow: hidden;
+    padding: 64px 48px 40px;
+    margin-bottom: 0;
+  }
+
+  .ghost {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
+  .ghost-line {
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 6rem);
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 0.88;
+    white-space: nowrap;
+  }
+  .ghost-line:first-child { padding-left: 40px; }
+  .ghost-line:last-child  { padding-left: 80px; }
+
+  .badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 14px;
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+
+  .footer h2 {
+    font-size: clamp(2.4rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+
+  .body-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: 2px solid #000;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .social-links {
+    display: flex;
+  }
+  .social-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 7px 16px;
+    text-decoration: none;
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px dashed rgba(0,0,0,0.12);
+    margin: 48px 0 0;
+  }
+
+  /* ════════════════════════════════
+     OPTION A: 黒 × 黄
+  ════════════════════════════════ */
+  .a { background: #000000; color: #FFFFFF; }
+  .a .ghost-line { color: rgba(255,255,255,0.04); }
+  .a .badge { border: 2px solid #FFF133; color: #FFF133; background: rgba(255,241,51,0.08); }
+  .a h2 { color: #FFFFFF; }
+  .a .accent { color: #FFF133; }
+  .a .body-text { color: rgba(255,255,255,0.6); border-left: 3px solid #FFF133; }
+  .a .cta-btn { background: #FFF133; color: #000000; box-shadow: 6px 6px 0px rgba(255,255,255,0.25); }
+  .a .bottom-row { border-top: 1px solid rgba(255,255,255,0.15); }
+  .a .copy { color: rgba(255,255,255,0.35); }
+  .a .social-link { color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); border-right: none; }
+  .a .social-link:last-child { border-right: 1px solid rgba(255,255,255,0.2); }
+
+  /* ════════════════════════════════
+     OPTION B: 紺 × 黄
+  ════════════════════════════════ */
+  .b { background: #0A2340; color: #FFFFFF; }
+  .b .ghost-line { color: rgba(255,255,255,0.04); }
+  .b .badge { border: 2px solid #FFF133; color: #FFF133; background: rgba(255,241,51,0.08); }
+  .b h2 { color: #FFFFFF; }
+  .b .accent { color: #FFF133; }
+  .b .body-text { color: rgba(255,255,255,0.6); border-left: 3px solid #FFF133; }
+  .b .cta-btn { background: #FFF133; color: #000000; box-shadow: 6px 6px 0px rgba(0,0,0,0.4); }
+  .b .bottom-row { border-top: 1px solid rgba(255,255,255,0.12); }
+  .b .copy { color: rgba(255,255,255,0.35); }
+  .b .social-link { color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.18); border-right: none; }
+  .b .social-link:last-child { border-right: 1px solid rgba(255,255,255,0.18); }
+
+  /* ════════════════════════════════
+     OPTION C: 白 × 黒（ミニマル）
+  ════════════════════════════════ */
+  .c { background: #FFFFFF; color: #000000; }
+  .c .ghost-line { color: rgba(0,0,0,0.04); }
+  .c .badge { border: 2px solid #000000; color: #000000; background: transparent; }
+  .c h2 { color: #000000; }
+  .c .accent { color: #FF3131; }
+  .c .body-text { color: rgba(0,0,0,0.55); border-left: 3px solid #000000; }
+  .c .cta-btn { background: #000000; color: #FFFFFF; box-shadow: 6px 6px 0px rgba(0,0,0,0.2); }
+  .c .bottom-row { border-top: 1px solid rgba(0,0,0,0.12); }
+  .c .copy { color: rgba(0,0,0,0.35); }
+  .c .social-link { color: rgba(0,0,0,0.5); border: 1px solid rgba(0,0,0,0.2); border-right: none; }
+  .c .social-link:last-child { border-right: 1px solid rgba(0,0,0,0.2); }
+
+  /* ── page title ── */
+  .page-title {
+    padding: 48px 48px 40px;
+  }
+  .page-title h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 6px;
+  }
+  .page-title p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(0,0,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>フッター配色 — 3プラン比較</h1>
+  <p>Contact Section / Footer Color Options</p>
+</div>
+
+<!-- ══════════ OPTION A ══════════ -->
+<div class="plan-header">
+  <p class="plan-label">Option A  ★ おすすめ</p>
+  <h2 class="plan-title">黒 × 黄</h2>
+  <p class="plan-desc">bg: #000000 ／ accent: #FFF133（カードパレットの黄色）<br>最もドラマチックな着地。カードの黄色を再利用するので統一感あり。</p>
+</div>
+<footer class="footer a">
+  <div class="ghost">
+    <div class="ghost-line">Yoshimasa</div>
+    <div class="ghost-line">Nishinobu</div>
+  </div>
+  <span class="badge">[ Open For Collaborations ]</span>
+  <h2>Ready to<br><span class="accent">Let's Do It!</span></h2>
+  <div class="body-row">
+    <p class="body-text">ここに掲載したプロジェクトへの応援や、何か気になることがあれば、お気軽にご連絡ください！</p>
+    <a class="cta-btn">声をかける →</a>
+  </div>
+  <div class="bottom-row">
+    <span class="copy">© 2026 Yoshimasa Nishinobu</span>
+    <div class="social-links">
+      <a class="social-link">Instagram</a>
+      <a class="social-link">X / Twitter</a>
+      <a class="social-link">Note</a>
+    </div>
+  </div>
+</footer>
+
+<hr class="divider">
+
+<!-- ══════════ OPTION B ══════════ -->
+<div class="plan-header">
+  <p class="plan-label">Option B</p>
+  <h2 class="plan-title">紺 × 黄</h2>
+  <p class="plan-desc">bg: #0A2340（カードパレットの紺）／ accent: #FFF133<br>Aより柔らかく、信頼感がある。カード4番と同じ色。</p>
+</div>
+<footer class="footer b">
+  <div class="ghost">
+    <div class="ghost-line">Yoshimasa</div>
+    <div class="ghost-line">Nishinobu</div>
+  </div>
+  <span class="badge">[ Open For Collaborations ]</span>
+  <h2>Ready to<br><span class="accent">Let's Do It!</span></h2>
+  <div class="body-row">
+    <p class="body-text">ここに掲載したプロジェクトへの応援や、何か気になることがあれば、お気軽にご連絡ください！</p>
+    <a class="cta-btn">声をかける →</a>
+  </div>
+  <div class="bottom-row">
+    <span class="copy">© 2026 Yoshimasa Nishinobu</span>
+    <div class="social-links">
+      <a class="social-link">Instagram</a>
+      <a class="social-link">X / Twitter</a>
+      <a class="social-link">Note</a>
+    </div>
+  </div>
+</footer>
+
+<hr class="divider">
+
+<!-- ══════════ OPTION C ══════════ -->
+<div class="plan-header">
+  <p class="plan-label">Option C</p>
+  <h2 class="plan-title">白 × 黒（ミニマル）</h2>
+  <p class="plan-desc">bg: #FFFFFF ／ accent: #FF3131（赤）<br>ヒーロー・ミッションセクションと同じトーン。落ち着いていてスッキリ。</p>
+</div>
+<footer class="footer c">
+  <div class="ghost">
+    <div class="ghost-line">Yoshimasa</div>
+    <div class="ghost-line">Nishinobu</div>
+  </div>
+  <span class="badge">[ Open For Collaborations ]</span>
+  <h2>Ready to<br><span class="accent">Let's Do It!</span></h2>
+  <div class="body-row">
+    <p class="body-text">ここに掲載したプロジェクトへの応援や、何か気になることがあれば、お気軽にご連絡ください！</p>
+    <a class="cta-btn">声をかける →</a>
+  </div>
+  <div class="bottom-row">
+    <span class="copy">© 2026 Yoshimasa Nishinobu</span>
+    <div class="social-links">
+      <a class="social-link">Instagram</a>
+      <a class="social-link">X / Twitter</a>
+      <a class="social-link">Note</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

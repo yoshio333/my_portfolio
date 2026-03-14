@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Test 2 — Geometric Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #FFFFFF; color: #000000; font-family: 'Space Grotesk', sans-serif; overflow: hidden; height: 100vh; }
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid #000000;
+  overflow: hidden;
+}
+
+/* Left panel */
+.left {
+  position: relative;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #000000;
+  background: #FFFFFF;
+  z-index: 2;
+}
+
+/* Right panel — geometric grid */
+.right {
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+
+.grid-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.grid-cell {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: background-color 0.3s ease;
+}
+
+/* Animated squares */
+.sq {
+  position: absolute;
+  border: 2px solid currentColor;
+  animation: pulse 3s ease-in-out infinite;
+}
+.sq-1 { width: 120px; height: 120px; top: 80px; left: 60px; color: #FFF133; animation-delay: 0s; }
+.sq-2 { width: 80px;  height: 80px;  top: 180px; right: 40px; color: #FF3131; animation-delay: -1s; }
+.sq-3 { width: 200px; height: 200px; bottom: 80px; left: 40%; color: #2E5BFF; animation-delay: -2s; }
+.sq-4 { width: 60px;  height: 60px;  top: 50%; left: 50%; color: #FFF133; animation-delay: -0.5s; }
+
+.sq-filled { background: currentColor; opacity: 0.6; border: none; }
+.sq-dot { border-radius: 50%; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50%       { transform: scale(1.08) rotate(6deg); opacity: 1; }
+}
+
+/* Diagonal lines */
+.lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+}
+
+/* Content left */
+.badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #FFF133;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 3px 12px;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #000000;
+}
+
+.sub {
+  margin-top: 32px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 380px;
+  color: #000000;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 2px solid #000000;
+  cursor: default;
+  transition: all 0.15s;
+}
+.tag:hover { background: #000000; color: #FFF133; }
+.tag-red { background: #FF3131; color: #FFFFFF; border-color: #FF3131; }
+.tag-blue { background: #2E5BFF; color: #FFFFFF; border-color: #2E5BFF; }
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 2px solid #000000;
+  text-decoration: none;
+  box-shadow: 5px 5px 0px #2E5BFF;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+.cta:hover {
+  box-shadow: 0 0 0 #2E5BFF;
+  transform: translate(3px, 3px);
+}
+
+.scroll-hint {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0,0,0,0.4);
+}
+
+.label {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.3);
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="left">
+    <div class="badge">[ 01 — INTRO ]</div>
+    <h1>
+      Planting<br>
+      <span class="outline">Seeds</span><br>
+      for Local<br>
+      Futures.
+    </h1>
+    <p class="sub">
+      I collaborate with regional cities to design sustainable communities — focused on education and youth empowerment.
+    </p>
+    <div class="tags">
+      <span class="tag tag-red">Education</span>
+      <span class="tag tag-blue">Youth Support</span>
+      <span class="tag">Regional Dev</span>
+      <span class="tag">Nagano</span>
+    </div>
+    <div class="cta-row">
+      <a class="cta" href="#">Say Hello →</a>
+      <span class="scroll-hint">↓ Scroll to explore</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <svg class="lines-svg" viewBox="0 0 600 800" preserveAspectRatio="none">
+      <line x1="0" y1="0" x2="600" y2="800" stroke="white" stroke-width="1"/>
+      <line x1="200" y1="0" x2="600" y2="600" stroke="white" stroke-width="1"/>
+      <line x1="400" y1="0" x2="0" y2="800" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="200" x2="600" y2="0" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="400" x2="600" y2="200" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="600" x2="600" y2="400" stroke="white" stroke-width="0.5"/>
+    </svg>
+
+    <div class="sq sq-1"></div>
+    <div class="sq sq-2"></div>
+    <div class="sq sq-3"></div>
+    <div class="sq sq-4 sq-filled"></div>
+    <div class="sq sq-dot" style="width:40px;height:40px;top:60%;left:25%;color:#FFF133;background:#FFF133;border:none;animation:pulse 4s ease-in-out infinite;"></div>
+    <div class="sq sq-dot" style="width:16px;height:16px;top:30%;left:70%;color:#FF3131;background:#FF3131;border:none;animation:pulse 2s ease-in-out infinite;"></div>
+
+    <div style="position:absolute;bottom:32px;left:32px;font-family:'Space Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">
+      Nagano Prefecture<br>
+      <span style="color:#FFF133">LAT: 36.6485° N</span>
+    </div>
+    <div class="label">Pattern 02 — Geometric Grid</div>
+  </div>
+</section>
+</body>
+</html>

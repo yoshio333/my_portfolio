@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Test 3 — Particles</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000000; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; overflow: hidden; height: 100vh; }
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  padding: 80px;
+  max-width: 700px;
+}
+
+.badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #FFF133;
+  padding: 4px 14px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: clamp(4rem, 9vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #FFFFFF;
+}
+h1 .accent { color: #FF3131; }
+h1 .accent-y { color: #FFF133; }
+
+.sub {
+  margin-top: 36px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.7);
+  max-width: 440px;
+  border-left: 3px solid #2E5BFF;
+  padding-left: 20px;
+}
+
+.sub strong { color: #FFFFFF; font-weight: 700; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+  background: #FF3131;
+  color: #FFFFFF;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 32px;
+  border: 2px solid #FF3131;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.cta:hover {
+  background: transparent;
+  color: #FF3131;
+}
+
+.stats {
+  position: absolute;
+  bottom: 48px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Space Mono', monospace;
+  z-index: 10;
+}
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.stat-num { font-size: 2rem; font-weight: 700; color: #FFF133; }
+.stat-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+
+.label {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.25);
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <canvas id="c"></canvas>
+
+  <div class="content">
+    <div class="badge">[ Portfolio — Nobu San ]</div>
+    <h1>
+      <span class="accent">Plant</span>ing<br>
+      <span class="outline">Seeds</span><br>
+      for <span class="accent-y">Local</span><br>
+      Futures.
+    </h1>
+    <p class="sub">
+      Collaborating with regional cities to design sustainable communities, focused on <strong>education</strong> and <strong>youth empowerment</strong>.
+    </p>
+    <a class="cta" href="#">Start a Conversation →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-num">12+</span>
+      <span class="stat-label">Cities<br>partnered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">800+</span>
+      <span class="stat-label">Youth<br>reached</span>
+    </div>
+  </div>
+
+  <div class="label">Pattern 03 — Particles</div>
+</section>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const COLORS = ['#FF3131', '#2E5BFF', '#FFF133', '#FFFFFF'];
+const particles = [];
+
+for (let i = 0; i < 120; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 3 + 0.5,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    alpha: Math.random() * 0.6 + 0.2,
+    shape: Math.random() > 0.7 ? 'square' : 'circle',
+  });
+}
+
+function connect(a, b) {
+  const d = Math.hypot(a.x - b.x, a.y - b.y);
+  if (d < 140) {
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.strokeStyle = `rgba(255,255,255,${0.06 * (1 - d / 140)})`;
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle = p.color;
+    if (p.shape === 'square') {
+      ctx.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+    } else {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    for (let j = i + 1; j < particles.length; j++) {
+      connect(particles[i], particles[j]);
+    }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+</body>
+</html>

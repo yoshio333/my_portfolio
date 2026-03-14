@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Test 5 — Noise Texture</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0a0a0a; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; overflow: hidden; height: 100vh; }
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+/* Color block overlay */
+.color-block {
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: #FF3131;
+  z-index: 1;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+}
+
+.accent-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 6px;
+  background: #FFF133;
+  z-index: 10;
+}
+
+/* Floating tags */
+.floating-tag {
+  position: absolute;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid currentColor;
+  padding: 3px 10px;
+  z-index: 10;
+  animation: floatTag 6s ease-in-out infinite;
+}
+.ft-1 { top: 18%; right: 20%; color: #FFF133; animation-delay: 0s; }
+.ft-2 { top: 40%; right: 12%; color: #FF3131; border-color: #FF3131; animation-delay: -2s; }
+.ft-3 { bottom: 22%; right: 28%; color: #2E5BFF; border-color: #2E5BFF; animation-delay: -4s; }
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  padding: 80px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #FFF133;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.num::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: #FFF133;
+}
+
+h1 {
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.noise-text {
+  position: relative;
+  display: inline-block;
+}
+.noise-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px; top: 2px;
+  color: #FF3131;
+  z-index: -1;
+}
+
+.outline { color: transparent; -webkit-text-stroke: 2px #FFFFFF; }
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 40px 0;
+  position: relative;
+}
+.divider-line::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 120px; height: 1px;
+  background: #2E5BFF;
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.sub {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 380px;
+}
+.sub strong { color: #FFFFFF; font-weight: 700; }
+
+.cta-group { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 2px solid #FFFFFF;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cta:hover { background: #FFF133; border-color: #FFF133; }
+.cta-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border-color: rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+}
+.cta-ghost:hover { background: transparent; color: #FFFFFF; border-color: #FFFFFF; }
+
+.label {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.2);
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <canvas id="c"></canvas>
+  <div class="color-block"></div>
+  <div class="accent-bar"></div>
+
+  <div class="floating-tag ft-1">Education</div>
+  <div class="floating-tag ft-2">Youth Support</div>
+  <div class="floating-tag ft-3">Regional Dev</div>
+
+  <div class="content">
+    <div class="num">[ Portfolio — Nobu ]</div>
+    <h1>
+      <span class="noise-text" data-text="Plant">Plant</span>ing<br>
+      <span class="outline">Seeds</span> for<br>
+      Local<br>
+      Futures.
+    </h1>
+
+    <div class="divider-line"></div>
+
+    <div class="bottom">
+      <p class="sub">
+        Collaborating with regional cities, focused on <strong>education</strong> and <strong>youth empowerment</strong> in rural Japan.
+      </p>
+      <div class="cta-group">
+        <a class="cta" href="#">Say Hello →</a>
+        <a class="cta cta-ghost" href="#">↓ Explore Work</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="label">Pattern 05 — Noise Texture</div>
+</section>
+
+<script>
+/* Simplex-like noise via value noise */
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+/* Value noise helper */
+function hash(x, y) {
+  let n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
+  return n - Math.floor(n);
+}
+function smoothstep(t) { return t * t * (3 - 2 * t); }
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function noise2d(x, y) {
+  const xi = Math.floor(x), yi = Math.floor(y);
+  const xf = x - xi, yf = y - yi;
+  const tx = smoothstep(xf), ty = smoothstep(yf);
+  const v00 = hash(xi, yi), v10 = hash(xi+1, yi);
+  const v01 = hash(xi, yi+1), v11 = hash(xi+1, yi+1);
+  return lerp(lerp(v00, v10, tx), lerp(v01, v11, tx), ty);
+}
+
+const offscreen = document.createElement('canvas');
+const octx = offscreen.getContext('2d');
+offscreen.width = 300;
+offscreen.height = 300;
+
+const imageData = octx.createImageData(300, 300);
+for (let y = 0; y < 300; y++) {
+  for (let x = 0; x < 300; x++) {
+    const n = (
+      noise2d(x/60, y/60) * 0.5 +
+      noise2d(x/30, y/30) * 0.3 +
+      noise2d(x/15, y/15) * 0.2
+    );
+    const v = Math.floor(n * 255);
+    const i = (y * 300 + x) * 4;
+    imageData.data[i] = v;
+    imageData.data[i+1] = v;
+    imageData.data[i+2] = v;
+    imageData.data[i+3] = 40; // very subtle
+  }
+}
+octx.putImageData(imageData, 0, 0);
+
+// Animated scanlines + noise
+let frame = 0;
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#0a0a0a');
+  grad.addColorStop(0.5, '#111111');
+  grad.addColorStop(1, '#0a0a0a');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Tiled noise
+  const pat = ctx.createPattern(offscreen, 'repeat');
+  ctx.fillStyle = pat;
+  ctx.fillRect(0, 0, W, H);
+
+  // Scanlines
+  ctx.fillStyle = 'rgba(0,0,0,0.04)';
+  for (let y = (frame % 2); y < H; y += 4) {
+    ctx.fillRect(0, y, W, 2);
+  }
+
+  // Subtle vignette
+  const vig = ctx.createRadialGradient(W/2, H/2, H*0.2, W/2, H/2, H*0.8);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.5)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, W, H);
+
+  frame++;
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>

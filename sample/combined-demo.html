@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combined Demo — Glitch + Typewriter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #F0EFE9;
+    padding: 48px 28px 120px;
+    color: #000;
+  }
+  .page-eyebrow {
+    font-size: 0.62rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.18em; color: #999; margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 2.2rem; font-weight: 900; letter-spacing: -0.05em;
+    line-height: 1; margin-bottom: 10px;
+  }
+  .page-note {
+    font-size: 0.78rem; color: rgba(0,0,0,0.45); line-height: 1.6;
+    margin-bottom: 52px; max-width: 520px;
+  }
+
+  /* ─── Grid ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    border: 2px solid #000;
+  }
+  .grid-item { border-right: 2px solid #000; }
+  .grid-item:last-child { border-right: none; }
+
+  /* ─── Card ─── */
+  .card {
+    padding: 28px 26px;
+    display: flex; flex-direction: column;
+    min-height: 360px; cursor: default; position: relative;
+  }
+  .card-top-row {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 18px;
+  }
+  .card-tag {
+    font-size: 0.62rem; font-family: monospace; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 3px 9px; border: 1px solid currentColor; opacity: 0.8;
+  }
+  .card-year { font-size: 0.68rem; font-family: monospace; opacity: 0.6; }
+
+  /* ─── Photo frame ─── */
+  .photo-frame {
+    width: 100%; height: 148px; overflow: hidden;
+    position: relative; margin-bottom: 20px; flex-shrink: 0;
+  }
+  .photo-frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
+  .card-title {
+    font-size: 1.35rem; font-weight: 900; letter-spacing: -0.04em;
+    text-transform: uppercase; line-height: 1; margin-bottom: 14px;
+  }
+
+  /* ─── Description（常時表示・タイプライター） ─── */
+  .card-desc-wrap {
+    font-size: 0.84rem; line-height: 1.72;
+    border-left: 2px solid currentColor; padding-left: 11px;
+    opacity: 0.72; margin-bottom: 16px; flex-grow: 1;
+    min-height: 3.8em; /* 文字がない間も高さを確保 */
+  }
+  .tw-cursor {
+    display: inline-block; width: 1.5px; height: 0.85em;
+    background: currentColor; margin-left: 1px;
+    vertical-align: text-bottom; opacity: 0.7;
+    animation: blink 0.75s step-end infinite;
+  }
+  .tw-cursor.done { animation: none; opacity: 0; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .card-arrow {
+    width: 34px; height: 34px; border: 2px solid currentColor;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; align-self: flex-end;
+    flex-shrink: 0; opacity: 0.65;
+  }
+
+  /* ─── Card themes ─── */
+  .card-red  { background: #FF3131; color: #fff; }
+  .card-yellow { background: #FFF133; color: #000; }
+  .card-blue { background: #2E5BFF; color: #fff; }
+
+  /* ══════════════════════════════════════════
+     GLITCH: Robot monitor boot-up
+     平常時: スキャンラインオーバーレイ + 微脱色
+     ホバー: 3フェーズで起動シーケンス
+  ══════════════════════════════════════════ */
+
+  /* スキャンライン共通 */
+  .photo-glitch {
+    position: relative; width: 100%; height: 100%;
+  }
+  .photo-glitch img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(0.55) brightness(0.92);
+    transition: filter 0.3s ease 0.45s; /* 起動完了後にフルカラーへ */
+    position: relative; z-index: 1;
+  }
+
+  /* 平常時スキャンライン */
+  .photo-glitch::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px
+    );
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  /* アンバーチャンネル (R→amber) */
+  .glitch-amber {
+    position: absolute; inset: 0; z-index: 4; pointer-events: none;
+    background-size: cover; background-position: center;
+    filter: saturate(0) sepia(1) hue-rotate(5deg) saturate(4) brightness(1.6);
+    mix-blend-mode: screen;
+    opacity: 0;
+  }
+  /* シアンチャンネル (B→cyan) */
+  .glitch-cyan {
+    position: absolute; inset: 0; z-index: 4; pointer-events: none;
+    background-size: cover; background-position: center;
+    filter: saturate(0) sepia(1) hue-rotate(155deg) saturate(3) brightness(1.3);
+    mix-blend-mode: screen;
+    opacity: 0;
+  }
+  /* 起動フラッシュオーバーレイ */
+  .glitch-flash {
+    position: absolute; inset: 0; z-index: 5; pointer-events: none;
+    background: rgba(255, 230, 50, 0.0);
+    mix-blend-mode: overlay;
+  }
+  /* スキャンライン走査（起動時） */
+  .glitch-scanline {
+    position: absolute; left: 0; right: 0; z-index: 6;
+    height: 3px;
+    background: linear-gradient(to right, transparent, rgba(255,220,60,0.7) 30%, rgba(255,220,60,0.9) 50%, rgba(255,220,60,0.7) 70%, transparent);
+    top: -3px;
+    opacity: 0; pointer-events: none;
+  }
+
+  /* ── ホバー時アニメーション ── */
+  /* フェーズ1: フリッカー + スキャンライン消灯 */
+  .card:hover .photo-glitch::before { opacity: 0; transition: opacity 0.08s; }
+  .card:hover .photo-glitch img {
+    animation: boot-img 0.6s steps(2) forwards;
+    filter: saturate(1) brightness(1); /* 最終状態 */
+    transition: filter 0.15s ease 0.52s;
+  }
+  .card:hover .glitch-amber {
+    animation: boot-amber 0.55s steps(3) forwards;
+  }
+  .card:hover .glitch-cyan {
+    animation: boot-cyan 0.55s steps(3) forwards;
+  }
+  .card:hover .glitch-flash {
+    animation: boot-flash 0.55s ease forwards;
+  }
+  .card:hover .glitch-scanline {
+    opacity: 1;
+    animation: boot-scan 0.55s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+  }
+
+  /* 画像本体のグリッチ */
+  @keyframes boot-img {
+    0%   { transform: none; brightness: 0.9; }
+    8%   { transform: translate(0, -1px); filter: brightness(1.3) saturate(0.2); }
+    16%  { transform: translate(-5px, 0); filter: brightness(0.7) saturate(0.1); }
+    24%  { transform: translate(5px, 1px); filter: brightness(1.2) saturate(0.3); }
+    32%  { transform: translate(-3px, 0); filter: brightness(0.85); }
+    40%  { transform: translate(4px, -1px); filter: brightness(1.1); }
+    52%  { transform: translate(-2px, 0); filter: brightness(1.0); }
+    64%  { transform: translate(1px, 0); }
+    80%  { transform: none; }
+    100% { transform: none; filter: saturate(1) brightness(1); }
+  }
+
+  /* アンバーチャンネル */
+  @keyframes boot-amber {
+    0%   { opacity: 0; transform: translate(0,0); clip-path: inset(100% 0 0 0); }
+    10%  { opacity: 0.75; transform: translate(9px, 0); clip-path: inset(5% 0 70% 0); }
+    22%  { opacity: 0.65; transform: translate(-7px, 0); clip-path: inset(60% 0 8% 0); }
+    34%  { opacity: 0.8;  transform: translate(11px, 0); clip-path: inset(25% 0 45% 0); }
+    46%  { opacity: 0.6;  transform: translate(-9px, 0); clip-path: inset(72% 0 2% 0); }
+    58%  { opacity: 0.7;  transform: translate(8px, 0);  clip-path: inset(40% 0 30% 0); }
+    72%  { opacity: 0.4;  transform: translate(-5px, 0); clip-path: inset(15% 0 60% 0); }
+    86%  { opacity: 0.2;  }
+    100% { opacity: 0; transform: none; }
+  }
+
+  /* シアンチャンネル */
+  @keyframes boot-cyan {
+    0%   { opacity: 0; transform: translate(0,0); clip-path: inset(0 0 100% 0); }
+    10%  { opacity: 0.6;  transform: translate(-10px, 0); clip-path: inset(50% 0 15% 0); }
+    22%  { opacity: 0.55; transform: translate(8px, 0);   clip-path: inset(12% 0 58% 0); }
+    34%  { opacity: 0.7;  transform: translate(-12px, 0); clip-path: inset(78% 0 0% 0); }
+    46%  { opacity: 0.5;  transform: translate(9px, 0);   clip-path: inset(35% 0 38% 0); }
+    58%  { opacity: 0.6;  transform: translate(-7px, 0);  clip-path: inset(65% 0 10% 0); }
+    72%  { opacity: 0.3;  transform: translate(5px, 0);   clip-path: inset(20% 0 55% 0); }
+    86%  { opacity: 0.15; }
+    100% { opacity: 0; transform: none; }
+  }
+
+  /* 黄色フラッシュ */
+  @keyframes boot-flash {
+    0%   { background: rgba(255,230,50,0.0); }
+    12%  { background: rgba(255,230,50,0.35); }
+    22%  { background: rgba(255,230,50,0.0); }
+    35%  { background: rgba(255,200,30,0.2); }
+    50%  { background: rgba(255,230,50,0.0); }
+    100% { background: rgba(255,230,50,0.0); }
+  }
+
+  /* スキャンライン走査 */
+  @keyframes boot-scan {
+    0%   { top: -3px; opacity: 1; }
+    100% { top: 100%; opacity: 0.3; }
+  }
+
+  /* ─── hover note ─── */
+  .hover-note {
+    font-size: 0.52rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.1em; color: rgba(0,0,0,0.25); padding: 8px 0 0 2px;
+  }
+
+  /* ─── 説明 ─── */
+  .section-label {
+    max-width: 900px; margin-top: 52px;
+    border-top: 2px solid #000; padding-top: 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .section-label h3 {
+    font-size: 0.62rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.14em; color: #888; margin-bottom: 10px;
+  }
+  .section-label p { font-size: 0.8rem; line-height: 1.7; color: rgba(0,0,0,0.6); }
+</style>
+</head>
+<body>
+
+<p class="page-eyebrow">Combined Demo — Glitch Photo + Typewriter Desc</p>
+<h1 class="page-title">Robot Monitor Boot-up</h1>
+<p class="page-note">
+  平常時: スキャンライン + 微脱色（眠っている）<br>
+  ホバー時: 黄色フラッシュ → RGBグリッチ → フルカラー起動<br>
+  説明文: スクロールでタイプライター表示
+</p>
+
+<div class="grid">
+
+  <!-- 実プロジェクト: Glitch + Typewriter -->
+  <div class="grid-item">
+    <div class="card card-red" id="card-1">
+      <div class="card-top-row">
+        <span class="card-tag">文化保護</span>
+        <span class="card-year">2023– / 佐世保</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-1">
+          <img id="img-1" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=75" alt="restaurant" loading="lazy">
+          <div class="glitch-amber" id="ga-1"></div>
+          <div class="glitch-cyan"  id="gc-1"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline"></div>
+        </div>
+      </div>
+      <h3 class="card-title">のれんバンク</h3>
+      <div class="card-desc-wrap">
+        <span class="tw-text" id="tw-1"></span><span class="tw-cursor" id="cur-1"></span>
+      </div>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバー: グリッチ起動 / スクロール: テキスト出現</p>
+  </div>
+
+  <!-- 実プロジェクト: Glitch + Typewriter -->
+  <div class="grid-item">
+    <div class="card card-yellow" id="card-2">
+      <div class="card-top-row">
+        <span class="card-tag">コラボスペース</span>
+        <span class="card-year">2024– / 佐世保</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-2">
+          <img id="img-2" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=75" alt="space" loading="lazy">
+          <div class="glitch-amber" id="ga-2"></div>
+          <div class="glitch-cyan"  id="gc-2"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline"></div>
+        </div>
+      </div>
+      <h3 class="card-title">on°C（オンド）</h3>
+      <div class="card-desc-wrap">
+        <span class="tw-text" id="tw-2"></span><span class="tw-cursor" id="cur-2"></span>
+      </div>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバー: グリッチ起動 / スクロール: テキスト出現</p>
+  </div>
+
+  <!-- 実プロジェクト: Glitch + Typewriter -->
+  <div class="grid-item">
+    <div class="card card-blue" id="card-3">
+      <div class="card-top-row">
+        <span class="card-tag">探究学習</span>
+        <span class="card-year">2025– / 長崎市</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-3">
+          <img id="img-3" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=75" alt="education" loading="lazy">
+          <div class="glitch-amber" id="ga-3"></div>
+          <div class="glitch-cyan"  id="gc-3"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline"></div>
+        </div>
+      </div>
+      <h3 class="card-title">ポラリスQ</h3>
+      <div class="card-desc-wrap">
+        <span class="tw-text" id="tw-3"></span><span class="tw-cursor" id="cur-3"></span>
+      </div>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバー: グリッチ起動 / スクロール: テキスト出現</p>
+  </div>
+
+</div>
+
+<!-- 説明 -->
+<div class="section-label">
+  <div>
+    <h3>Photo — Glitch (Robot Boot)</h3>
+    <p>
+      平常時はスキャンライン+微脱色で「眠っている」状態。ホバーで黄色フラッシュ→アンバー/シアンのRGBスプリット→走査線が画面を横断→フルカラーで起動完了。0.6秒で完結する1回きりのシーケンス。
+    </p>
+  </div>
+  <div>
+    <h3>Description — Typewriter (inView)</h3>
+    <p>
+      セクションがスクロールで見えた瞬間に起動。カードごとに100msずつ遅らせてスタッガー表示。文字速度に若干のランダムを乗せて機械的にならないように。カーソルは打鍵完了1秒後にフェードアウト。
+    </p>
+  </div>
+</div>
+
+<script>
+  // ── グリッチ: 背景画像をRGBレイヤーにセット ──
+  [1,2,3].forEach(n => {
+    const img = document.getElementById(`img-${n}`);
+    const setLayers = () => {
+      document.getElementById(`ga-${n}`).style.backgroundImage = `url(${img.src})`;
+      document.getElementById(`gc-${n}`).style.backgroundImage = `url(${img.src})`;
+    };
+    if (img.complete) setLayers(); else img.addEventListener('load', setLayers);
+  });
+
+  // ── タイプライター ──
+  const TEXTS = [
+    '閉店した名店の記憶をZINEとして残す。店主のインタビュー、客の思い出、当時のレシピ。消えゆく街の文化をシードバンクのように、後世へ。',
+    'まちと学生をつなぐコラボレーションスペース。「社長とバトる。」など地域の温度を上げるユニークな企画を、事業者とともに運営。',
+    '学校の依頼で結成した民間有志7名の専門家チームが、高校3年間の探究プログラムを伴走。民学連携PBLの新しい形に挑戦。',
+  ];
+
+  function typewrite(elText, elCursor, text, delay = 0) {
+    let i = 0;
+    elText.textContent = '';
+    elCursor.classList.remove('done');
+
+    function tick() {
+      if (i < text.length) {
+        elText.textContent += text[i++];
+        setTimeout(tick, 28 + Math.random() * 26);
+      } else {
+        setTimeout(() => elCursor.classList.add('done'), 900);
+      }
+    }
+    setTimeout(tick, delay);
+  }
+
+  // IntersectionObserver: グリッド全体が見えたら順番に起動
+  const grid = document.querySelector('.grid');
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    io.disconnect();
+    [1, 2, 3].forEach(n => {
+      typewrite(
+        document.getElementById(`tw-${n}`),
+        document.getElementById(`cur-${n}`),
+        TEXTS[n - 1],
+        400 + (n - 1) * 220  // カードごとに220msずつずらす
+      );
+    });
+  }, { threshold: 0.3 });
+  io.observe(grid);
+</script>
+</body>
+</html>

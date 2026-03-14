@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dormant State Patterns</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #F0EFE9;
+    padding: 48px 28px 100px;
+    color: #000;
+  }
+  .page-eyebrow {
+    font-size: 0.62rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.18em; color: #999; margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 2.2rem; font-weight: 900; letter-spacing: -0.05em;
+    line-height: 1; margin-bottom: 10px;
+  }
+  .page-note {
+    font-size: 0.78rem; color: rgba(0,0,0,0.45); line-height: 1.6;
+    margin-bottom: 52px; max-width: 520px;
+  }
+
+  /* ─── Grid ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    border: 2px solid #000;
+  }
+  .col { border-right: 2px solid #000; }
+  .col:last-child { border-right: none; }
+
+  /* ─── Card ─── */
+  .card {
+    padding: 24px 22px 20px;
+    display: flex; flex-direction: column;
+    background: #FF3131; color: #fff;
+    position: relative; cursor: default;
+    border-bottom: 2px solid #000;
+  }
+  .card:last-child { border-bottom: none; }
+
+  .card-top-row {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 14px;
+  }
+  .card-tag {
+    font-size: 0.58rem; font-family: monospace; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 3px 8px; border: 1px solid rgba(255,255,255,0.5); opacity: 0.8;
+  }
+  .card-year { font-size: 0.64rem; font-family: monospace; opacity: 0.6; }
+
+  /* ─── Photo frame ─── */
+  .photo-frame {
+    width: 100%; height: 140px; overflow: hidden;
+    position: relative; margin-bottom: 16px; flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+
+  /* 写真 + グリッチレイヤー */
+  .photo-glitch { position: relative; width: 100%; height: 100%; }
+  .photo-glitch img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    position: relative; z-index: 1;
+    transition: filter 0.15s ease 0.52s;
+    will-change: filter;
+  }
+  .glitch-amber {
+    position: absolute; inset: 0; z-index: 4;
+    background-size: cover; background-position: center;
+    filter: saturate(0) sepia(1) hue-rotate(5deg) saturate(4) brightness(1.6);
+    mix-blend-mode: screen; opacity: 0;
+  }
+  .glitch-cyan {
+    position: absolute; inset: 0; z-index: 4;
+    background-size: cover; background-position: center;
+    filter: saturate(0) sepia(1) hue-rotate(155deg) saturate(3) brightness(1.3);
+    mix-blend-mode: screen; opacity: 0;
+  }
+  .glitch-flash {
+    position: absolute; inset: 0; z-index: 5;
+    background: rgba(255,230,50,0); mix-blend-mode: overlay; pointer-events: none;
+  }
+  .glitch-scanline-sweep {
+    position: absolute; left: 0; right: 0; z-index: 6;
+    height: 3px; top: -3px; opacity: 0; pointer-events: none;
+    background: linear-gradient(to right, transparent, rgba(255,220,60,0.7) 30%, rgba(255,220,60,0.9) 50%, rgba(255,220,60,0.7) 70%, transparent);
+  }
+  /* スキャンライン背景 */
+  .scanlines {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0,0,0,0.12) 3px, rgba(0,0,0,0.12) 4px
+    );
+    transition: opacity 0.08s;
+  }
+
+  /* ホバー時: 共通アニメーション */
+  .card:hover .photo-glitch img { filter: saturate(1) brightness(1) !important; }
+  .card:hover .scanlines { opacity: 0; }
+  .card:hover .photo-glitch img { animation: boot-img 0.6s steps(2) forwards; }
+  .card:hover .glitch-amber { animation: boot-amber 0.55s steps(3) forwards; }
+  .card:hover .glitch-cyan  { animation: boot-cyan  0.55s steps(3) forwards; }
+  .card:hover .glitch-flash { animation: boot-flash 0.55s ease forwards; }
+  .card:hover .glitch-scanline-sweep { opacity: 1; animation: boot-scan 0.55s cubic-bezier(0.4,0,0.8,1) forwards; }
+
+  @keyframes boot-img {
+    0%  { transform: none; }
+    8%  { transform: translate(0,-1px); filter: brightness(1.4) saturate(0.1); }
+    16% { transform: translate(-5px,0); filter: brightness(0.6) saturate(0); }
+    24% { transform: translate(5px,1px); filter: brightness(1.3) saturate(0.2); }
+    32% { transform: translate(-3px,0); }
+    40% { transform: translate(4px,-1px); }
+    52% { transform: translate(-2px,0); }
+    80% { transform: none; }
+    100%{ transform: none; }
+  }
+  @keyframes boot-amber {
+    0%  { opacity:0; transform:translate(0,0); clip-path:inset(100% 0 0 0); }
+    10% { opacity:.75; transform:translate(9px,0); clip-path:inset(5% 0 70% 0); }
+    22% { opacity:.65; transform:translate(-7px,0); clip-path:inset(60% 0 8% 0); }
+    34% { opacity:.8;  transform:translate(11px,0); clip-path:inset(25% 0 45% 0); }
+    46% { opacity:.6;  transform:translate(-9px,0); clip-path:inset(72% 0 2% 0); }
+    58% { opacity:.7;  transform:translate(8px,0);  clip-path:inset(40% 0 30% 0); }
+    72% { opacity:.4;  transform:translate(-5px,0); }
+    100%{ opacity:0; transform:none; }
+  }
+  @keyframes boot-cyan {
+    0%  { opacity:0; transform:translate(0,0); clip-path:inset(0 0 100% 0); }
+    10% { opacity:.6;  transform:translate(-10px,0); clip-path:inset(50% 0 15% 0); }
+    22% { opacity:.55; transform:translate(8px,0);   clip-path:inset(12% 0 58% 0); }
+    34% { opacity:.7;  transform:translate(-12px,0); clip-path:inset(78% 0 0% 0); }
+    46% { opacity:.5;  transform:translate(9px,0);   clip-path:inset(35% 0 38% 0); }
+    72% { opacity:.3;  transform:translate(5px,0); }
+    100%{ opacity:0; transform:none; }
+  }
+  @keyframes boot-flash {
+    0%  { background:rgba(255,230,50,0); }
+    12% { background:rgba(255,230,50,0.38); }
+    22% { background:rgba(255,230,50,0); }
+    35% { background:rgba(255,200,30,0.22); }
+    50% { background:rgba(255,230,50,0); }
+    100%{ background:rgba(255,230,50,0); }
+  }
+  @keyframes boot-scan {
+    0%  { top:-3px; opacity:1; }
+    100%{ top:100%; opacity:0.3; }
+  }
+
+  /* カード下部 */
+  .card-title {
+    font-size: 1.1rem; font-weight: 900; letter-spacing: -0.04em;
+    text-transform: uppercase; line-height: 1; margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 0.78rem; line-height: 1.65;
+    border-left: 2px solid rgba(255,255,255,0.4); padding-left: 10px;
+    opacity: 0.68; margin-bottom: 12px;
+  }
+  .card-arrow {
+    width: 30px; height: 30px; border: 2px solid rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem; align-self: flex-end; opacity: 0.6;
+  }
+
+  /* ─── ラベル ─── */
+  .col-header {
+    padding: 14px 22px 10px;
+    border-bottom: 2px solid #000;
+    background: #000; color: #fff;
+  }
+  .col-header h2 {
+    font-size: 0.65rem; font-family: monospace; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px;
+  }
+  .col-header p {
+    font-size: 0.58rem; font-family: monospace;
+    color: rgba(255,255,255,0.5); line-height: 1.5;
+  }
+  .hover-note {
+    padding: 8px 22px 14px;
+    font-size: 0.52rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.1em; color: rgba(0,0,0,0.3);
+    border-bottom: none;
+  }
+
+  /* ══ 各パターンのフィルター ══ */
+
+  /* Aカラム: 微脱色（現状） */
+  .dormant-a img { filter: saturate(0.5) brightness(0.88); }
+
+  /* Bカラム: 完全モノクロ */
+  .dormant-b img { filter: saturate(0) brightness(0.88); }
+  /* モノクロ + スキャンライン強め */
+  .dormant-b .scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 2px,
+      rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 3px
+    );
+  }
+
+  /* Cカラム: 完全モノクロ + 暗め */
+  .dormant-c img { filter: saturate(0) brightness(0.55); }
+  .dormant-c .scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 2px,
+      rgba(0,0,0,0.22) 2px, rgba(0,0,0,0.22) 3px
+    );
+  }
+
+  /* ─── 比較テーブル ─── */
+  .comparison {
+    max-width: 900px; margin-top: 52px;
+    border-top: 2px solid #000; padding-top: 24px;
+  }
+  .comp-label {
+    font-size: 0.6rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.15em; color: #999; margin-bottom: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th {
+    text-align: left; padding: 7px 12px; font-size: 0.58rem; font-family: monospace;
+    text-transform: uppercase; letter-spacing: 0.1em; color: #777;
+    border-bottom: 1px solid #000;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); vertical-align: top; }
+  td:first-child { font-weight: 700; }
+  .pro { color: #2E5BFF; font-size: 0.76rem; }
+  .con { color: #FF3131; font-size: 0.76rem; }
+</style>
+</head>
+<body>
+
+<p class="page-eyebrow">Dormant State — Before/After Comparison</p>
+<h1 class="page-title">3 Patterns</h1>
+<p class="page-note">
+  起動前（平常時）の写真の状態を3段階で比較。<br>
+  どのカラムも同じグリッチアニメーションで起動します。差を確かめてみてください。
+</p>
+
+<div class="grid">
+
+  <!-- A: 微脱色（現状） -->
+  <div class="col">
+    <div class="col-header">
+      <h2>A — 微脱色（現状）</h2>
+      <p>saturate(0.5) brightness(0.88)</p>
+    </div>
+    <div class="card dormant-a">
+      <div class="card-top-row">
+        <span class="card-tag">文化保護</span>
+        <span class="card-year">2023–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-a1">
+          <img id="img-a1" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-a1"></div>
+          <div class="glitch-cyan"  id="gc-a1"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">のれんバンク</h3>
+      <p class="card-desc">閉店した名店の記憶をZINEとして残す。消えゆく街の文化を後世へ。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <div class="card dormant-a">
+      <div class="card-top-row">
+        <span class="card-tag">コラボスペース</span>
+        <span class="card-year">2024–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-a2">
+          <img id="img-a2" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-a2"></div>
+          <div class="glitch-cyan"  id="gc-a2"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">on°C</h3>
+      <p class="card-desc">まちと学生をつなぐコラボレーションスペース。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーで起動</p>
+  </div>
+
+  <!-- B: 完全モノクロ -->
+  <div class="col">
+    <div class="col-header">
+      <h2>B — 完全モノクロ</h2>
+      <p>saturate(0) brightness(0.88)</p>
+    </div>
+    <div class="card dormant-b">
+      <div class="card-top-row">
+        <span class="card-tag">文化保護</span>
+        <span class="card-year">2023–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-b1">
+          <img id="img-b1" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-b1"></div>
+          <div class="glitch-cyan"  id="gc-b1"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">のれんバンク</h3>
+      <p class="card-desc">閉店した名店の記憶をZINEとして残す。消えゆく街の文化を後世へ。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <div class="card dormant-b">
+      <div class="card-top-row">
+        <span class="card-tag">コラボスペース</span>
+        <span class="card-year">2024–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-b2">
+          <img id="img-b2" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-b2"></div>
+          <div class="glitch-cyan"  id="gc-b2"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">on°C</h3>
+      <p class="card-desc">まちと学生をつなぐコラボレーションスペース。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーで起動</p>
+  </div>
+
+  <!-- C: モノクロ + 暗め -->
+  <div class="col">
+    <div class="col-header">
+      <h2>C — モノクロ + 暗め</h2>
+      <p>saturate(0) brightness(0.55)</p>
+    </div>
+    <div class="card dormant-c">
+      <div class="card-top-row">
+        <span class="card-tag">文化保護</span>
+        <span class="card-year">2023–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-c1">
+          <img id="img-c1" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-c1"></div>
+          <div class="glitch-cyan"  id="gc-c1"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">のれんバンク</h3>
+      <p class="card-desc">閉店した名店の記憶をZINEとして残す。消えゆく街の文化を後世へ。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <div class="card dormant-c">
+      <div class="card-top-row">
+        <span class="card-tag">コラボスペース</span>
+        <span class="card-year">2024–</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-glitch" id="pg-c2">
+          <img id="img-c2" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+          <div class="scanlines"></div>
+          <div class="glitch-amber" id="ga-c2"></div>
+          <div class="glitch-cyan"  id="gc-c2"></div>
+          <div class="glitch-flash"></div>
+          <div class="glitch-scanline-sweep"></div>
+        </div>
+      </div>
+      <h3 class="card-title">on°C</h3>
+      <p class="card-desc">まちと学生をつなぐコラボレーションスペース。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーで起動</p>
+  </div>
+
+</div>
+
+<!-- 比較テーブル -->
+<div class="comparison">
+  <p class="comp-label">比較メモ</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">Pattern</th>
+        <th style="width:26%">見た目の印象</th>
+        <th>メリット</th>
+        <th>デメリット</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A — 微脱色</td>
+        <td>「なんとなく静か」</td>
+        <td><span class="pro">写真の内容はわかる。情報として読める</span></td>
+        <td><span class="con">起動前後の落差が小さく、グリッチの感動が弱い</span></td>
+      </tr>
+      <tr>
+        <td>B — 完全モノクロ</td>
+        <td>「眠っている感」がある</td>
+        <td><span class="pro">カラー起動の感動が強い。写真もまだ読める</span></td>
+        <td><span class="con">「白黒写真＝古い」と誤解される可能性</span></td>
+      </tr>
+      <tr>
+        <td>C — モノクロ+暗</td>
+        <td>「完全にオフ」</td>
+        <td><span class="pro">起動時のコントラスト最大。最もドラマチック</span></td>
+        <td><span class="con">暗くて写真の内容が伝わりにくい。ユーザーが気づかないリスク</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.65rem;color:#aaa;margin-top:14px;font-family:monospace;">
+    個人的な意見: B（完全モノクロ）が最もバランスが良い。Cは実際に使うなら「カーソルが近づいたとき少し明るくする」などのサブアクションとセットが理想。
+  </p>
+</div>
+
+<script>
+  // RGBレイヤーに同じ画像をセット
+  const pairs = [
+    ['a1','b1','c1'],
+    ['a2','b2','c2'],
+  ];
+  ['a1','a2','b1','b2','c1','c2'].forEach(id => {
+    const img = document.getElementById(`img-${id}`);
+    const setLayers = () => {
+      document.getElementById(`ga-${id}`).style.backgroundImage = `url(${img.src})`;
+      document.getElementById(`gc-${id}`).style.backgroundImage = `url(${img.src})`;
+    };
+    if (img.complete) setLayers(); else img.addEventListener('load', setLayers);
+  });
+</script>
+</body>
+</html>

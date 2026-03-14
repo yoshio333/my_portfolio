@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Animation Patterns — Demo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #F0EFE9;
+    padding: 48px 28px 100px;
+    color: #000;
+  }
+  .page-eyebrow {
+    font-size: 0.62rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .page-note {
+    font-size: 0.78rem;
+    color: rgba(0,0,0,0.45);
+    line-height: 1.6;
+    margin-bottom: 52px;
+    max-width: 520px;
+  }
+
+  /* ─── Grid（実際のWorkSectionと同じ3列） ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    border: 2px solid #000;
+  }
+  .grid-item {
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+  }
+  .grid-item:nth-child(3n) { border-right: none; }
+  .grid-item:nth-child(4),
+  .grid-item:nth-child(5) { border-bottom: none; }
+
+  /* ─── Card（WorkSectionに忠実なデザイン） ─── */
+  .card {
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    min-height: 340px;
+    cursor: default;
+    position: relative;
+  }
+  .card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .card-tag {
+    font-size: 0.62rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 3px 9px;
+    border: 1px solid currentColor;
+    opacity: 0.8;
+  }
+  .card-year {
+    font-size: 0.68rem;
+    font-family: monospace;
+    opacity: 0.65;
+  }
+
+  /* ─── Photo frame（共通） ─── */
+  .photo-frame {
+    width: 100%;
+    height: 148px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.1);
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Pattern label */
+  .p-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.48rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.88);
+    padding: 4px 8px;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .card-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 12px;
+    flex-grow: 1;
+  }
+  .card-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    border-left: 2px solid currentColor;
+    padding-left: 10px;
+    opacity: 0.65;
+  }
+  .card-arrow {
+    width: 34px;
+    height: 34px;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    align-self: flex-end;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* ─── Card color themes ─── */
+  .card-red  { background: #FF3131; color: #fff; }
+  .card-yellow { background: #FFF133; color: #000; }
+  .card-blue { background: #2E5BFF; color: #fff; }
+  .card-navy { background: #0A2340; color: #fff; }
+  .card-light { background: #F5F5F0; color: #000; }
+
+  /* ══════════════════════════════
+     A: Ken Burns（ズーム + パン）
+  ══════════════════════════════ */
+  .card-a .photo-frame { border-color: rgba(0,0,0,0.25); }
+  .photo-a img {
+    transform: scale(1);
+    transition: transform 3.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: 55% 45%;
+    will-change: transform;
+  }
+  .card-a:hover .photo-a img {
+    transform: scale(1.12) translate(-1.8%, 0.8%);
+  }
+
+  /* ══════════════════════════════
+     B: Shine（光沢ストリーク）
+  ══════════════════════════════ */
+  .card-b .photo-frame { border-color: rgba(0,0,0,0.1); }
+  .photo-b {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-b img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-b::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      108deg,
+      transparent 28%,
+      rgba(255,255,255,0)   38%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(255,255,255,0)   62%,
+      transparent 72%
+    );
+    transform: translateX(-130%);
+    pointer-events: none;
+  }
+  .card-b:hover .photo-b::after {
+    transform: translateX(130%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ══════════════════════════════
+     C: Glitch（RGB スプリット）
+  ══════════════════════════════ */
+  .card-c .photo-frame { border-color: rgba(255,255,255,0.18); }
+  .photo-c {
+    position: relative;
+    width: 100%; height: 100%;
+  }
+  .photo-c img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  /* Rチャンネル */
+  .photo-c-r,
+  .photo-c-b {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .photo-c-r { mix-blend-mode: screen; filter: saturate(0) sepia(1) hue-rotate(-10deg) brightness(1.4); }
+  .photo-c-b { mix-blend-mode: screen; filter: saturate(0) sepia(1) hue-rotate(200deg) brightness(1.2); }
+
+  .card-c:hover .photo-c img      { animation: gc-main 0.5s steps(2) forwards; }
+  .card-c:hover .photo-c-r        { opacity: 0.6; animation: gc-r 0.5s steps(2) forwards; }
+  .card-c:hover .photo-c-b        { opacity: 0.5; animation: gc-b 0.5s steps(2) forwards; }
+
+  @keyframes gc-main {
+    0%  { transform: none; filter: none; }
+    15% { transform: translate(-4px, 0); filter: brightness(1.1); }
+    30% { transform: translate(4px, 0); filter: brightness(0.95); }
+    45% { transform: translate(-2px, 1px); }
+    60% { transform: translate(3px, -1px); }
+    75% { transform: translate(-1px, 0); }
+    100%{ transform: none; filter: none; }
+  }
+  @keyframes gc-r {
+    0%  { transform: translate(0,0); clip-path: inset(20% 0 50% 0); }
+    20% { transform: translate(8px, 0); clip-path: inset(5% 0 70% 0); }
+    40% { transform: translate(-6px, 0); clip-path: inset(60% 0 10% 0); }
+    60% { transform: translate(7px, 0); clip-path: inset(35% 0 30% 0); }
+    80% { transform: translate(-5px, 0); clip-path: inset(50% 0 15% 0); }
+    100%{ opacity: 0; }
+  }
+  @keyframes gc-b {
+    0%  { transform: translate(0,0); clip-path: inset(55% 0 5% 0); }
+    20% { transform: translate(-7px,0); clip-path: inset(15% 0 60% 0); }
+    40% { transform: translate(5px, 0); clip-path: inset(75% 0 0% 0); }
+    60% { transform: translate(-8px,0); clip-path: inset(40% 0 25% 0); }
+    80% { transform: translate(6px, 0); clip-path: inset(10% 0 65% 0); }
+    100%{ opacity: 0; }
+  }
+
+  /* ══════════════════════════════
+     D: Vignette Zoom（ズーム + 周辺減光）
+  ══════════════════════════════ */
+  .card-d .photo-frame { border-color: rgba(255,255,255,0.12); }
+  .photo-d {
+    position: relative;
+    width: 100%; height: 100%;
+  }
+  .photo-d img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .card-d:hover .photo-d img {
+    transform: scale(1.07);
+  }
+  /* 周辺減光オーバーレイ */
+  .photo-d-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+      transparent 40%,
+      rgba(0, 12, 30, 0) 55%,
+      rgba(0, 12, 30, 0.55) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .card-d:hover .photo-d-vignette { opacity: 1; }
+  /* Wave line at bottom */
+  .photo-d-waveline {
+    position: absolute;
+    bottom: 0;
+    left: -60%;
+    width: 220%;
+    height: 28px;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.15s;
+    pointer-events: none;
+  }
+  .card-d:hover .photo-d-waveline {
+    opacity: 1;
+    animation: wave-scroll 2.2s linear infinite;
+  }
+  @keyframes wave-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(27.27%); }
+  }
+
+  /* ══════════════════════════════
+     E: Reveal Wipe（上から幕が下りる）
+  ══════════════════════════════ */
+  .card-e .photo-frame { border-color: rgba(0,0,0,0.1); }
+  .photo-e {
+    position: relative;
+    width: 100%; height: 100%;
+  }
+  .photo-e img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.06);
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .card-e:hover .photo-e img { transform: scale(1); }
+  /* カードカラーの幕（上から降りる） */
+  .photo-e-wipe {
+    position: absolute;
+    inset: 0;
+    background: #F5F5F0;
+    transform-origin: top center;
+    transform: scaleY(1);
+    transition: transform 0.52s cubic-bezier(0.76, 0, 0.24, 1);
+    z-index: 2;
+  }
+  .card-e:hover .photo-e-wipe { transform: scaleY(0); }
+  /* 幕の下端にライン */
+  .photo-e-wipe::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #000;
+  }
+  /* ホバー前はグレースケール、ホバーでカラー表示 */
+  .photo-e img { filter: grayscale(0.3); }
+
+  /* ─── Notes ─── */
+  .hover-note {
+    font-size: 0.52rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.25);
+    padding: 7px 0 0 2px;
+  }
+
+  /* ─── 比較テーブル ─── */
+  .comparison {
+    max-width: 900px;
+    margin-top: 52px;
+    border-top: 2px solid #000;
+    padding-top: 26px;
+  }
+  .comparison-label {
+    font-size: 0.6rem; font-family: monospace; text-transform: uppercase;
+    letter-spacing: 0.15em; color: #999; margin-bottom: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th {
+    text-align: left; padding: 7px 12px;
+    font-size: 0.58rem; font-family: monospace;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: #777; border-bottom: 1px solid #000;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); vertical-align: middle; }
+  td:first-child { font-weight: 700; }
+  td:not(:first-child) { text-align: center; color: #555; font-size: 0.78rem; }
+
+  @media (max-width: 680px) {
+    .grid { grid-template-columns: 1fr; }
+    .grid-item { border-right: none !important; border-bottom: 2px solid #000 !important; }
+    .grid-item:last-child { border-bottom: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<p class="page-eyebrow">Photo Hover Animation — Pattern Demo</p>
+<h1 class="page-title">5 Patterns</h1>
+<p class="page-note">説明文は常時表示。写真エリアにホバーアニメーションを載せた場合の比較。カードデザインは実際のポートフォリオに近い形。</p>
+
+<div class="grid">
+
+  <!-- A: Ken Burns -->
+  <div class="grid-item">
+    <div class="card card-red card-a">
+      <div class="card-top-row">
+        <span class="card-tag">文化保護</span>
+        <span class="card-year">2023– / 佐世保</span>
+      </div>
+      <div class="photo-frame photo-a">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=75" alt="restaurant" loading="lazy">
+        <span class="p-label">A — Ken Burns（ズーム+パン）</span>
+      </div>
+      <h3 class="card-title">のれんバンク</h3>
+      <p class="card-desc">閉店した名店の記憶をZINEとして残す。店主のインタビュー、客の思い出、当時のレシピ。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください（3.8秒かけてゆっくりズーム）</p>
+  </div>
+
+  <!-- B: Shine -->
+  <div class="grid-item">
+    <div class="card card-yellow card-b">
+      <div class="card-top-row">
+        <span class="card-tag">コラボスペース</span>
+        <span class="card-year">2024– / 佐世保</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-b">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=75" alt="collaboration" loading="lazy">
+        </div>
+        <span class="p-label">B — Shine（光沢ストリーク）</span>
+      </div>
+      <h3 class="card-title">on°C（オンド）</h3>
+      <p class="card-desc">まちと学生をつなぐコラボレーションスペース。地域の温度を上げるユニークな企画を運営。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください（光沢が一閃）</p>
+  </div>
+
+  <!-- C: Glitch -->
+  <div class="grid-item">
+    <div class="card card-blue card-c">
+      <div class="card-top-row">
+        <span class="card-tag">探究学習</span>
+        <span class="card-year">2025– / 長崎市</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-c">
+          <img id="glitch-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=75" alt="education" loading="lazy">
+          <div class="photo-c-r" id="glitch-r"></div>
+          <div class="photo-c-b" id="glitch-b"></div>
+        </div>
+        <span class="p-label">C — Glitch（RGBスプリット）</span>
+      </div>
+      <h3 class="card-title">ポラリスQ</h3>
+      <p class="card-desc">民間有志7名の専門家チームが、高校3年間の探究プログラムを伴走。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください（グリッチ後に安定）</p>
+  </div>
+
+  <!-- D: Vignette + Wave -->
+  <div class="grid-item">
+    <div class="card card-navy card-d">
+      <div class="card-top-row">
+        <span class="card-tag">コミュニティ</span>
+        <span class="card-year">2025– / TBD</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-d">
+          <img src="https://images.unsplash.com/photo-1531498860502-7c67cf519b9e?auto=format&fit=crop&w=600&q=75" alt="community" loading="lazy">
+          <div class="photo-d-vignette"></div>
+          <svg class="photo-d-waveline" viewBox="0 0 660 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,14 C55,4 110,24 165,14 C220,4 275,24 330,14 C385,4 440,24 495,14 C550,4 605,24 660,14" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="p-label">D — Vignette + Wave（周辺減光+波）</span>
+      </div>
+      <h3 class="card-title">近日公開</h3>
+      <p class="card-desc">現在準備中のプロジェクトです。詳細は近日公開予定。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください（暗くなり波が流れる）</p>
+  </div>
+
+  <!-- E: Wipe Reveal -->
+  <div class="grid-item">
+    <div class="card card-light card-e">
+      <div class="card-top-row">
+        <span class="card-tag">企画</span>
+        <span class="card-year">2026– / TBD</span>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-e">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=75" alt="planning" loading="lazy">
+          <div class="photo-e-wipe"></div>
+        </div>
+        <span class="p-label">E — Wipe Reveal（幕が上がる）</span>
+      </div>
+      <h3 class="card-title">近日公開</h3>
+      <p class="card-desc">現在準備中のプロジェクトです。詳細は近日公開予定。</p>
+      <div class="card-arrow">→</div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください（幕が上がり写真が現れる）</p>
+  </div>
+
+</div>
+
+<!-- 比較テーブル -->
+<div class="comparison">
+  <p class="comparison-label">Quick Comparison</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:28%">Pattern</th>
+        <th>印象</th>
+        <th>ループ</th>
+        <th>実装コスト</th>
+        <th>重さ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A — Ken Burns</td>
+        <td>上品・どこでも合う</td>
+        <td>なし</td>
+        <td>低</td>
+        <td>軽</td>
+      </tr>
+      <tr>
+        <td>B — Shine</td>
+        <td>高級感・一瞬の輝き</td>
+        <td>なし（1回）</td>
+        <td>低</td>
+        <td>軽</td>
+      </tr>
+      <tr>
+        <td>C — Glitch</td>
+        <td>ブルータル・個性的</td>
+        <td>なし（1回）</td>
+        <td>中</td>
+        <td>軽</td>
+      </tr>
+      <tr>
+        <td>D — Vignette+Wave</td>
+        <td>映画的・集中させる</td>
+        <td>波のみループ</td>
+        <td>中</td>
+        <td>軽</td>
+      </tr>
+      <tr>
+        <td>E — Wipe Reveal</td>
+        <td>ドラマチック・劇的</td>
+        <td>なし</td>
+        <td>低〜中</td>
+        <td>軽</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Glitch: 背景画像をJSでセット（同一画像をRGBレイヤーに）
+  window.addEventListener('load', () => {
+    const img = document.getElementById('glitch-img');
+    const src = img.src;
+    document.getElementById('glitch-r').style.backgroundImage = `url(${src})`;
+    document.getElementById('glitch-b').style.backgroundImage = `url(${src})`;
+  });
+</script>
+</body>
+</html>

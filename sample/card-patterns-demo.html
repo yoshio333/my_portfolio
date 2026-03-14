@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Description Patterns — Demo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #F0EFE9;
+    padding: 48px 28px 100px;
+    color: #000;
+  }
+  .page-header {
+    margin-bottom: 52px;
+  }
+  .page-eyebrow {
+    font-size: 0.62rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    max-width: 880px;
+  }
+
+  .pattern-label {
+    font-size: 0.6rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  .hover-note {
+    font-size: 0.58rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #bbb;
+    margin-top: 9px;
+  }
+
+  /* ─── Shared card shell ─── */
+  .card {
+    border: 2px solid #000;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 5px 5px 0 #000;
+  }
+  .card-inner {
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    border: 1px solid currentColor;
+    padding: 3px 9px;
+    margin-bottom: 18px;
+    opacity: 0.75;
+  }
+  .card-photo {
+    width: 100%;
+    height: 110px;
+    background: rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    font-family: monospace;
+    color: rgba(0,0,0,0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .card-arrow {
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    align-self: flex-end;
+    cursor: default;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════════
+     Pattern A: 2行クランプ + スムーズ展開
+  ══════════════════════════════════════════ */
+  .card-a {
+    background: #FF3131;
+    color: #fff;
+  }
+  .card-a .card-tag { border-color: rgba(255,255,255,0.45); color: rgba(255,255,255,0.8); }
+  .card-a .card-photo { background: rgba(0,0,0,0.18); border-color: rgba(0,0,0,0.15); color: rgba(255,255,255,0.2); }
+
+  .desc-a-outer {
+    /* 常時2行分の高さを確保 */
+    overflow: hidden;
+    max-height: 3.4em; /* ≈2行 */
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 14px;
+  }
+  .card-a:hover .desc-a-outer {
+    max-height: 10em;
+  }
+  .desc-a {
+    background: rgba(255,255,255,0.94);
+    color: #111;
+    padding: 12px 13px;
+    font-size: 0.88rem;
+    line-height: 1.68;
+    border-left: 3px solid rgba(0,0,0,0.2);
+  }
+  /* フェードアウトマスク（2行目以降をやわらかく隠す） */
+  .desc-a-fade {
+    position: relative;
+  }
+  .desc-a-fade::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: linear-gradient(to bottom, transparent, #FF3131);
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .card-a:hover .desc-a-fade::after {
+    opacity: 0;
+  }
+  .card-a .card-arrow { background: rgba(255,255,255,0.92); color: #000; border-color: rgba(0,0,0,0.2); }
+
+
+  /* ══════════════════════════════════════════
+     Pattern B: ボトム帯（常時ピーク表示）
+  ══════════════════════════════════════════ */
+  .card-b { background: #FFF133; color: #000; }
+  .card-b .card-tag { border-color: rgba(0,0,0,0.35); color: rgba(0,0,0,0.7); }
+  .card-b .card-photo { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08); }
+
+  .card-b-top { padding: 26px 24px 0; }
+  .card-b-title { font-size: 1.45rem; font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+
+  .card-b-band {
+    background: #111;
+    color: #fff;
+    max-height: 46px;
+    overflow: hidden;
+    transition: max-height 0.52s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .card-b:hover .card-b-band {
+    max-height: 180px;
+  }
+  .card-b-band-inner {
+    padding: 13px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .band-peek {
+    font-size: 0.64rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* ホバーでフェードアウト */
+    opacity: 1;
+    max-height: 1.2em;
+    transition: opacity 0.2s ease, max-height 0.3s ease;
+  }
+  .card-b:hover .band-peek {
+    opacity: 0;
+    max-height: 0;
+  }
+  .band-desc {
+    font-size: 0.87rem;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.82);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.15s, transform 0.35s ease 0.1s;
+    margin-bottom: 14px;
+  }
+  .card-b:hover .band-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .band-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.62rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #111;
+    background: #FFF133;
+    padding: 8px 14px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease 0.28s, transform 0.3s ease 0.22s;
+    align-self: flex-start;
+  }
+  .card-b:hover .band-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  /* ══════════════════════════════════════════
+     Pattern C: タイプライター（スクロール起動）
+  ══════════════════════════════════════════ */
+  .card-c { background: #2E5BFF; color: #fff; }
+  .card-c .card-tag { border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.7); }
+  .card-c .card-photo { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.28); }
+
+  .desc-c-frame {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 13px 14px;
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    min-height: 80px;
+  }
+  .cursor-c {
+    display: inline-block;
+    width: 1.5px;
+    height: 0.9em;
+    background: rgba(255,255,255,0.75);
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    animation: blink-c 0.75s step-end infinite;
+  }
+  @keyframes blink-c {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .cursor-c.done { animation: none; opacity: 0; }
+
+  .replay-btn {
+    font-size: 0.55rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: transparent;
+    color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 11px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .replay-btn:hover {
+    color: rgba(255,255,255,0.85);
+    border-color: rgba(255,255,255,0.5);
+  }
+  .card-c .card-arrow { background: rgba(255,255,255,0.9); color: #2E5BFF; border-color: rgba(255,255,255,0.3); }
+
+
+  /* ══════════════════════════════════════════
+     Pattern D: カードフリップ（3D）
+  ══════════════════════════════════════════ */
+  .card-d-wrap { perspective: 1000px; }
+  .card-d {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    overflow: visible;
+  }
+  .card-d-flipper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    transform-style: preserve-3d;
+    transition: transform 0.62s cubic-bezier(0.68, -0.05, 0.27, 1.05);
+  }
+  .card-d-wrap:hover .card-d-flipper {
+    transform: rotateY(180deg);
+  }
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 2px solid #000;
+    box-shadow: 5px 5px 0 #000;
+  }
+  /* 表面 */
+  .card-front {
+    background: #0A2340;
+    color: #fff;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-front .card-tag { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); }
+  .card-front .card-photo { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.22); }
+  .front-hint {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    font-size: 0.52rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.28);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .front-hint::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  /* 裏面 */
+  .card-back {
+    background: #fff;
+    color: #000;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    transform: rotateY(180deg);
+    justify-content: space-between;
+  }
+  .back-eyebrow {
+    font-size: 0.58rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #aaa;
+    margin-bottom: 12px;
+  }
+  .back-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #2E5BFF;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .back-desc {
+    font-size: 0.87rem;
+    line-height: 1.7;
+    color: rgba(0,0,0,0.72);
+    border-left: 3px solid #2E5BFF;
+    padding-left: 14px;
+    flex-grow: 1;
+    margin-bottom: 22px;
+  }
+  .back-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.62rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #FFF133;
+    color: #000;
+    border: 2px solid #000;
+    padding: 10px 16px;
+    align-self: flex-start;
+    box-shadow: 3px 3px 0 #000;
+  }
+
+  /* ─── 比較テーブル ─── */
+  .comparison {
+    max-width: 880px;
+    margin-top: 60px;
+    border-top: 2px solid #000;
+    padding-top: 28px;
+  }
+  .comparison-label {
+    font-size: 0.6rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #999;
+    margin-bottom: 18px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 0.6rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #777;
+    border-bottom: 1px solid #000;
+  }
+  td {
+    padding: 11px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    vertical-align: middle;
+  }
+  td:first-child { font-weight: 700; }
+  td:not(:first-child) { text-align: center; color: #444; }
+  .star { color: #2E5BFF; letter-spacing: -0.05em; }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <p class="page-eyebrow">WorkCard — Description Pattern</p>
+  <h1 class="page-title" style="font-size:2.2rem;font-weight:900;letter-spacing:-0.05em;">4 Patterns</h1>
+</div>
+
+<div class="grid">
+
+  <!-- ═══ A ═══ -->
+  <div>
+    <p class="pattern-label">A &mdash; 2行クランプ + ホバー展開</p>
+    <div class="card card-a">
+      <div class="card-inner">
+        <span class="card-tag">文化保護</span>
+        <div class="card-photo">Photo</div>
+        <h3 class="card-title">のれんバンク</h3>
+        <div class="desc-a-fade">
+          <div class="desc-a-outer">
+            <div class="desc-a">
+              閉店した名店の「記憶」をZINEとして残す。店主のインタビュー、客の思い出、当時のレシピ。消えゆく街の文化をシードバンクのように、後世へ。
+            </div>
+          </div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください</p>
+  </div>
+
+  <!-- ═══ B ═══ -->
+  <div>
+    <p class="pattern-label">B &mdash; ボトム帯（常時一部見える）</p>
+    <div class="card card-b">
+      <div class="card-b-top">
+        <span class="card-tag">コラボレーションスペース</span>
+        <div class="card-photo">Photo</div>
+        <h3 class="card-b-title">on°C（オンド）</h3>
+      </div>
+      <div class="card-b-band">
+        <div class="card-b-band-inner">
+          <span class="band-peek">まちと学生をつなぐコラボスペース ...</span>
+          <p class="band-desc">まちと学生をつなぐコラボレーションスペース。「社長とバトる。」など地域の温度を上げるユニークな企画を、事業者とともに運営。</p>
+          <span class="band-cta">詳細を見る →</span>
+        </div>
+      </div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください</p>
+  </div>
+
+  <!-- ═══ C ═══ -->
+  <div>
+    <p class="pattern-label">C &mdash; タイプライター（スクロール起動）</p>
+    <div class="card card-c">
+      <div class="card-inner">
+        <span class="card-tag">探究学習支援・PBL</span>
+        <div class="card-photo">Photo</div>
+        <h3 class="card-title">ポラリスQ</h3>
+        <div class="desc-c-frame">
+          <span id="tw-text"></span><span class="cursor-c" id="tw-cursor"></span>
+        </div>
+        <button class="replay-btn" onclick="startTypewriter()">↺ Replay</button>
+        <div class="card-arrow" style="margin-top:auto;">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ D ═══ -->
+  <div>
+    <p class="pattern-label">D &mdash; カードフリップ（3D）</p>
+    <div class="card-d-wrap">
+      <div class="card card-d">
+        <div class="card-d-flipper">
+          <div class="card-face card-front">
+            <span class="card-tag">探究学習支援・PBL</span>
+            <div class="card-photo">Photo</div>
+            <h3 class="card-title">長崎北高<br>ポラリスQ</h3>
+            <div class="front-hint">hover to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div>
+              <p class="back-eyebrow">Project Overview</p>
+              <p class="back-title">ポラリスQ</p>
+              <p class="back-desc">学校の依頼で結成した民間有志7名の専門家チームが、高校3年間の探究プログラムを伴走。民学連携PBLの新しい形に挑戦。</p>
+            </div>
+            <span class="back-cta">詳細を見る →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hover-note">↑ ホバーしてみてください</p>
+  </div>
+
+</div>
+
+<!-- 比較テーブル -->
+<div class="comparison">
+  <p class="comparison-label">Quick Comparison</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:28%">Pattern</th>
+        <th>常時表示</th>
+        <th>モバイル</th>
+        <th>遊び心</th>
+        <th>実装コスト</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A — 2行クランプ</td>
+        <td>○ 2行</td>
+        <td>◎</td>
+        <td><span class="star">★</span>☆☆☆</td>
+        <td>低</td>
+      </tr>
+      <tr>
+        <td>B — ボトム帯</td>
+        <td>○ 1行</td>
+        <td>○</td>
+        <td><span class="star">★★</span>☆☆</td>
+        <td>低〜中</td>
+      </tr>
+      <tr>
+        <td>C — タイプライター</td>
+        <td>◎ 全文</td>
+        <td>◎</td>
+        <td><span class="star">★★★</span>☆</td>
+        <td>中</td>
+      </tr>
+      <tr>
+        <td>D — フリップ</td>
+        <td>△ 裏面のみ</td>
+        <td>△</td>
+        <td><span class="star">★★★★</span></td>
+        <td>中</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // ─── Pattern C: Typewriter ───
+  const text = '学校の依頼で結成した民間有志7名の専門家チームが、高校3年間の探究プログラムを伴走。民学連携PBLの新しい形に挑戦。';
+  let timer = null;
+
+  function startTypewriter() {
+    const el = document.getElementById('tw-text');
+    const cursor = document.getElementById('tw-cursor');
+    if (timer) clearTimeout(timer);
+    el.textContent = '';
+    cursor.classList.remove('done');
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text[i];
+        i++;
+        const delay = 30 + Math.random() * 28;
+        timer = setTimeout(type, delay);
+      } else {
+        setTimeout(() => cursor.classList.add('done'), 900);
+      }
+    }
+
+    timer = setTimeout(type, 30);
+  }
+
+  // スクロールで自動起動
+  const cardC = document.querySelector('.card-c');
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setTimeout(startTypewriter, 500);
+      io.disconnect();
+    }
+  }, { threshold: 0.6 });
+  io.observe(cardC);
+</script>
+</body>
+</html>

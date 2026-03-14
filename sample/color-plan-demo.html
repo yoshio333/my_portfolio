@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カード配色 3プラン比較</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Mono', monospace, sans-serif; background: #F5F5F0; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@700;900&display=swap');
+
+  .page { padding: 48px 40px; }
+
+  /* ── Plan header ── */
+  .plan-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 8px;
+  }
+  .plan-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 6px;
+    letter-spacing: -0.03em;
+  }
+  .plan-desc {
+    font-size: 0.82rem;
+    color: rgba(0,0,0,0.55);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  /* ── Grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 2px solid #000;
+    margin-bottom: 64px;
+  }
+
+  /* ── Card ── */
+  .card {
+    padding: 28px 24px;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 180px;
+  }
+  .card:nth-child(3n) { border-right: none; }
+  .card:nth-child(4), .card:nth-child(5), .card:nth-child(6) { border-bottom: none; }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+  .card-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-top: auto;
+  }
+
+  /* ── Divider between plans ── */
+  .divider {
+    border: none;
+    border-top: 2px dashed rgba(0,0,0,0.15);
+    margin: 0 0 64px;
+  }
+
+  /* ─────────────────────────────────────────
+     PLAN A: ビビッド6色
+  ───────────────────────────────────────── */
+  .a1 { background: #FF3131; color: #fff; }
+  .a1 .tag { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+  .a2 { background: #FFF133; color: #000; }
+  .a2 .tag { background: #000; color: #fff; border: 1px solid #000; }
+
+  .a3 { background: #2E5BFF; color: #fff; }
+  .a3 .tag { background: #fff; color: #000; border: 1px solid rgba(255,255,255,0.3); }
+
+  .a4 { background: #0A2340; color: #fff; }
+  .a4 .tag { background: #2E5BFF; color: #fff; border: 1px solid #2E5BFF; }
+
+  .a5 { background: #009B4E; color: #fff; }
+  .a5 .tag { background: #fff; color: #000; border: 1px solid rgba(255,255,255,0.3); }
+
+  .a6 { background: #FF6B00; color: #fff; }
+  .a6 .tag { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+  /* ─────────────────────────────────────────
+     PLAN B: 明暗チェッカー
+  ───────────────────────────────────────── */
+  /* Row1: 明 / 暗 / 明 */
+  .b1 { background: #FF3131; color: #fff; }
+  .b1 .tag { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+  .b2 { background: #1A1A1A; color: #fff; }
+  .b2 .tag { background: #FFF133; color: #000; border: 1px solid #FFF133; }
+
+  .b3 { background: #FFF133; color: #000; }
+  .b3 .tag { background: #000; color: #fff; border: 1px solid #000; }
+
+  /* Row2: 暗 / 明 / 暗 */
+  .b4 { background: #0A2340; color: #fff; }
+  .b4 .tag { background: #2E5BFF; color: #fff; border: 1px solid #2E5BFF; }
+
+  .b5 { background: #2E5BFF; color: #fff; }
+  .b5 .tag { background: #fff; color: #000; border: 1px solid rgba(255,255,255,0.3); }
+
+  .b6 { background: #000000; color: #fff; }
+  .b6 .tag { background: #FF3131; color: #fff; border: 1px solid #FF3131; }
+
+  /* ─────────────────────────────────────────
+     PLAN C: ダークトーン統一
+  ───────────────────────────────────────── */
+  .c1 { background: #8B1A22; color: #fff; }
+  .c1 .tag { background: #FF3131; color: #fff; border: 1px solid #FF3131; }
+
+  .c2 { background: #1A1A1A; color: #fff; }
+  .c2 .tag { background: #FFF133; color: #000; border: 1px solid #FFF133; }
+
+  .c3 { background: #1B3A8C; color: #fff; }
+  .c3 .tag { background: #6B9EFF; color: #000; border: 1px solid #6B9EFF; }
+
+  .c4 { background: #0A2340; color: #fff; }
+  .c4 .tag { background: #2E5BFF; color: #fff; border: 1px solid #2E5BFF; }
+
+  .c5 { background: #14532D; color: #fff; }
+  .c5 .tag { background: #34D399; color: #000; border: 1px solid #34D399; }
+
+  .c6 { background: #3B0764; color: #fff; }
+  .c6 .tag { background: #C084FC; color: #000; border: 1px solid #C084FC; }
+
+  /* ── Page heading ── */
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #000;
+    margin-bottom: 8px;
+  }
+  .page-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(0,0,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .page-sub::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.15);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1 class="page-title">カード配色 — 3プラン比較</h1>
+  <p class="page-sub">Work Section Card Colors</p>
+
+  <!-- ══════════════ PLAN A ══════════════ -->
+  <p class="plan-label">Plan A</p>
+  <h2 class="plan-title">ビビッド6色</h2>
+  <p class="plan-desc">赤・黄・青・紺・緑・オレンジ。原色ベースで重複なし。<br>エネルギーがあってポスター感が強い。一番「うるさい」プラン。</p>
+
+  <div class="grid">
+    <div class="card a1">
+      <span class="tag">文化保護</span>
+      <div class="card-title">のれんバンク</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card a2">
+      <span class="tag">コラボスペース</span>
+      <div class="card-title">ON°C（オンド）</div>
+      <div class="card-year">2024年〜 / 佐世保市</div>
+    </div>
+    <div class="card a3">
+      <span class="tag">探究学習支援・PBL</span>
+      <div class="card-title">ポラリスQ</div>
+      <div class="card-year">2025年〜 / 長崎市</div>
+    </div>
+    <div class="card a4">
+      <span class="tag">こども起業</span>
+      <div class="card-title">Goccco（ゴッコ）</div>
+      <div class="card-year">2025年〜 / 東彼杵町</div>
+    </div>
+    <div class="card a5">
+      <span class="tag">探究学習</span>
+      <div class="card-title">マイプロジェクト<br>長崎県Summit</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card a6">
+      <span class="tag">AI学習</span>
+      <div class="card-title">AI社員育成計画</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════ PLAN B ══════════════ -->
+  <p class="plan-label">Plan B</p>
+  <h2 class="plan-title">明暗チェッカー</h2>
+  <p class="plan-desc">3列グリッドで明・暗が交互に並ぶ。目が自然にリズムを刻む。<br>一番「整理されている」プラン。</p>
+
+  <div class="grid">
+    <div class="card b1">
+      <span class="tag">文化保護</span>
+      <div class="card-title">のれんバンク</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card b2">
+      <span class="tag">コラボスペース</span>
+      <div class="card-title">ON°C（オンド）</div>
+      <div class="card-year">2024年〜 / 佐世保市</div>
+    </div>
+    <div class="card b3">
+      <span class="tag">探究学習支援・PBL</span>
+      <div class="card-title">ポラリスQ</div>
+      <div class="card-year">2025年〜 / 長崎市</div>
+    </div>
+    <div class="card b4">
+      <span class="tag">こども起業</span>
+      <div class="card-title">Goccco（ゴッコ）</div>
+      <div class="card-year">2025年〜 / 東彼杵町</div>
+    </div>
+    <div class="card b5">
+      <span class="tag">探究学習</span>
+      <div class="card-title">マイプロジェクト<br>長崎県Summit</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card b6">
+      <span class="tag">AI学習</span>
+      <div class="card-title">AI社員育成計画</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════ PLAN C ══════════════ -->
+  <p class="plan-label">Plan C</p>
+  <h2 class="plan-title">ダークトーン統一</h2>
+  <p class="plan-desc">全体を暗めのトーンで統一。タグの色で個性を出す。<br>一番「落ち着いていて上品」なプラン。</p>
+
+  <div class="grid">
+    <div class="card c1">
+      <span class="tag">文化保護</span>
+      <div class="card-title">のれんバンク</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card c2">
+      <span class="tag">コラボスペース</span>
+      <div class="card-title">ON°C（オンド）</div>
+      <div class="card-year">2024年〜 / 佐世保市</div>
+    </div>
+    <div class="card c3">
+      <span class="tag">探究学習支援・PBL</span>
+      <div class="card-title">ポラリスQ</div>
+      <div class="card-year">2025年〜 / 長崎市</div>
+    </div>
+    <div class="card c4">
+      <span class="tag">こども起業</span>
+      <div class="card-title">Goccco（ゴッコ）</div>
+      <div class="card-year">2025年〜 / 東彼杵町</div>
+    </div>
+    <div class="card c5">
+      <span class="tag">探究学習</span>
+      <div class="card-title">マイプロジェクト<br>長崎県Summit</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+    <div class="card c6">
+      <span class="tag">AI学習</span>
+      <div class="card-title">AI社員育成計画</div>
+      <div class="card-year">2023年〜 / 佐世保市</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
