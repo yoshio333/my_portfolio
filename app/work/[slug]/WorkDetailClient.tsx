@@ -203,7 +203,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
           marginBottom: '20px',
           color: pal.textColor,
-          textShadow: '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000',
+          textShadow: pal.textColor === '#FFFFFF' ? '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000' : 'none',
           position: 'relative',
           zIndex: 2,
         }}>
