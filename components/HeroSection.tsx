@@ -523,13 +523,15 @@ export default function HeroSection({ lang }: Props) {
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                color: '#000000',
+                color: '#FFFFFF',
                 textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                borderBottom: '1px solid #000000',
-                paddingBottom: '1px',
+                display: 'block',
+                textAlign: 'center',
+                backgroundColor: '#000000',
+                border: '2px solid #000000',
+                padding: '9px 14px',
+                marginTop: '12px',
+                borderTop: '1px solid rgba(0,0,0,0.15)',
               }}
             >
               {CONTENT.about[lang].viewProfile}

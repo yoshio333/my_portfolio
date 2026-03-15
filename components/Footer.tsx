@@ -22,11 +22,11 @@ export default function Footer({ lang }: Props) {
       ref={ref}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
-        color: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
+        color: '#000000',
         position: 'relative',
         overflow: 'hidden',
-        borderTop: '2px solid #000000',
+        borderTop: '3px dashed rgba(0,0,0,0.25)',
       }}
     >
       {/* Ghost background text */}
@@ -44,10 +44,10 @@ export default function Footer({ lang }: Props) {
           userSelect: 'none',
         }}
       >
-        <div style={{ fontWeight: 900, fontSize: 'clamp(3rem, 7vw, 7rem)', letterSpacing: '-0.05em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.04)', lineHeight: 0.88, whiteSpace: 'nowrap', paddingLeft: '40px' }}>
+        <div style={{ fontWeight: 900, fontSize: 'clamp(3rem, 7vw, 7rem)', letterSpacing: '-0.05em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.04)', lineHeight: 0.88, whiteSpace: 'nowrap', paddingLeft: '40px' }}>
           {c.bgText1}
         </div>
-        <div style={{ fontWeight: 900, fontSize: 'clamp(3rem, 7vw, 7rem)', letterSpacing: '-0.05em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.04)', lineHeight: 0.88, whiteSpace: 'nowrap', paddingLeft: '80px' }}>
+        <div style={{ fontWeight: 900, fontSize: 'clamp(3rem, 7vw, 7rem)', letterSpacing: '-0.05em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.04)', lineHeight: 0.88, whiteSpace: 'nowrap', paddingLeft: '80px' }}>
           {c.bgText2}
         </div>
       </div>
@@ -68,10 +68,10 @@ export default function Footer({ lang }: Props) {
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            border: '2px solid #FFF133',
+            border: '2px solid #000000',
             padding: '4px 14px',
-            color: '#FFF133',
-            backgroundColor: 'rgba(255,241,51,0.08)',
+            color: '#000000',
+            backgroundColor: 'transparent',
           }}>
             {c.badge}
           </span>
@@ -88,13 +88,13 @@ export default function Footer({ lang }: Props) {
             lineHeight: 0.88,
             letterSpacing: '-0.05em',
             textTransform: 'uppercase',
-            color: '#FFFFFF',
+            color: '#000000',
             marginBottom: isMobile ? '32px' : '44px',
           }}
         >
           {c.h2[0]}
           <br />
-          <span style={{ color: '#FFF133' }}>{c.h2[1]}</span>
+          <span style={{ color: '#FFF133', WebkitTextStroke: '2px #000000' }}>{c.h2[1]}</span>
         </motion.h2>
 
         {/* Body + CTA */}
@@ -114,7 +114,7 @@ export default function Footer({ lang }: Props) {
           <p style={{
             fontSize: '1.05rem',
             lineHeight: 1.8,
-            color: 'rgba(255,255,255,0.6)',
+            color: 'rgba(0,0,0,0.55)',
             maxWidth: '460px',
             margin: 0,
             borderLeft: '3px solid #FFF133',
@@ -131,15 +131,15 @@ export default function Footer({ lang }: Props) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '12px',
-              backgroundColor: ctaHovered ? 'rgba(255,241,51,0.82)' : '#FFF133',
-              color: '#000000',
+              backgroundColor: ctaHovered ? '#333333' : '#000000',
+              color: '#FFFFFF',
               fontFamily: 'var(--font-space-mono)',
               fontSize: '0.85rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               padding: '16px 32px',
               border: '2px solid #000000',
-              boxShadow: ctaHovered ? '0px 0px 0px rgba(255,255,255,0.25)' : '6px 6px 0px rgba(255,255,255,0.25)',
+              boxShadow: ctaHovered ? '0px 0px 0px #000' : '6px 6px 0px #000',
               transform: ctaHovered ? 'translate(3px, 3px)' : 'none',
               textDecoration: 'none',
               transition: 'background-color 0.12s, box-shadow 0.1s, transform 0.1s',
@@ -153,7 +153,7 @@ export default function Footer({ lang }: Props) {
 
         {/* Bottom row */}
         <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.15)',
+          borderTop: '1px solid rgba(0,0,0,0.12)',
           paddingTop: '28px',
           display: 'flex',
           justifyContent: 'space-between',
@@ -165,7 +165,7 @@ export default function Footer({ lang }: Props) {
           <span style={{
             fontFamily: 'var(--font-space-mono)',
             fontSize: '0.62rem',
-            color: 'rgba(255,255,255,0.35)',
+            color: 'rgba(0,0,0,0.35)',
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
           }}>
@@ -188,12 +188,12 @@ export default function Footer({ lang }: Props) {
                   letterSpacing: '0.1em',
                   textDecoration: 'none',
                   padding: isMobile ? '8px 14px' : '8px 18px',
-                  borderTop: '1px solid rgba(255,255,255,0.2)',
-                  borderBottom: '1px solid rgba(255,255,255,0.2)',
-                  borderLeft: '1px solid rgba(255,255,255,0.2)',
-                  borderRight: i < social.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                  borderTop: '1px solid rgba(0,0,0,0.2)',
+                  borderBottom: '1px solid rgba(0,0,0,0.2)',
+                  borderLeft: '1px solid rgba(0,0,0,0.2)',
+                  borderRight: i < social.length - 1 ? 'none' : '1px solid rgba(0,0,0,0.2)',
                   backgroundColor: hoveredSocial === i ? s.hoverBg : 'transparent',
-                  color: hoveredSocial === i ? s.hoverColor : 'rgba(255,255,255,0.5)',
+                  color: hoveredSocial === i ? s.hoverColor : 'rgba(0,0,0,0.5)',
                   transition: 'background-color 0.12s, color 0.12s',
                 }}
               >
