@@ -1,11 +1,12 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CONTENT, CARD_PALETTE, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { shouldSkipAnim } from '@/hooks/useAnimOnce';
 
 const CONTACT_MAILTO = 'mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A';
 
@@ -144,6 +145,15 @@ function WorkCard({
 
   const imgSrc = 'imgSrc' in card && card.imgSrc ? card.imgSrc : null;
   const pal = CARD_PALETTE[index % CARD_PALETTE.length];
+
+  // ─── 戻り訪問: アニメ・タイプライターをスキップ（ペイント前に確定）─
+  useLayoutEffect(() => {
+    if (!shouldSkipAnim()) return;
+    setEntered(true);
+    setTwDone(true);
+    twStartedRef.current = true;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ─── フェードイン（section inView で起動、index で stagger）──────
   useEffect(() => {

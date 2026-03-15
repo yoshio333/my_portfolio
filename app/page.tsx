@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useLang } from '@/hooks/useLang';
+import { markVisited } from '@/hooks/useAnimOnce';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import MarqueeBar from '@/components/MarqueeBar';
@@ -11,6 +12,9 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   const [lang, setLang] = useLang();
+
+  // ホームから離れたら「訪問済み」フラグを立てる（戻ったときアニメをスキップ）
+  useEffect(() => markVisited, []);
 
   // 別ページから /#contact で遷移してきたとき、hydration 後にフッターへスクロール
   useEffect(() => {

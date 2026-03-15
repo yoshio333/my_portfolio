@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { useInView } from 'framer-motion';
 import { CONTENT, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { shouldSkipAnim } from '@/hooks/useAnimOnce';
 
 type Props = { lang: Lang };
 
@@ -115,6 +116,12 @@ function FocusCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const [entered, setEntered] = useState(false);
+
+  // 戻り訪問: アニメをスキップ（ペイント前に確定）
+  useLayoutEffect(() => {
+    if (shouldSkipAnim()) setEntered(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (inView && !entered) setEntered(true);
