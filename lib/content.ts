@@ -550,8 +550,8 @@ export const CONTENT = {
     },
     social: [
       { label: 'Mail', href: 'mailto:hello@example.com', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
-      { label: 'Facebook', href: '#', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
-      { label: 'Note.jp', href: '#', hoverBg: '#FFF133', hoverColor: '#000000' },
+      { label: 'Facebook', href: 'https://www.facebook.com/ynishinobu', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
+      { label: 'Note.jp', href: 'https://note.com/yoshio333333', hoverBg: '#FFF133', hoverColor: '#000000' },
     ],
   },
   awards: {
@@ -561,16 +561,19 @@ export const CONTENT = {
         award: { EN: '1st Shinkumi Brand Award — Grand Prize', JP: '第１回しんくみブランド表彰　大賞' },
         project: { EN: 'Machi no Gakushoku', JP: 'まちの学食' },
         role: { EN: 'Planning & Implementation', JP: '企画・実装' },
+        slug: 'machi-gakushoku',
       },
       {
         award: { EN: '19th Corporate Philanthropy Award', JP: '第19回企業フィランソロピー賞' },
         project: { EN: 'Machi no Gakushoku', JP: 'まちの学食' },
         role: { EN: 'Planning & Implementation', JP: '企画・実装' },
+        slug: 'machi-gakushoku',
       },
       {
         award: { EN: 'Good Design Award — Good Focus / Best 100', JP: 'グッドデザイン グッドフォーカス賞 ／ ベスト100' },
         project: { EN: 'Sakimeshi', JP: 'さきめし' },
         role: { EN: 'Project Initiation & Naming', JP: '企画起案・ネーミング' },
+        slug: 'sakimeshi',
       },
     ],
   },

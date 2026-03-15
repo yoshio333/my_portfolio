@@ -293,18 +293,34 @@ export default function AboutPage() {
                 {item.award[lang]}
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-                <span style={{
-                  fontFamily: 'var(--font-space-mono)',
-                  fontSize: '0.68rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: '#000000',
-                  border: '1px solid rgba(0,0,0,0.2)',
-                  padding: '3px 10px',
-                }}>
-                  {item.project[lang]}
-                </span>
+                {'slug' in item ? (
+                  <Link href={`/work/${item.slug}`} style={{
+                    fontFamily: 'var(--font-space-mono)',
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: '#000000',
+                    border: '1px solid rgba(0,0,0,0.2)',
+                    padding: '3px 10px',
+                    textDecoration: 'none',
+                  }}>
+                    {item.project[lang]}
+                  </Link>
+                ) : (
+                  <span style={{
+                    fontFamily: 'var(--font-space-mono)',
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: '#000000',
+                    border: '1px solid rgba(0,0,0,0.2)',
+                    padding: '3px 10px',
+                  }}>
+                    {item.project[lang]}
+                  </span>
+                )}
                 <span style={{
                   fontFamily: 'var(--font-space-mono)',
                   fontSize: '0.65rem',
