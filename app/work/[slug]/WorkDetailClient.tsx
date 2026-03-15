@@ -197,7 +197,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
           marginBottom: '20px',
           color: pal.textColor,
-          WebkitTextStroke: '2px #000000',
+          textShadow: '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000',
           position: 'relative',
           zIndex: 2,
         }}>
