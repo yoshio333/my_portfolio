@@ -17,7 +17,45 @@
 ### レスポンシブ（useIsMobile）
 - `hooks/useIsMobile.ts`、ブレークポイント: 768px
 - 初期値 `false` 固定（SSR/CSRハイドレーション不一致を防ぐため）
-- `useEffect` 内でのみ実際の値をセット
+- **`useLayoutEffect` 内で実際の値をセット**（セッション5で `useEffect` から変更）
+  - 変更理由: `useEffect` だとペイント後にモバイル判定が確定するため、グリッドが3カラム→1カラムに切り替わるレイアウトシフトが発生しスクロール位置がズレた
+
+### アニメーション一回限り制御（useAnimOnce）
+- `hooks/useAnimOnce.ts` にモジュールレベル変数 `_visited` を定義
+- **リロードでリセット・SPAナビゲーション間は保持** → `sessionStorage` より適切（タブ内でもリロードでリセットされる）
+- `markVisited()`: ホームの `useEffect` cleanup として登録 → ホームから離れた瞬間に `true` にセット
+- `shouldSkipAnim()`: 各コンポーネントの `useLayoutEffect` 内で確認 → `true` なら即 `entered = true` をセット
+- **必ず `useLayoutEffect` で呼ぶこと** → ペイント前に実行されるため opacity:0 の初期状態が画面に映らない（白フラッシュなし）
+
+```ts
+// hooks/useAnimOnce.ts
+'use client';
+let _visited = false;
+export const markVisited = (): void => { _visited = true; };
+export const shouldSkipAnim = (): boolean => _visited;
+```
+
+```tsx
+// 各コンポーネントでの使い方
+useLayoutEffect(() => {
+  if (shouldSkipAnim()) setEntered(true);
+}, []);
+useEffect(() => {
+  if (!shouldSkipAnim()) setEntered(true); // 初回フェードイン
+}, []);
+```
+
+### Framer Motion vs CSS transitions（アニメーション）
+- Framer Motion の `animate` prop はコンポーネントの**マウントごとに実行**される
+- ブラウザバック時（リマウント）にも再実行 → 戻り訪問でのアニメスキップが難しい
+- **推奨**: `entered` state + CSS `transition` プロパティ で実装 → JavaScript 側でスキップ制御が容易
+  ```tsx
+  // NG: ブラウザバックでも毎回アニメーション
+  <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+
+  // OK: entered state で制御
+  <div style={{ opacity: entered ? 1 : 0, transition: 'opacity 0.5s' }}>
+  ```
 
 ---
 
@@ -70,12 +108,38 @@
 
 ---
 
+## ブラウザバック対策（チェックリスト）
+
+ページ遷移・バック後に以下の症状が出た場合の確認ポイント。
+
+| 症状 | 原因 | 対策 |
+|---|---|---|
+| 白フラッシュ + アニメ再生 | マウント時に `entered=false` にリセット | `useLayoutEffect` + `shouldSkipAnim()` で即 `true` にセット |
+| スクロール位置ズレ（下ほど上に飛ぶ） | タイプライターで説明ボックス高さが変化 | 戻り訪問時に `setTwDone(true)` で即全文表示 |
+| スクロール位置ズレ（グリッド崩れ） | `useIsMobile` が `useEffect` でレイアウトシフト発生 | `useLayoutEffect` に変更 |
+| 色変換アニメが再生 | `activatedRef.current` がリセットされる | `useLayoutEffect` で `setActivated(true)` + `activatedRef.current = true` |
+| 「戻る」ボタンが別ページに遷移 | `<Link href="...">` で固定パス指定 | `useRouter().back()` に変更 |
+
+---
+
 ## よくある落とし穴
 
 ### TypeScript: `imgSrc` の型絞り込みが `never` になる
 - カードの型に `imgSrc` がオプションで存在する場合、`'imgSrc' in card && card.imgSrc` の型絞り込み後に他のプロパティが `never` になることがある
 - 回避策: `String((card as any).imgAlt || card.title[lang])` のように `as any` でキャスト
 - 対象: `WorkSection.tsx`・`WorkDetailClient.tsx`・`app/work/page.tsx` の `Image alt` 属性
+
+### textShadow は textColor に応じて条件分岐
+- 白文字のときだけ黒アウトライン用 textShadow を適用すること
+- 黒文字に黒 textShadow を当てると文字が滲んで読みにくくなる
+  ```tsx
+  // NG
+  textShadow: '-1px -1px 0 #000000, ...'
+  // OK
+  textShadow: pal.textColor === '#FFFFFF'
+    ? '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000'
+    : 'none',
+  ```
 
 ### CSS border 警告
 - `border` shorthand と `borderRight` 等 longhand の混在は React 19 で警告が出る

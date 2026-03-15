@@ -4,6 +4,56 @@
 
 ---
 
+## 2026-03-15（セッション5）
+
+### /#contact ナビゲーションを即ジャンプに変更
+- `app/page.tsx` の `/#contact` ハッシュ処理: `scrollIntoView({ behavior: 'smooth' })` → `scrollIntoView()` に変更
+- 理由: ページをまたいでスクロールしても閲覧者がどこにいるかわからない。即ジャンプが適切
+
+### hooks/useAnimOnce.ts 新規作成（アニメーション一回限り制御）
+- モジュールレベル変数 `_visited` でSPAナビゲーション間は保持・リロードでリセット
+- `markVisited()`: ホームから離れたタイミングで呼ぶ（`page.tsx` の `useEffect` cleanup として登録）
+- `shouldSkipAnim()`: 戻り訪問かどうかを返す（true のとき全アニメをスキップ）
+
+### ブラウザバック時アニメーション再生・白フラッシュの修正
+- **対象**: WorkSection / FocusSection / Footer / HeroSection（WorkCard 含む）
+- **修正**: 各コンポーネントに下記を追加
+  ```ts
+  useLayoutEffect(() => {
+    if (shouldSkipAnim()) setEntered(true);
+  }, []);
+  ```
+- `useLayoutEffect` を使う理由: ペイント前に実行されるため、初期状態（opacity:0）が一瞬も画面に映らない → 白フラッシュなし
+- HeroSection は Framer Motion の `motion.*` を完全廃止 → CSS transitions（`entered` state ベース）に移行
+  - Framer Motion の `animate` prop はコンポーネントのマウントごとに実行されるため、戻り訪問時の制御が難しい
+
+### WorkCard: ブラウザバック時の色変換・タイプライタースキップ
+- `useLayoutEffect` でスキップ処理を追加
+- `setEntered(true)` / `setTwDone(true)` / `setActivated(true)` / `twStartedRef.current = true` / `activatedRef.current = true` を一括セット
+- ref を使う理由: useEffect の stale closure 回避（`activatedRef` / `twStartedRef`）
+
+### スクロール位置ズレ修正①（タイプライター起因）
+- **症状**: 下のプロジェクトほどブラウザバック後に上にスクロールされる
+- **原因**: タイプライター効果で説明ボックス（minHeight:90px）の高さが変化。戻り訪問時に一瞬空でレンダリング → 同ピクセル値が別の位置を指す（高さ差が上カードから累積）
+- **修正**: `shouldSkipAnim()` が true のとき `setTwDone(true)` → 即全文表示 → ボックスの高さが初回から一定
+
+### スクロール位置ズレ修正②（useIsMobile 起因）
+- **症状**: `/work` 内のプロジェクト詳細から戻るとスクロール位置がズレる
+- **原因**: `useIsMobile` が `useEffect` で実行されていたため、初回レンダーはデスクトップ（3カラム） → ペイント後にモバイル（1カラム）に切り替わりレイアウトシフトが発生
+- **修正**: `hooks/useIsMobile.ts` の `useEffect` → `useLayoutEffect` に変更
+
+### WorkDetailClient: 「← 戻る」ボタンを router.back() に変更
+- 旧: `<Link href="/work">` → プロジェクト一覧に強制遷移（直前のページを無視）
+- 新: `useRouter().back()` → 直前のページ・スクロール位置に戻る（ブラウザバックと同じ挙動）
+- 「← プロジェクト一覧」（h.allProjects）リンクは `/work` 固定のまま維持
+
+### WorkDetailClient: h1 テキストシャドウの条件付き適用
+- **症状**: 黒テキスト（まちの学食など）で黒アウトラインが付いて文字が滲む
+- **原因**: `textShadow` が無条件にアウトライン用4方向シャドウを適用していた
+- **修正**: `pal.textColor === '#FFFFFF'` のときのみ適用、それ以外は `'none'`
+
+---
+
 ## 2026-03-15（セッション4）
 
 ### maipro（dummy-5）コンテンツ追加・修正
