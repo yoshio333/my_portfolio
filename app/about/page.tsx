@@ -348,7 +348,7 @@ export default function AboutPage() {
         }}>
           {a.backLabel}
         </Link>
-        <a href="mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A" style={{
+        <a href="/#contact" style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
