@@ -198,6 +198,7 @@ function WorkCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setHovered(false)}
       style={{
+        touchAction: 'pan-y',
         borderRight: !isMobile && index % 3 !== 2 ? '2px solid #000000' : 'none',
         borderBottom: isMobile
           ? (index < total - 1 ? '2px solid #000000' : 'none')

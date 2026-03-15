@@ -31,6 +31,7 @@ export default function Header({ lang, setLang }: Props) {
       {/* Logo */}
       <Link
         href="/"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         style={{
           fontWeight: 900,
           fontSize: isMobile ? '0.82rem' : '1rem',
