@@ -22,6 +22,14 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Mobile scroll fix (Framer Motion touch-action) ── */
+/* motion.div がタッチジェスチャーを横取りして縦スクロールを妨害するのを防ぐ */
+@media (max-width: 768px) {
+  section, main, div {
+    touch-action: pan-y;
+  }
+}
+
 /* ── Selection ───────────────────────────────────── */
 ::selection { background-color: #FFF133; color: #000000; }
 
