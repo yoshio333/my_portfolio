@@ -124,7 +124,7 @@ export default function Footer({ lang }: Props) {
           </p>
 
           <a
-            href="mailto:hello@example.com"
+            href="mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A"
             onMouseEnter={() => setCtaHovered(true)}
             onMouseLeave={() => setCtaHovered(false)}
             style={{

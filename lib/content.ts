@@ -420,6 +420,7 @@ export const CONTENT = {
         imgAlt: 'AI社員育成計画 — 地域の経営者・学生とAIを学ぶ月例プログラム',
       },
       {
+        archived: true,
         slug: 'sakimeshi',
         tag: { EN: 'Business Support', JP: '事業者支援' },
         year: { EN: '2020 / Sasebo', JP: '2020年　／　佐世保市' },
@@ -456,6 +457,7 @@ export const CONTENT = {
         imgAlt: 'さきめし — コロナ禍の飲食店を支援するデジタル前売り券サービス',
       },
       {
+        archived: true,
         slug: 'machi-gakushoku',
         tag: { EN: 'Student Support', JP: '学生支援' },
         year: { EN: '2020 / Sasebo', JP: '2020年　／　佐世保市' },
@@ -549,7 +551,7 @@ export const CONTENT = {
       copy: '© 2026 Yoshimasa Nishinobu',
     },
     social: [
-      { label: 'Mail', href: 'mailto:hello@example.com', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
+      { label: 'Mail', href: 'mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
       { label: 'Facebook', href: 'https://www.facebook.com/ynishinobu', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
       { label: 'Note.jp', href: 'https://note.com/yoshio333333', hoverBg: '#FFF133', hoverColor: '#000000' },
     ],

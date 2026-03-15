@@ -11,7 +11,7 @@ type Props = { lang: Lang };
 
 export default function WorkSection({ lang }: Props) {
   const h = CONTENT.work.header[lang];
-  const cards = CONTENT.work.cards;
+  const cards = CONTENT.work.cards.filter(c => !('archived' in c && c.archived));
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const isMobile = useIsMobile();
