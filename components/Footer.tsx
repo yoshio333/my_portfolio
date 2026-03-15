@@ -162,15 +162,25 @@ export default function Footer({ lang }: Props) {
           flexWrap: 'wrap',
           gap: '20px',
         }}>
-          <span style={{
-            fontFamily: 'var(--font-space-mono)',
-            fontSize: '0.62rem',
-            color: 'rgba(0,0,0,0.35)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-          }}>
-            {c.copy}
-          </span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <span style={{
+              fontFamily: 'var(--font-space-mono)',
+              fontSize: '0.62rem',
+              color: 'rgba(0,0,0,0.35)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+            }}>
+              {c.copy}
+            </span>
+            <span style={{
+              fontFamily: 'var(--font-space-mono)',
+              fontSize: '0.58rem',
+              color: 'rgba(0,0,0,0.45)',
+              letterSpacing: '0.04em',
+            }}>
+              {lang === 'JP' ? '※このHPはClaudeCodeと一緒に作成しました。サンキュー！' : '※ Built together with ClaudeCode. Thank you!'}
+            </span>
+          </div>
 
           {/* Social links */}
           <div style={{ display: 'flex' }}>

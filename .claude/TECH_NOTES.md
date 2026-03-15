@@ -57,6 +57,19 @@
 
 ---
 
+## awards.items の slug パターン
+
+`lib/content.ts` の `awards.items` にはオプションで `slug` フィールドを持てる。
+
+```ts
+{ award: {...}, project: {...}, role: {...}, slug: 'machi-gakushoku' }
+```
+
+- `slug` があれば About ページで `<Link href={/work/${slug}}>` にレンダリング
+- `slug` がなければ `<span>` のまま（`'slug' in item` で判定）
+
+---
+
 ## よくある落とし穴
 
 ### TypeScript: `imgSrc` の型絞り込みが `never` になる
@@ -98,6 +111,18 @@ sips -Z 800 public/images/original/xxx.jpg --out public/images/resize/yyy.jpg
 | `maipro.jpg` | `public/images/resize/` | dummy-5（マイプロジェクト長崎県Summit）カード・詳細 |
 | `ai-study.jpg` | `public/images/resize/` | dummy-6（AI社員育成計画）カード・詳細 |
 | ※残り4枚 | 未追加 | 実績カード（dummy-1〜4）・重点領域カバー（現在 Unsplash 等） |
+
+### 画像ファイル一覧（更新: セッション4）
+
+| ファイル | 場所 | 用途 |
+|---|---|---|
+| `profile.jpg` | `public/images/` | ヒーロー ポラロイド（モバイル・デスクトップ） |
+| `profile-about.jpg` | `public/images/resize/` | About ページ ポラロイド |
+| `maipro.jpg` | `public/images/resize/` | マイプロジェクト長崎県Summit カード・詳細 |
+| `ai-study.jpg` | `public/images/resize/` | AI社員育成計画 カード・詳細 |
+| `sakimeshi.jpg` | `public/images/resize/` | さきめし カード・詳細 |
+| `machi-gakushoku.jpg` | `public/images/resize/` | まちの学食 カード・詳細 |
+| ※残り | 未追加 | 実績カード dummy-1〜4・重点領域カバー（Unsplash のまま） |
 
 ### 画像の品質基準
 - サイズ変更不要（Next.js が自動最適化）

@@ -4,6 +4,65 @@
 
 ---
 
+## 2026-03-15（セッション4）
+
+### maipro（dummy-5）コンテンツ追加・修正
+- done に Summit 年号追加: `Summit 22 / 22チーム・64名` 形式（スラッシュ区切り）
+- Summit 22〜25 の4件 + 「文部科学大臣賞受賞プロジェクトを輩出」
+- next 3件追加: 26年度大会の準備（2026）/ 探究初期段階の支援機会の強化（2026）/ 運営体制の強化（2026）
+- help 2件追加: マイプロOBの紹介 / 事務局メンバーの紹介
+- tagline: `'街ぐるみのPBLのフラッグシップ。'`
+
+### ai-study（dummy-6）コンテンツ追加・修正
+- story 2段落に更新（Claude CodeやClaw系ツールの学習グループ内容）
+- done: `大学生を中心とした「プロトタイプ勉強会」を毎週開催`（2023）
+- next 2件: 4月より定期開催（Claude Codeから）/ 夏以降Claw系＋ローカルLLM
+- help: 分室として勉強会を運営してくれるメンバーを複数募集
+
+### さきめし（sakimeshi）カード追加
+- slug: `sakimeshi`、tag: 事業者支援、year: 2020年／佐世保市
+- imgSrc: `/images/resize/sakimeshi.jpg`
+- tagline: 一つの名前と着想が全国規模のムーブメントを生む
+- outcomes 5件（すべて 2020 年号付き done）
+- caseSensitiveTitle 不使用（通常 uppercase）
+
+### まちの学食（machi-gakushoku）カード追加
+- slug: `machi-gakushoku`、tag: 学生支援、year: 2020年／佐世保市
+- imgSrc: `/images/resize/machi-gakushoku.jpg`
+- tagline: 学生の居場所がなくなったとき、まちが食堂になった。
+- outcomes 2件: 地域企業の寄付によりプロジェクト始動（2020）/ 学生への無償提供 約4,000食（2023）
+- story 3段落構成（校閲済み）
+
+### WorkDetailClient.tsx タイムライン矢印ズレ修正
+- **原因**: `lastItemRef` が 'help' セクションのみに割り当てられていたため、help なしカードで null になり初期値 8px ずれ
+- **修正**: `renderedSections` を動的計算し、最後のセクションの最後のアイテムに ref を割り当てる
+
+### work 一覧ページ：写真クリックでリンク遷移
+- `app/work/page.tsx` の写真エリア `<div>` を `<Link href={...}>` でラップ
+- `cursor: 'pointer'` 追加
+
+### Goccco タグ変更
+- `JP: 'コミュニティ'` → `JP: 'キッズ小商い'`
+
+### さきめし story 校閲・修正（複数回）
+- 第1段落: 「地元の飲食店を守るために考えた」→「なにか地域の金融機関としてできないか。そうして〜ひらめいた」へ拡充
+- 「地元の金融機関」→「地域の金融機関」に統一
+
+### まちの学食 story 校閲・更新
+- 第2段落を大幅加筆（学生へのメッセージ・共感の輪）
+- 「解放される」→「解放された」（時制統一）
+- 3段落に分割して読みやすく整理
+
+### About ページ：受賞歴タグをリンク化
+- `lib/content.ts` の awards.items に `slug` フィールドを追加（オプション）
+- `app/about/page.tsx` で `'slug' in item` 判定し、ある場合は `<Link href={/work/${slug}}>` に、ない場合は `<span>` のまま
+
+### フッター SNS リンク埋め込み
+- Facebook: `https://www.facebook.com/ynishinobu`
+- Note: `https://note.com/yoshio333333`
+
+---
+
 ## 2026-03-15（セッション3）
 
 ### dummy-5（マイプロジェクト長崎県Summit）コンテンツ実装
