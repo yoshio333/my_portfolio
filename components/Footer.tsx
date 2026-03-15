@@ -94,7 +94,7 @@ export default function Footer({ lang }: Props) {
         >
           {c.h2[0]}
           <br />
-          <span style={{ color: '#FFF133', WebkitTextStroke: '2px #000000' }}>{c.h2[1]}</span>
+          <span style={{ color: '#FFF133', textShadow: '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000' }}>{c.h2[1]}</span>
         </motion.h2>
 
         {/* Body + CTA */}
