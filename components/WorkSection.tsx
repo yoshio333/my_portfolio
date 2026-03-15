@@ -1,11 +1,13 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CONTENT, CARD_PALETTE, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
+
+const CONTACT_MAILTO = 'mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A';
 
 type Props = { lang: Lang };
 
@@ -28,11 +30,13 @@ export default function WorkSection({ lang }: Props) {
       }}
     >
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        style={{ marginBottom: isMobile ? '40px' : '80px' }}
+      <div
+        style={{
+          marginBottom: isMobile ? '40px' : '80px',
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'none' : 'translateY(24px)',
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+        }}
       >
         <h2 style={{
           fontSize: 'clamp(2.4rem, 10vw, 5.5rem)',
@@ -55,7 +59,7 @@ export default function WorkSection({ lang }: Props) {
         }}>
           {h.sub}
         </p>
-      </motion.div>
+      </div>
 
       {/* Cards grid */}
       <div style={{
@@ -77,11 +81,13 @@ export default function WorkSection({ lang }: Props) {
       </div>
 
       {/* Archive CTA */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        style={{ marginTop: '48px', textAlign: 'center' }}
+      <div
+        style={{
+          marginTop: '48px',
+          textAlign: 'center',
+          opacity: inView ? 1 : 0,
+          transition: 'opacity 0.5s ease-out 0.5s',
+        }}
       >
         <Link
           href="/work"
@@ -104,7 +110,7 @@ export default function WorkSection({ lang }: Props) {
         >
           {CONTENT.work.archiveCta[lang]} →
         </Link>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -126,6 +132,7 @@ function WorkCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const [activated, setActivated] = useState(false);
+  const [entered, setEntered] = useState(false);
   const [twText, setTwText] = useState('');
   const [twDone, setTwDone] = useState(false);
 
@@ -137,6 +144,12 @@ function WorkCard({
 
   const imgSrc = 'imgSrc' in card && card.imgSrc ? card.imgSrc : null;
   const pal = CARD_PALETTE[index % CARD_PALETTE.length];
+
+  // ─── フェードイン（section inView で起動、index で stagger）──────
+  useEffect(() => {
+    if (inView && !entered) setEntered(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
 
   // ─── モノクロ→カラー（グリッチなし）────────────────────────────
   function activate() {
@@ -188,17 +201,20 @@ function WorkCard({
 
   // twDone 後は lang 切替に追従（タイプライター再生は初回のみ）
   const displayText = twDone ? card.desc[lang] : twText;
+  const delay = `${0.1 + index * 0.12}s`;
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 + index * 0.12 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setHovered(false)}
       style={{
-        touchAction: 'pan-y',
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'none' : 'translateY(40px)',
+        transitionProperty: 'opacity, transform',
+        transitionDuration: '0.6s',
+        transitionTimingFunction: 'ease-out',
+        transitionDelay: delay,
         borderRight: !isMobile && index % 3 !== 2 ? '2px solid #000000' : 'none',
         borderBottom: isMobile
           ? (index < total - 1 ? '2px solid #000000' : 'none')
@@ -344,6 +360,6 @@ function WorkCard({
       >
         →
       </Link>
-    </motion.div>
+    </div>
   );
 }

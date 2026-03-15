@@ -402,7 +402,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           </div>
           {/* CTA */}
           <div style={{ paddingTop: '24px', borderTop: '2px solid #000000' }}>
-            <a href="/#contact" style={{
+            <a href="mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A" style={{
               fontFamily: 'var(--font-space-mono)',
               fontSize: '0.68rem',
               fontWeight: 700,
@@ -449,7 +449,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
         }}>
           {L.allProjects}
         </Link>
-        <a href="/#contact" style={{
+        <a href="mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A" style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
