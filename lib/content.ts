@@ -68,8 +68,8 @@ export const CONTENT = {
 
   focus: {
     header: {
-      EN: { left: '[ Core Focus ]', right: 'What We Should Act On Now' },
-      JP: { left: '[ 注力分野 ]', right: '今取りかかるべきもの' },
+      EN: { left: '[ Core Focus ]', right: '2 Pillars of My Work' },
+      JP: { left: '[ 注力分野 ]', right: '活動の中心にある２つの軸' },
     },
     items: [
       {
@@ -170,7 +170,7 @@ export const CONTENT = {
         arrowBg: '#2E5BFF',
         arrowColor: '#FFFFFF',
         rotate: 'scale(1.1)',
-        tags: { EN: ['Spark-Driven', 'Community Design', 'Social'], JP: ['トキメキ実装', 'まちづくり', 'ソーシャル'] },
+        tags: { EN: ['Spark-Driven', 'Community Design', 'Social Action'], JP: ['トキメキ実装', 'まちづくり', 'ソーシャルアクション'] },
       },
     ],
   },
@@ -344,7 +344,7 @@ export const CONTENT = {
     },
     JP: {
       role: '金融機関職員 / ローカルプランナー',
-      bio: '東京の大手映像プロダクションでドキュメンタリーなどの映像制作に従事。その後長野県に移住。現地のコワーキングスペースで、イベント企画や地元企業のPR支援などをおこなう。以後全国の地域と関わる仕事が増える。2019年からは、長崎県佐世保市に移住。西海みずき信用組合  地域振興室  副室長、共感結社モルタル（教育系の社団）の理事として、広義の地域振興、学校の探究学習支援、事業者支援などの交差点で活動。自治体・事業者・学校・草の根のコミュニティと連携し、地域のエコシステムに長期的活力をもたらすプロジェクトを構築しています。',
+      bio: '東京の大手映像プロダクションでドキュメンタリーなどの映像制作に従事。その後長野県に移住し、現地のコワーキングスペースを拠点にイベント企画や地元企業のPR支援などをおこなう。以後、全国の地域と関わる仕事が増える。\n\n2019年、長崎県佐世保市に移住。西海みずき信用組合 地域振興室 副室長、共感結社モルタル（教育系の社団）の理事として、地域に根を下ろして活動している。\n\n地域振興・学校の探究学習支援・事業者支援の交差点に立ち、自治体・企業・学校・草の根コミュニティと連携しながら、地域のエコシステムに長期的な活力をもたらすプロジェクトを構築しています。',
       summary: '佐世保を拠点とするコミュニティビルダー、プランナー、金融機関職員。教育系社団理事。',
       viewProfile: 'プロフィールを見る →',
       skills: ['ソーシャルプロジェクトの企画＆実装', '探究学習・PBLカリキュラムの設計', '若者育成プログラム運営', 'ファシリテーション', 'コミュニティマッピング'],
@@ -389,8 +389,8 @@ export const CONTENT = {
       copy: '© 2026 Yoshimasa Nishinobu',
     },
     social: [
-      { label: 'Instagram', href: '#', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
-      { label: 'LinkedIn', href: '#', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
+      { label: 'Mail', href: 'mailto:hello@example.com', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
+      { label: 'Facebook', href: '#', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
       { label: 'Note.jp', href: '#', hoverBg: '#FFF133', hoverColor: '#000000' },
     ],
   },

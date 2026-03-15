@@ -237,15 +237,15 @@ function WorkCard({
       </div>
 
       {/* Photo slot */}
+      <Link href={`/work/${card.slug}`} style={{ display: 'block', textDecoration: 'none', marginBottom: '24px', flexShrink: 0 }}>
       <div style={{
         width: '100%',
         height: isMobile ? '200px' : '160px',
         border: '2px solid rgba(0,0,0,0.25)',
         overflow: 'hidden',
-        marginBottom: '24px',
         position: 'relative',
         backgroundColor: 'rgba(0,0,0,0.08)',
-        flexShrink: 0,
+        cursor: 'pointer',
       }}>
         {imgSrc ? (
           <>
@@ -287,6 +287,7 @@ function WorkCard({
           </div>
         )}
       </div>
+      </Link>
 
       {/* Title */}
       <h3 style={{

@@ -519,22 +519,22 @@ export default function HeroSection({ lang }: Props) {
               href="/about"
               style={{
                 fontFamily: 'var(--font-space-mono)',
-                fontSize: '0.72rem',
+                fontSize: '0.68rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#FFFFFF',
+                letterSpacing: '0.1em',
+                color: 'rgba(0,0,0,0.6)',
                 textDecoration: 'none',
-                display: 'block',
-                textAlign: 'center',
-                backgroundColor: '#000000',
-                border: '2px solid #000000',
-                padding: '9px 14px',
-                marginTop: '12px',
-                borderTop: '1px solid rgba(0,0,0,0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                paddingTop: '10px',
+                marginTop: '10px',
+                borderTop: '1px solid rgba(0,0,0,0.1)',
               }}
             >
-              {CONTENT.about[lang].viewProfile}
+              {CONTENT.about[lang].viewProfile} →
             </Link>
           </div>
         </motion.div>

@@ -31,40 +31,43 @@ export default function FocusSection({ lang }: Props) {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
           marginBottom: isMobile ? '40px' : '72px',
           borderBottom: '2px solid #000000',
-          paddingBottom: '28px',
-          flexWrap: 'wrap',
-          gap: '8px',
+          paddingBottom: isMobile ? '24px' : '32px',
         }}
       >
-        <span
+        {/* Badge */}
+        <div style={{ marginBottom: '16px' }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-space-mono)',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em',
+              border: '2px solid #000000',
+              padding: '4px 14px',
+              color: '#000000',
+            }}
+          >
+            {h.left}
+          </span>
+        </div>
+
+        {/* Large heading */}
+        <h2
           style={{
-            fontFamily: 'var(--font-space-mono)',
-            fontSize: '0.72rem',
-            fontWeight: 700,
+            fontSize: isMobile ? 'clamp(1.8rem, 9vw, 2.8rem)' : 'clamp(2rem, 4.5vw, 3.6rem)',
+            fontWeight: 900,
+            lineHeight: 0.95,
+            letterSpacing: '-0.04em',
             textTransform: 'uppercase',
-            letterSpacing: '0.12em',
-            color: 'rgba(0,0,0,0.4)',
-          }}
-        >
-          {h.left}
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-space-mono)',
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.12em',
             color: '#000000',
+            margin: 0,
           }}
         >
           {h.right}
-        </span>
+        </h2>
       </motion.div>
 
       {/* Cards */}
