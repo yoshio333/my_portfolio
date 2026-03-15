@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CONTENT, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { shouldSkipAnim } from '@/hooks/useAnimOnce';
 
 type Props = { lang: Lang };
 
@@ -18,16 +18,29 @@ const BLOBS = [
   { cls: 'blob blob-4', fill: '#3B9DD2', opacity: 0.32, d: 'M620,120 C645,60 700,70 710,125 C720,180 675,230 620,220 C565,210 540,165 555,115 C570,65 595,180 620,120 Z' },
 ];
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, ease: 'easeOut' as const, delay },
-});
-
 export default function HeroSection({ lang }: Props) {
   const c = CONTENT.hero[lang];
   const [ctaHovered, setCtaHovered] = useState(false);
   const isMobile = useIsMobile();
+  const [entered, setEntered] = useState(false);
+
+  // 戻り訪問: ペイント前に確定（アニメなし）
+  useLayoutEffect(() => {
+    if (shouldSkipAnim()) setEntered(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 初回訪問: ペイント後にフェードイン開始
+  useEffect(() => {
+    if (!shouldSkipAnim()) setEntered(true);
+  }, []);
+
+  // CSS fadeUp ヘルパー
+  const fadeUp = (delay = 0): React.CSSProperties => ({
+    opacity: entered ? 1 : 0,
+    transform: entered ? 'none' : 'translateY(28px)',
+    transition: `opacity 0.55s ease-out ${delay}s, transform 0.55s ease-out ${delay}s`,
+  });
 
   return (
     <section
@@ -90,7 +103,7 @@ export default function HeroSection({ lang }: Props) {
         }}
       >
         {/* Available badge */}
-        <motion.div {...fadeUp(0.1)} style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '32px', ...fadeUp(0.1) }}>
           <span
             style={{
               fontFamily: 'var(--font-space-mono)',
@@ -115,11 +128,10 @@ export default function HeroSection({ lang }: Props) {
             />
             {c.available}
           </span>
-        </motion.div>
+        </div>
 
         {/* H1 */}
-        <motion.h1
-          {...fadeUp(0.2)}
+        <h1
           style={{
             fontSize: 'clamp(3.2rem, 13vw, 8rem)',
             fontWeight: 900,
@@ -128,6 +140,7 @@ export default function HeroSection({ lang }: Props) {
             textTransform: 'uppercase',
             color: '#000000',
             margin: 0,
+            ...fadeUp(0.2),
           }}
         >
           <span className="highlight-box">{c.h1[0]}</span>
@@ -139,17 +152,17 @@ export default function HeroSection({ lang }: Props) {
             ? <>{c.h1[3].slice(0, 3)}<br />{c.h1[3].slice(3)}</>
             : c.h1[3]
           }
-        </motion.h1>
+        </h1>
 
         {/* Divider */}
-        <motion.div
-          {...fadeUp(0.3)}
+        <div
           style={{
             width: '100%',
             height: '1px',
             background: isMobile ? 'transparent' : 'rgba(0,0,0,0.2)',
             margin: '36px 0',
             position: 'relative',
+            ...fadeUp(0.3),
           }}
         >
           {!isMobile && (
@@ -165,17 +178,17 @@ export default function HeroSection({ lang }: Props) {
               }}
             />
           )}
-        </motion.div>
+        </div>
 
         {/* Body + CTA */}
-        <motion.div
-          {...fadeUp(0.4)}
+        <div
           style={{
             display: 'flex',
             alignItems: isMobile ? 'flex-start' : 'flex-end',
             flexDirection: isMobile ? 'column' : 'row',
             gap: isMobile ? '24px' : '40px',
             flexWrap: 'wrap',
+            ...fadeUp(0.4),
           }}
         >
           <p
@@ -231,12 +244,11 @@ export default function HeroSection({ lang }: Props) {
               ↓ Explore
             </a>
           </div>
-        </motion.div>
+        </div>
 
         {/* Mobile info strip */}
         {isMobile && (
-          <motion.div
-            {...fadeUp(0.5)}
+          <div
             style={{
               marginTop: '36px',
               display: 'flex',
@@ -245,6 +257,7 @@ export default function HeroSection({ lang }: Props) {
               justifyContent: 'center',
               borderTop: '1px solid rgba(0,0,0,0.12)',
               paddingTop: '20px',
+              ...fadeUp(0.5),
             }}
           >
             {[
@@ -275,12 +288,12 @@ export default function HeroSection({ lang }: Props) {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         )}
 
         {/* Mobile polaroid — straight, links to /about */}
         {isMobile && (
-          <motion.div {...fadeUp(0.6)} style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', ...fadeUp(0.6) }}>
             <Link href="/about" style={{ textDecoration: 'none', display: 'inline-block' }}>
               <div
                 style={{
@@ -356,23 +369,22 @@ export default function HeroSection({ lang }: Props) {
             >
               {CONTENT.about[lang].viewProfile}
             </Link>
-          </motion.div>
+          </div>
         )}
       </div>
 
       {/* ── Right info panel — desktop only ── */}
       {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' as const, delay: 0.5 }}
+        <div
           style={{
             position: 'absolute',
             right: '60px',
             top: '50%',
-            transform: 'translateY(-50%)',
             zIndex: 10,
             textAlign: 'right',
+            opacity: entered ? 1 : 0,
+            transform: entered ? 'translateY(-50%)' : 'translate(20px, -50%)',
+            transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
           }}
         >
           {[
@@ -405,20 +417,20 @@ export default function HeroSection({ lang }: Props) {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       )}
 
       {/* ── Polaroid photo card + Profile — desktop only ── */}
       {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0, y: 18, rotate: -4 }}
-          animate={{ opacity: 1, y: 0, rotate: -4 }}
-          transition={{ duration: 0.65, delay: 0.5, ease: 'easeOut' as const }}
+        <div
           style={{
             position: 'absolute',
             bottom: '52px',
             right: '250px',
             zIndex: 15,
+            opacity: entered ? 1 : 0,
+            transform: entered ? 'rotate(-4deg)' : 'translateY(18px) rotate(-4deg)',
+            transition: 'opacity 0.65s ease-out 0.5s, transform 0.65s ease-out 0.5s',
           }}
         >
           {/* Tape strip */}
@@ -537,7 +549,7 @@ export default function HeroSection({ lang }: Props) {
               {CONTENT.about[lang].viewProfile} →
             </Link>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* ── Scroll indicator ── */}

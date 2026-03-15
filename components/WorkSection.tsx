@@ -146,12 +146,14 @@ function WorkCard({
   const imgSrc = 'imgSrc' in card && card.imgSrc ? card.imgSrc : null;
   const pal = CARD_PALETTE[index % CARD_PALETTE.length];
 
-  // ─── 戻り訪問: アニメ・タイプライターをスキップ（ペイント前に確定）─
+  // ─── 戻り訪問: アニメ・タイプライター・色変換をスキップ（ペイント前に確定）─
   useLayoutEffect(() => {
     if (!shouldSkipAnim()) return;
     setEntered(true);
     setTwDone(true);
+    setActivated(true);
     twStartedRef.current = true;
+    activatedRef.current = true;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
