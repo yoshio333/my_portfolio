@@ -332,7 +332,7 @@ export default function FocusDetailClient({ slug }: { slug: string }) {
         }}>
           {L.allFocus}
         </Link>
-        <Link href="/#contact" style={{
+        <a href="/#contact" style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
@@ -349,7 +349,7 @@ export default function FocusDetailClient({ slug }: { slug: string }) {
           boxShadow: '4px 4px 0px rgba(0,0,0,0.2)',
         }}>
           {L.collaborate}
-        </Link>
+        </a>
       </div>
     </main>
   );

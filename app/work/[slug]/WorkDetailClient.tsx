@@ -402,7 +402,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           </div>
           {/* CTA */}
           <div style={{ paddingTop: '24px', borderTop: '2px solid #000000' }}>
-            <Link href="/#contact" style={{
+            <a href="/#contact" style={{
               fontFamily: 'var(--font-space-mono)',
               fontSize: '0.68rem',
               fontWeight: 700,
@@ -418,7 +418,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
               gap: '8px',
             }}>
               {L.getInvolved}
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -449,7 +449,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
         }}>
           {L.allProjects}
         </Link>
-        <Link href="/#contact" style={{
+        <a href="/#contact" style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
@@ -466,7 +466,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           boxShadow: '4px 4px 0px #000',
         }}>
           {L.startProject}
-        </Link>
+        </a>
       </div>
     </main>
   );

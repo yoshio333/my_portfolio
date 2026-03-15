@@ -348,7 +348,7 @@ export default function AboutPage() {
         }}>
           {a.backLabel}
         </Link>
-        <Link href="/#contact" style={{
+        <a href="/#contact" style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
@@ -365,7 +365,7 @@ export default function AboutPage() {
           boxShadow: '4px 4px 0px rgba(0,0,0,0.2)',
         }}>
           {a.ctaLabel}
-        </Link>
+        </a>
       </div>
     </main>
   );
