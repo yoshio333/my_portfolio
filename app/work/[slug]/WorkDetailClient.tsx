@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { CONTENT, CARD_PALETTE } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useLang, Lang } from '@/hooks/useLang';
@@ -35,6 +36,7 @@ const SECTION_CONFIG = {
 export default function WorkDetailClient({ slug }: { slug: string }) {
   const [lang, setLang] = useLang();
   const isMobile = useIsMobile();
+  const router = useRouter();
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const firstItemRef = useRef<HTMLLIElement>(null);
@@ -85,7 +87,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
         padding: isMobile ? '0 20px' : '0 56px',
         height: '64px',
       }}>
-        <Link href="/work" style={{
+        <button onClick={() => router.back()} style={{
           fontFamily: 'var(--font-space-mono)',
           fontSize: '0.72rem',
           fontWeight: 700,
@@ -93,9 +95,13 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           letterSpacing: '0.12em',
           color: pal.textColor,
           textDecoration: 'none',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
         }}>
           {L.back}
-        </Link>
+        </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {!isMobile && (
