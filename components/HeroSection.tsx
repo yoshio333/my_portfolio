@@ -107,7 +107,7 @@ export default function HeroSection({ lang }: Props) {
               style={{
                 width: '10px',
                 height: '10px',
-                backgroundColor: '#2E5BFF',
+                backgroundColor: '#000000',
                 border: '1px solid #000000',
                 display: 'inline-block',
                 flexShrink: 0,
@@ -160,7 +160,7 @@ export default function HeroSection({ lang }: Props) {
                 top: 0,
                 width: '100px',
                 height: '100%',
-                background: '#2E5BFF',
+                background: 'rgba(0,0,0,0.4)',
                 display: 'block',
               }}
             />
