@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (window.location.hash === '#contact') {
       const t = setTimeout(() => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('contact')?.scrollIntoView();
       }, 100);
       return () => clearTimeout(t);
     }
