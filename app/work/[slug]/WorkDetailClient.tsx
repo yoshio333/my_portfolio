@@ -332,9 +332,13 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
               borderRight: '5px solid transparent',
               borderTop: '8px solid rgba(0,0,0,0.35)',
             }} />
-          {(['done', 'next', 'help'] as const).map((section) => {
+          {(() => {
+            const renderedSections = (['done', 'next', 'help'] as const).filter(s =>
+              (d.outcomes as readonly { text: string; status: string }[]).some(o => o.status === s)
+            );
+            const lastSection = renderedSections[renderedSections.length - 1];
+            return renderedSections.map((section) => {
             const items = (d.outcomes as readonly { text: string; status: string }[]).filter(o => o.status === section);
-            if (items.length === 0) return null;
             const sc = SECTION_CONFIG[section];
             return (
               <div key={section} style={{ marginBottom: '20px' }}>
@@ -356,7 +360,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
                   {items.map((o, i) => {
                     const liRef = (section === 'done' && i === 0) ? firstItemRef
-                      : (section === 'help' && i === items.length - 1) ? lastItemRef
+                      : (section === lastSection && i === items.length - 1) ? lastItemRef
                       : null;
                     return (
                     <li key={i} ref={liRef} style={{
@@ -393,7 +397,8 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
                 </ul>
               </div>
             );
-          })}
+          });
+          })()}
           </div>
           {/* CTA */}
           <div style={{ paddingTop: '24px', borderTop: '2px solid #000000' }}>

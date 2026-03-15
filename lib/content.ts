@@ -419,6 +419,72 @@ export const CONTENT = {
         imgSrc: '/images/resize/ai-study.jpg',
         imgAlt: 'AI社員育成計画 — 地域の経営者・学生とAIを学ぶ月例プログラム',
       },
+      {
+        slug: 'sakimeshi',
+        tag: { EN: 'Business Support', JP: '事業者支援' },
+        year: { EN: '2020 / Sasebo', JP: '2020年　／　佐世保市' },
+        title: { EN: 'Sakimeshi', JP: 'さきめし' },
+        desc: {
+          EN: 'A digital meal-voucher service to support COVID-hit restaurants. Proposed the concept and name to Fukuoka-based IT firm Gigi. Earned a Good Design Award and major support from Suntory, growing into a nationally recognized platform.',
+          JP: 'コロナ禍の飲食店を支援するデジタル前売り券サービス。企画とサービス名を起案し、福岡のIT企業Gigiに提案。グッドデザイン賞受賞・サントリーの大型支援を獲得し、全国的なサービスへと成長した。',
+        },
+        detail: {
+          EN: {
+            tagline: 'A name and an insight that sparked a national movement.',
+            story: 'When COVID-19 hit in early 2020, restaurants across Japan were watching their customers disappear overnight. Looking for a way to help local diners survive the crisis, the concept of a digital prepaid meal-voucher service took shape — a simple idea: buy a meal now, eat it later.\n\nThe concept and the name "Sakimeshi" were proposed to Fukuoka-based IT firm Gigi, and the first participating restaurant was a beloved diner in Sasebo. From that single shop, the service spread rapidly across Japan, eventually attracting major support from Suntory and earning a Good Design Award — a testament to how a locally-rooted idea can scale when the timing and need align.',
+            outcomes: [
+              { text: 'Concept and name "Sakimeshi" proposed to Gigi', year: '2020', status: 'done' },
+              { text: 'First Sakimeshi restaurant launched in Sasebo', year: '2020', status: 'done' },
+              { text: 'Service expanded nationally', year: '2020', status: 'done' },
+              { text: 'Major support secured from Suntory', year: '2020', status: 'done' },
+              { text: 'Good Design Award received', year: '2020', status: 'done' },
+            ],
+          },
+          JP: {
+            tagline: '一つの名前と着想が全国規模のムーブメントを生む',
+            story: '2020年初頭、コロナ禍で飲食店の客足が一夜にして消えていった。静まりかえる街並みを歩きながら、日々美味しい食事を提供するオーナーたちの努力とは無関係な、その理不尽さに怒りと悔しさを感じていた。なにか地域の金融機関としてできないか。そうして地元の飲食店を守るためにひらめいたのが、デジタル前売り券という仕組み。「先払いして、後で食べる」というシンプルなアイデアだ。\n\n企画とサービス名「さきめし」を福岡のIT企業Gigiに提案し、さきめし1号店は佐世保の四軒目食堂からスタートした。そこから全国に急速に広がり、サントリーの大型支援獲得やグッドデザイン賞受賞など、地域発の一つのアイデアがタイミングと必要性が重なることで全国規模に育っていった。',
+            outcomes: [
+              { text: '「さきめし」の企画・ネーミングをGigiに提案', year: '2020', status: 'done' },
+              { text: 'さきめし1号店（佐世保・四軒目食堂）スタート', year: '2020', status: 'done' },
+              { text: '全国展開へ', year: '2020', status: 'done' },
+              { text: 'サントリーによる大型支援を獲得', year: '2020', status: 'done' },
+              { text: 'グッドデザイン賞受賞', year: '2020', status: 'done' },
+            ],
+          },
+        },
+        imgSrc: '/images/resize/sakimeshi.jpg',
+        imgAlt: 'さきめし — コロナ禍の飲食店を支援するデジタル前売り券サービス',
+      },
+      {
+        slug: 'machi-gakushoku',
+        tag: { EN: 'Student Support', JP: '学生支援' },
+        year: { EN: '2020 / Sasebo', JP: '2020年　／　佐世保市' },
+        title: { EN: "Machi no Gakushoku", JP: 'まちの学食' },
+        desc: {
+          EN: 'A project to support university students struggling during COVID-19 — unable to attend classes or work part-time jobs, many were facing mental health challenges. Funded by donations from local businesses, partner restaurants near campus offered free meals to students. Around 4,000 meals were provided in total.',
+          JP: 'コロナ禍で授業もアルバイトも失い、心を病む大学生を支援するために始めたプロジェクト。地域企業の寄付を原資に、大学近くの飲食店で学生が無償で食べられるメニューを用意。約4,000食が提供された。',
+        },
+        detail: {
+          EN: {
+            tagline: 'When students had nowhere to go, the town became their cafeteria.',
+            story: 'In the summer of 2020, universities were still largely closed and part-time jobs had dried up. Reports of students struggling with isolation and mental health began to surface — and the need for both food and human connection was clear.\n\nThe idea was straightforward: gather donations from local businesses and use them to fund free meals at restaurants near campus. Students could walk in, eat, and feel a little less alone. The project provided around 4,000 meals in total — not just food, but small moments of warmth during an isolating time.',
+            outcomes: [
+              { text: 'Launched with donations from local businesses', year: '2020', status: 'done' },
+              { text: 'Approx. 4,000 free meals provided to students', year: '2020', status: 'done' },
+            ],
+          },
+          JP: {
+            tagline: '学生の居場所がなくなったとき、まちが食堂になった。',
+            story: '2020年夏、大学の授業はまだほぼ閉鎖され、アルバイトも消えていた。孤立や心の不調を抱える学生の声が聞こえはじめ、食と居場所の両方が必要だと感じた。\n\n地域企業に寄付を募り、大学近くの飲食店で学生が無償で食べられるメニューを用意した。学生はふらっと立ち寄り、食事をとり、少しだけ孤独から解放された。期間中に合計約4,000食が提供された。\n\nこれはただの食事の提供ではなく、故郷を離れ、見知らぬ街で孤独に過ごす学生に「あなたを気にかけている大人たちがこの街にはいる」というメッセージを伝える意味もあった。そうした思いやりに共感する地域企業の輪が広がっていった——心温まるプロジェクトとなった。',
+            outcomes: [
+              { text: '地域企業の寄付によりプロジェクト始動', year: '2020', status: 'done' },
+              { text: '学生への無償提供　約4,000食', year: '2023', status: 'done' },
+            ],
+          },
+        },
+        imgSrc: '/images/resize/machi-gakushoku.jpg',
+        imgAlt: 'まちの学食 — コロナ禍の大学生を支援する無償食事プロジェクト',
+      },
     ],
     archiveCta: { EN: 'View Complete Archive', JP: 'アーカイブを見る' },
   },
