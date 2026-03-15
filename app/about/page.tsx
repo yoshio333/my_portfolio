@@ -247,6 +247,79 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Awards section ── */}
+      <section style={{
+        padding: isMobile ? '48px 24px' : '64px 80px',
+        backgroundColor: '#FFFFFF',
+      }}>
+        {/* Badge */}
+        <div style={{ marginBottom: '28px' }}>
+          <span style={{
+            fontFamily: 'var(--font-space-mono)',
+            fontSize: '0.7rem',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.12em',
+            border: '2px solid #000000',
+            padding: '4px 14px',
+            color: '#000000',
+          }}>
+            {CONTENT.awards.label[lang]}
+          </span>
+        </div>
+
+        {/* Awards list */}
+        <div>
+          {CONTENT.awards.items.map((item, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: isMobile ? 'flex-start' : 'center',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: isMobile ? '8px' : '32px',
+                paddingTop: i === 0 ? 0 : '20px',
+                paddingBottom: '20px',
+                borderBottom: i < CONTENT.awards.items.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
+              }}
+            >
+              <span style={{
+                fontSize: isMobile ? '0.95rem' : '1rem',
+                fontWeight: 700,
+                color: '#000000',
+                lineHeight: 1.4,
+              }}>
+                {item.award[lang]}
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                <span style={{
+                  fontFamily: 'var(--font-space-mono)',
+                  fontSize: '0.68rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: '#000000',
+                  border: '1px solid rgba(0,0,0,0.2)',
+                  padding: '3px 10px',
+                }}>
+                  {item.project[lang]}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-space-mono)',
+                  fontSize: '0.65rem',
+                  color: 'rgba(0,0,0,0.45)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.06em',
+                }}>
+                  {item.role[lang]}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── Footer nav ── */}
       <div style={{
         padding: isMobile ? '32px 20px' : '48px 80px',

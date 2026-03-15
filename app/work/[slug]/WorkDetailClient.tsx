@@ -73,7 +73,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
               color: pal.textColor,
-              opacity: 0.55,
+              opacity: 0.9,
             }}>
               {card.tag[lang]}
             </span>
@@ -150,7 +150,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
             fontFamily: 'var(--font-space-mono)',
             fontSize: '0.65rem',
             color: pal.textColor,
-            opacity: 0.6,
+            opacity: 0.85,
           }}>
             {card.year[lang]}
           </span>
@@ -159,11 +159,12 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
         <h1 style={{
           fontSize: isMobile ? 'clamp(2.4rem, 10vw, 4rem)' : 'clamp(3rem, 7vw, 6.5rem)',
           fontWeight: 900,
-          lineHeight: 0.9,
+          lineHeight: 1.05,
           letterSpacing: '-0.05em',
           textTransform: 'uppercase',
           marginBottom: '20px',
           color: pal.textColor,
+          WebkitTextStroke: '2px #000000',
           position: 'relative',
           zIndex: 2,
         }}>
@@ -175,7 +176,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           fontSize: isMobile ? '0.88rem' : '1rem',
           fontStyle: 'italic',
           color: pal.textColor,
-          opacity: 0.6,
+          opacity: 0.85,
           marginBottom: isMobile ? '36px' : '56px',
           position: 'relative',
           zIndex: 2,

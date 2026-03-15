@@ -9,7 +9,7 @@ export const CARD_PALETTE = [
   // 3. Blue
   { bg: '#2E5BFF', textColor: '#FFFFFF', tagBg: '#FFFFFF', tagColor: '#000000', tagBorder: 'rgba(255,255,255,0.3)', arrowBg: '#FFFFFF', arrowColor: '#000000', descBg: 'rgba(255,255,255,0.15)', descText: '#FFFFFF' },
   // 4. Navy
-  { bg: '#0A2340', textColor: '#FFFFFF', tagBg: '#2E5BFF', tagColor: '#FFFFFF', tagBorder: '#2E5BFF', arrowBg: '#FFFFFF', arrowColor: '#000000', descBg: 'rgba(255,255,255,0.08)', descText: '#FFFFFF' },
+  { bg: '#0A2340', textColor: '#FFFFFF', tagBg: '#FFFFFF', tagColor: '#000000', tagBorder: 'rgba(255,255,255,0.3)', arrowBg: '#FFFFFF', arrowColor: '#000000', descBg: 'rgba(255,255,255,0.08)', descText: '#FFFFFF' },
   // 5. Green
   { bg: '#009B4E', textColor: '#FFFFFF', tagBg: '#FFFFFF', tagColor: '#000000', tagBorder: 'rgba(255,255,255,0.3)', arrowBg: '#FFFFFF', arrowColor: '#000000', descBg: 'rgba(255,255,255,0.15)', descText: '#FFFFFF' },
   // 6. Orange
@@ -283,8 +283,8 @@ export const CONTENT = {
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
         title: { EN: 'Nagasaki Maipro Summit', JP: 'マイプロジェクト長崎県Summit' },
         desc: {
-          EN: "Co-hosting Nagasaki's high school inquiry summit with NPO Katariba. Now in its 4th year, the event has produced a Minister of Education Award winner—fueling an inquiry-learning movement across the prefecture.",
-          JP: 'カタリバと連携し、高校生の探究学習発表サミットを主催。今年で4回目の開催。昨年度は文部科学大臣賞受賞プロジェクトも生まれ、長崎の探究学習ムーブメントを牽引している。',
+          EN: "Co-hosting Nagasaki's largest high school inquiry summit with NPO Katariba. Now in its 4th year, the event has produced a Minister of Education Award winner — leading inquiry-based learning across the prefecture.",
+          JP: 'カタリバと連携し、長崎県内最大の高校の探究学習発表サミットを主催。今年で4回目の開催。昨年度は文部科学大臣賞受賞プロジェクトも生まれ、長崎の探究学習を牽引している。',
         },
         detail: {
           EN: {
@@ -307,8 +307,8 @@ export const CONTENT = {
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
         title: { EN: 'AI Staff Training Program', JP: 'AI社員育成計画' },
         desc: {
-          EN: 'A monthly peer-learning circle where local business owners and students level up together on AI agent tools like Claude Code. Evolved from a casual study group into hands-on implementation sessions.',
-          JP: '地域の経営者・学生と共にエージェントAIを学ぶ月例プログラム。勉強会から実用フェーズへ進化し、Claude Codeなどの最新ツールを互いに教え合いながら習得していく。',
+          EN: 'A monthly program learning agent AI together with local business owners and students. Teaching each other tools like Claude Code, we work toward building regional strength that won\'t be swept away by the pace of tech change.',
+          JP: '地域の経営者・学生と共にエージェントAIを学ぶ月例プログラム。Claude CodeやClaw系ツールなどを互いに教え合いながら習得を目指す。技術の進化に流されない地域の強さを探していく。',
         },
         detail: {
           EN: {
@@ -392,6 +392,26 @@ export const CONTENT = {
       { label: 'Mail', href: 'mailto:hello@example.com', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
       { label: 'Facebook', href: '#', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
       { label: 'Note.jp', href: '#', hoverBg: '#FFF133', hoverColor: '#000000' },
+    ],
+  },
+  awards: {
+    label: { EN: '[ Projects & Recognition ]', JP: '[ プロジェクト実績 ]' },
+    items: [
+      {
+        award: { EN: '1st Shinkumi Brand Award — Grand Prize', JP: '第１回しんくみブランド表彰　大賞' },
+        project: { EN: 'Machi no Gakushoku', JP: 'まちの学食' },
+        role: { EN: 'Planning & Implementation', JP: '企画・実装' },
+      },
+      {
+        award: { EN: '19th Corporate Philanthropy Award', JP: '第19回企業フィランソロピー賞' },
+        project: { EN: 'Machi no Gakushoku', JP: 'まちの学食' },
+        role: { EN: 'Planning & Implementation', JP: '企画・実装' },
+      },
+      {
+        award: { EN: 'Good Design Award — Good Focus / Best 100', JP: 'グッドデザイン グッドフォーカス賞 ／ ベスト100' },
+        project: { EN: 'Sakimeshi', JP: 'さきめし' },
+        role: { EN: 'Project Initiation & Naming', JP: '企画起案・ネーミング' },
+      },
     ],
   },
 } as const;

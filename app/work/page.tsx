@@ -125,17 +125,18 @@ export default function WorkPage() {
               }}
             >
               {/* Tag + year */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '20px', gap: '6px' }}>
                 <span style={{
                   fontFamily: 'var(--font-space-mono)',
                   fontSize: '0.62rem',
                   fontWeight: 700,
                   textTransform: 'uppercase',
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.08em',
                   backgroundColor: pal.tagBg,
                   color: pal.tagColor,
                   border: `1px solid ${pal.tagBorder}`,
                   padding: '3px 10px',
+                  whiteSpace: 'nowrap',
                 }}>
                   {card.tag[lang]}
                 </span>
@@ -143,7 +144,7 @@ export default function WorkPage() {
                   fontFamily: 'var(--font-space-mono)',
                   fontSize: '0.6rem',
                   color: pal.textColor,
-                  opacity: 0.6,
+                  opacity: 0.75,
                 }}>
                   {card.year[lang]}
                 </span>
