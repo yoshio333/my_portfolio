@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { useInView } from 'framer-motion';
 import { CONTENT, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
@@ -26,14 +26,14 @@ export default function FocusSection({ lang }: Props) {
       }}
     >
       {/* Section header */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+      <div
         style={{
           marginBottom: isMobile ? '40px' : '72px',
           borderBottom: '2px solid #000000',
           paddingBottom: isMobile ? '24px' : '32px',
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'none' : 'translateY(24px)',
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
         }}
       >
         {/* Badge */}
@@ -68,7 +68,7 @@ export default function FocusSection({ lang }: Props) {
         >
           {h.right}
         </h2>
-      </motion.div>
+      </div>
 
       {/* Cards */}
       <div
@@ -77,9 +77,9 @@ export default function FocusSection({ lang }: Props) {
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
           gap: '0',
           borderTop: '2px solid #000000',
-        borderRight: '2px solid #000000',
-        borderBottom: '2px solid #000000',
-        borderLeft: '2px solid #000000',
+          borderRight: '2px solid #000000',
+          borderBottom: '2px solid #000000',
+          borderLeft: '2px solid #000000',
         }}
       >
         {items.map((item, i) => (
@@ -114,21 +114,34 @@ function FocusCard({
   total: number;
 }) {
   const [hovered, setHovered] = useState(false);
+  const [entered, setEntered] = useState(false);
+
+  useEffect(() => {
+    if (inView && !entered) setEntered(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  const delay = `${0.1 + index * 0.1}s`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 + index * 0.1 }}
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'none' : 'translateY(32px)',
+        transitionProperty: 'opacity, transform',
+        transitionDuration: '0.55s',
+        transitionTimingFunction: 'ease-out',
+        transitionDelay: delay,
         borderRight: !isMobile && index < 1 ? '2px solid #000000' : 'none',
         borderBottom: isMobile && index < total - 1 ? '2px solid #000000' : 'none',
         padding: isMobile ? '36px 28px' : '48px 40px',
         backgroundColor: (!isMobile && hovered) ? item.hoverBg : '#FFFFFF',
         color: (!isMobile && hovered) ? item.hoverColor : '#000000',
-        transition: 'background-color 0.2s, color 0.2s',
+        transition: entered
+          ? `opacity 0.55s ease-out ${delay}, transform 0.55s ease-out ${delay}, background-color 0.2s, color 0.2s`
+          : `opacity 0.55s ease-out ${delay}, transform 0.55s ease-out ${delay}`,
         cursor: 'default',
         display: 'flex',
         flexDirection: 'column',
@@ -208,6 +221,6 @@ function FocusCard({
           </span>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

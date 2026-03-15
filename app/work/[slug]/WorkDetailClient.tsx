@@ -70,7 +70,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
   const hasImg = 'imgSrc' in card && card.imgSrc;
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
 
       {/* ── Top nav ── */}
       <div style={{

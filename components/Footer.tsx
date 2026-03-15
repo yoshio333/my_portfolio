@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { useInView } from 'framer-motion';
 import { CONTENT, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
@@ -12,7 +12,13 @@ export default function Footer({ lang }: Props) {
   const social = CONTENT.footer.social;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [entered, setEntered] = useState(false);
   const [ctaHovered, setCtaHovered] = useState(false);
+
+  useEffect(() => {
+    if (inView && !entered) setEntered(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
   const isMobile = useIsMobile();
 
@@ -56,12 +62,12 @@ export default function Footer({ lang }: Props) {
       <div style={{ position: 'relative', zIndex: 10, padding: isMobile ? '64px 24px 40px' : '100px 80px 56px' }}>
 
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          style={{ marginBottom: '28px' }}
-        >
+        <div style={{
+          marginBottom: '28px',
+          opacity: entered ? 1 : 0,
+          transform: entered ? 'none' : 'translateY(20px)',
+          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+        }}>
           <span style={{
             fontFamily: 'var(--font-space-mono)',
             fontSize: '0.7rem',
@@ -75,13 +81,10 @@ export default function Footer({ lang }: Props) {
           }}>
             {c.badge}
           </span>
-        </motion.div>
+        </div>
 
         {/* H2 */}
-        <motion.h2
-          initial={{ opacity: 0, y: 28 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.1, ease: 'easeOut' }}
+        <h2
           style={{
             fontSize: 'clamp(2.8rem, 11vw, 7.5rem)',
             fontWeight: 900,
@@ -90,18 +93,18 @@ export default function Footer({ lang }: Props) {
             textTransform: 'uppercase',
             color: '#000000',
             marginBottom: isMobile ? '32px' : '44px',
+            opacity: entered ? 1 : 0,
+            transform: entered ? 'none' : 'translateY(28px)',
+            transition: 'opacity 0.55s ease-out 0.1s, transform 0.55s ease-out 0.1s',
           }}
         >
           {c.h2[0]}
           <br />
           <span style={{ color: '#FFF133', textShadow: '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000' }}>{c.h2[1]}</span>
-        </motion.h2>
+        </h2>
 
         {/* Body + CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <div
           style={{
             display: 'flex',
             alignItems: isMobile ? 'flex-start' : 'flex-end',
@@ -109,6 +112,9 @@ export default function Footer({ lang }: Props) {
             gap: isMobile ? '28px' : '60px',
             flexWrap: 'wrap',
             marginBottom: isMobile ? '48px' : '72px',
+            opacity: entered ? 1 : 0,
+            transform: entered ? 'none' : 'translateY(20px)',
+            transition: 'opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s',
           }}
         >
           <p style={{
@@ -149,7 +155,7 @@ export default function Footer({ lang }: Props) {
           >
             {c.cta} →
           </a>
-        </motion.div>
+        </div>
 
         {/* Bottom row */}
         <div style={{
