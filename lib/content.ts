@@ -192,14 +192,30 @@ export const CONTENT = {
         },
         detail: {
           EN: {
-            tagline: 'Memory as archive.',
-            story: "When a beloved local restaurant closes, it's not just the food that disappears — the owner's stories, the regulars' rituals, and recipes passed down without ever being written all vanish too. Noren Bank creates ZINEs that capture it all: an interview with the owner, memories from loyal customers, and the recipes that defined the place. Like a seed bank for culture, we preserve what would otherwise be lost.",
-            outcomes: ['ZINEs published and distributed locally', 'Restaurants documented across Sasebo', 'Available at libraries and community spaces', 'Ongoing project since 2023'],
+            tagline: "Preserving a town's flavors, for memory.",
+            story: "Every town has its beloved restaurants. When they close, it's not just the food that disappears — the stories, the memories, the very soul of the place vanish with them. Noren Bank captures it all in a ZINE: an interview with the owner, memories from loyal regulars, and the recipes that defined a time and place — preserving the soft culture of our streets for generations to come.\n\nImagine a young cook who wants to recreate the taste of a long-gone favorite. Or a storyteller looking to weave old flavors into new tourism. Or your grandfather, quietly wishing he could taste that dish just one more time.\n\nIf Noren Bank is there when those moments arrive, the memory of a place can be revived — and the hidden charm of a town can live again.",
+            outcomes: [
+              { text: 'Built a prototype of the Noren Bank app', year: '2023', status: 'done' },
+              { text: "Project relaunched — first ZINE '天津包子館' produced and bound", year: '2025', status: 'done' },
+              { text: 'Two more ZINEs in production', year: '2026', status: 'next' },
+              { text: 'Pop-up event with revived recipes', year: '2026', status: 'next' },
+              { text: 'Website and social media launch', year: '2026', status: 'next' },
+              { text: 'Tell us about a restaurant worth preserving', status: 'help' },
+              { text: 'Buy a ZINE and help spread the word', status: 'help' },
+            ],
           },
           JP: {
-            tagline: '記憶を、アーカイブする。',
-            story: '名店が閉まるとき、料理だけでなく、その場に宿っていた物語も消えていく。のれんバンクは、店主へのインタビュー・常連客の思い出・当時のレシピをZINEにまとめ、街の無形文化を後世へ手渡します。',
-            outcomes: ['ZINEを制作・配布', '佐世保市内の名店をアーカイブ', '地域図書館・コミュニティスペースで閲覧可能', '2023年より継続中'],
+            tagline: 'まちの味の記憶を保存する。',
+            story: '街にある飲食の名店たち。その店が閉まるとき、料理だけでなく、その場に宿っていた物語も思い出も消えていきます。のれんバンクは、店主へのインタビュー・常連客の思い出・当時のレシピをZINEにまとめ、街の無形文化を後世へ手渡していきます。\n\nいつの日か、あの名店の味を再現したい若者が現れた時。あるいは、新しい観光コンテンツを作りたい若者が現れた時。あるいはもう一度思い出の味を食べたいと、あなたのおじいちゃんが嘆いた時。\n\nそんな時に、のれんバンクが機能していれば、街の記憶が蘇り、新しい街の魅力をもう一度生み出してくれるでしょう。',
+            outcomes: [
+              { text: '「のれんバンク」アプリのプロトタイプ版を作成', year: '2023', status: 'done' },
+              { text: 'プロジェクト再始動　第一弾ZINE「天津包子館」を制作・製本', year: '2025', status: 'done' },
+              { text: '追加取材とZINE制作（2店舗）', year: '2026', status: 'next' },
+              { text: '復刻メニューのイベント開催', year: '2026', status: 'next' },
+              { text: 'ウェブサイト・SNS開設', year: '2026', status: 'next' },
+              { text: '"残したい名店"の情報提供', status: 'help' },
+              { text: 'ZINEの購入と保存活動の周知', status: 'help' },
+            ],
           },
         },
         imgSrc: '/images/resize/noren-bank.jpg',
@@ -207,6 +223,7 @@ export const CONTENT = {
       },
       {
         slug: 'on-c',
+        caseSensitiveTitle: true,
         tag: { EN: 'Community Space', JP: 'コラボレーションスペース' },
         year: { EN: '2024– / Sasebo', JP: '2024年〜 / 佐世保市' },
         title: { EN: 'on°C (Ondo)', JP: 'on°C（オンド）' },
@@ -218,12 +235,22 @@ export const CONTENT = {
           EN: {
             tagline: 'Raise the temperature.',
             story: 'on°C (Ondo) is a collaboration space co-run with local Sasebo businesses, designed to connect the town with students and heat up the local community. From "Intern Clinic" — where students with top company offers coach local CEOs on the latest job-hunting trends — to "Battle the Boss," where executives and students face off in impromptu presentations, on°C hosts events that spark unexpected connections. It also serves as a student study room and community kitchen.',
-            outcomes: ['Unique events co-produced with local businesses', 'Students and CEOs connected through hands-on programs', 'Used as study room, community kitchen, and event venue', 'Ongoing since 2024'],
+            outcomes: [
+              { text: 'Unique events co-produced with local businesses', status: 'next' },
+              { text: 'Students and CEOs connected through hands-on programs', status: 'next' },
+              { text: 'Used as study room, community kitchen, and event venue', status: 'next' },
+              { text: 'Ongoing since 2024', status: 'next' },
+            ],
           },
           JP: {
             tagline: '地域の温度を上げる。',
             story: '地域の事業者とともに企画運営する、まちと学生をつなぐコラボレーションスペース。大手内定学生が地元企業の社長に就活の最新事情をレクチャーする「インターンクリニック」、社長と学生が初見のスライドでプレゼン力を競う「社長とバトる。」など、ユニークな企画が続々。学生の自習室・こども食堂としても活用されている。',
-            outcomes: ['地域事業者と共同プログラムを企画・運営', '学生と社長をつなぐ独自イベントを継続開催', '自習室・こども食堂としても地域に開放', '2024年より継続中'],
+            outcomes: [
+              { text: '地域事業者と共同プログラムを企画・運営', status: 'next' },
+              { text: '学生と社長をつなぐ独自イベントを継続開催', status: 'next' },
+              { text: '自習室・こども食堂としても地域に開放', status: 'next' },
+              { text: '2024年より継続中', status: 'next' },
+            ],
           },
         },
         imgSrc: '/images/resize/on-c.jpg',
@@ -242,12 +269,22 @@ export const CONTENT = {
           EN: {
             tagline: 'Learning alongside, not from above.',
             story: 'When Nagasaki Kita High School reached out for help redesigning its inquiry curriculum, we assembled a 7-member volunteer team of local professionals — not to lecture, but to walk alongside. For three years, Polaris Q co-designs and co-runs inquiry sessions with the incoming class of 2025, helping students find their own questions and build the capacity to pursue them. A new model for school-community collaboration.',
-            outcomes: ['7 volunteer professionals assembled', '3-year inquiry program co-designed', 'New school-community PBL model in development', 'Ongoing since 2025'],
+            outcomes: [
+              { text: '7 volunteer professionals assembled', status: 'done' },
+              { text: '3-year inquiry program co-designed', status: 'next' },
+              { text: 'New school-community PBL model in development', status: 'next' },
+              { text: 'Ongoing since 2025', status: 'next' },
+            ],
           },
           JP: {
             tagline: '隣で、一緒に学ぶ。',
             story: '長崎北高校からの依頼を受け、地域の民間人有志7名からなる専門家チームを結成。2025年入学の新1年生に対して、3年間の探究プログラムの設計から授業の伴走まで一貫して関わる。教える側・教えられる側という関係を超えた、民学連携PBLの新しい形をめざしている。',
-            outcomes: ['民間有志7名のチームを結成', '3年間の探究プログラムを共同設計', '民学連携PBLの新モデルを構築中', '2025年より継続中'],
+            outcomes: [
+              { text: '民間有志7名のチームを結成', status: 'done' },
+              { text: '3年間の探究プログラムを共同設計', status: 'next' },
+              { text: '民学連携PBLの新モデルを構築中', status: 'next' },
+              { text: '2025年より継続中', status: 'next' },
+            ],
           },
         },
         imgSrc: '/images/resize/polaris-q.jpg',
@@ -266,12 +303,16 @@ export const CONTENT = {
           EN: {
             tagline: 'Children\'s dreams, turned into real business.',
             story: 'A program supporting children in turning their simple dreams into real businesses right now. By keeping adults from interfering, kids come to life with genuine energy.',
-            outcomes: ['In planning'],
+            outcomes: [
+              { text: 'In planning', status: 'next' },
+            ],
           },
           JP: {
             tagline: '子どもの夢を、今すぐ商いに。',
             story: '子どもたちの素朴な夢を、今すぐ商いの形で実現することを支援するプログラム。大人が余計な横槍を入れないことで、子どもたちは生き生きと学びを深めていく。',
-            outcomes: ['準備中'],
+            outcomes: [
+              { text: '準備中', status: 'next' },
+            ],
           },
         },
         imgSrc: '/images/resize/goccco.jpg',
@@ -290,12 +331,20 @@ export const CONTENT = {
           EN: {
             tagline: 'Elevating student inquiry across Nagasaki.',
             story: 'Partnering with Katariba, a leading education NPO, we host a summit where high school students present and share their inquiry-based learning projects. Now in its fourth year, the event has helped fuel growing momentum for inquiry-based education in Nagasaki—last year, one participating team went on to win the Minister of Education Award.',
-            outcomes: ['4th annual summit', 'Minister of Education Award recipient emerged from program', 'Partnership with Katariba NPO'],
+            outcomes: [
+              { text: '4th annual summit', status: 'next' },
+              { text: 'Minister of Education Award recipient emerged from program', status: 'done' },
+              { text: 'Partnership with Katariba NPO', status: 'next' },
+            ],
           },
           JP: {
             tagline: '長崎の高校生の探究を、県全体で育てる。',
             story: '大手教育系NPOカタリバと連携し、高校生の探究学習の発表と学びの大会を主催している。今年で4回目の開催となり、昨年度は文部科学大臣賞を受賞するプロジェクトが生まれるなど、長崎での探究学習の気運の高まりの一翼を担っている。',
-            outcomes: ['4回目の開催', '文部科学大臣賞受賞プロジェクトを輩出', 'カタリバとの協働'],
+            outcomes: [
+              { text: '4回目の開催', status: 'next' },
+              { text: '文部科学大臣賞受賞プロジェクトを輩出', status: 'done' },
+              { text: 'カタリバとの協働', status: 'next' },
+            ],
           },
         },
         imgSrc: '/images/resize/maipro.jpg',
@@ -314,12 +363,20 @@ export const CONTENT = {
           EN: {
             tagline: 'Learning AI together, one month at a time.',
             story: 'What started as a casual, irregular programming study group with local business owners and students—focused on social implementation—has evolved into a monthly program. Now in its practical phase, participants teach and learn from each other on Claude Code and other AI agent tools, building hands-on AI capability from the ground up.',
-            outcomes: ['Monthly sessions launched 2025', 'Peer-led learning model', 'Community of local business owners & students'],
+            outcomes: [
+              { text: 'Monthly sessions launched 2025', status: 'next' },
+              { text: 'Peer-led learning model', status: 'next' },
+              { text: 'Community of local business owners & students', status: 'next' },
+            ],
           },
           JP: {
             tagline: '地域からAI実装の波を、仲間と共に起こす。',
             story: '数年前より地域の経営者や学生と共に、カジュアルな社会実装を目標に、不定期で開催していたプログラミング勉強会。今年4月からは、実用フェーズに入ったエージェントAIにキャッチアップするため、Claude Codeなどの最新ツールを相互に学び教え合う毎月開催のプログラムを実施している。',
-            outcomes: ['2025年4月より月例開催', '経営者・学生の相互学習モデル', 'エージェントAIの実務実装を目指す'],
+            outcomes: [
+              { text: '2025年4月より月例開催', status: 'next' },
+              { text: '経営者・学生の相互学習モデル', status: 'next' },
+              { text: 'エージェントAIの実務実装を目指す', status: 'next' },
+            ],
           },
         },
         imgSrc: '/images/resize/ai-study.jpg',

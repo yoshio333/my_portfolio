@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef, useEffect, useState } from 'react';
 import { CONTENT, CARD_PALETTE } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useLang, Lang } from '@/hooks/useLang';
@@ -10,22 +11,54 @@ const LABELS = {
   EN: {
     back: '← Back',
     theStory: 'The Story',
-    outcomes: 'Outcomes',
+    outcomes: 'Where We Are',
     allProjects: '← All Projects',
     startProject: 'Start Similar Project →',
+    getInvolved: 'Support This Project →',
   },
   JP: {
     back: '← 戻る',
     theStory: 'ストーリー',
-    outcomes: '成果',
+    outcomes: '現在地',
     allProjects: '← プロジェクト一覧',
     startProject: '同様のプロジェクトを始める →',
+    getInvolved: 'プロジェクトに協力する →',
   },
 };
+
+const SECTION_CONFIG = {
+  done: { EN: "What's Done",      JP: '完了したこと' },
+  next: { EN: "What's Next",      JP: 'これからやること' },
+  help: { EN: 'How You Can Help', JP: '手伝ってほしいこと' },
+} as const;
 
 export default function WorkDetailClient({ slug }: { slug: string }) {
   const [lang, setLang] = useLang();
   const isMobile = useIsMobile();
+
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const firstItemRef = useRef<HTMLLIElement>(null);
+  const lastItemRef = useRef<HTMLLIElement>(null);
+  const [lineTop, setLineTop] = useState('6px');
+  const [lineBottom, setLineBottom] = useState('8px');
+  const [arrowBottom, setArrowBottom] = useState('0px');
+
+  useEffect(() => {
+    const calc = () => {
+      if (!timelineRef.current || !firstItemRef.current || !lastItemRef.current) return;
+      const wrapperRect = timelineRef.current.getBoundingClientRect();
+      const firstRect = firstItemRef.current.getBoundingClientRect();
+      const lastRect = lastItemRef.current.getBoundingClientRect();
+      const top = firstRect.top + firstRect.height / 2 - wrapperRect.top;
+      const bottom = wrapperRect.bottom - (lastRect.top + lastRect.height / 2);
+      setLineTop(`${top}px`);
+      setLineBottom(`${bottom + 8}px`);
+      setArrowBottom(`${bottom}px`);
+    };
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, [lang, isMobile]);
 
   const cardIndex = CONTENT.work.cards.findIndex((c) => c.slug === slug);
   const card = CONTENT.work.cards[cardIndex];
@@ -125,7 +158,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
             color: 'rgba(0,0,0,0.06)',
             userSelect: 'none',
             fontFamily: 'var(--font-space-grotesk)',
-            textTransform: 'uppercase',
+            textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
             whiteSpace: 'nowrap',
           }}>
             {card.title[lang]}
@@ -161,7 +194,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           fontWeight: 900,
           lineHeight: 1.05,
           letterSpacing: '-0.05em',
-          textTransform: 'uppercase',
+          textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
           marginBottom: '20px',
           color: pal.textColor,
           WebkitTextStroke: '2px #000000',
@@ -252,14 +285,17 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           }}>
             {L.theStory}
           </span>
-          <p style={{
-            fontSize: isMobile ? '1rem' : '1.12rem',
-            lineHeight: 1.85,
-            color: '#000000',
-            margin: 0,
-          }}>
-            {d.story}
-          </p>
+          {(d.story as string).split('\n\n').map((para, i, arr) => (
+            <p key={i} style={{
+              fontSize: isMobile ? '1rem' : '1.12rem',
+              lineHeight: 1.85,
+              color: '#000000',
+              margin: 0,
+              marginBottom: i < arr.length - 1 ? '1.4em' : 0,
+            }}>
+              {para}
+            </p>
+          ))}
         </div>
 
         <div style={{ padding: isMobile ? '40px 24px' : '72px 52px', backgroundColor: '#F5F5F0' }}>
@@ -275,30 +311,110 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
           }}>
             {L.outcomes}
           </span>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
-            {d.outcomes.map((outcome, i) => (
-              <li key={i} style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '14px',
-                padding: '18px 0',
-                borderBottom: i < d.outcomes.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none',
-              }}>
+          <div ref={timelineRef} style={{ position: 'relative', paddingLeft: '20px', paddingBottom: '8px' }}>
+            {/* Timeline dashed line */}
+            <div style={{
+              position: 'absolute',
+              left: '4px',
+              top: lineTop,
+              bottom: lineBottom,
+              width: 0,
+              borderLeft: '1.5px dashed rgba(0,0,0,0.3)',
+            }} />
+            {/* Arrow tip — centered on the line (left: 4px - half-width 5px = -1px) */}
+            <div style={{
+              position: 'absolute',
+              left: '-1px',
+              bottom: arrowBottom,
+              width: 0,
+              height: 0,
+              borderLeft: '5px solid transparent',
+              borderRight: '5px solid transparent',
+              borderTop: '8px solid rgba(0,0,0,0.35)',
+            }} />
+          {(['done', 'next', 'help'] as const).map((section) => {
+            const items = (d.outcomes as readonly { text: string; status: string }[]).filter(o => o.status === section);
+            if (items.length === 0) return null;
+            const sc = SECTION_CONFIG[section];
+            return (
+              <div key={section} style={{ marginBottom: '20px' }}>
                 <span style={{
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: '#000000',
-                  border: '2px solid #000000',
-                  flexShrink: 0,
-                  marginTop: '6px',
-                  display: 'block',
-                }}/>
-                <span style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#000000' }}>
-                  {outcome}
+                  fontFamily: 'var(--font-space-mono)',
+                  fontSize: '0.58rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  display: 'inline-block',
+                  marginBottom: '12px',
+                  padding: '3px 10px',
+                  backgroundColor: section === 'done' ? '#000000' : section === 'help' ? '#FFF133' : 'transparent',
+                  color: section === 'done' ? '#FFFFFF' : section === 'help' ? '#000000' : 'rgba(0,0,0,0.6)',
+                  border: section === 'next' ? '1px solid rgba(0,0,0,0.3)' : section === 'help' ? '1px solid rgba(0,0,0,0.4)' : 'none',
+                }}>
+                  {sc[lang]}
                 </span>
-              </li>
-            ))}
-          </ul>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                  {items.map((o, i) => {
+                    const liRef = (section === 'done' && i === 0) ? firstItemRef
+                      : (section === 'help' && i === items.length - 1) ? lastItemRef
+                      : null;
+                    return (
+                    <li key={i} ref={liRef} style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '10px',
+                      padding: '8px 0',
+                      borderBottom: i < items.length - 1 ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                    }}>
+                      <span style={{
+                        flexShrink: 0,
+                        marginTop: '9px',
+                        width: '4px',
+                        height: '4px',
+                        backgroundColor: '#000000',
+                        display: 'block',
+                      }} />
+                      <span style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#000000' }}>
+                        {o.text}
+                        {(o as { text: string; status: string; year?: string }).year && (
+                          <span style={{
+                            marginLeft: '0.5em',
+                            fontSize: '0.72rem',
+                            opacity: 0.35,
+                            fontFamily: 'var(--font-space-mono)',
+                          }}>
+                            {(o as { text: string; status: string; year?: string }).year}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
+          </div>
+          {/* CTA */}
+          <div style={{ paddingTop: '24px', borderTop: '2px solid #000000' }}>
+            <Link href="/#contact" style={{
+              fontFamily: 'var(--font-space-mono)',
+              fontSize: '0.68rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              textDecoration: 'none',
+              color: pal.textColor,
+              backgroundColor: pal.bg,
+              border: '2px solid #000000',
+              padding: '8px 18px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}>
+              {L.getInvolved}
+            </Link>
+          </div>
         </div>
       </section>
 

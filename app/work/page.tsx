@@ -90,7 +90,7 @@ export default function WorkPage() {
           lineHeight: 1.7,
           color: 'rgba(0,0,0,0.55)',
           maxWidth: '520px',
-          borderLeft: '3px solid #2E5BFF',
+          borderLeft: '3px solid rgba(0,0,0,0.2)',
           paddingLeft: '16px',
           margin: 0,
         }}>
@@ -189,7 +189,7 @@ export default function WorkPage() {
                 fontWeight: 900,
                 lineHeight: 1,
                 letterSpacing: '-0.04em',
-                textTransform: 'uppercase',
+                textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
                 marginBottom: '12px',
                 flexGrow: 1,
               }}>

@@ -50,7 +50,7 @@ export default function WorkSection({ lang }: Props) {
           lineHeight: 1.7,
           color: 'rgba(0,0,0,0.55)',
           maxWidth: '520px',
-          borderLeft: '3px solid #6080A8',
+          borderLeft: '3px solid rgba(0,0,0,0.2)',
           paddingLeft: '16px',
         }}>
           {h.sub}
@@ -295,7 +295,7 @@ function WorkCard({
         fontWeight: 900,
         lineHeight: 1,
         letterSpacing: '-0.04em',
-        textTransform: 'uppercase',
+        textTransform: (card as any).caseSensitiveTitle ? 'none' : 'uppercase',
         marginBottom: '16px',
         textShadow: pal.textColor === '#FFFFFF' ? '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' : 'none',
       }}>
