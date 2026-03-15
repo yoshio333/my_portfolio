@@ -151,6 +151,7 @@ export default function WorkPage() {
               </div>
 
               {/* Photo */}
+              <Link href={`/work/${card.slug}`} style={{ textDecoration: 'none' }}>
               <div style={{
                 width: '100%',
                 height: '180px',
@@ -160,6 +161,7 @@ export default function WorkPage() {
                 position: 'relative',
                 backgroundColor: 'rgba(0,0,0,0.08)',
                 flexShrink: 0,
+                cursor: 'pointer',
               }}>
                 {hasImg ? (
                   <Image
@@ -182,6 +184,7 @@ export default function WorkPage() {
                   </div>
                 )}
               </div>
+              </Link>
 
               {/* Title */}
               <h2 style={{
