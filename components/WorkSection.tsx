@@ -8,7 +8,7 @@ import { CONTENT, CARD_PALETTE, Lang } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { shouldSkipAnim } from '@/hooks/useAnimOnce';
 
-const CONTACT_MAILTO = 'mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A';
+const CONTACT_MAILTO = 'mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A';
 
 type Props = { lang: Lang };
 

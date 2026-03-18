@@ -551,7 +551,7 @@ export const CONTENT = {
       copy: '© 2026 Yoshimasa Nishinobu',
     },
     social: [
-      { label: 'Mail', href: 'mailto:yoshimasa.nishinobu@gmail.com?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
+      { label: 'Mail', href: 'mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
       { label: 'Facebook', href: 'https://www.facebook.com/ynishinobu', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
       { label: 'Note.jp', href: 'https://note.com/yoshio333333', hoverBg: '#FFF133', hoverColor: '#000000' },
     ],
