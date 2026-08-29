@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-03-19（セッション6）
+
+### メールアドレスを全箇所変更
+- 旧: `yoshimasa.nishinobu@gmail.com` → 新: `y-nishinobu@soitgoes.page`
+- 変更箇所3ヶ所: `lib/content.ts` / `components/Footer.tsx` / `components/WorkSection.tsx`
+- 理由: `content.ts` だけ変えても、コンポーネントに直書きされた箇所が残っていたため
+
+### AIフレンドリー化（`AI_FRIENDLY_SPEC.md` 全タスク対応）
+
+#### app/layout.tsx の拡充
+- `<html lang="en">` → `<html lang="ja">`（コンテンツの主言語は日本語）
+- `metadataBase: new URL('https://y-nishinobu.soitgoes.page')` 追加（相対パスを絶対URLに変換するために必要）
+- OGP（openGraph）追加: タイトル・説明を日本語に、`locale: 'ja_JP'` + `alternateLocale: ['en_US']`
+- Twitter Card 追加: `summary_large_image`
+- JSON-LD（Person schema）を `<body>` 内に埋め込み
+  - `name: '西信好真'` + `alternateName: 'Yoshimasa Nishinobu'`
+  - 勤務先・所属団体・所在地・knowsAbout・sameAs を構造化
+  - 理由: Google検索のリッチスニペット表示と AI クローラーによる人物理解のため
+
+#### app/robots.ts 新規作成
+- 全クローラー許可 + sitemap URL を記載
+- 理由: robots.txt が404だったため
+
+#### app/sitemap.ts 新規作成
+- トップ・/about・/work の3ページを登録
+- 理由: sitemap.xml が404だったため。検索エンジンのインデックス速度向上
+
+#### public/llms.txt 新規作成
+- AIエージェント向けの人物・活動紹介テキスト
+- 理由: ChatGPTや Claude がサイトを参照する際に読む標準ファイル（llmstxt.org 準拠）
+
+#### app/opengraph-image.tsx 新規作成
+- Next.js の `ImageResponse`（satori）で OG画像を動的生成（1200×630px）
+- デザイン: 黒背景・赤スクエア・白テキスト・黄タグライン（サイトトーンに合わせた）
+- 理由: SNSシェア時のサムネイルを標準サイズ（横長）で自動生成するため
+
+---
+
 ## 2026-03-15（セッション5）
 
 ### /#contact ナビゲーションを即ジャンプに変更

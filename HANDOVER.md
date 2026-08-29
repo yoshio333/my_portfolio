@@ -1,7 +1,7 @@
 # ポートフォリオ制作 — 引き継ぎ作業ログ
 
 > 最終更新: 2026-03-14
-> プロジェクトパス: `/Users/yoshimasa_n/Desktop/portfolio`
+> プロジェクトパス: `/Users/yoshimasa_n/dev/portfolio`
 > 開発サーバー: `http://localhost:3000`（`npm run dev` で起動）
 
 ---
@@ -177,7 +177,7 @@ hero: {
 ## ⚙️ 開発サーバーの起動方法
 
 ```bash
-cd /Users/yoshimasa_n/Desktop/portfolio
+cd /Users/yoshimasa_n/dev/portfolio
 npm run dev
 # → http://localhost:3000 でアクセス
 ```
@@ -199,6 +199,6 @@ npm run dev
 
 ```
 ポートフォリオサイト制作の続きをお願いします。
-引き継ぎログが /Users/yoshimasa_n/Desktop/portfolio/HANDOVER.md にあります。
+引き継ぎログが /Users/yoshimasa_n/dev/portfolio/HANDOVER.md にあります。
 まずそのファイルを読んで、現状を把握してから作業してください。
 ```

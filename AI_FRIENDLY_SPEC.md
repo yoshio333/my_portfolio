@@ -1,7 +1,7 @@
 # AIフレンドリー化 実装仕様書
 
 > 作成：Claude_Workspace セッション（2026-03-19）
-> 対象リポジトリ：`/Users/yoshimasa_n/Desktop/portfolio/`（Next.js + TypeScript）
+> 対象リポジトリ：`/Users/yoshimasa_n/dev/portfolio/`（Next.js + TypeScript）
 > デプロイ先：https://y-nishinobu.soitgoes.page（Vercel、GitHub push で自動デプロイ）
 
 ---

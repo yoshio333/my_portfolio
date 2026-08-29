@@ -1,7 +1,7 @@
 # ポートフォリオサイト（西信様）
 
 ## プロジェクト概要
-- **場所**: `/Users/yoshimasa_n/Desktop/portfolio`
+- **場所**: `/Users/yoshimasa_n/dev/portfolio`
 - **構成**: Next.js + TypeScript（App Router）
 - **dev server**: `localhost:3000`
 - **テキスト管理**: `lib/content.ts` に EN/JP 両言語を集約
