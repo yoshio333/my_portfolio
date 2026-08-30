@@ -529,6 +529,9 @@ export const CONTENT = {
       bgText2: 'あなたの声で',
       copy: '© 2026 Yoshimasa Nishinobu',
     },
+    email: 'y-nishinobu@soitgoes.page',
+    copyLabel: { EN: 'Copy', JP: 'コピー' },
+    copiedLabel: { EN: 'Copied ✓', JP: 'コピーしました ✓' },
     social: [
       { label: 'Mail', href: 'mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
       { label: 'X', href: 'https://x.com/y_nishinobu', hoverBg: '#000000', hoverColor: '#FFFFFF' },

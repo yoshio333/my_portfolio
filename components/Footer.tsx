@@ -15,6 +15,34 @@ export default function Footer({ lang }: Props) {
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [entered, setEntered] = useState(false);
   const [ctaHovered, setCtaHovered] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    const email = CONTENT.footer.email;
+    const done = () => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    };
+    try {
+      await navigator.clipboard.writeText(email);
+      done();
+    } catch {
+      // clipboard API が使えない環境向けフォールバック
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        done();
+      } catch {
+        // それでも不可ならアドレスを手動選択してもらう（テキスト表示済み）
+      }
+    }
+  };
 
   // 戻り訪問: アニメをスキップ（ペイント前に確定）
   useLayoutEffect(() => {
@@ -136,32 +164,68 @@ export default function Footer({ lang }: Props) {
             {c.body}
           </p>
 
-          <a
-            href="mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A"
-            onMouseEnter={() => setCtaHovered(true)}
-            onMouseLeave={() => setCtaHovered(false)}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '12px',
-              backgroundColor: ctaHovered ? '#333333' : '#000000',
-              color: '#FFFFFF',
-              fontFamily: 'var(--font-space-mono)',
-              fontSize: '0.85rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              padding: '16px 32px',
-              border: '2px solid #000000',
-              boxShadow: ctaHovered ? '0px 0px 0px #000' : '6px 6px 0px #000',
-              transform: ctaHovered ? 'translate(3px, 3px)' : 'none',
-              textDecoration: 'none',
-              transition: 'background-color 0.12s, box-shadow 0.1s, transform 0.1s',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            {c.cta} →
-          </a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexShrink: 0 }}>
+            <a
+              href="mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A"
+              onMouseEnter={() => setCtaHovered(true)}
+              onMouseLeave={() => setCtaHovered(false)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                backgroundColor: ctaHovered ? '#333333' : '#000000',
+                color: '#FFFFFF',
+                fontFamily: 'var(--font-space-mono)',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                padding: '16px 32px',
+                border: '2px solid #000000',
+                boxShadow: ctaHovered ? '0px 0px 0px #000' : '6px 6px 0px #000',
+                transform: ctaHovered ? 'translate(3px, 3px)' : 'none',
+                textDecoration: 'none',
+                transition: 'background-color 0.12s, box-shadow 0.1s, transform 0.1s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {c.cta} →
+            </a>
+
+            {/* メーラー未設定の環境向け：アドレス表示＋ワンタップコピー */}
+            <button
+              onClick={copyEmail}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+                fontFamily: 'var(--font-space-mono)',
+                fontSize: '0.72rem',
+                color: 'rgba(0,0,0,0.55)',
+              }}
+            >
+              <span style={{ userSelect: 'text', letterSpacing: '0.02em' }}>
+                {CONTENT.footer.email}
+              </span>
+              <span style={{
+                fontWeight: 700,
+                fontSize: '0.62rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                padding: '3px 10px',
+                border: '1px solid rgba(0,0,0,0.3)',
+                backgroundColor: copied ? '#FFF133' : 'transparent',
+                color: copied ? '#000000' : 'rgba(0,0,0,0.55)',
+                transition: 'background-color 0.15s, color 0.15s',
+                whiteSpace: 'nowrap',
+              }}>
+                {copied ? CONTENT.footer.copiedLabel[lang] : CONTENT.footer.copyLabel[lang]}
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Bottom row */}
