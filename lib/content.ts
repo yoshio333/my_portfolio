@@ -116,7 +116,44 @@ export const CONTENT = {
     },
     cards: [
       {
+        slug: 'ai-hackathon',
+        tag: { EN: 'AI Hackathon', JP: 'AIハッカソン' },
+        year: { EN: '2026– / Sasebo, Saga', JP: '2026年〜　／　佐世保市、佐賀県' },
+        title: { EN: 'Nishi-Kyushu AI Hackathon Series', JP: '西九州AIハッカソンシリーズ' },
+        desc: {
+          EN: 'As a Claude Community Ambassador for Anthropic, I plan and host AI hackathons on local issues across the region as Claude Community events. At the first edition in Sasebo, the town\'s most committed adults took on youth outflow with AI.',
+          JP: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンをClaude Communityイベントとして各地で企画・開催。第1回は佐世保で、街の本気の大人たちが若者流出問題にAIで挑んだ。',
+        },
+        detail: {
+          EN: {
+            tagline: 'The town\'s committed adults, taking on local issues with AI.',
+            story: 'As a Claude Community Ambassador for Anthropic, I plan and host a series of AI hackathons across Nishi-Kyushu, held as Claude Community events where participants receive API credits from Anthropic and build with Claude Code.\n\nThe first edition, "SASEBO | Claude for Our Kids," took place on August 22, 2026, under the banner "Stop the youth outflow — a hackathon for the town\'s serious adults." Despite the bar to entry — 18 or older, hands-on experience with Claude Code or Cowork — around 80 people showed up including spectators. Six teams of 23 builders shipped working prototypes in a single day. Four media outlets (NHK, NBC, the Nagasaki Shimbun, and TV Sasebo) covered the event, and two members of Anthropic Japan joined us on site.\n\nAI implementation skills should not belong to big cities alone. This series is about growing a culture — starting from Nishi-Kyushu — where the adults of a region solve their own problems with their own hands.',
+            outcomes: [
+              { text: 'First edition "SASEBO | Claude for Our Kids" held — around 80 visitors including spectators', year: '2026', status: 'done' },
+              { text: '6 teams, 23 builders shipped prototypes in a single day', year: '2026', status: 'done' },
+              { text: 'Covered by 4 media outlets (NHK / NBC / Nagasaki Shimbun / TV Sasebo); 2 members of Anthropic Japan attended', year: '2026', status: 'done' },
+              { text: 'Next editions in Saga Prefecture (Karatsu & Tosu) in preparation', year: '2026', status: 'next' },
+              { text: 'Looking for people to build the excitement with us', status: 'help' },
+            ],
+          },
+          JP: {
+            tagline: '街の本気の大人が、AIで地域の課題に挑む。',
+            story: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンを西九州各地で企画・開催しているシリーズ。Claude Communityのイベントとして開催され、参加者にはAnthropicからAPIクレジットが提供され、Claude Codeを使って開発に挑む。\n\n第1回「SASEBO｜Claude for Our Kids」は2026年8月22日、「若者流出を防げ！街の本気の大人のハッカソン」を掲げて佐世保で開催。18歳以上・Claude CodeまたはCoworkの利用経験という参加条件にもかかわらず、観覧を含め約80名が来場した。6チーム23名がたった1日で動くプロトタイプを作り上げ、発表。NHK・NBC・長崎新聞・テレビ佐世保の4社が取材に入り、Anthropic Japanからも2名が駆けつけた。\n\nAIの実装力を、都市部だけのものにしない。地域の大人が自分たちの課題を自分たちの手で解く文化を、西九州から育てていく。',
+            outcomes: [
+              { text: '第1回「SASEBO｜Claude for Our Kids」開催——観覧含め約80名が来場', year: '2026', status: 'done' },
+              { text: '6チーム23名が、1日で動くプロトタイプを制作・発表', year: '2026', status: 'done' },
+              { text: 'NHK・NBC・長崎新聞・テレビ佐世保の4社が取材。Anthropic Japanから2名が来場', year: '2026', status: 'done' },
+              { text: '佐賀県（唐津・鳥栖）で開催準備中', year: '2026', status: 'next' },
+              { text: '一緒に盛り上げてくれる仲間を募集', status: 'help' },
+            ],
+          },
+        },
+        imgSrc: '/images/resize/ai-hackathon.jpg',
+        imgAlt: '西九州AIハッカソンシリーズ — 第1回 SASEBO｜Claude for Our Kids の集合写真',
+      },
+      {
         slug: 'noren-bank',
+        siteUrl: 'https://noren-bank.com/',
         tag: { EN: 'Cultural Preservation', JP: '文化保護' },
         year: { EN: '2023– / Sasebo', JP: '2023年〜 / 佐世保市' },
         title: { EN: 'Noren Bank', JP: 'のれんバンク' },
@@ -131,9 +168,9 @@ export const CONTENT = {
             outcomes: [
               { text: 'Built a prototype of the Noren Bank app', year: '2023', status: 'done' },
               { text: "Project relaunched — first ZINE '天津包子館' produced and bound", year: '2025', status: 'done' },
+              { text: 'Official website noren-bank.com launched', year: '2026', status: 'done' },
               { text: 'Two more ZINEs in production', year: '2026', status: 'next' },
               { text: 'Pop-up event with revived recipes', year: '2026', status: 'next' },
-              { text: 'Website and social media launch', year: '2026', status: 'next' },
               { text: 'Tell us about a restaurant worth preserving', status: 'help' },
               { text: 'Buy a ZINE and help spread the word', status: 'help' },
             ],
@@ -144,9 +181,9 @@ export const CONTENT = {
             outcomes: [
               { text: '「のれんバンク」アプリのプロトタイプ版を作成', year: '2023', status: 'done' },
               { text: 'プロジェクト再始動　第一弾ZINE「天津包子館」を制作・製本', year: '2025', status: 'done' },
+              { text: '公式サイト「noren-bank.com」を開設', year: '2026', status: 'done' },
               { text: '追加取材とZINE制作（2店舗）', year: '2026', status: 'next' },
               { text: '復刻メニューのイベント開催', year: '2026', status: 'next' },
-              { text: 'ウェブサイト・SNS開設', year: '2026', status: 'next' },
               { text: '"残したい名店"の情報提供', status: 'help' },
               { text: 'ZINEの購入と保存活動の周知', status: 'help' },
             ],
@@ -202,30 +239,30 @@ export const CONTENT = {
         year: { EN: '2025– / Nagasaki City', JP: '2025年〜 / 長崎市' },
         title: { EN: '"Polaris Q" Inquiry Support Team', JP: '長崎北高探究支援チーム「ポラリスQ」' },
         desc: {
-          EN: 'A 7-member volunteer expert team commissioned by a high school to co-design and run a 3-year inquiry program, pioneering a new model of school-community PBL.',
-          JP: '学校の依頼で結成した民間有志7名の専門家チームが、高校3年間の探究プログラムを伴走。民学連携PBLの新しい形に挑戦。',
+          EN: 'A volunteer team of local experts commissioned by a high school to co-design and run a 3-year inquiry program, pioneering a new model of school-community PBL.',
+          JP: '学校の依頼で結成した民間有志の専門家チームが、高校3年間の探究プログラムを伴走。民学連携PBLの新しい形に挑戦。',
         },
         detail: {
           EN: {
             tagline: 'Building a new era of education, together with the community.',
-            story: 'Commissioned by Nagasaki Prefectural Kita High School to support their inquiry curriculum, we assembled "Polaris Q" — a volunteer team of seven local professionals. For three years, we co-design and run an inquiry program alongside the class entering in 2025, from initial framework design through in-class facilitation.\n\nOur goal is to move beyond the traditional teacher-student, school-community divide, and build a new model of school-community PBL where all parties learn alongside each other.\n\nMembers include: Steve Takeshita (freelance), Mitsuhiro Hayashida (Representative Director, Peace Education Lab Nagasaki), Risa Yamano (Kita High alumna / Fukuoka Women\'s University), Tetsuro Ishimaru (CEO, ISIAL Group), Kyosuke Mori (Tsukurunowa Design), Yumi Yoshino (Main personality, FM Nagasaki), and Taikai Kodai (Buddhist monk, Kyosoji Temple) — along with myself. Together, we are working to create an inquiry program that sets a new standard for the next generation.',
+            story: 'Commissioned by Nagasaki Prefectural Kita High School to support their inquiry curriculum, we assembled "Polaris Q" — a volunteer team of local professionals. For three years, we co-design and run an inquiry program alongside the class entering in 2025, from initial framework design through in-class facilitation.\n\nOur goal is to move beyond the traditional teacher-student, school-community divide, and build a new model of school-community PBL where all parties learn alongside each other.\n\nMembers include: Steve Takeshita (freelance), Mitsuhiro Hayashida (Representative Director, Peace Education Lab Nagasaki), Risa Yamano (Kita High alumna / Fukuoka Women\'s University), Tetsuro Ishimaru (CEO, ISIAL Group), Kyosuke Mori (Tsukurunowa Design), Yumi Yoshino (Main personality, FM Nagasaki), Taikai Kodai (Buddhist monk, Kyosoji Temple), and Miyu Taguchi (Kita High alumna / university student) — along with myself. Together, we are working to create an inquiry program that sets a new standard for the next generation.',
             outcomes: [
               { text: 'Launched inquiry support for Nagasaki Kita High Year 1 students', year: '2025', status: 'done' },
               { text: 'First half: "Oshi Battle Royale", "50 Favorite Verbs", "University Major Inquiry"', year: '2025', status: 'done' },
               { text: 'Second half: "Empowerment Inquiry" program', year: '2025', status: 'done' },
-              { text: 'Finalize and run Year 2 inquiry program', year: '2026', status: 'next' },
+              { text: 'Running weekly inquiry classes for the entire Year 2 cohort in a 12-seminar structure', year: '2026', status: 'done' },
               { text: 'Research and apply for grants', year: '2026', status: 'next' },
               { text: 'Share grant information with us (all members currently volunteering their time)', status: 'help' },
             ],
           },
           JP: {
             tagline: '新しい時代の教育を地域とともに作り出す。',
-            story: '長崎県立北高校から探究授業の支援依頼を受け、地域の民間プロフェッショナル7名からなる有志の専門家チーム「ポラリスQ」を結成。2025年入学の新1年生に対して、3年間の探究プログラムの設計と授業への伴走を一貫して担っている。\n\n教員↔生徒、学校↔民間、教える側↔教えられる側という従来の関係を超えた、民学連携PBLの新しい形をめざしている。\n\nメンバーは、竹下スティーブ（フリーランス）、林田光弘（Peace Education Lab Nagasaki 代表理事）、山野里紗（長崎北高OG／福岡女子大学）、石丸徹郎（ISIALグループ代表）、森恭佑（株式会社つくるのわデザイン）、芳野裕美（FM長崎メインパーソナリティ）、小岱海（教宗寺僧侶）と私の計8名。多彩な専門性を持つ仲間とともに、次世代のスタンダードとなる探究プログラムの実現をめざしている。',
+            story: '長崎県立北高校から探究授業の支援依頼を受け、地域の民間プロフェッショナルからなる有志の専門家チーム「ポラリスQ」を結成。2025年入学の新1年生に対して、3年間の探究プログラムの設計と授業への伴走を一貫して担っている。\n\n教員↔生徒、学校↔民間、教える側↔教えられる側という従来の関係を超えた、民学連携PBLの新しい形をめざしている。\n\nメンバーは、竹下スティーブ（フリーランス）、林田光弘（Peace Education Lab Nagasaki 代表理事）、山野里紗（長崎北高OG／福岡女子大学）、石丸徹郎（ISIALグループ代表）、森恭佑（株式会社つくるのわデザイン）、芳野裕美（FM長崎メインパーソナリティ）、小岱海（教宗寺僧侶）、田口未侑（長崎北高OG／大学生）と私。多彩な専門性を持つ仲間とともに、次世代のスタンダードとなる探究プログラムの実現をめざしている。',
             outcomes: [
               { text: '長崎北高1年生の探究学習支援を開始', year: '2025', status: 'done' },
               { text: '前半：「推しバトルロワイヤル」「50の好きな動詞」「大学学部探究」を実施', year: '2025', status: 'done' },
               { text: '後半：「エンパワ探究」を実施', year: '2025', status: 'done' },
-              { text: '2年時の探究プログラムの確定と実施', year: '2026', status: 'next' },
+              { text: '2年生の学年全体・12ゼミ体制で、毎週の探究授業に伴走中', year: '2026', status: 'done' },
               { text: '助成金などの調査と申込み', year: '2026', status: 'next' },
               { text: '助成金情報などの共有（現状参加メンバーが無償での協力のため）', status: 'help' },
             ],
@@ -251,7 +288,7 @@ export const CONTENT = {
             outcomes: [
               { text: '1st Goccco @ Higashisonogi held', year: '2025', status: 'done' },
               { text: '2nd Goccco @ Sasebo held', year: '2025', status: 'done' },
-              { text: '3rd Goccco @ Karatsu in preparation (with InnoDrops)', year: '2026', status: 'next' },
+              { text: '3rd Goccco @ Karatsu held', year: '2026', status: 'done' },
               { text: 'Expand frequency and scale of Goccco events', year: '2026', status: 'next' },
               { text: 'Build a Goccco community', year: '2026', status: 'next' },
               { text: 'Know a kid full of energy? Send them our way', status: 'help' },
@@ -263,7 +300,7 @@ export const CONTENT = {
             outcomes: [
               { text: '第1回Goccco＠東彼杵　開催', year: '2025', status: 'done' },
               { text: '第2回Goccco＠佐世保　開催', year: '2025', status: 'done' },
-              { text: '第3回Goccco＠唐津を準備中（InnoDropsと連携）', year: '2026', status: 'next' },
+              { text: '第3回Goccco＠唐津　開催', year: '2026', status: 'done' },
               { text: 'Gocccoの開催頻度と規模を拡大する', year: '2026', status: 'next' },
               { text: 'Gocccoコミュニティーを作る', year: '2026', status: 'next' },
               { text: 'とにかく元気な子どもの紹介', status: 'help' },
@@ -323,7 +360,7 @@ export const CONTENT = {
         slug: 'ai-study',
         tag: { EN: 'AI Learning', JP: 'AI学習' },
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
-        title: { EN: 'AI Staff Training Program', JP: 'AI社員育成計画' },
+        title: { EN: 'Agentic AI Study Group', JP: 'エージェントAI勉強会' },
         desc: {
           EN: 'A monthly program learning agent AI together with local business owners and students. Teaching each other tools like Claude Code, we work toward building regional strength that won\'t be swept away by the pace of tech change.',
           JP: '地域の経営者・学生と共にエージェントAIを学ぶ月例プログラム。Claude CodeやClaw系ツールなどを互いに教え合いながら習得を目指す。技術の進歩に流されない地域本来の強さを模索していく。',
@@ -334,8 +371,10 @@ export const CONTENT = {
             story: 'What began years ago as an informal, irregularly-held programming study group with local business owners and students — focused on practical social implementation — has evolved into a monthly program. Starting this April, participants now meet regularly to learn and teach each other tools like Claude Code and Claw-based platforms, catching up with agent AI that has entered its practical phase.\n\nRegional cities have always been prone to falling behind in technology and information. But in this age of AI, a lag of even one or two years could prove critically damaging for local businesses and students. To prevent that — to keep the community from sinking — we urgently need to grow a circle of people who learn the latest AI together and spread that knowledge outward.',
             outcomes: [
               { text: 'Weekly "Prototype Study Group" held, mainly with university students', year: '2023', status: 'done' },
-              { text: 'Regular sessions from April — starting with Claude Code', year: '2026', status: 'next' },
-              { text: 'From summer: parallel study of Claw-based tools and local LLMs', year: '2026', status: 'next' },
+              { text: 'Monthly sessions running since April — starting with Claude Code', year: '2026', status: 'done' },
+              { text: 'Claude Code meetup held — 36 participants (18 of them business owners) from 20+ industries sharing "my business × AI" use cases', year: '2026', status: 'done' },
+              { text: 'Mini hackathon held — 10 participants each built a working tool for their own job in 3 hours', year: '2026', status: 'done' },
+              { text: 'Parallel study of Claw-based tools and local LLMs', year: '2026', status: 'next' },
               { text: 'Looking for members to run satellite study groups as branch chapters', status: 'help' },
             ],
           },
@@ -344,14 +383,16 @@ export const CONTENT = {
             story: '数年前より地域の経営者や学生と共に、カジュアルな社会実装を目標に、不定期で開催していたプログラミング勉強会。今年4月からは、実用フェーズに入ったエージェントAIにキャッチアップするため、Claude CodeやClaw系ツールなどの最新ツールを相互に学び、教え合う毎月開催の新規プログラムを実施している。\n\n地方都市はもともと技術や情報のキャッチアップが遅れがちだが、このAI時代に、1〜2年の技術的な遅れが、地場の事業者やローカルの学生にとって致命的なダメージになる可能性がある。それを少しでも防ぎ、地域の沈没を防ぐために、ともに最新のAIを学び、周囲に拡散してくれる仲間を急ぎ増やす必要がある。',
             outcomes: [
               { text: '大学生を中心とした「プロトタイプ勉強会」を毎週開催', year: '2023', status: 'done' },
-              { text: '4月より定期開催。最初は「Claude Code」から', year: '2026', status: 'next' },
-              { text: '夏以降、Claw系ツールとローカルLLMの学習を並行で開始', year: '2026', status: 'next' },
+              { text: '4月より月例勉強会を定期開催。最初は「Claude Code」から', year: '2026', status: 'done' },
+              { text: 'Claude Code交流会を開催——20超の業種から36名（うち経営者18名）が「自分の商売×AI」の事例を持ち寄る', year: '2026', status: 'done' },
+              { text: 'ミニハッカソンを開催——10名が3時間で「自分の仕事の道具」をその場で制作', year: '2026', status: 'done' },
+              { text: 'Claw系ツールとローカルLLMの学習を並行で開始', year: '2026', status: 'next' },
               { text: '分室として勉強会を運営してくれるメンバーを複数募集', status: 'help' },
             ],
           },
         },
         imgSrc: '/images/resize/ai-study.jpg',
-        imgAlt: 'AI社員育成計画 — 地域の経営者・学生とAIを学ぶ月例プログラム',
+        imgAlt: 'エージェントAI勉強会 — 地域の経営者・学生とAIを学ぶ月例プログラム',
       },
       {
         archived: true,
@@ -414,7 +455,7 @@ export const CONTENT = {
             story: '2020年夏、大学の授業はまだほぼ閉鎖され、アルバイトも消えていた。孤立や心の不調を抱える学生の声が聞こえはじめ、食と居場所の両方が必要だと感じた。\n\n地域企業に寄付を募り、大学近くの飲食店で学生が無償で食べられるメニューを用意した。学生はふらっと立ち寄り、食事をとり、少しだけ孤独から解放された。期間中に合計約4,000食が提供された。\n\nこれはただの食事の提供ではなく、故郷を離れ、見知らぬ街で孤独に過ごす学生に「あなたを気にかけている大人たちがこの街にはいる」というメッセージを伝える意味もあった。そうした思いやりに共感する地域企業の輪が広がっていった——心温まるプロジェクトとなった。',
             outcomes: [
               { text: '地域企業の寄付によりプロジェクト始動', year: '2020', status: 'done' },
-              { text: '学生への無償提供　約4,000食', year: '2023', status: 'done' },
+              { text: '学生への無償提供　約4,000食', year: '2020', status: 'done' },
             ],
           },
         },
@@ -427,9 +468,9 @@ export const CONTENT = {
 
   about: {
     EN: {
-      role: 'Bank Employee / Local Planner',
-      bio: 'After beginning my career in documentary and video production at a major Tokyo production company, I relocated to Nagano, where I organized events and helped local businesses tell their stories from a coworking space. That experience gradually drew me into community-based work.\n\nIn 2019, I moved to Sasebo in Nagasaki Prefecture. I now serve as Deputy Director of the Community Development Division at Saikai Mizuki Shinkumi Bank and as a board member of Mortar, an educational nonprofit.\n\nMy work sits at the intersection of regional development, inquiry-based learning for schools, and support for local businesses. I collaborate with local governments, companies, educators, and grassroots communities to develop projects that strengthen the long-term vitality of regional ecosystems.',
-      summary: 'Community builder, planner & bank employee based in Sasebo. Board member of an educational nonprofit.',
+      role: 'Bank Employee / Local Planner / Claude Community Ambassador',
+      bio: 'After beginning my career in documentary and video production at a major Tokyo production company, I relocated to Nagano, where I organized events and helped local businesses tell their stories from a coworking space. That experience gradually drew me into community-based work.\n\nIn 2019, I moved to Sasebo in Nagasaki Prefecture. I now serve as Deputy Director of the Community Development Division at Saikai Mizuki Shinkumi Bank and as a board member of Mortar, an educational nonprofit.\n\nIn June 2026, I was appointed a Claude Community Ambassador for Anthropic. As a personal initiative, I plan and host community events across Nishi-Kyushu that bring generative AI into the hands of local people.\n\nMy work sits at the intersection of regional development, inquiry-based learning for schools, and support for local businesses. I collaborate with local governments, companies, educators, and grassroots communities to develop projects that strengthen the long-term vitality of regional ecosystems.',
+      summary: 'Community builder, planner & bank employee based in Sasebo. Board member of an educational nonprofit. Claude Community Ambassador (Anthropic).',
       viewProfile: 'View Profile →',
       skills: ['Social Project Planning & Implementation', 'Inquiry-Based Learning & PBL Curriculum Design', 'Youth Development Program Management', 'Facilitation', 'Community Mapping'],
       backLabel: '← Back',
@@ -439,9 +480,9 @@ export const CONTENT = {
       since: '2019',
     },
     JP: {
-      role: '金融機関職員 / ローカルプランナー',
-      bio: '東京の大手映像プロダクションでドキュメンタリーなどの映像制作に従事。その後長野県に移住し、現地のコワーキングスペースを拠点にイベント企画や地元企業のPR支援などをおこなう。以後、全国の地域と関わる仕事が増える。\n\n2019年、長崎県佐世保市に移住。西海みずき信用組合 地域振興室 副室長、共感結社モルタル（教育系の社団）の理事として、地域に根を下ろして活動している。\n\n地域振興・学校の探究学習支援・事業者支援の交差点に立ち、自治体・企業・学校・草の根コミュニティと連携しながら、地域のエコシステムに長期的な活力をもたらすプロジェクトを構築しています。',
-      summary: '佐世保を拠点とするコミュニティビルダー、プランナー、金融機関職員。教育系社団理事。',
+      role: '金融機関職員 / ローカルプランナー / Claude Community Ambassador',
+      bio: '東京の大手映像プロダクションでドキュメンタリーなどの映像制作に従事。その後長野県に移住し、現地のコワーキングスペースを拠点にイベント企画や地元企業のPR支援などをおこなう。以後、全国の地域と関わる仕事が増える。\n\n2019年、長崎県佐世保市に移住。西海みずき信用組合 地域振興室 副室長、共感結社モルタル（教育系の社団）の理事として、地域に根を下ろして活動している。\n\n2026年6月、AnthropicのClaude Community Ambassadorに就任。個人の活動として、生成AIを地域の人々の手に届けるコミュニティイベントを西九州で企画・開催している。\n\n地域振興・学校の探究学習支援・事業者支援の交差点に立ち、自治体・企業・学校・草の根コミュニティと連携しながら、地域のエコシステムに長期的な活力をもたらすプロジェクトを構築しています。',
+      summary: '佐世保を拠点とするコミュニティビルダー、プランナー、金融機関職員。教育系社団理事。Claude Community Ambassador（Anthropic）。',
       viewProfile: 'プロフィールを見る →',
       skills: ['ソーシャルプロジェクトの企画＆実装', '探究学習・PBLカリキュラムの設計', '若者育成プログラム運営', 'ファシリテーション', 'コミュニティマッピング'],
       backLabel: '← 戻る',
@@ -486,6 +527,7 @@ export const CONTENT = {
     },
     social: [
       { label: 'Mail', href: 'mailto:y-nishinobu@soitgoes.page?subject=ポートフォリオサイトからの連絡&body=西信様%0Aポートフォリオサイトを見て連絡をしました。%0A%0A', hoverBg: '#FF3131', hoverColor: '#FFFFFF' },
+      { label: 'X', href: 'https://x.com/y_nishinobu', hoverBg: '#000000', hoverColor: '#FFFFFF' },
       { label: 'Facebook', href: 'https://www.facebook.com/ynishinobu', hoverBg: '#2E5BFF', hoverColor: '#FFFFFF' },
       { label: 'Note.jp', href: 'https://note.com/yoshio333333', hoverBg: '#FFF133', hoverColor: '#000000' },
     ],

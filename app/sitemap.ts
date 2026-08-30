@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { CONTENT } from '@/lib/content';
 
 const siteUrl = 'https://y-nishinobu.soitgoes.page';
 
@@ -22,5 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    ...CONTENT.work.cards.map((card) => ({
+      url: `${siteUrl}/work/${card.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
   ];
 }

@@ -16,6 +16,7 @@ const LABELS = {
     allProjects: '← All Projects',
     startProject: 'Start Similar Project →',
     getInvolved: 'Support This Project →',
+    visitSite: 'Visit Official Site ↗',
   },
   JP: {
     back: '← 戻る',
@@ -24,6 +25,7 @@ const LABELS = {
     allProjects: '← プロジェクト一覧',
     startProject: '同様のプロジェクトを始める →',
     getInvolved: 'プロジェクトに協力する →',
+    visitSite: '公式サイトを見る ↗',
   },
 };
 
@@ -302,6 +304,29 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
               {para}
             </p>
           ))}
+          {'siteUrl' in card && card.siteUrl && (
+            <a
+              href={card.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                marginTop: '36px',
+                padding: '14px 28px',
+                backgroundColor: '#000000',
+                color: '#FFFFFF',
+                fontFamily: 'var(--font-space-mono)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.12em',
+                textDecoration: 'none',
+                border: '2px solid #000000',
+              }}
+            >
+              {L.visitSite}
+            </a>
+          )}
         </div>
 
         <div style={{ padding: isMobile ? '40px 24px' : '72px 52px', backgroundColor: '#F5F5F0' }}>
