@@ -324,7 +324,7 @@ export default function WorkDetailClient({ slug }: { slug: string }) {
                 border: '2px solid #000000',
               }}
             >
-              {L.visitSite}
+              {('siteLabel' in card && card.siteLabel) ? card.siteLabel[lang] : L.visitSite}
             </a>
           )}
         </div>

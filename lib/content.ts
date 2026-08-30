@@ -117,6 +117,8 @@ export const CONTENT = {
     cards: [
       {
         slug: 'ai-hackathon',
+        siteUrl: 'https://ambassador-report.vercel.app/hackathon-report-2026-08-22.html',
+        siteLabel: { EN: 'Read the Event Report ↗', JP: '開催レポートを見る ↗' },
         tag: { EN: 'AI Hackathon', JP: 'AIハッカソン' },
         year: { EN: '2026– / Sasebo, Saga', JP: '2026年〜　／　佐世保市、佐賀県' },
         title: { EN: 'Nishi-Kyushu AI Hackathon Series', JP: '西九州AIハッカソンシリーズ' },
@@ -358,35 +360,37 @@ export const CONTENT = {
       },
       {
         slug: 'ai-study',
+        siteUrl: 'https://ambassador-report.vercel.app/',
+        siteLabel: { EN: 'See Activity Reports ↗', JP: '活動レポートを見る ↗' },
         tag: { EN: 'AI Learning', JP: 'AI学習' },
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
         title: { EN: 'Agentic AI Study Group', JP: 'エージェントAI勉強会' },
         desc: {
-          EN: 'A monthly program learning agent AI together with local business owners and students. Teaching each other tools like Claude Code, we work toward building regional strength that won\'t be swept away by the pace of tech change.',
-          JP: '地域の経営者・学生と共にエージェントAIを学ぶ月例プログラム。Claude CodeやClaw系ツールなどを互いに教え合いながら習得を目指す。技術の進歩に流されない地域本来の強さを模索していく。',
+          EN: 'A monthly program learning agent AI together with local business owners and students. With Claude Code at the center, we teach each other the latest agentic AI tools. Together we work toward building regional strength that won\'t be swept away by the pace of tech change.',
+          JP: '地域の経営者・学生と共にエージェントAIを学ぶ月例プログラム。Claude CodeをメインにエージェントAIなどの最新ツールを互いに教え合いながら習得を目指す。技術の進歩に流されない地域本来の強さを模索していく。',
         },
         detail: {
           EN: {
             tagline: 'Learning AI together, one month at a time.',
-            story: 'What began years ago as an informal, irregularly-held programming study group with local business owners and students — focused on practical social implementation — has evolved into a monthly program. Starting this April, participants now meet regularly to learn and teach each other tools like Claude Code and Claw-based platforms, catching up with agent AI that has entered its practical phase.\n\nRegional cities have always been prone to falling behind in technology and information. But in this age of AI, a lag of even one or two years could prove critically damaging for local businesses and students. To prevent that — to keep the community from sinking — we urgently need to grow a circle of people who learn the latest AI together and spread that knowledge outward.',
+            story: 'What began years ago as an informal, irregularly-held programming study group with local business owners and students — focused on practical social implementation — has evolved into a monthly program. Starting this April, participants now meet regularly to learn and teach each other the latest agentic AI tools, with Claude Code at the center, catching up with agent AI that has entered its practical phase.\n\nRegional cities have always been prone to falling behind in technology and information. But in this age of AI, a lag of even one or two years could prove critically damaging for local businesses and students. To prevent that — to keep the community from sinking — we urgently need to grow a circle of people who learn the latest AI together and spread that knowledge outward.',
             outcomes: [
               { text: 'Weekly "Prototype Study Group" held, mainly with university students', year: '2023', status: 'done' },
               { text: 'Monthly sessions running since April — starting with Claude Code', year: '2026', status: 'done' },
               { text: 'Claude Code meetup held — 36 participants (18 of them business owners) from 20+ industries sharing "my business × AI" use cases', year: '2026', status: 'done' },
               { text: 'Mini hackathon held — 10 participants each built a working tool for their own job in 3 hours', year: '2026', status: 'done' },
-              { text: 'Parallel study of Claw-based tools and local LLMs', year: '2026', status: 'next' },
+              { text: 'Parallel study of local LLMs and surrounding technologies', year: '2026', status: 'next' },
               { text: 'Looking for members to run satellite study groups as branch chapters', status: 'help' },
             ],
           },
           JP: {
             tagline: '地域からAI実装の波を、仲間と共に起こす。',
-            story: '数年前より地域の経営者や学生と共に、カジュアルな社会実装を目標に、不定期で開催していたプログラミング勉強会。今年4月からは、実用フェーズに入ったエージェントAIにキャッチアップするため、Claude CodeやClaw系ツールなどの最新ツールを相互に学び、教え合う毎月開催の新規プログラムを実施している。\n\n地方都市はもともと技術や情報のキャッチアップが遅れがちだが、このAI時代に、1〜2年の技術的な遅れが、地場の事業者やローカルの学生にとって致命的なダメージになる可能性がある。それを少しでも防ぎ、地域の沈没を防ぐために、ともに最新のAIを学び、周囲に拡散してくれる仲間を急ぎ増やす必要がある。',
+            story: '数年前より地域の経営者や学生と共に、カジュアルな社会実装を目標に、不定期で開催していたプログラミング勉強会。今年4月からは、実用フェーズに入ったエージェントAIにキャッチアップするため、Claude CodeをメインにエージェントAIの最新ツールを相互に学び、教え合う毎月開催の新規プログラムを実施している。\n\n地方都市はもともと技術や情報のキャッチアップが遅れがちだが、このAI時代に、1〜2年の技術的な遅れが、地場の事業者やローカルの学生にとって致命的なダメージになる可能性がある。それを少しでも防ぎ、地域の沈没を防ぐために、ともに最新のAIを学び、周囲に拡散してくれる仲間を急ぎ増やす必要がある。',
             outcomes: [
               { text: '大学生を中心とした「プロトタイプ勉強会」を毎週開催', year: '2023', status: 'done' },
               { text: '4月より月例勉強会を定期開催。最初は「Claude Code」から', year: '2026', status: 'done' },
               { text: 'Claude Code交流会を開催——20超の業種から36名（うち経営者18名）が「自分の商売×AI」の事例を持ち寄る', year: '2026', status: 'done' },
               { text: 'ミニハッカソンを開催——10名が3時間で「自分の仕事の道具」をその場で制作', year: '2026', status: 'done' },
-              { text: 'Claw系ツールとローカルLLMの学習を並行で開始', year: '2026', status: 'next' },
+              { text: 'ローカルLLMなど周辺技術の学習を並行で開始', year: '2026', status: 'next' },
               { text: '分室として勉強会を運営してくれるメンバーを複数募集', status: 'help' },
             ],
           },

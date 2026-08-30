@@ -18,13 +18,13 @@
 2. トキメキ駆動型社会課題解決 — 予算・リソースが限られた地方都市での仲間づくりとソーシャルアクション
 
 ## Projects
-- 西九州AIハッカソンシリーズ（2026〜）：地域課題×生成AIのハッカソンをClaude Communityイベントとして企画・開催。第1回「SASEBO｜Claude for Our Kids」は観覧含め約80名が来場
+- 西九州AIハッカソンシリーズ（2026〜）：地域課題×生成AIのハッカソンをClaude Communityイベントとして企画・開催。第1回「SASEBO｜Claude for Our Kids」は観覧含め約80名が来場（レポート https://ambassador-report.vercel.app/hackathon-report-2026-08-22.html ）
 - のれんバンク（2023〜）：佐世保の閉店名飲食店アーカイブと文化保護（公式サイト https://noren-bank.com/ ）
 - on°C（オンド）（2024〜）：佐世保市内のコラボレーションスペース運営
 - 長崎北高探究支援チーム「ポラリスQ」（2025〜）：高校生の探究学習支援・PBL
 - Goccco（ゴッコ）（2025〜）：子どもが本物の商売を体験するキッズ小商いプロジェクト
 - マイプロジェクト長崎県SUMMIT（2023〜）：探究学習発表イベント
-- エージェントAI勉強会（2023〜）：地域の経営者・学生とエージェントAIを学ぶ月例勉強会
+- エージェントAI勉強会（2023〜）：地域の経営者・学生とエージェントAIを学ぶ月例勉強会（活動レポート https://ambassador-report.vercel.app/ ）
 
 ## Contact
 - Web: https://y-nishinobu.soitgoes.page
