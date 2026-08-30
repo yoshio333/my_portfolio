@@ -111,8 +111,8 @@ export const CONTENT = {
 
   work: {
     header: {
-      EN: { h2Line1: 'Recent', h2Line2: 'Initiatives', sub: "A look at the projects I'm actively working on. Browse the archive for past unique projects." },
-      JP: { h2Line1: '最近の', h2Line2: 'プロジェクト', sub: '現在私が取り組んでいるプロジェクトを紹介します。アーカイブからは過去のユニークなプロジェクトが見られます。' },
+      EN: { h2Line1: 'Recent', h2Line2: 'Initiatives', sub: "A look at the projects I'm actively working on. Browse the archive for past projects." },
+      JP: { h2Line1: '最近の', h2Line2: 'プロジェクト', sub: '現在私が取り組んでいるプロジェクトを紹介します。アーカイブからは過去のプロジェクトが見られます。' },
     },
     cards: [
       {
@@ -123,13 +123,13 @@ export const CONTENT = {
         year: { EN: '2026– / Sasebo, Saga', JP: '2026年〜　／　佐世保市、佐賀県' },
         title: { EN: 'Nishi-Kyushu AI Hackathon Series', JP: '西九州AIハッカソンシリーズ' },
         desc: {
-          EN: 'As a Claude Community Ambassador for Anthropic, I plan and host AI hackathons on local issues across the region as Claude Community events. At the first edition in Sasebo, the town\'s most committed adults took on youth outflow with AI.',
-          JP: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンをClaude Communityイベントとして各地で企画・開催。第1回は佐世保で、街の本気の大人たちが若者流出問題にAIで挑んだ。',
+          EN: 'As a Claude Community Ambassador for Anthropic, I plan and host AI hackathons on local issues across Nishi-Kyushu. At the first edition in Sasebo, the town\'s most committed adults took on youth outflow with AI.',
+          JP: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンを西九州各地で企画・開催。第1回は佐世保で開催、街の本気の大人たちが若者流出問題にAIで挑んだ。',
         },
         detail: {
           EN: {
             tagline: 'The town\'s committed adults, taking on local issues with AI.',
-            story: 'As a Claude Community Ambassador for Anthropic, I plan and host a series of AI hackathons across Nishi-Kyushu, held as Claude Community events where participants receive API credits from Anthropic and build with Claude Code.\n\nThe first edition, "SASEBO | Claude for Our Kids," took place on August 22, 2026, under the banner "Stop the youth outflow — a hackathon for the town\'s serious adults." Despite the bar to entry — 18 or older, hands-on experience with Claude Code or Cowork — around 80 people showed up including spectators. Six teams of 23 builders shipped working prototypes in a single day. Four media outlets (NHK, NBC, the Nagasaki Shimbun, and TV Sasebo) covered the event, and two members of Anthropic Japan joined us on site.\n\nAI implementation skills should not belong to big cities alone. This series is about growing a culture — starting from Nishi-Kyushu — where the adults of a region solve their own problems with their own hands.',
+            story: 'As a Claude Community Ambassador for Anthropic, I plan and host an ongoing series of AI hackathons on local issues across Nishi-Kyushu. These are held as Claude Community events: participants receive API credits from Anthropic and build prototypes with Claude Code to take on the challenges of their own region.\n\nThe first edition, "SASEBO | Claude for Our Kids," took place on August 22, 2026, under the banner "Stop the youth outflow — a hackathon for the town\'s serious adults." Despite the bar to entry — 18 or older, hands-on experience with Claude Code or Cowork — around 80 people showed up including spectators. Six teams of 23 builders shipped working prototypes in effectively half a day. Four media outlets (NHK, NBC, the Nagasaki Shimbun, and TV Sasebo) covered the event, and two members of Anthropic Japan joined us on site.\n\nThe advanced implementation power of agentic AI should not belong to big cities alone — we spread it locally and turn it into opportunity. And we grow a culture, starting from Nishi-Kyushu, where the adults of a region patch their own town\'s problems with their own hands.',
             outcomes: [
               { text: 'First edition "SASEBO | Claude for Our Kids" held — around 80 visitors including spectators', year: '2026', status: 'done' },
               { text: '6 teams, 23 builders shipped prototypes in a single day', year: '2026', status: 'done' },
@@ -140,7 +140,7 @@ export const CONTENT = {
           },
           JP: {
             tagline: '街の本気の大人が、AIで地域の課題に挑む。',
-            story: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンを西九州各地で企画・開催しているシリーズ。Claude Communityのイベントとして開催され、参加者にはAnthropicからAPIクレジットが提供され、Claude Codeを使って開発に挑む。\n\n第1回「SASEBO｜Claude for Our Kids」は2026年8月22日、「若者流出を防げ！街の本気の大人のハッカソン」を掲げて佐世保で開催。18歳以上・Claude CodeまたはCoworkの利用経験という参加条件にもかかわらず、観覧を含め約80名が来場した。6チーム23名がたった1日で動くプロトタイプを作り上げ、発表。NHK・NBC・長崎新聞・テレビ佐世保の4社が取材に入り、Anthropic Japanからも2名が駆けつけた。\n\nAIの実装力を、都市部だけのものにしない。地域の大人が自分たちの課題を自分たちの手で解く文化を、西九州から育てていく。',
+            story: 'AnthropicのClaude Community Ambassadorとして、地域課題×生成AIのハッカソンを西九州各地で企画・開催中。これらは、Claude Communityのイベントとして開催され、参加者にはAnthropicからAPIクレジットが提供され、Claude Codeを使ってプロトタイプを作り地域課題に挑む。\n\n第1回開催となった「SASEBO｜Claude for Our Kids」は2026年8月22日、「若者流出を防げ！街の本気の大人のハッカソン」を掲げて佐世保で開催。18歳以上・Claude CodeまたはCoworkの利用経験という参加条件にもかかわらず、観覧を含め約80名が来場した。6チーム23名が実質半日で動くプロトタイプを作り上げ、発表。NHK・NBC・長崎新聞・テレビ佐世保の4社が取材に入り、Anthropic Japanからも2名が駆けつけた。\n\nエージェントAIの高度な実装力を、都市部だけのものにせず、地方で広めチャンスへと変えていく。そして地域の大人が自分の街の課題を自分たちの手でパッチを当てていく文化を、西九州から育てていく。',
             outcomes: [
               { text: '第1回「SASEBO｜Claude for Our Kids」開催——観覧含め約80名が来場', year: '2026', status: 'done' },
               { text: '6チーム23名が、1日で動くプロトタイプを制作・発表', year: '2026', status: 'done' },
@@ -166,7 +166,7 @@ export const CONTENT = {
         detail: {
           EN: {
             tagline: "Preserving a town's flavors, for memory.",
-            story: "Every town has its beloved restaurants. When they close, it's not just the food that disappears — the stories, the memories, the very soul of the place vanish with them. Noren Bank captures it all in a ZINE: an interview with the owner, memories from loyal regulars, and the recipes that defined a time and place — preserving the soft culture of our streets for generations to come.\n\nImagine a young cook who wants to recreate the taste of a long-gone favorite. Or a storyteller looking to weave old flavors into new tourism. Or your grandfather, quietly wishing he could taste that dish just one more time.\n\nIf Noren Bank is there when those moments arrive, the memory of a place can be revived — and the hidden charm of a town can live again.",
+            story: "Every town has its beloved restaurants. When they close, it's not just the food that disappears — the stories, the memories, the very soul of the place vanish with them. Noren Bank captures it all in a ZINE: an interview with the owner, memories from loyal regulars, and the recipes that defined a time and place — while gathering new leads through a community-sourced website — preserving the soft culture of our streets for generations to come.\n\nImagine a young cook who wants to recreate the taste of a long-gone favorite. Or a storyteller looking to weave old flavors into new tourism. Or your grandfather, quietly wishing he could taste that dish just one more time.\n\nIf Noren Bank is there when those moments arrive, the memory of a place can be revived — and the hidden charm of a town can live again.",
             outcomes: [
               { text: 'Built a prototype of the Noren Bank app', year: '2023', status: 'done' },
               { text: "Project relaunched — first ZINE '天津包子館' produced and bound", year: '2025', status: 'done' },
@@ -179,7 +179,7 @@ export const CONTENT = {
           },
           JP: {
             tagline: 'まちの味の記憶を保存する。',
-            story: '街にある飲食の名店たち。その店が閉まるとき、料理だけでなく、その場に宿っていた物語も思い出も消えていきます。のれんバンクは、店主へのインタビュー・常連客の思い出・当時のレシピをZINEにまとめ、街の無形文化を後世へ手渡していきます。\n\nいつの日か、あの名店の味を再現したい若者が現れた時。あるいは、新しい観光コンテンツを作りたい若者が現れた時。あるいはもう一度思い出の味を食べたいと、あなたのおじいちゃんが嘆いた時。\n\nそんな時に、のれんバンクが機能していれば、街の記憶が蘇り、新しい街の魅力をもう一度生み出してくれるでしょう。',
+            story: '街にある飲食の名店たち。その店が閉まるとき、料理だけでなく、その場に宿っていた物語も思い出も消えていきます。のれんバンクは、店主へのインタビュー・常連客の思い出・当時のレシピをZINEにまとめ、市民参加型のサイトで情報を集め、街の無形文化を後世へ手渡していきます。\n\nいつの日か、あの名店の味を再現したい若者が現れた時。あるいは、新しい観光コンテンツを作りたい若者が現れた時。あるいはもう一度思い出の味を食べたいと、あなたのおじいちゃんが嘆いた時。\n\nそんな時に、のれんバンクが機能していれば、街の記憶が蘇り、新しい街の魅力をもう一度生み出してくれるでしょう。',
             outcomes: [
               { text: '「のれんバンク」アプリのプロトタイプ版を作成', year: '2023', status: 'done' },
               { text: 'プロジェクト再始動　第一弾ZINE「天津包子館」を制作・製本', year: '2025', status: 'done' },
@@ -318,13 +318,13 @@ export const CONTENT = {
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
         title: { EN: 'Nagasaki Maipro Summit', JP: 'マイプロジェクト長崎県Summit' },
         desc: {
-          EN: "Co-hosting Nagasaki's largest high school inquiry showcase with NPO Katariba. Now in its 4th year, the event has produced a Minister of Education Award winner — one of the leading events driving inquiry-based learning across Nagasaki.",
-          JP: 'カタリバと連携し、長崎県内最大の高校の探究学習発表会を主催。今年で4回目の開催。昨年度は文部科学大臣賞受賞プロジェクトも生まれ、長崎の探究学習を牽引するイベントの一つ。',
+          EN: "Co-hosting Nagasaki's largest high school inquiry showcase with NPO Katariba. Now heading into its 5th year, the event has produced a Minister of Education Award winner — one of the leading events driving inquiry-based learning across Nagasaki.",
+          JP: 'カタリバと連携し、長崎県内最大の高校の探究学習発表会を主催。今年度で5回目の開催。2025年には文部科学大臣賞受賞プロジェクトも生まれ、長崎の探究学習を牽引するイベントの一つ。',
         },
         detail: {
           EN: {
             tagline: 'The flagship of community-wide PBL.',
-            story: 'Partnering with Katariba, a leading education NPO, we host an annual showcase where Nagasaki high school students present and share their inquiry-based learning projects. Now in its fourth year, the event has helped fuel growing momentum for inquiry-based education across the prefecture — last year, one participating team went on to win the Minister of Education Award.\n\nEach year, we invite nearly 20 local professionals from diverse backgrounds to serve as mentors, offering feedback and dialogue on student presentations. In doing so, the event has also become a way of growing a broader community of inquiry supporters across the region.',
+            story: 'Partnering with Katariba, a leading education NPO, we host an annual showcase where Nagasaki high school students present and share their inquiry-based learning projects. Now heading into its fifth year, the event has helped fuel growing momentum for inquiry-based education across the prefecture — in 2025, one participating team went on to win the Minister of Education Award.\n\nEach year, we invite nearly 20 local professionals from diverse backgrounds to serve as mentors, offering feedback and dialogue on student presentations. In doing so, the event has also become a way of growing a broader community of inquiry supporters across the region.',
             outcomes: [
               { text: 'Summit 22 (Pre-event) held', year: '2023', status: 'done' },
               { text: 'Summit 23 / 22 teams, 64 participants', year: '2024', status: 'done' },
@@ -340,7 +340,7 @@ export const CONTENT = {
           },
           JP: {
             tagline: '街ぐるみのPBLのフラッグシップ。',
-            story: '大手教育系NPOカタリバと連携し、長崎の高校生の探究学習の発表と学びの大会を主催している。今年で4回目の開催となり、昨年度は文部科学大臣賞を受賞するプロジェクトが生まれるなど、長崎での探究学習の気運の高まりの一翼を担っている。\n\n毎年、様々な経験を持つ地域のプロフェッショナル20名近くに、社会人メンターとして発表へのフィードバックと対話をお願いしている。そのことが地域の探究支援者を増やすことにもつながっている。',
+            story: '大手教育系NPOカタリバと連携し、長崎の高校生の探究学習の発表と学びの大会を主催している。今年度で５回目の開催となり、2025年には文部科学大臣賞を受賞するプロジェクトが生まれるなど、長崎での探究学習の気運の高まりの一翼を担っている。\n\n毎年、様々な経験を持つ地域のプロフェッショナル20名近くに、社会人メンターとして発表へのフィードバックと対話をお願いしている。そのことが地域の探究支援者を増やすことにもつながっている。',
             outcomes: [
               { text: '長崎県Summit 22（プレ大会）開催', year: '2023', status: 'done' },
               { text: '長崎県Summit 23 / 22チーム・64名参加', year: '2024', status: 'done' },
@@ -350,7 +350,7 @@ export const CONTENT = {
               { text: '26年度大会の準備', year: '2026', status: 'next' },
               { text: '探究初期段階の支援機会の強化', year: '2026', status: 'next' },
               { text: '運営体制の強化', year: '2026', status: 'next' },
-              { text: '運営を支援してくれる探究経験者、マイプロOBの紹介', status: 'help' },
+              { text: '運営を支援してくれる探究経験者、マイプロOB・OGの紹介', status: 'help' },
               { text: '事務局メンバーとして協働してくれるメンバーの紹介', status: 'help' },
             ],
           },
@@ -360,7 +360,7 @@ export const CONTENT = {
       },
       {
         slug: 'ai-study',
-        siteUrl: 'https://ambassador-report.vercel.app/',
+        siteUrl: 'https://ambassador-report.vercel.app/events.html',
         siteLabel: { EN: 'See Activity Reports ↗', JP: '活動レポートを見る ↗' },
         tag: { EN: 'AI Learning', JP: 'AI学習' },
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
