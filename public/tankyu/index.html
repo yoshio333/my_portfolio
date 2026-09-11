@@ -155,8 +155,9 @@
   .work:last-of-type { border-bottom: none; }
   .work:has(+ .year-band) { border-bottom: none; padding-bottom: 4px; }
   .work-head {
-    display: grid; grid-template-columns: 7.4rem 1fr auto; align-items: baseline;
-    gap: 0 16px; margin-bottom: 4px;
+    display: grid; grid-template-columns: 5.8rem 1fr auto; align-items: baseline;
+    gap: 0 18px; margin-bottom: 16px; padding-bottom: 9px;
+    border-bottom: 1px solid var(--hairline);
   }
   .work-head .d {
     font-size: 1.55rem; line-height: 1.05;
@@ -169,7 +170,7 @@
   .work-head h3 { font-size: 1.3rem; font-weight: 800; line-height: 1.45; }
   .work-head .d:not(:has(small)) { padding-top: 0; }
   .work-head .by { font-size: .9rem; color: var(--ink-2); text-align: right; white-space: nowrap; }
-  .work-lead { font-size: 1.05rem; font-weight: 600; margin: 8px 0 16px; max-width: 46em; }
+  .work-lead { font-size: 1.05rem; font-weight: 600; margin: 0 0 16px; max-width: 46em; }
 
   .plates { display: grid; gap: 14px; margin: 4px 0 14px; }
   .plates.c1 { grid-template-columns: minmax(0, 560px); }
