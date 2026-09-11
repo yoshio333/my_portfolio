@@ -173,6 +173,18 @@
   figure.video video { width: 100%; display: block; border: 1px solid var(--hairline); background: #000; }
   figure.video figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 6px; line-height: 1.6; }
 
+  .year-band {
+    border-top: 6px solid var(--rule); margin: 64px 0 6px; padding-top: 14px;
+    display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+  }
+  .year-band .y {
+    font-family: "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; line-height: .9; letter-spacing: 0;
+  }
+  .year-band h3 { font-size: 1.32rem; font-weight: 800; letter-spacing: .02em; line-height: 1.4; }
+  .year-band .note { margin-left: auto; font-size: .85rem; letter-spacing: .08em; color: var(--ink-2); }
+  .year-band + .points-inline, .year-band + .work-lead { margin-top: 14px; }
+
   .stats {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 18px;
     border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule);
@@ -336,10 +348,10 @@
     <p class="points-inline">高校の「総合的な探究の時間」は、年間を通した授業です。<b>その年間プログラムの設計から、毎回の教材づくり、当日の進行までを、学校の外にいる社会人チームを中心に行われている</b>——というのが、この事例のいちばん特殊なところだと思います。以下は、2年分の中身をそのまま並べたものです。</p>
     <p class="points-inline">2024年秋、長崎県のポータルサイトに当組合が載せた「民間連携を求める学校向けの探究支援」の案内に、長崎北高の先生が応募してくれたのが始まりでした。「探究学習が必修になってからの3年を振り返り、来年の新1年生から始まるプログラムを刷新したい」。声をかけて集まった社会人8名で支援チームをつくり、<b>Polaris-Q</b> と名づけました。北極星（長崎北高のスローガン）と Question（問い）です。</p>
   <div class="work" id="w-hours">
-    <div class="work-head"><span class="d">実測</span><h3>一校の支援に、どれだけ向き合っているか</h3><span class="by">2024年7月〜2026年9月</span></div>
+    <div class="work-head"><span class="d">実測</span><h3>一校の支援に、どれだけ本気で向き合っているか</h3><span class="by">2024年7月〜2026年9月</span></div>
     <div class="stats">
       <div><span class="n">13</span><span class="u">回</span><span class="l">学校に行って授業・講評をした日</span></div>
-      <div><span class="n">23</span><span class="u">時間15分</span><span class="l">その現場に立った時間</span></div>
+      <div><span class="n">23</span><span class="u">時間15分</span><span class="l">その教室に入った時間</span></div>
       <div><span class="n">26</span><span class="u">回</span><span class="l">先生とメンターの事前打ち合わせ</span></div>
       <div><span class="n">55</span><span class="u">時間30分</span><span class="l">打ち合わせに使った時間</span></div>
     </div>
@@ -385,10 +397,8 @@
 </table></div>
     </div></details>
   </div>
-  <div class="work" id="y1">
-    <div class="work-head"><span class="d">2025年度</span><h3>1年生：自分の好きを知るところから</h3></div>
-    <p class="work-lead">1年目は「自分の好きを知る」から始めて「社会とつなぐ」へ、最後に「チームで実践する」へ進む3段構成にしました。キーワードは<b>エンパワーメント</b>——内面的な抑圧から解放し、生徒一人ひとりの本来の力を引き出すこと。いきなり社会課題には向かわせません。</p>
-  </div>
+  <div class="year-band"><span class="y">2025年度</span><h3>1年生：自分の好きを知るところから</h3><span class="note">1学年 約240名・通年</span></div>
+    <p class="points-inline">1年目は「自分の好きを知る」から始めて「社会とつなぐ」へ、最後に「チームで実践する」へ進む3段構成にしました。キーワードは<b>エンパワーメント</b>——内面的な抑圧から解放し、生徒一人ひとりの本来の力を引き出すこと。いきなり社会課題には向かわせません。</p>
   <div class="work" id="w-orien">
     <div class="work-head"><span class="d">1学年 4月</span><h3>オリエンテーション：なぜ探究をやるのか</h3><span class="by">1年生向け・30ページ</span></div>
     <p class="work-lead">最初に生徒へ渡したのは、ワークではなく「時代の話」でした。今は存在しない仕事のクイズから入り、AIによる技術的失業、そこで必要になる非認知能力、3年間のプログラムの流れへとつなぎます。</p>
@@ -439,10 +449,8 @@
     <p class="work-lead">あえて対象を学内に限定し、友人の悩み解決や夢の実現にチームで挑みます。1年目からいきなり地域課題に向かわせると、自分との距離が遠すぎて手が止まる生徒が増える。まずは身近な人を一人エンパワーする経験を通す、という狙いです。</p>
     <p class="points-inline">やってみて分かったのは、<b>チームで何かを作るところまでは行っても、振り返って次につなげるところまで届きにくい</b>ということでした。ここが2年目の大きな宿題になります。</p>
   </div>
-  <div class="work" id="y2">
-    <div class="work-head"><span class="d">2026年度</span><h3>2年生：12のゼミに分かれて、外に出る</h3><span class="by">毎週木曜50分</span></div>
-    <p class="work-lead">毎週木曜の50分。1学期はクラス単位で探究本番に向けた土台をつくり、2学期からテーマ別の12ゼミへ移りました。</p>
-  </div>
+  <div class="year-band"><span class="y">2026年度</span><h3>2年生：12のゼミに分かれて、外に出る</h3><span class="note">毎週木曜50分・12ゼミ</span></div>
+    <p class="points-inline">毎週木曜の50分。1学期はクラス単位で探究本番に向けた土台をつくり、2学期からテーマ別の12ゼミへ移りました。</p>
   <div class="work" id="w-fb">
     <div class="work-head"><span class="d">2学年 4月</span><h3>探究事例フィードバック演習</h3><span class="by">4/30・1・2年合同／約480名・体育館</span></div>
     <p class="work-lead">2年生の最初の授業では、探究の全国大会の優秀チームの発表動画3本を見て、探究のイメージを掴んでもらいます。その後、班でフィードバックし合う60分を用意。感想を言わせるのではなく、盗める部分を言語化させます。</p>
