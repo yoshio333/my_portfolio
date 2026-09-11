@@ -311,7 +311,8 @@
   }
   @media (max-width: 520px) {
     .wrap { padding: 40px 16px 72px; }
-    .hero-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    /* スマホは4列のコンタクトシート（1点を読ませる場ではなく量を見せる場。タップで拡大） */
+    .hero-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
     .hero-grid figure.wide { grid-column: span 2; }
     .plates.c2, .plates.c3 { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; }
