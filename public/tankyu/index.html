@@ -173,6 +173,20 @@
   figure.video video { width: 100%; display: block; border: 1px solid var(--hairline); background: #000; }
   figure.video figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 6px; line-height: 1.6; }
 
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 18px;
+    border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule);
+    padding: 20px 0 18px; margin: 22px 0 18px;
+  }
+  .stats > div { display: flex; flex-direction: column; }
+  .stats .n {
+    font-family: "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 700; line-height: .95; letter-spacing: -.01em;
+  }
+  .stats .u { font-size: 1rem; font-weight: 700; margin-top: 2px; }
+  .stats .l { font-size: .88rem; color: var(--ink-2); margin-top: 6px; line-height: 1.5; }
+  td small, th small { font-size: .85em; color: var(--ink-2); }
+
   .points-inline { font-size: .98rem; line-height: 1.9; max-width: 52em; }
   .points-inline b { font-weight: 700; }
   .section > .points-inline, .section > .work-lead { max-width: 52em; }
@@ -234,6 +248,7 @@
     .hero-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .hero-grid figure.wide { grid-column: span 2; }
     .plates.c2, .plates.c3 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; }
     .work-head .by { margin-left: 0; width: 100%; }
     .fs-switch { top: 8px; right: 8px; }
   }
@@ -322,53 +337,56 @@
     <p class="points-inline">2024年秋、長崎県のポータルサイトに当組合が載せた「民間連携を求める学校向けの探究支援」の案内に、長崎北高の先生が応募してくれたのが始まりでした。「探究学習が必修になってからの3年を振り返り、来年の新1年生から始まるプログラムを刷新したい」。声をかけて集まった社会人8名で支援チームをつくり、<b>Polaris-Q</b> と名づけました。北極星（長崎北高のスローガン）と Question（問い）です。</p>
   <div class="work" id="w-hours">
     <div class="work-head"><span class="d">実測</span><h3>一校の支援に、どれだけ向き合っているか</h3><span class="by">2024年7月〜2026年9月</span></div>
-    <p class="work-lead">ほぼ月1回のペースで学校で授業を行うスタイルが、2年以上続いています。</p>
-    <div class="scroll">
-    <table>
-      <tr><th>日付</th><th>内容</th><th>時間</th><th>入ったメンター</th></tr>
-      <tr><td>2024.07.11</td><td>探究発表会の講評</td><td>2時間30分</td><td>3名</td></tr>
-      <tr><td>2024.10.31</td><td>1年生 探究発表の講評</td><td>1時間00分</td><td>3名</td></tr>
-      <tr><td><b>2025.04.30</b></td><td><b>1年生プログラム開始。</b>メンター自己紹介プレゼン＋推しバトルロワイヤル（3コマ連結）。<b>授業後に先生方向けの「50の動詞」レクチャーも実施</b></td><td><b>3時間15分</b></td><td><b>6名</b></td></tr>
-      <tr><td>2025.06.18</td><td>50の動詞ワークの深掘り／大学学部探究のオリエンとリサーチ実演（2コマ）。<b>別室で教員向け説明会を並行、放課後に動画教材を撮影</b></td><td>2時間00分</td><td>5名</td></tr>
-      <tr><td>2025.09.10</td><td>大学学部探究の発表会（クラス内発表 → 代表が学年発表）。放課後に生徒の相談タイム</td><td>2時間15分</td><td><b>6名</b></td></tr>
-      <tr><td>2025.10.08</td><td>エンパワ探究のオリエン（体育館）。50の動詞のアップデート＋エンパワ探究の説明。<b>授業後にメンターで振り返り会</b></td><td>2時間10分</td><td>4名〜</td></tr>
-      <tr><td>2026.02.04</td><td>クラス内発表会（各班5分・発表4分＋メンターのフィードバック1分、代表1班を選出）</td><td>1時間10分</td><td><b>6名＋ゲスト</b></td></tr>
-      <tr><td>2026.02.26</td><td><b>1年間の最終発表会</b>（体育館・代表7チーム・採点と表彰）</td><td>1時間55分</td><td>7名</td></tr>
-      <tr><td><b>2026.04.30</b></td><td><b>2年生プログラム開始。</b>1・2年合同オリエン（3コマ連結・体育館）</td><td><b>2時間45分</b></td><td><b>6名</b>（欠席者はビデオレター）</td></tr>
-      <tr><td>2026.05.14</td><td>ファシリテーション講座</td><td>50分</td><td>竹下スティーブ</td></tr>
-      <tr><td>2026.05.21</td><td>社会課題のブレイクダウン（ロジックツリー）</td><td>50分</td><td>森恭佑</td></tr>
-      <tr><td>2026.05.28</td><td>ミリしらチャレンジ（AIリサーチ）</td><td>45分</td><td>西信好真</td></tr>
-      <tr><td>2026.07.09</td><td>メンター壁打ち会（1ゼミ1教室をメンターが巡回・先生とペアで対応）</td><td>1時間50分</td><td>3名</td></tr>
-    </table>
+    <div class="stats">
+      <div><span class="n">13</span><span class="u">回</span><span class="l">学校に行って授業・講評をした日</span></div>
+      <div><span class="n">23</span><span class="u">時間15分</span><span class="l">その現場に立った時間</span></div>
+      <div><span class="n">26</span><span class="u">回</span><span class="l">先生とメンターの事前打ち合わせ</span></div>
+      <div><span class="n">55</span><span class="u">時間30分</span><span class="l">打ち合わせに使った時間</span></div>
     </div>
-    <p class="points-inline"><b>学校に行った日 13回・23時間15分。</b></p>
-    <p class="points-inline">次に、メンターと教員の事前打ち合わせです。</p>
-    <div class="scroll">
-    <table>
-      <tr><th>日付</th><th>開始時刻</th><th></th><th>日付</th><th>開始時刻</th></tr>
-      <tr><td>2025.02.07（金）</td><td>21:00</td><td></td><td>2025.12.04（木）</td><td>20:00</td></tr>
-      <tr><td>2025.02.20（木）</td><td>21:00</td><td></td><td>2026.02.02（月）</td><td>19:00</td></tr>
-      <tr><td>2025.03.06（木）</td><td>21:00</td><td></td><td>2026.02.23（月）</td><td>19:00</td></tr>
-      <tr><td>2025.03.13（木）</td><td>21:00</td><td></td><td>2026.04.01（水）</td><td>20:00</td></tr>
-      <tr><td>2025.03.25（火）</td><td>14:00</td><td></td><td>2026.04.07（火）</td><td>20:00</td></tr>
-      <tr><td>2025.04.09（水）</td><td>21:00</td><td></td><td><b>2026.04.19（日）</b></td><td><b>13:00（対面・5時間30分）</b></td></tr>
-      <tr><td>2025.04.24（木）</td><td>21:00</td><td></td><td>2026.04.29（水）</td><td>20:00</td></tr>
-      <tr><td>2025.05.26（木）</td><td>21:00</td><td></td><td>2026.07.01（水）</td><td>20:00</td></tr>
-      <tr><td>2025.06.05（木）</td><td>20:55</td><td></td><td>2026.08.07（金）</td><td>20:00</td></tr>
-      <tr><td>2025.06.16（月）</td><td>21:00</td><td></td><td>2026.09.08（火）</td><td>20:00</td></tr>
-      <tr><td>2025.08.26（火）</td><td>21:00</td><td></td><td></td><td></td></tr>
-      <tr><td>2025.09.08（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
-      <tr><td>2025.09.23（火）</td><td>20:54</td><td></td><td></td><td></td></tr>
-      <tr><td>2025.09.29（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
-      <tr><td>2025.10.06（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
-      <tr><td>2025.10.13（月）</td><td>19:00</td><td></td><td></td><td></td></tr>
-    </table>
-    </div>
-    <p class="points-inline"><b>打ち合わせ 26回。1回およそ2時間、休日の対面が1回5時間30分。合わせて55時間30分。</b></p>
-    <p class="points-inline"><b>学校に行った27時間の裏に、先生と社会人メンターで55時間の打ち合わせを実施しました。その他に、教材となる</b>ワークシート、先生用の進行メモ、指導案、投影資料、動画などの作成時間がプラスされます。</p>
+    <p class="points-inline">ほぼ月1回のペースで学校に入るスタイルが、2年以上続いています。打ち合わせは1回およそ2時間、休日の対面が1回5時間30分。<b>開始時刻は21時が13回</b>——全員が本業を終えてから集まる時間です。</p>
+    <p class="points-inline"><b>学校に立った23時間の裏に、55時間の打ち合わせがあります。</b>そして<b>この数字に、教材をつくっている時間は1分も入っていません。</b>ワークシート、先生用の進行メモ、指導案、投影資料、動画。110点の制作時間も、学校までの移動時間も別です。</p>
+    <details><summary>学校に行った日 13回：日付と中身</summary><div class="body">
+<div class="scroll"><table>
+<tr><th>日付</th><th>内容</th><th>時間</th><th>入ったメンター</th></tr>
+<tr><td>2024.07.11</td><td>探究発表会の講評</td><td>2時間30分</td><td>3名</td></tr>
+<tr><td>2024.10.31</td><td>1年生 探究発表の講評</td><td>1時間00分</td><td>3名</td></tr>
+<tr><td><b>2025.04.30</b></td><td><b>1年生プログラム開始。</b>メンター自己紹介プレゼン＋推しバトルロワイヤル（3コマ連結）。<b>授業後に先生方向けの「50の動詞」レクチャーも実施</b></td><td><b>3時間15分</b></td><td><b>6名</b></td></tr>
+<tr><td>2025.06.18</td><td>50の動詞ワークの深掘り／大学学部探究のオリエンとリサーチ実演（2コマ）。<b>別室で教員向け説明会を並行、放課後に動画教材を撮影</b></td><td>2時間00分</td><td>5名</td></tr>
+<tr><td>2025.09.10</td><td>大学学部探究の発表会（クラス内発表 → 代表が学年発表）。放課後に生徒の相談タイム</td><td>2時間15分</td><td><b>6名</b></td></tr>
+<tr><td>2025.10.08</td><td>エンパワ探究のオリエン（体育館）。50の動詞のアップデート＋エンパワ探究の説明。<b>授業後にメンターで振り返り会</b></td><td>2時間10分</td><td>4名〜</td></tr>
+<tr><td>2026.02.04</td><td>クラス内発表会（各班5分・発表4分＋メンターのフィードバック1分、代表1班を選出）</td><td>1時間10分</td><td><b>6名＋ゲスト</b></td></tr>
+<tr><td>2026.02.26</td><td><b>1年間の最終発表会</b>（体育館・代表7チーム・採点と表彰）</td><td>1時間55分</td><td>7名</td></tr>
+<tr><td><b>2026.04.30</b></td><td><b>2年生プログラム開始。</b>1・2年合同オリエン（3コマ連結・体育館）</td><td><b>2時間45分</b></td><td><b>6名</b>（欠席者はビデオレター）</td></tr>
+<tr><td>2026.05.14</td><td>ファシリテーション講座</td><td>50分</td><td>竹下スティーブ</td></tr>
+<tr><td>2026.05.21</td><td>社会課題のブレイクダウン（ロジックツリー）</td><td>50分</td><td>森恭佑</td></tr>
+<tr><td>2026.05.28</td><td>ミリしらチャレンジ（AIリサーチ）</td><td>45分</td><td>西信好真</td></tr>
+<tr><td>2026.07.09</td><td>メンター壁打ち会（1ゼミ1教室をメンターが巡回・先生とペアで対応）</td><td>1時間50分</td><td>3名</td></tr>
+</table></div>
+    </div></details>
+    <details><summary>事前打ち合わせ 26回：日付と開始時刻</summary><div class="body">
+<div class="scroll"><table>
+<tr><th>日付</th><th>開始時刻</th><th></th><th>日付</th><th>開始時刻</th></tr>
+<tr><td>2025.02.07（金）</td><td>21:00</td><td></td><td>2025.12.04（木）</td><td>20:00</td></tr>
+<tr><td>2025.02.20（木）</td><td>21:00</td><td></td><td>2026.02.02（月）</td><td>19:00</td></tr>
+<tr><td>2025.03.06（木）</td><td>21:00</td><td></td><td>2026.02.23（月）</td><td>19:00</td></tr>
+<tr><td>2025.03.13（木）</td><td>21:00</td><td></td><td>2026.04.01（水）</td><td>20:00</td></tr>
+<tr><td>2025.03.25（火）</td><td>14:00</td><td></td><td>2026.04.07（火）</td><td>20:00</td></tr>
+<tr><td>2025.04.09（水）</td><td>21:00</td><td></td><td><b>2026.04.19（日）</b></td><td><b>13:00（対面・5時間30分）</b></td></tr>
+<tr><td>2025.04.24（木）</td><td>21:00</td><td></td><td>2026.04.29（水）</td><td>20:00</td></tr>
+<tr><td>2025.05.26（木）</td><td>21:00</td><td></td><td>2026.07.01（水）</td><td>20:00</td></tr>
+<tr><td>2025.06.05（木）</td><td>20:55</td><td></td><td>2026.08.07（金）</td><td>20:00</td></tr>
+<tr><td>2025.06.16（月）</td><td>21:00</td><td></td><td>2026.09.08（火）</td><td>20:00</td></tr>
+<tr><td>2025.08.26（火）</td><td>21:00</td><td></td><td></td><td></td></tr>
+<tr><td>2025.09.08（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
+<tr><td>2025.09.23（火）</td><td>20:54</td><td></td><td></td><td></td></tr>
+<tr><td>2025.09.29（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
+<tr><td>2025.10.06（月）</td><td>21:00</td><td></td><td></td><td></td></tr>
+<tr><td>2025.10.13（月）</td><td>19:00</td><td></td><td></td><td></td></tr>
+</table></div>
+    </div></details>
   </div>
   <div class="work" id="y1">
-    <div class="work-head"><span class="d">2025年度</span><h3>2025年度・1年生：自分の好きを知るところから</h3></div>
+    <div class="work-head"><span class="d">2025年度</span><h3>1年生：自分の好きを知るところから</h3></div>
     <p class="work-lead">1年目は「自分の好きを知る」から始めて「社会とつなぐ」へ、最後に「チームで実践する」へ進む3段構成にしました。キーワードは<b>エンパワーメント</b>——内面的な抑圧から解放し、生徒一人ひとりの本来の力を引き出すこと。いきなり社会課題には向かわせません。</p>
   </div>
   <div class="work" id="w-orien">
@@ -422,7 +440,7 @@
     <p class="points-inline">やってみて分かったのは、<b>チームで何かを作るところまでは行っても、振り返って次につなげるところまで届きにくい</b>ということでした。ここが2年目の大きな宿題になります。</p>
   </div>
   <div class="work" id="y2">
-    <div class="work-head"><span class="d">2026年度</span><h3>2026年度・2年生：12のゼミに分かれて、外に出る</h3><span class="by">毎週木曜50分</span></div>
+    <div class="work-head"><span class="d">2026年度</span><h3>2年生：12のゼミに分かれて、外に出る</h3><span class="by">毎週木曜50分</span></div>
     <p class="work-lead">毎週木曜の50分。1学期はクラス単位で探究本番に向けた土台をつくり、2学期からテーマ別の12ゼミへ移りました。</p>
   </div>
   <div class="work" id="w-fb">
