@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 末尾スラッシュ付きURL（/tankyu/）を維持する。
+  // false だと /tankyu/ → /tankyu に飛ばされ、public 配下の静的ページが
+  // 相対パスで参照している画像が 1つ上の階層に解決されて全滅する。
+  trailingSlash: true,
   images: {
     remotePatterns: [
       {

@@ -12,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteUrl}/about`,
+      url: `${siteUrl}/about/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/work`,
+      url: `${siteUrl}/work/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...CONTENT.work.cards.map((card) => ({
-      url: `${siteUrl}/work/${card.slug}`,
+      url: `${siteUrl}/work/${card.slug}/`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
