@@ -158,9 +158,16 @@
     display: grid; grid-template-columns: 7.4rem 1fr auto; align-items: baseline;
     gap: 0 16px; margin-bottom: 4px;
   }
-  .work-head .d { font-size: 1.55rem; line-height: 1.05; }
-  .work-head .d small { display: block; font-size: .46em; letter-spacing: .12em; color: var(--ink-2); font-weight: 700; margin-bottom: 2px; }
+  .work-head .d {
+    font-size: 1.55rem; line-height: 1.05;
+    position: relative; display: block; padding-top: .62em;
+  }
+  .work-head .d small {
+    position: absolute; top: 0; left: 0; white-space: nowrap;
+    font-size: .46em; letter-spacing: .12em; color: var(--ink-2); font-weight: 700; line-height: 1;
+  }
   .work-head h3 { font-size: 1.3rem; font-weight: 800; line-height: 1.45; }
+  .work-head .d:not(:has(small)) { padding-top: 0; }
   .work-head .by { font-size: .9rem; color: var(--ink-2); text-align: right; white-space: nowrap; }
   .work-lead { font-size: 1.05rem; font-weight: 600; margin: 8px 0 16px; max-width: 46em; }
 
