@@ -153,11 +153,15 @@
 
   .work { scroll-margin-top: 20px; border-bottom: 1px solid var(--hairline); padding: 34px 0 32px; }
   .work:last-of-type { border-bottom: none; }
-  .work-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
-  .work-head .d { font-size: 1.7rem; line-height: 1.05; }
-  .work-head .d small { display: block; font-size: .42em; letter-spacing: .12em; color: var(--ink-2); font-weight: 700; margin-bottom: 2px; }
+  .work:has(+ .year-band) { border-bottom: none; padding-bottom: 8px; }
+  .work-head {
+    display: grid; grid-template-columns: 7.4rem 1fr auto; align-items: baseline;
+    gap: 0 16px; margin-bottom: 4px;
+  }
+  .work-head .d { font-size: 1.55rem; line-height: 1.05; }
+  .work-head .d small { display: block; font-size: .46em; letter-spacing: .12em; color: var(--ink-2); font-weight: 700; margin-bottom: 2px; }
   .work-head h3 { font-size: 1.3rem; font-weight: 800; line-height: 1.45; }
-  .work-head .by { font-size: .9rem; color: var(--ink-2); margin-left: auto; }
+  .work-head .by { font-size: .9rem; color: var(--ink-2); text-align: right; white-space: nowrap; }
   .work-lead { font-size: 1.05rem; font-weight: 600; margin: 8px 0 16px; max-width: 46em; }
 
   .plates { display: grid; gap: 14px; margin: 4px 0 14px; }
@@ -174,15 +178,15 @@
   figure.video figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 6px; line-height: 1.6; }
 
   .year-band {
-    border-top: 6px solid var(--rule); margin: 64px 0 6px; padding-top: 14px;
-    display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+    border-top: 6px solid var(--rule); margin: 56px 0 6px; padding-top: 12px;
+    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 20px;
   }
   .year-band .y {
     font-family: "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
     font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; line-height: .9; letter-spacing: 0;
   }
-  .year-band h3 { font-size: 1.32rem; font-weight: 800; letter-spacing: .02em; line-height: 1.4; }
-  .year-band .note { margin-left: auto; font-size: .85rem; letter-spacing: .08em; color: var(--ink-2); }
+  .year-band h3 { grid-column: 1 / -1; font-size: 1.28rem; font-weight: 800; letter-spacing: .02em; line-height: 1.45; }
+  .year-band .note { grid-row: 1; grid-column: 2; font-size: .85rem; letter-spacing: .08em; color: var(--ink-2); text-align: right; }
   .year-band + .points-inline, .year-band + .work-lead { margin-top: 14px; }
 
   .stats {
@@ -261,7 +265,10 @@
     .hero-grid figure.wide { grid-column: span 2; }
     .plates.c2, .plates.c3 { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; }
-    .work-head .by { margin-left: 0; width: 100%; }
+    .work-head { grid-template-columns: 1fr; }
+    .work-head .by { text-align: left; white-space: normal; }
+    .year-band { grid-template-columns: 1fr; }
+    .year-band .note { text-align: left; }
     .fs-switch { top: 8px; right: 8px; }
   }
   @media print {
@@ -400,7 +407,7 @@
   <div class="year-band"><span class="y">2025年度</span><h3>1年生：自分の好きを知るところから</h3><span class="note">1学年 約240名・通年</span></div>
     <p class="points-inline">1年目は「自分の好きを知る」から始めて「社会とつなぐ」へ、最後に「チームで実践する」へ進む3段構成にしました。キーワードは<b>エンパワーメント</b>——内面的な抑圧から解放し、生徒一人ひとりの本来の力を引き出すこと。いきなり社会課題には向かわせません。</p>
   <div class="work" id="w-orien">
-    <div class="work-head"><span class="d">1学年 4月</span><h3>オリエンテーション：なぜ探究をやるのか</h3><span class="by">1年生向け・30ページ</span></div>
+    <div class="work-head"><span class="d"><small>1学年</small>4月</span><h3>オリエンテーション：なぜ探究をやるのか</h3><span class="by">1年生向け・30ページ</span></div>
     <p class="work-lead">最初に生徒へ渡したのは、ワークではなく「時代の話」でした。今は存在しない仕事のクイズから入り、AIによる技術的失業、そこで必要になる非認知能力、3年間のプログラムの流れへとつなぎます。</p>
     <div class="plates c2">
       <figure><img src="img/orienP14.jpg" alt="ノッカー・アッパー（朝、窓を叩いて人を起こす仕事）、ランプ点灯夫、計算手、電話交換手、植字工、馬車職人。技術で消えた職業を並べる。" data-zoom="zoom/orienP14.jpg"><figcaption>ノッカー・アッパー（朝、窓を叩いて人を起こす仕事）、ランプ点灯夫、計算手、電話交換手、植字工、馬車職人。技術で消えた職業を並べる。</figcaption></figure>
@@ -411,7 +418,7 @@
     <p class="points-inline"><b>クイズから入る理由</b>：「これからはAIによる変化の時代だから探究で身につく力が大事」と大人が言っても、生徒には他人事です。<b>朝、窓を叩いて人を起こす仕事がかつて実在した</b>——その1枚から入ると、職業が消えることが具体になります。「コンピューター」がもともと計算をする人間の職名だった、という話も同じエピソードです。</p>
   </div>
   <div class="work" id="w-oshi">
-    <div class="work-head"><span class="d">1学年 4月</span><h3>推しバトルロワイヤル</h3><span class="by">自己理解とプレゼン</span></div>
+    <div class="work-head"><span class="d"><small>1学年</small>4月</span><h3>推しバトルロワイヤル</h3><span class="by">自己理解とプレゼン</span></div>
     <p class="work-lead">自分の「推し」の良さを2分でクラスメイトに語る。探究の最初の一歩「好き・興味」を、いちばん語りやすいものから始めます。また、新入生同士の交流を促進する狙いもあります。</p>
     <div class="plates c3">
       <figure><img src="img/oshi1.jpg" alt="事前宿題。ジャンルは何でもよい、まず自由にたくさん書き出す。" data-zoom="zoom/oshi1.jpg"><figcaption>事前宿題。ジャンルは何でもよい、まず自由にたくさん書き出す。</figcaption></figure>
@@ -421,7 +428,7 @@
     <p class="points-inline">「自分の好きな推しを語る」形にすることで、自己表現のハードルを下げる。ここで出てきた「好き」は、このあと1年かけて何度も参照されます。</p>
   </div>
   <div class="work" id="w-doushi">
-    <div class="work-head"><span class="d">1学年 5月</span><h3>50の動詞ワーク</h3><span class="by">強みと興味の源泉を掘る</span></div>
+    <div class="work-head"><span class="d"><small>1学年</small>5月</span><h3>50の動詞ワーク</h3><span class="by">強みと興味の源泉を掘る</span></div>
     <p class="work-lead">好きな行動を動詞で50個書き出し、そこから3つを選んで深掘りする。名詞ではなく<b>動詞</b>で捉えるのがポイントです。</p>
     <div class="plates c1">
       <figure><img src="img/doushi.jpg" alt="50の動詞EX。選んだ動詞を実行している時の「一番ワクワクして楽しめている瞬間」を、個性が見えるまで細かく書く。" data-zoom="zoom/doushi.jpg"><figcaption>50の動詞EX。選んだ動詞を実行している時の「一番ワクワクして楽しめている瞬間」を、個性が見えるまで細かく書く。</figcaption></figure>
@@ -430,7 +437,7 @@
     <p class="points-inline">この「自分を表す動詞」は、2年目のロジックツリーの回のチェックインでも再利用しました。1年前のワークを、新しいチームの関係づくりの入口に再活用しました。</p>
   </div>
   <div class="work" id="w-daigaku">
-    <div class="work-head"><span class="d">1学年 6–9月</span><h3>大学学部探究</h3><span class="by">好奇心を学問につなぐ</span></div>
+    <div class="work-head"><span class="d"><small>1学年</small>6–9月</span><h3>大学学部探究</h3><span class="by">好奇心を学問につなぐ</span></div>
     <p class="work-lead">「大学で何が学べるかなんて、たぶんあんまり知らないよね」という呼びかけから始まるワークシート。自分の「好き」を学部・学科というリアルな進路へつなげ、受けてみたい講義名と担当教員のレベルまで深く掘り下げて発表。全員の調査を集めて「私が受けてみたい授業図鑑」を作り上げます。</p>
     <div class="plates c2">
       <figure><img src="img/daigaku1.jpg" alt="方法1「大学側から自分につなげる」。適学診断 → 学問分野を選ぶ → AIにおすすめの大学を提案してもらう。" data-zoom="zoom/daigaku1.jpg"><figcaption>方法1「大学側から自分につなげる」。適学診断 → 学問分野を選ぶ → AIにおすすめの大学を提案してもらう。</figcaption></figure>
@@ -445,14 +452,14 @@
     <p class="points-inline"><b>1年目からAIを使わせている</b>：プロンプトの例文をシートに刷り込み、<b>50の動詞で見つけた自分の個性をそのままAIへの指示文に入れる</b>設計にし、実践的な使い方を例示しています。「新しい知識を学び、組み合わせて誰かを愉快にする」——こうした個性を持った高校生が楽しく学べそうな学部を具体的に教えてください、という具合です。2年目のAIリサーチ実習の「ミリしらチャレンジ」は、この延長線上のプログラムです。</p>
   </div>
   <div class="work" id="w-empower">
-    <div class="work-head"><span class="d">1学年 10–3月</span><h3>エンパワ探究</h3><span class="by">学内に限定した実践</span></div>
+    <div class="work-head"><span class="d"><small>1学年</small>10–3月</span><h3>エンパワ探究</h3><span class="by">学内に限定した実践</span></div>
     <p class="work-lead">あえて対象を学内に限定し、友人の悩み解決や夢の実現にチームで挑みます。1年目からいきなり地域課題に向かわせると、自分との距離が遠すぎて手が止まる生徒が増える。まずは身近な人を一人エンパワーする経験を通す、という狙いです。</p>
     <p class="points-inline">やってみて分かったのは、<b>チームで何かを作るところまでは行っても、振り返って次につなげるところまで届きにくい</b>ということでした。ここが2年目の大きな宿題になります。</p>
   </div>
   <div class="year-band"><span class="y">2026年度</span><h3>2年生：12のゼミに分かれて、外に出る</h3><span class="note">毎週木曜50分・12ゼミ</span></div>
     <p class="points-inline">毎週木曜の50分。1学期はクラス単位で探究本番に向けた土台をつくり、2学期からテーマ別の12ゼミへ移りました。</p>
   <div class="work" id="w-fb">
-    <div class="work-head"><span class="d">2学年 4月</span><h3>探究事例フィードバック演習</h3><span class="by">4/30・1・2年合同／約480名・体育館</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>4月</span><h3>探究事例フィードバック演習</h3><span class="by">4/30・1・2年合同／約480名・体育館</span></div>
     <p class="work-lead">2年生の最初の授業では、探究の全国大会の優秀チームの発表動画3本を見て、探究のイメージを掴んでもらいます。その後、班でフィードバックし合う60分を用意。感想を言わせるのではなく、盗める部分を言語化させます。</p>
     <div class="plates c2">
       <figure><img src="img/fbsheet1.jpg" alt="表面。視聴の観点を「ここはすごい」「ここ真似できそう・自分ならこうする」の2軸だけに絞る。" data-zoom="zoom/fbsheet1.jpg"><figcaption>表面。視聴の観点を「ここはすごい」「ここ真似できそう・自分ならこうする」の2軸だけに絞る。</figcaption></figure>
@@ -461,7 +468,7 @@
     <p class="points-inline"><b>紙に置いた仕掛け</b>：「良かった」「面白かった」「興味深かった」を<b>NGワード</b>に指定して、その先を必ず言語化させる。2年生が司会・1年生が書記、発言は学年交互（同学年の連続はNG）。</p>
   </div>
   <div class="work" id="w-ogiri">
-    <div class="work-head"><span class="d">2学年 4月</span><h3>探究大喜利大会</h3><span class="by">4/30 6限／アウトプットワーク</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>4月</span><h3>探究大喜利大会</h3><span class="by">4/30 6限／アウトプットワーク</span></div>
     <p class="work-lead">社会課題に、実現可能性を問わないユニークな解決策をぶつける40分。1,2年合同開催となったため、1年生にも探究の自由さと楽しさを知ってもらうためのプログラムでもあります。そして「自由に考えて」と言われると止まってしまう生徒のために、発想を3つの軸の組み合わせで考えれるようなワークシートに落としました。</p>
     <div class="plates c2">
       <figure><img src="img/ogiri1.jpg" alt="HOW TO PLAY 面。課題6 × 使う力4 × 切り口7 ＝ 168通り。進行も4コマで示す。" data-zoom="zoom/ogiri1.jpg"><figcaption>HOW TO PLAY 面。課題6 × 使う力4 × 切り口7 ＝ 168通り。進行も4コマで示す。</figcaption></figure>
@@ -473,12 +480,12 @@
     </div></details>
   </div>
   <div class="work" id="w-lecture">
-    <div class="work-head"><span class="d">2学年 5月</span><h3>メンター3名が、3週続けて講義に立つ</h3><span class="by">5/14・5/21・5/28／3週連続</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>5月</span><h3>メンター3名が、3週続けて講義に立つ</h3><span class="by">5/14・5/21・5/28／3週連続</span></div>
     <p class="work-lead">5月は3週連続で、それぞれ別のメンターが1コマずつ担当しました。会議の回し方（心理的安全性・3つの役割・4つの会議の種類）、大きすぎる課題を割る技術（What / Why / How の3型）、そしてAIで未知の分野を調べる方法。生徒用のハンドブックや解説プリントも、担当がそれぞれ用意しています。</p>
     <p class="points-inline">この3回は、授業の様子を字幕から起こした詳細アーカイブを別ページにまとめました。タイムスタンプ付きで、配布資料も開けます。→ <a href="https://sensational-kringle-3df952.netlify.app/" target="_blank" rel="noopener">メンター授業アーカイブ（2026年5月・3授業）</a></p>
   </div>
   <div class="work" id="w-mirishira">
-    <div class="work-head"><span class="d">2学年 5月</span><h3>ミリしらチャレンジ</h3><span class="by">5/28／45分</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>5月</span><h3>ミリしらチャレンジ</h3><span class="by">5/28／45分</span></div>
     <p class="work-lead">「1ミリも知らなかった分野」をAIで25分調べ、人に説明できる状態まで持っていくというゲーム形式で、AIを使った調査を実践的に学ぶ授業。お題はケニアのモバイル送金 M-PESA と、ナイジェリア発のアフロビーツ。この2点を25分で知ったかぶりできるようにする。</p>
     <div class="plates c2">
       <figure><img src="img/mirA01.jpg" alt="投影資料の表紙。「1ミリも知らない」から始める、という宣言。" data-zoom="zoom/mirA01.jpg"><figcaption>投影資料の表紙。「1ミリも知らない」から始める、という宣言。</figcaption></figure>
@@ -494,7 +501,7 @@
     </div></details>
   </div>
   <div class="work" id="w-natsu">
-    <div class="work-head"><span class="d">2学年 7月</span><h3>夏休み探究ミッション（A/B選択制）</h3><span class="by">7/22 配布／夏休み課題</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>7月</span><h3>夏休み探究ミッション（A/B選択制）</h3><span class="by">7/22 配布／夏休み課題</span></div>
     <p class="work-lead">夏を「打席に立つ」期間と定義しました。冒頭は「大谷選手だって打率3割＝7割は失敗している」という社会人メンターの話から始まりました。</p>
     <div class="plates c3">
       <figure><img src="img/natsuguide.jpg" alt="A、Bの振り分けガイド。どちらの課題を選ぶかを自分で決めさせる。" data-zoom="zoom/natsuguide.jpg"><figcaption>A、Bの振り分けガイド。どちらの課題を選ぶかを自分で決めさせる。</figcaption></figure>
@@ -507,7 +514,7 @@
     </div></details>
   </div>
   <div class="work" id="w-wc">
-    <div class="work-head"><span class="d">2学年 8月</span><h3>ワールドカフェ（夏休み明け、2学期初回）</h3><span class="by">8/27／2学期初回</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>8月</span><h3>ワールドカフェ（夏休み明け、2学期初回）</h3><span class="by">8/27／2学期初回</span></div>
     <p class="work-lead">3〜4人の島をつくり、同じ班の生徒は同席させない。1人2分で夏の成果を話し、聞き手は1分でカードを書いてフィードバックを本人に手渡す。</p>
     <div class="plates c2">
       <figure><img src="img/wcsensei.jpg" alt="先生用の進行案。「先生の号令・動き」の列は、そのまま読める台本になっている。" data-zoom="zoom/wcsensei.jpg"><figcaption>先生用の進行案。「先生の号令・動き」の列は、そのまま読める台本になっている。</figcaption></figure>
@@ -521,7 +528,7 @@
     </div></details>
   </div>
   <div class="work" id="w-setsu">
-    <div class="work-head"><span class="d">2学年 9月</span><h3>「〇〇説」をつくるシート</h3><span class="by">9/11／FWの前段</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>9月</span><h3>「〇〇説」をつくるシート</h3><span class="by">9/11／FWの前段</span></div>
     <p class="work-lead">ふわっとした興味関心のままの探究テーマを、自分達独自の問いと仮説として整理するワーク。<b>場面 → ひっかかり・違和感 → 仮説</b>の3手で、抽象的な探究テーマから問いと仮説を作ります。</p>
     <div class="plates c1">
       <figure><img src="img/setsu.jpg" alt="冒頭に例を3本置いて、手順を先に見せる。" data-zoom="zoom/setsu.jpg"><figcaption>冒頭に例を3本置いて、手順を先に見せる。</figcaption></figure>
@@ -532,7 +539,7 @@
     </div></details>
   </div>
   <div class="work" id="w-fw">
-    <div class="work-head"><span class="d">2学年 9月</span><h3>フィールドワーク計画シート</h3><span class="by">9/17／行き先は最後に決める</span></div>
+    <div class="work-head"><span class="d"><small>2学年</small>9月</span><h3>フィールドワーク計画シート</h3><span class="by">9/17／行き先は最後に決める</span></div>
     <p class="work-lead"><b>行き先から決めません。</b>まず自分たちの「説」を書き、それを確かめるには何が要るかを逆算して、最後に行き先を決める。シートを上から順に埋めると、その順番になります。</p>
     <div class="plates c2">
       <figure><img src="img/fw1.jpg" alt="表面。山場はSTEP3——現地に行かないと確かめられないことを5個以上書き、ネットで分かるものに線を引いて消す。" data-zoom="zoom/fw1.jpg"><figcaption>表面。山場はSTEP3——現地に行かないと確かめられないことを5個以上書き、ネットで分かるものに線を引いて消す。</figcaption></figure>
@@ -574,7 +581,7 @@
   <div class="sec-head"><span class="no">04</span><h2>高校への出張授業・発表会の講評</h2><span class="annot">2020年〜・県内各地</span></div>
     <p class="points-inline">長崎北高のような通年の探究支援以外に、県内の各高校からスポットで依頼された授業や発表会にも参加しています。<b>ここでも教材は毎回その学校のために作ります。</b></p>
   <div class="work" id="d-goto">
-    <div class="work-head"><span class="d">2024年 7月</span><h3>五島海陽高校｜島へ渡って2コマ</h3><span class="by">1年生対象・講座＋ワーク</span></div>
+    <div class="work-head"><span class="d"><small>2024年</small>7月</span><h3>五島海陽高校｜島へ渡って2コマ</h3><span class="by">1年生対象・講座＋ワーク</span></div>
     <p class="work-lead">五島海陽高校から「探究活動に入る前の1年生に話してほしい」と依頼がありました。前日に島へ入り、3・4校時の2コマを担当。前半は講義、後半はその日のために、身近な五島の課題をテーマに新たに作ったワークシートで授業を行いました。</p>
     <div class="plates c2">
       <figure><img src="img/goto1.jpg" alt="ソロワーク。「今までに心が強く動いたこと」を喜怒哀楽の枠で書き出す。感情が動いた瞬間から「大切にしていること」と「パワーの源」を見つける。" data-zoom="zoom/goto1.jpg"><figcaption>ソロワーク。「今までに心が強く動いたこと」を喜怒哀楽の枠で書き出す。感情が動いた瞬間から「大切にしていること」と「パワーの源」を見つける。</figcaption></figure>
@@ -584,7 +591,7 @@
     <p class="points-inline">同じ年の12月には、1年間の集大成である「海陽発表会」（10時〜15時）に指導助言者として再訪しました。県の高校教育課からの講評者と2名体制での登壇となりました。</p>
   </div>
   <div class="work" id="d-minami">
-    <div class="work-head"><span class="d">2024・25年 10月</span><h3>長崎南高校｜SSH「未来デザインスクール」</h3><span class="by">2年連続で講師</span></div>
+    <div class="work-head"><span class="d"><small>2024・25年</small>10月</span><h3>長崎南高校｜SSH「未来デザインスクール」</h3><span class="by">2年連続で講師</span></div>
     <p class="work-lead">文部科学省のスーパーサイエンスハイスクール（SSH）指定校の企画に、2年続けて講師として呼ばれています。ポスターセッション形式で、生徒の研究に対面で対話しながらフィードバックする形式です。</p>
     <div class="plates c2">
       <figure><img src="img/minami1.jpg" alt="2025年に作ったシート。経営学の「エフェクチュエーション」を高校生向けに翻訳した。校外の大人に連絡する前に、これを埋めてから動く。" data-zoom="zoom/minami1.jpg"><figcaption>2025年に作ったシート。経営学の「エフェクチュエーション」を高校生向けに翻訳した。校外の大人に連絡する前に、これを埋めてから動く。</figcaption></figure>
