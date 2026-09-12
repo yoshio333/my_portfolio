@@ -551,6 +551,8 @@
       <figure><img src="img/mirA03.jpg" alt="お題A。ケニアのGDPの約半分が携帯送金を通る、という事実から入る。" width="900" height="503" loading="lazy" decoding="async" data-zoom="zoom/mirA03.jpg"><figcaption>お題A。ケニアのGDPの約半分が携帯送金を通る、という事実から入る。</figcaption></figure>
       <figure><img src="img/mirA04.jpg" alt="お題B。パリの8万人スタジアムを単独で完売させたアフリカ発の音楽。" width="900" height="503" loading="lazy" decoding="async" data-zoom="zoom/mirA04.jpg"><figcaption>お題B。パリの8万人スタジアムを単独で完売させたアフリカ発の音楽。</figcaption></figure>
       <figure><img src="img/mirA09.jpg" alt="発表テンプレは3コマ漫画。概観・衝撃・発見の3つを埋めるだけ。" width="900" height="503" loading="lazy" decoding="async" data-zoom="zoom/mirA09.jpg"><figcaption>発表テンプレは3コマ漫画。概観・衝撃・発見の3つを埋めるだけ。</figcaption></figure>
+    </div>
+    <div class="plates c2">
       <figure><img src="img/mirishira1.jpg" alt="生徒配布資料・表面。5つの問いテンプレと、必須・任意の区別を1枚に。" width="900" height="1274" loading="lazy" decoding="async" data-zoom="zoom/mirishira1.jpg"><figcaption>生徒配布資料・表面。5つの問いテンプレと、必須・任意の区別を1枚に。</figcaption></figure>
       <figure><img src="img/mirishira2.jpg" alt="裏面。2分の発表テンプレ（必須3行＋任意）と、振り返り3問。" width="900" height="1274" loading="lazy" decoding="async" data-zoom="zoom/mirishira2.jpg"><figcaption>裏面。2分の発表テンプレ（必須3行＋任意）と、振り返り3問。</figcaption></figure>
     </div>
@@ -760,11 +762,13 @@
     lb.classList.add('on');
     document.body.style.overflow = 'hidden';
   }
+  var swallowClick = false;
   function closeLb() { lb.classList.remove('on', 'drag'); lbImg.removeAttribute('src'); resetT(); document.body.style.overflow = ''; }
+  // 指を離した時点で閉じると、その後に発火する click が下のページ（別の画像）に落ちる。次の1回だけ握りつぶす
+  document.addEventListener('click', function (e) { if (swallowClick) { swallowClick = false; e.stopPropagation(); e.preventDefault(); } }, true);
   document.querySelectorAll('.plates img, .hero-grid img').forEach(function (im) {
     im.addEventListener('click', function () { openLb(im); });
   });
-  lb.querySelector('.close').addEventListener('click', closeLb);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
 
   // 焦点 (fx,fy)（画面座標）を動かさずに倍率を s2 にする
@@ -819,6 +823,7 @@
           if (now - lastTap < 350) { zoomAt(scale > 1 ? 1 : 2.5, e.clientX, e.clientY); lastTap = 0; }  // ダブルタップ
           else lastTap = now;
         } else {
+          swallowClick = true;
           closeLb();
         }
       }
