@@ -271,6 +271,7 @@ export const CONTENT = {
           },
         },
         siteUrl: 'https://y-nishinobu.soitgoes.page/tankyu/',
+        siteLabel: { EN: 'Read the Full Project Report ↗', JP: '詳細なプロジェクトレポートを読む ↗' },
         imgSrc: '/images/resize/polaris-q.jpg',
         imgAlt: 'ポラリスQ — 長崎北高探究支援チーム',
       },
