@@ -281,7 +281,7 @@
   #lb {
     position: fixed; inset: 0; z-index: 50; background: rgba(20,19,17,.94);
     display: none; overflow: hidden; touch-action: none; overscroll-behavior: contain;
-    cursor: zoom-out; padding: 56px 12px 24px; user-select: none; -webkit-user-select: none;
+    cursor: zoom-out; padding: 56px 12px 44px; user-select: none; -webkit-user-select: none;
   }
   #lb.on { display: flex; align-items: center; justify-content: center; }
   /* 画像は最初は画面に収まる大きさ。ピンチ／ホイール／ダブルタップで拡大、指1本（マウス）で移動。transform で動かす */
@@ -297,9 +297,10 @@
     background: rgba(20,19,17,.8); border: 1px solid rgba(255,255,255,.5);
     padding: 6px 14px; cursor: pointer;
   }
+  /* 操作の案内は画面の下端に（上端は閉じるボタンと重なる） */
   #lb .hint {
-    position: fixed; top: 16px; left: 16px; z-index: 2;
-    color: #fff; font-size: .82rem; letter-spacing: .06em; opacity: .85;
+    position: fixed; left: 0; right: 0; bottom: 12px; z-index: 2; text-align: center; padding: 0 12px;
+    color: #fff; font-size: .82rem; letter-spacing: .06em; opacity: .9; pointer-events: none;
   }
 
   footer {
@@ -770,6 +771,7 @@
     im.addEventListener('click', function () { openLb(im); });
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+  lb.querySelector('.close').addEventListener('click', function (e) { e.stopPropagation(); closeLb(); });
 
   // 焦点 (fx,fy)（画面座標）を動かさずに倍率を s2 にする
   function zoomAt(s2, fx, fy) {
@@ -801,7 +803,7 @@
     var prev = ptrs.get(e.pointerId);
     var cur = { x: e.clientX, y: e.clientY };
     ptrs.set(e.pointerId, cur);
-    if (downAt && dist(cur, downAt) > 8) movedFar = true;
+    if (downAt && dist(cur, downAt) > 12) movedFar = true;
     if (ptrs.size === 2 && pinch0) {
       var v = Array.from(ptrs.values());
       var mid = { x: (v[0].x + v[1].x) / 2, y: (v[0].y + v[1].y) / 2 };
