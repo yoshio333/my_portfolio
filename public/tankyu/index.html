@@ -784,7 +784,7 @@
   function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
   lb.addEventListener('pointerdown', function (e) {
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    lb.setPointerCapture(e.pointerId);
+    try { lb.setPointerCapture(e.pointerId); } catch (err) {}
     if (ptrs.size === 1) { downAt = { x: e.clientX, y: e.clientY, target: e.target }; movedFar = false; lb.classList.add('drag'); }
     if (ptrs.size === 2) {
       var v = Array.from(ptrs.values());
