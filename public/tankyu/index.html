@@ -280,18 +280,17 @@
 
   #lb {
     position: fixed; inset: 0; z-index: 50; background: rgba(20,19,17,.94);
-    display: none; overflow: auto; overscroll-behavior: contain; cursor: zoom-out;
-    padding: 56px 16px 40px; -webkit-overflow-scrolling: touch;
+    display: none; overflow: hidden; touch-action: none; overscroll-behavior: contain;
+    cursor: zoom-out; padding: 56px 12px 24px; user-select: none; -webkit-user-select: none;
   }
-  #lb.on { display: block; }
+  #lb.on { display: flex; align-items: center; justify-content: center; }
+  /* 画像は最初は画面に収まる大きさ。ピンチ／ホイール／ダブルタップで拡大、指1本（マウス）で移動。transform で動かす */
   #lb img {
-    display: block; margin: 0 auto; background: #fff; cursor: zoom-in;
-    width: auto; max-width: 100%; height: auto;
+    display: block; background: #fff; cursor: grab; max-width: 100%; max-height: 100%;
+    width: auto; height: auto; transform-origin: center center; will-change: transform;
+    -webkit-user-drag: none; touch-action: none;
   }
-  /* 画像をタップ／クリックすると原寸に。外側の枠がスクロールするので、指1本でも動かせる */
-  #lb.big img { max-width: none; cursor: zoom-out; }
-  #lb.big { cursor: default; padding-left: 0; padding-right: 0; }
-  @media (max-width: 820px) { #lb.big img { width: 220%; } }
+  #lb.drag img { cursor: grabbing; }
   #lb .close {
     position: fixed; top: 10px; right: 14px; z-index: 2;
     color: #fff; font-size: 1.5rem; font-weight: 700; line-height: 1;
@@ -345,7 +344,7 @@
   <button type="button" data-fs="fs-lg" aria-pressed="false">大</button>
   <button type="button" data-fs="fs-xl" aria-pressed="false">特大</button>
 </div>
-<div id="lb"><button class="close" type="button" aria-label="閉じる">×　閉じる</button><span class="hint">画像をタップで拡大・縮小／外側をタップで閉じる</span><img alt=""></div>
+<div id="lb"><button class="close" type="button" aria-label="閉じる">×　閉じる</button><span class="hint">ピンチかダブルタップで拡大・指1本で移動／外側をタップで閉じる</span><img alt=""></div>
 
 <div class="wrap">
 
@@ -751,20 +750,89 @@
 
   var lb = document.getElementById('lb');
   var lbImg = lb.querySelector('img');
-  function closeLb() { lb.classList.remove('on', 'big'); lbImg.removeAttribute('src'); document.body.style.overflow = ''; }
-  lbImg.addEventListener('click', function () { lb.classList.toggle('big'); lb.scrollTop = 0; lb.scrollLeft = 0; });
+  var scale = 1, tx = 0, ty = 0;
+  function applyT() { lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; }
+  function resetT() { scale = 1; tx = 0; ty = 0; applyT(); }
+  function openLb(im) {
+    resetT();
+    lbImg.src = im.dataset.zoom || im.src;
+    lbImg.alt = im.alt || '';
+    lb.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() { lb.classList.remove('on', 'drag'); lbImg.removeAttribute('src'); resetT(); document.body.style.overflow = ''; }
   document.querySelectorAll('.plates img, .hero-grid img').forEach(function (im) {
-    im.addEventListener('click', function () {
-      lbImg.src = im.dataset.zoom || im.src;
-      lbImg.alt = im.alt || '';
-      lb.classList.add('on');
-      lb.scrollTop = 0;
-      document.body.style.overflow = 'hidden';
-    });
+    im.addEventListener('click', function () { openLb(im); });
   });
-  lb.addEventListener('click', function (e) { if (e.target !== lbImg) closeLb(); });
   lb.querySelector('.close').addEventListener('click', closeLb);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+  // 焦点 (fx,fy)（画面座標）を動かさずに倍率を s2 にする
+  function zoomAt(s2, fx, fy) {
+    s2 = Math.min(6, Math.max(1, s2));
+    var r = lbImg.getBoundingClientRect();
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2;   // いまの中心（translate 込み）
+    var k = s2 / scale;
+    tx = tx + (fx - cx) * (1 - k);
+    ty = ty + (fy - cy) * (1 - k);
+    scale = s2;
+    if (scale === 1) { tx = 0; ty = 0; }
+    applyT();
+  }
+  // ポインタ（指・マウス）処理。1本＝移動、2本＝ピンチ、動かさず離す＝タップ
+  var ptrs = new Map(), pinch0 = null, downAt = null, movedFar = false, lastTap = 0;
+  function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+  lb.addEventListener('pointerdown', function (e) {
+    ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    lb.setPointerCapture(e.pointerId);
+    if (ptrs.size === 1) { downAt = { x: e.clientX, y: e.clientY, target: e.target }; movedFar = false; lb.classList.add('drag'); }
+    if (ptrs.size === 2) {
+      var v = Array.from(ptrs.values());
+      pinch0 = { d: dist(v[0], v[1]), s: scale };
+    }
+    e.preventDefault();
+  });
+  lb.addEventListener('pointermove', function (e) {
+    if (!ptrs.has(e.pointerId)) return;
+    var prev = ptrs.get(e.pointerId);
+    var cur = { x: e.clientX, y: e.clientY };
+    ptrs.set(e.pointerId, cur);
+    if (downAt && dist(cur, downAt) > 8) movedFar = true;
+    if (ptrs.size === 2 && pinch0) {
+      var v = Array.from(ptrs.values());
+      var mid = { x: (v[0].x + v[1].x) / 2, y: (v[0].y + v[1].y) / 2 };
+      zoomAt(pinch0.s * dist(v[0], v[1]) / pinch0.d, mid.x, mid.y);
+    } else if (ptrs.size === 1 && scale > 1) {
+      tx += cur.x - prev.x; ty += cur.y - prev.y; applyT();
+    }
+    e.preventDefault();
+  });
+  function up(e) {
+    if (!ptrs.has(e.pointerId)) return;
+    ptrs.delete(e.pointerId);
+    if (ptrs.size < 2) pinch0 = null;
+    if (ptrs.size === 0) {
+      lb.classList.remove('drag');
+      if (downAt && !movedFar) {
+        var now = Date.now();
+        if (downAt.target === lbImg) {
+          if (now - lastTap < 350) { zoomAt(scale > 1 ? 1 : 2.5, e.clientX, e.clientY); lastTap = 0; }  // ダブルタップ
+          else lastTap = now;
+        } else {
+          closeLb();
+        }
+      }
+      downAt = null;
+    }
+  }
+  lb.addEventListener('pointerup', up);
+  lb.addEventListener('pointercancel', up);
+  lbImg.addEventListener('dblclick', function (e) { e.preventDefault(); });
+  // マウスのホイールでも拡大・縮小
+  lb.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    zoomAt(scale * (e.deltaY < 0 ? 1.15 : 1 / 1.15), e.clientX, e.clientY);
+  }, { passive: false });
 })();
 </script>
 </body>
