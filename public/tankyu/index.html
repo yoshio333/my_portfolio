@@ -826,6 +826,7 @@
           else lastTap = now;
         } else {
           swallowClick = true;
+          setTimeout(function () { swallowClick = false; }, 400);   // click が来なかった場合に次の本物のタップを食わない
           closeLb();
         }
       }
