@@ -289,9 +289,10 @@
   /* 画像は最初は画面に収まる大きさ。ピンチ／ホイール／ダブルタップで拡大、指1本（マウス）で移動。transform で動かす */
   #lb img {
     display: block; background: #fff; cursor: grab; max-width: 100%; max-height: 100%;
-    width: auto; height: auto; transform-origin: center center; will-change: transform;
-    -webkit-user-drag: none; touch-action: none;
+    width: auto; height: auto; flex: none; -webkit-user-drag: none; touch-action: none;
   }
+  /* 拡大中は幅そのものを変える（transform の scale だと描画済みビットマップを引き伸ばすので文字が荒れる） */
+  #lb.zoomed img { max-width: none; max-height: none; }
   #lb.drag img { cursor: grabbing; }
   #lb .close {
     position: fixed; top: 10px; right: 14px; z-index: 2;
@@ -759,18 +760,29 @@
 
   var lb = document.getElementById('lb');
   var lbImg = lb.querySelector('img');
-  var scale = 1, tx = 0, ty = 0;
-  function applyT() { lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; }
+  var scale = 1, tx = 0, ty = 0, baseW = 0, maxScale = 6;
+  function applyT() {
+    if (scale > 1) { lb.classList.add('zoomed'); lbImg.style.width = Math.round(baseW * scale) + 'px'; }
+    else { lb.classList.remove('zoomed'); lbImg.style.width = ''; }
+    lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+  }
   function resetT() { scale = 1; tx = 0; ty = 0; applyT(); }
+  function measureBase() {
+    baseW = lbImg.getBoundingClientRect().width || lbImg.naturalWidth;
+    // 元画像の画素より大きくは拡大しない（それ以上はボケるだけ）
+    maxScale = Math.max(1.5, (lbImg.naturalWidth / (baseW * (window.devicePixelRatio || 1))) * 1.25);
+  }
+  lbImg.addEventListener('load', measureBase);
   function openLb(im) {
     resetT();
     lbImg.src = im.dataset.zoom || im.src;
     lbImg.alt = im.alt || '';
     lb.classList.add('on');
     document.body.style.overflow = 'hidden';
+    if (lbImg.complete && lbImg.naturalWidth) measureBase();
   }
   var swallowClick = false;
-  function closeLb() { lb.classList.remove('on', 'drag'); lbImg.removeAttribute('src'); resetT(); document.body.style.overflow = ''; }
+  function closeLb() { lb.classList.remove('on', 'drag', 'zoomed'); lbImg.removeAttribute('src'); resetT(); document.body.style.overflow = ''; }
   // 指を離した時点で閉じると、その後に発火する click が下のページ（別の画像）に落ちる。次の1回だけ握りつぶす
   document.addEventListener('click', function (e) { if (swallowClick) { swallowClick = false; e.stopPropagation(); e.preventDefault(); } }, true);
   document.querySelectorAll('.plates img, .hero-grid img').forEach(function (im) {
@@ -781,7 +793,7 @@
 
   // 焦点 (fx,fy)（画面座標）を動かさずに倍率を s2 にする
   function zoomAt(s2, fx, fy) {
-    s2 = Math.min(6, Math.max(1, s2));
+    s2 = Math.min(maxScale, Math.max(1, s2));
     var r = lbImg.getBoundingClientRect();
     var cx = r.left + r.width / 2, cy = r.top + r.height / 2;   // いまの中心（translate 込み）
     var k = s2 / scale;
