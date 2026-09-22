@@ -84,6 +84,14 @@ portfolio/
 
 ---
 
+## AI活動レポート（`public/ai/`）
+
+- `y-nishinobu.soitgoes.page/ai/` はAI勉強会・ハッカソンの開催レポート集。**Next のルートではなく `public/ai/` の素のHTML**（`/tankyu/` と同じ方式・trailingSlash 前提）。2026-09-23 に `~/dev/ambassador-report` から移設した（旧 `ambassador-report.vercel.app/*` は 308 でここへ転送）
+- **レポートの文体・制作手順の正本は `~/dev/ambassador-report/.claude/CLAUDE.md`**（西信を強く出さない／教える・教わるの上下を作らない／総括で締めない 等）。新しい回を書く前に必ず読む
+- 新しい回を足したら：(1) `public/ai/` にHTMLと写真（長辺1600px・品質80）を置く (2) `public/ai/index.html` のカード先頭に1枚足す (3) `app/sitemap.ts` の `AI_REPORTS` に1行足す (4) `public/llms.txt` の AI Activity Reports に1行足す
+- canonical・og:url・JSON-LD の URL は `https://y-nishinobu.soitgoes.page/ai/...`。サイト内リンクは相対（`href="tosu-...html"`）、一覧へ戻るリンクは `href="/ai/"`
+- HTMLコメントは入れない（配信物に内部メモを残さない）
+
 ## 詳細ドキュメント（`.claude/` フォルダ）
 - `.claude/STATUS.md` … **現在地メモ（セッション開始時に必ず読む）**
 - `.claude/LOG.md` … 作業ログ（随時追記）

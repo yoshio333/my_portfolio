@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SASEBO ｜ Claude for Our Kids — イベント企画書</title>
+<link rel="canonical" href="https://y-nishinobu.soitgoes.page/ai/event-proposal.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#faf9f4;--ink:#0e0e0c;--lime:#cbe85a;--lime-deep:#9bcc00;
+    --jp:"Zen Kaku Gothic New",sans-serif;--gro:"Space Grotesk",sans-serif;--mono:"Space Mono",monospace;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--jp);font-weight:500;
+    line-height:1.95;font-size:1.03rem;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(var(--ink) .6px,transparent .6px);background-size:26px 26px;background-position:-13px -13px}
+  ::selection{background:var(--lime);color:var(--ink)}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--lime-deep)}
+  a:hover{background:var(--lime)}
+  a.ext::after{content:" ↗";font-family:var(--mono);font-weight:700;font-size:.8em}
+  strong{font-weight:900}
+
+  .fsize{position:fixed;top:16px;right:16px;z-index:60;display:inline-flex;align-items:stretch;
+    border:2px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 var(--ink)}
+  .fsize .lab{display:flex;align-items:center;padding:0 9px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.12em;color:#46453d;border-right:2px solid var(--ink);background:#eceabd}
+  .size-btn{font-family:var(--gro);font-weight:700;color:var(--ink);background:transparent;border:0;
+    border-right:2px solid var(--ink);line-height:1;cursor:pointer;padding:8px 11px}
+  .size-btn:last-child{border-right:0}
+  .size-btn.s1{font-size:12px}.size-btn.s2{font-size:15px}.size-btn.s3{font-size:18px}
+  .size-btn.is-on{background:var(--ink);color:var(--lime)}
+  .size-btn:hover:not(.is-on){background:var(--lime)}
+
+  .sheet{background:var(--paper);border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink);margin:34px 0 60px}
+  header{padding:40px 40px 34px;border-bottom:2px solid var(--ink)}
+  .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    display:inline-block;background:var(--ink);color:var(--lime);padding:5px 11px}
+  h1{font-family:var(--jp);font-weight:900;letter-spacing:-.02em;font-size:clamp(1.7rem,4.6vw,2.7rem);
+    line-height:1.22;margin:22px 0 6px}
+  .sub{font-family:var(--jp);font-weight:700;font-size:1.02rem;color:#3a3a30}
+  .by{font-family:var(--mono);font-size:.78rem;line-height:1.7;color:#3a3a34;margin-top:22px;
+    padding-top:18px;border-top:1px dashed #b9b8ae}
+
+  .spotlight{background:var(--lime);border-bottom:2px solid var(--ink);padding:30px 40px}
+  .spotlight .lab{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .spotlight p{margin:.5em 0;font-weight:700;font-size:1.06rem}
+  .spotlight .data{font-family:var(--mono);font-size:.8rem;font-weight:700;margin-top:14px;
+    border-top:2px solid var(--ink);padding-top:12px;line-height:1.7}
+
+  section{padding:42px 40px;border-bottom:2px solid var(--ink)}
+  section:last-of-type{border-bottom:0}
+  .shead{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+  .sno{font-family:var(--mono);font-weight:700;font-size:.81rem;background:var(--ink);color:var(--lime);
+    padding:5px 9px;flex:none;min-width:62px;text-align:center}
+  .stitle{font-family:var(--gro);font-weight:700;font-size:.81rem;letter-spacing:.16em;text-transform:uppercase;color:#6a695f}
+  h3{font-family:var(--jp);font-weight:900;font-size:1.02rem;margin:24px 0 8px;display:inline-block;
+    border-bottom:4px solid var(--lime);padding-bottom:2px}
+  h3:first-of-type{margin-top:0}
+  p{margin:.7em 0;max-width:760px}
+  ul.disc{padding-left:1.2em;max-width:760px}ul.disc>li{margin:.5em 0}
+  ul.clean{list-style:none;padding:0;margin:10px 0;max-width:760px}
+  ul.clean>li{border-left:4px solid var(--lime);padding:4px 0 4px 16px;margin:11px 0}
+  .em{background:var(--lime);padding:0 .12em;font-weight:900}
+
+  .tw{overflow-x:auto;margin:14px 0;max-width:820px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:left;padding:10px 13px;border:1px solid var(--ink);vertical-align:top}
+  thead th{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.66rem;
+    letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  td:first-child{font-weight:900;white-space:nowrap;width:18%}
+  .conf{font-family:var(--mono);font-size:.72rem;font-weight:700;background:var(--lime);padding:1px 6px;white-space:nowrap}
+
+  .en{background:#f2f1e8}
+  .en .tag{background:#33332e}
+
+  footer{background:var(--ink);color:var(--paper);padding:34px 40px}
+  footer .note{font-family:var(--jp);font-size:.82rem;line-height:1.8;color:#cfcfc6;max-width:760px}
+  footer .sign{font-family:var(--mono);font-size:.72rem;color:#9c9c92;margin-top:18px}
+
+  .rv{opacity:0;transform:translateY(18px);animation:rv .7s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rv{to{opacity:1;transform:none}}
+  header.rv{animation-delay:.05s}.spotlight.rv{animation-delay:.15s}
+  #s1{animation-delay:.25s}#s2{animation-delay:.33s}#s3{animation-delay:.41s}#s4{animation-delay:.49s}#en{animation-delay:.57s}footer.rv{animation-delay:.63s}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;animation:none}}
+
+  @media(max-width:680px){
+    .wrap{padding:0 16px}
+    header,.spotlight,section,footer{padding-left:22px;padding-right:22px}
+    .sheet{box-shadow:6px 6px 0 var(--ink);margin:18px 0 36px}
+    .fsize{top:10px;right:10px;box-shadow:3px 3px 0 var(--ink)}.fsize .lab{display:none}
+    .size-btn{padding:8px 13px}header{padding-top:62px}
+    .tw{overflow:visible}table{font-size:.82rem}
+    th,td{padding:8px 9px;word-break:break-word}td:first-child{width:auto;white-space:normal}
+  }
+  @media print{html{font-size:15px!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.fsize{display:none}.rv{opacity:1;transform:none;animation:none}
+    body{background:#fff;line-height:1.6}.sheet{box-shadow:none;border-width:2px}
+    section,header,.spotlight{padding-top:26px;padding-bottom:26px}
+    h3{margin:14px 0 5px;break-after:avoid;page-break-after:avoid}
+    .shead{margin-bottom:9px;break-after:avoid;page-break-after:avoid}
+    .spotlight,.tw,table,tr{break-inside:avoid;page-break-inside:avoid}
+    p,li{break-inside:avoid;page-break-inside:avoid;margin:.35em 0}
+    ul.disc,ul.clean{margin:.35em 0}ul.disc>li,ul.clean>li{margin:.28em 0}.tw{margin:10px 0}}
+</style>
+</head>
+<body>
+
+<div class="fsize no-print" role="group" aria-label="文字サイズ切替">
+  <span class="lab">文字</span>
+  <button class="size-btn s1" data-size="0" title="標準">A</button>
+  <button class="size-btn s2" data-size="1" title="大">A</button>
+  <button class="size-btn s3" data-size="2" title="特大">A</button>
+</div>
+
+<div class="wrap">
+<div class="sheet">
+
+  <header class="rv">
+    <span class="tag">Event Proposal · Draft</span>
+    <h1>SASEBO ｜ Claude for Our Kids</h1>
+    <div class="sub">若者流出ワースト1の街の、本気の大人のハッカソン</div>
+    <div class="by">
+      Claude Community Ambassador：西信 好真（西海みずき信用組合 地域振興室）<br>
+      開催（予定）：2026年7月末から8月の週末／佐世保（街全体を会場に）
+    </div>
+  </header>
+
+  <div class="spotlight rv">
+    <div class="lab">Concept</div>
+    <p>若者が日本一流出する街で、地域の経営者たちが高校生・大学生の声を起点に、自社のリソース（アナログ）× Claude Code（デジタル）で、街の課題を解くプロトタイプを作る——街そのものを舞台にした週末ハッカソン。</p>
+    <div class="data">DATA：佐世保市の若者転出超過は全国市区町村ワースト1位（総務省「2025年 住民基本台帳人口移動報告」／転出超過1,813人＝初の1位・前年5位／転出最多は20–24歳 1,735人）</div>
+  </div>
+
+    <section id="s1" class="rv">
+    <div class="shead"><span class="sno">§ 01</span><div class="stitle">Why &amp; What</div></div>
+    <h3>なぜ（背景・社会課題）</h3>
+    <ul class="disc">
+      <li>佐世保市は<strong>若者の転出超過が全国市区町村ワースト1位</strong>（上記DATA）。<span class="em">まさに「若者流出」</span>。</li>
+      <li>地域の中小企業には人事もデザイナーもエンジニアもいない。だが Claude Code を手にした一部の経営者は、趣味のゴルフを辞めて、水を得た魚のように自分のためのプロダクトを粛々と作り始めている（実話）。<strong>プレイヤーは生まれた、準備も整った。</strong></li>
+      <li>次は、<strong>「大人が本気で若者の声を聞き、持てるリソースとAIで全力で応える」</strong>ローカル発のムーブメントを起こす。</li>
+    </ul>
+    <h3>何を（形式）</h3>
+    <p><strong>週末48時間・街回遊型ハッカソン。</strong></p>
+    <ul class="disc">
+      <li>事前フェーズ：市内の高校生・大学生ら<strong>若者1,000人超に「佐世保の好き/嫌い」を調査</strong>（校長会のメーリス・佐世保市から学校へ依頼）→ <strong>AIブロードリスニングで街の課題を可視化</strong>（当日はこれを起点にビルド）。</li>
+      <li>当日は地域の各拠点に分かれて作り、最終発表は市民ホール「アルカスSASEBO」に集約。</li>
+    </ul>
+  </section>
+
+    <section id="s2" class="rv">
+    <div class="shead"><span class="sno">§ 02</span><div class="stitle">Who · Where · When · Scale</div></div>
+    <h3>誰が（対象・参加者）</h3>
+    <ul class="disc">
+      <li><strong>オープニング・発表会</strong>：どなたでも歓迎（一般・若者・市民を広く動員）。</li>
+      <li><strong>ハッカソン部門</strong>：長崎中のキープレイヤーを運営側で指名選抜（経営者＋大学生＋地域内外のエンジニア）。※ヒアリングで隠れたClaude Codeヘビーユーザーの名が続々。</li>
+      <li>高校生・若者：<strong>声を出す当事者</strong>として参加し、<strong>最終発表の評価者</strong>も務める（Claude利用は18歳以上）。</li>
+      <li>運営：アンバサダー（西信）＋有志の経営者＋長崎県立大学 起業サークルの選抜メンバー。</li>
+    </ul>
+    <h3>どこで（会場・動線＝街を回遊）</h3>
+    <ul class="disc">
+      <li><strong>オープニング</strong>：<a class="ext" href="https://www.sasebo-arcade.com/" target="_blank" rel="noopener">三ヶ町商店街</a>アーケード（中心街を貸し切りでキックオフ・市の協力で可能）</li>
+      <li><strong>チーム作業場（分散・全て徒歩圏）</strong>：<a class="ext" href="https://ondo-nagasaki.studio.site/" target="_blank" rel="noopener">オンド</a> ／ <a class="ext" href="https://nakiriscapes.jp/others/" target="_blank" rel="noopener">名切公園 コアイノベーションセンター</a> ／ <a class="ext" href="https://tsunagas.jp/" target="_blank" rel="noopener">NSK コネクトベース</a>（市の空き店舗活用拠点）</li>
+      <li><strong>最終発表</strong>：<a class="ext" href="https://www.arkas.or.jp/" target="_blank" rel="noopener">アルカスSASEBO</a>（市民ホール／一般を大量動員・活動を周知）</li>
+    </ul>
+    <h3>いつ（日程）</h3>
+    <ul class="disc">
+      <li>2026年 <strong>7月末から8月の週末</strong>（例：7/24 金 夜 〜 7/26 日 などを軸に調整／準備に約1か月）。</li>
+      <li><strong>公式プログラムの「地方開催・第一弾」を目指したい</strong>（東京の次が佐世保、という象徴性）。</li>
+    </ul>
+    <h3>規模感</h3>
+    <ul class="disc">
+      <li>ハッカソン部門：<strong>6チーム × 3〜4名</strong>（経営者/地域プレイヤー2＋大学生1＋エンジニア1）＝作り手 約20名。メンター・運営含めコア <strong>30〜40名</strong>（≒50人規模）。</li>
+      <li>オープニング・発表会：一般市民を含め <strong>100〜200名</strong> 規模。</li>
+    </ul>
+  </section>
+
+    <section id="s3" class="rv">
+    <div class="shead"><span class="sno">§ 03</span><div class="stitle">Agenda &amp; Output</div></div>
+    <h3>当日アジェンダ（48時間型）</h3>
+    <div class="tw"><table>
+      <thead><tr><th>日</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>金 夜</td><td>三ヶ町でオープニング（一般歓迎）＋<strong>安野氏の「市民の声の可視化」トーク・初日はビデオレター</strong>（招致を調整可能・<span class="conf">確度=中</span>）</td></tr>
+        <tr><td>土・日</td><td>各拠点・各チームに分かれて Claude Code でビルド（メンターが巡回し、詰まったチームの相談に1対1で乗る "office hours" を設置）</td></tr>
+        <tr><td>日 夕</td><td>アルカスで<strong>最終発表＋表彰</strong>（一般・学生を動員／市長・県知事を来賓に調整中・日程が合えば<span class="conf">確度=高</span>／<strong>安野氏は最終発表で来場</strong>・<span class="conf">確度=中</span>）</td></tr>
+      </tbody>
+    </table></div>
+    <h3>想定アウトプット例（イメージ）</h3>
+    <ul class="disc">
+      <li>高校生「自習室がない」→ 商店街の<strong>不動産屋</strong>が無人管理＋予約システムを作り、空き店舗を自習室に開放。</li>
+      <li>大学生「交通費が高く中心街に出にくい」→ <strong>自動車教習所</strong>が送迎バスの予約システム＋車内デジタルサイネージを実装し、無料運行。</li>
+    </ul>
+  </section>
+
+    <section id="s4" class="rv">
+    <div class="shead"><span class="sno">§ 04</span><div class="stitle">Significance &amp; Series</div></div>
+    <h3>Anthropicへ提供できる意義</h3>
+    <p>社会課題（今回は日本一の人口流出）× 地域の中小企業経営者＆ローカルのキープレイヤー × 当事者（今回は若者）× 行政 を掛け合わせ、<strong>郷土愛に紐づいた強いClaudeコミュニティ</strong>をビルドする。Anthropicのミッション（社会問題への生成AI活用）に正面から応えつつ、<strong>地方発のロールモデル</strong>として横展開可能。<span class="em">非エンジニアによる市民主導型ハッカソンの世界的プロトタイプを、佐世保から組み上げる。</span></p>
+    <h3>今後の展望（シリーズ）</h3>
+    <p>第1弾＝若者の流出問題（中心街）／第2弾＝エンタメ・観光（ハウステンボス）／第3弾＝農業 又は 福祉。回ごとに、長崎県・西九州広域圏から各業界のキーマンを一同に集め、Claude Code で課題解決するハッカソンの連続シリーズへ。<strong>キープレイヤーの集合と交流</strong>でインスピレーションを活性化し、各人へのAIエージェント実装を同時に進める。そのアクションをハブに <strong>Claude Code をエリアに拡散</strong>させていく。</p>
+  </section>
+
+    <section id="en" class="en rv">
+    <div class="shead"><span class="sno" style="background:#33332e">EN</span><div class="stitle">English version</div></div>
+
+    <h3>Concept</h3>
+    <p>In the Japanese city losing the most young people, <strong>local business owners turn high-schoolers' and students' voices into working prototypes — their analog resources × Claude Code</strong> — in a weekend hackathon that uses the whole city as its venue.</p>
+
+    <h3>Why</h3>
+    <ul class="disc">
+      <li>Sasebo has <strong>the worst net outflow of young people of any municipality in Japan</strong> (MIC "2025 Basic Resident Register Population Migration Report"; net outflow 1,813 — its first #1, up from 5th; the largest leaving cohort is ages 20–24, at 1,735).</li>
+      <li>Local SMEs have no HR, designers or engineers — yet some owners with Claude Code have quit their golf hobby and, like fish to water, started quietly building tools for themselves (true story). <strong>The players have emerged; the groundwork is ready.</strong></li>
+      <li>Now, let's start a local movement where <strong>adults seriously listen to the young and answer — at full force — with their own resources and AI.</strong></li>
+    </ul>
+
+    <h3>What</h3>
+    <p><strong>A 48-hour, city-wide weekend hackathon.</strong> Pre-phase: survey 1,000+ young people on what they love/hate about Sasebo (via the principals' association mailing list and the city's school channels) → <strong>AI broad-listening</strong> visualizes the city's real challenges, which seed the build.</p>
+
+    <h3>Who</h3>
+    <ul class="disc">
+      <li><strong>Opening &amp; showcase</strong>: open to everyone.</li>
+      <li><strong>Hackathon track</strong>: key players invited by the organizers from across Nagasaki (owners + university students + engineers, in and out of the region; interviews keep surfacing hidden heavy users).</li>
+      <li>High-schoolers/youth take part as <strong>stakeholders who voice the problems — and judge the final showcase</strong> (Claude use is 18+).</li>
+      <li>Run by the Ambassador (Nishinobu) + volunteer owner-friends + a selected team from Nagasaki Prefectural University's entrepreneurship circle.</li>
+    </ul>
+
+    <h3>Where (city as venue)</h3>
+    <ul class="disc">
+      <li><strong>Opening</strong>: Sankamachi shopping arcade (downtown street reserved for a public kickoff, with the city's cooperation).</li>
+      <li><strong>Team build sites (within walking distance)</strong>: on°C / Core Innovation Center at Nagiri Park / "NSK Connect Base" (the city's vacant-store hub).</li>
+      <li><strong>Final showcase</strong>: Arkas SASEBO civic hall (large public audience).</li>
+    </ul>
+
+    <h3>When / Scale</h3>
+    <ul class="disc">
+      <li>A weekend from <strong>late July to August 2026</strong> (e.g. Fri 7/24 eve – Sun 7/26; ~1 month of prep). Aiming to be <strong>Japan's first official regional event</strong> of the program.</li>
+      <li>Hackathon track: <strong>6 teams × ~4 people</strong> ≈ 20 builders; ~30–40 core. Opening &amp; showcase: <strong>100–200</strong> incl. public.</li>
+    </ul>
+
+    <h3>Agenda (48-hour)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Day</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>Fri eve</td><td>Opening at the arcade (public) + a talk on "visualizing citizens' voices" by Mr. Anno <strong>via video letter on day 1</strong> (in coordination — <span class="conf">conf: medium</span>)</td></tr>
+        <tr><td>Sat–Sun</td><td>Teams build with Claude Code across the sites; mentors run 1:1 office hours (drop-in consults)</td></tr>
+        <tr><td>Sun eve</td><td>Final showcase + awards at Arkas (public + students; mayor / governor as guests — in coordination, <span class="conf">conf: high if dates align</span>; <strong>Mr. Anno attends in person here</strong> — <span class="conf">conf: medium</span>)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Why it matters for Anthropic / Series</h3>
+    <p>By combining a social challenge (here, Japan's #1 outflow) × local SME owners &amp; key players × the stakeholders (the young) × the public sector, we build a <strong>strong Claude community rooted in civic pride</strong>, answering Anthropic's mission head-on — a <strong>replicable model born in the regions</strong>, a global prototype of a <strong>citizen-led, non-engineer hackathon</strong> assembled from Sasebo.</p>
+    <p>Series: Vol.1 youth outflow / Vol.2 tourism (Huis Ten Bosch) / Vol.3 agriculture or welfare — each gathering that industry's key players across Nagasaki &amp; west Kyushu to build with Claude Code; a recurring series and a hub to spread Claude Code across the region.</p>
+  </section>
+
+  <footer class="rv">
+    <p class="note">確度（confidence）は正直に記載：安野氏の招致＝<strong>中</strong>（初日はビデオレター＋最終発表で来場）／市長・県知事の来賓＝<strong>高（日程が合えば）</strong>。日時・会場・登壇者は最終調整中で、確定後に更新します。</p>
+    <div class="sign">Draft v1 ／ 西信 好真 ／ 2026.06</div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var sizes=['16px','19px','22px'],KEY='prop-fontsize',DEFAULT=1;
+  var btns=document.querySelectorAll('.size-btn');
+  function apply(i){document.documentElement.style.fontSize=sizes[i];
+    btns.forEach(function(b,idx){b.classList.toggle('is-on',idx===i);});
+    try{localStorage.setItem(KEY,i);}catch(e){}}
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(+b.dataset.size);});});
+  var saved=DEFAULT;try{var s=localStorage.getItem(KEY);if(s!==null)saved=parseInt(s,10);}catch(e){}
+  apply(isNaN(saved)?DEFAULT:saved);
+})();
+</script>
+</body>
+</html>

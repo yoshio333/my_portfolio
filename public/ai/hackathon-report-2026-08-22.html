@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SASEBO｜Claude for Our Kids ハッカソン レポート｜2026.08.22</title>
+<link rel="canonical" href="https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html">
+<meta name="description" content="2026年8月22日、佐世保で開いた「Claude for Our Kids」ハッカソンのレポート。九州初の Anthropic のサポートを受けた Claude Community イベント。テーマは若者流出。大学生・地元経営者・市外のエンジニアが混成6チームを組み、全チームが約4時間で動くデモまで到達しました。1日を通した参加者は約80名。">
+<meta name="author" content="西信 好真">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="佐世保 ClaudeCode コミュニティ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="SASEBO｜Claude for Our Kids ハッカソン レポート｜2026.08.22">
+<meta property="og:description" content="2026年8月22日、佐世保で開いた「Claude for Our Kids」ハッカソンのレポート。九州初の Anthropic のサポートを受けた Claude Community イベント。テーマは若者流出。大学生・地元経営者・市外のエンジニアが混成6チームを組み、全チームが約4時間で動くデモまで到達しました。1日を通した参加者は約80名。">
+<meta property="og:url" content="https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html">
+<meta property="og:image" content="https://y-nishinobu.soitgoes.page/ai/hackathon0822-photo-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SASEBO｜Claude for Our Kids ハッカソン レポート｜2026.08.22",
+  "description": "2026年8月22日、佐世保で開いた「Claude for Our Kids」ハッカソンのレポート。九州初の Anthropic のサポートを受けた Claude Community イベント。テーマは若者流出。大学生・地元経営者・市外のエンジニアが混成6チームを組み、全チームが約4時間で動くデモまで到達しました。1日を通した参加者は約80名。",
+  "url": "https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html"
+  },
+  "inLanguage": "ja",
+  "datePublished": "2026-08-24",
+  "dateModified": "2026-08-26",
+  "author": {
+    "@type": "Person",
+    "name": "西信 好真",
+    "alternateName": "Yoshimasa Nishinobu",
+    "jobTitle": "地域振興室 副室長",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "西海みずき信用組合"
+    },
+    "url": "https://y-nishinobu.soitgoes.page"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "西信 好真",
+    "alternateName": "Yoshimasa Nishinobu",
+    "jobTitle": "地域振興室 副室長",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "西海みずき信用組合"
+    },
+    "url": "https://y-nishinobu.soitgoes.page"
+  },
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "name": "佐世保 ClaudeCode コミュニティ ｜ イベントレポート",
+    "url": "https://y-nishinobu.soitgoes.page/ai/"
+  },
+  "image": "https://y-nishinobu.soitgoes.page/ai/hackathon0822-photo-01.jpg"
+}
+</script>
+<style>
+  :root{
+    --ink:#141210;
+    --paper:#f7efdf;
+    --pink:#ff4f97;
+    --yellow:#ffcf28;
+    --teal:#1fc7ac;
+    --blue:#2f74ff;
+    --lime:#8ed01c;
+    --purple:#a163ff;
+    --orange:#ff7420;
+    --red:#ff3b2b;
+    --gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--gothic); font-size:16px; line-height:1.9; letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:940px; margin:0 auto; padding:0 22px 60px}
+  p{margin:0 0 15px}
+  /* ---- top bar ---- */
+  .topbar{
+    background:var(--teal); border:3px solid var(--ink);
+    margin:26px 0 0; padding:12px 18px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    font-weight:800; font-size:12px; letter-spacing:.22em;
+  }
+  .topbar .dot{width:11px;height:11px;background:var(--ink);border-radius:50%}
+  .topbar .sp{flex:1}
+  /* ---- masthead ---- */
+  .mast{margin:30px 0 0}
+  h1{font-family:var(--gothic); font-weight:900; font-size:52px; line-height:1.16; letter-spacing:-.02em; margin:0}
+  h1 .hi{background:var(--yellow); padding:0 .12em; box-decoration-break:clone; -webkit-box-decoration-break:clone}
+  .dek{font-size:17px; line-height:1.85; margin:22px 0 0; max-width:660px; color:#2b2620; font-weight:600}
+  .byline{font-weight:700; font-size:12.5px; letter-spacing:.05em; margin:22px 0 0; padding-top:16px; border-top:3px solid var(--ink); color:#5b5347}
+  .byline b{color:var(--ink)}
+  /* ---- photo ---- */
+  .photo{position:relative; margin:34px 0 0; border:3px solid var(--ink); line-height:0}
+  .photo img{display:block; width:100%; height:auto}
+  .photo figcaption{font-size:12.5px; font-weight:700; letter-spacing:.02em; line-height:1.5; color:#fff; background:var(--ink); padding:10px 14px}
+  .tab{
+    position:absolute; top:0; left:0; z-index:2; font-weight:900; font-size:12.5px; letter-spacing:.08em;
+    background:var(--pink); color:var(--ink); border-right:3px solid var(--ink); border-bottom:3px solid var(--ink); padding:8px 14px;
+  }
+  .tab.y{background:var(--yellow)} .tab.t{background:var(--teal)}
+  /* ---- lead ---- */
+  .lead{margin:40px 0 0; column-count:2; column-gap:34px; font-size:16px; line-height:1.95; font-weight:500}
+  .lead p{margin:0}
+  .lead p::first-letter{font-family:var(--gothic); font-weight:900; font-size:64px; float:left; line-height:.72; padding:8px 12px 0 0; color:var(--red)}
+  /* ---- gloss (ことばボックス) ---- */
+  .gloss{border:3px solid var(--ink); background:#fff; margin:42px 0 0; padding:22px 24px}
+  .gloss .gt{font-weight:900; font-size:15px; letter-spacing:.06em; background:var(--yellow); display:inline-block; padding:3px 10px; border:2.5px solid var(--ink); margin:0 0 14px}
+  .gloss p{font-size:14.5px; line-height:1.85; margin:0 0 10px; font-weight:500}
+  .gloss p:last-child{margin-bottom:0}
+  .gloss b{background:var(--paper); border:2px solid var(--ink); padding:1px 8px; margin-right:6px; font-size:13.5px}
+  /* ---- button link ---- */
+  .btnlink{display:inline-block; margin-top:18px; font-weight:800; font-size:14px; letter-spacing:.02em; border:3px solid var(--ink); background:var(--yellow); color:var(--ink); padding:11px 18px; text-decoration:none}
+  .btnlink:hover{background:var(--pink); color:#fff}
+  /* ---- stats ---- */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:46px 0 0; border:3px solid var(--ink)}
+  .stat{padding:20px 8px 16px; text-align:center; border-right:3px solid var(--ink)}
+  .stat:last-child{border-right:none}
+  .stat.a{background:var(--pink)} .stat.b{background:var(--yellow)} .stat.c{background:var(--teal)} .stat.d{background:var(--blue); color:#fff}
+  .stat .n{font-weight:900; font-size:38px; line-height:1; letter-spacing:-.03em}
+  .stat .n small{font-size:16px}
+  .stat .l{font-size:11.5px; font-weight:800; letter-spacing:.03em; margin-top:9px; line-height:1.4}
+  .stat.d .l{color:#fff}
+  /* ---- section title ---- */
+  .sect{margin:62px 0 0}
+  .sect .en{font-weight:900; font-size:12px; letter-spacing:.28em; color:var(--red); margin:0 0 10px}
+  .sect .tt{display:inline-block; font-weight:900; font-size:32px; letter-spacing:-.01em; line-height:1.28; background:var(--ink); color:var(--paper); padding:7px 16px}
+  .sect .note{font-size:15.5px; margin:18px 0 0; color:#463f34; font-weight:500}
+  /* ---- insight list ---- */
+  .items{margin:24px 0 0; display:grid; gap:18px}
+  .item{border:3px solid var(--ink); background:#fff; padding:22px 24px; display:grid; grid-template-columns:92px 1fr; gap:6px 20px; align-items:start}
+  .item .no{font-weight:900; font-size:72px; line-height:.8; letter-spacing:-.05em; grid-row:1/3; align-self:center}
+  .item:nth-child(1) .no{color:var(--red)} .item:nth-child(2) .no{color:var(--blue)}
+  .item:nth-child(3) .no{color:var(--lime)} .item:nth-child(4) .no{color:var(--purple)}
+  .item h3{grid-column:2; font-weight:900; font-size:21px; line-height:1.42; margin:0 0 10px; letter-spacing:.005em}
+  .item .bd{grid-column:2; font-size:15.5px; line-height:1.9; font-weight:500}
+  .item .bd p{margin:0}
+  /* ---- stories ---- */
+  .story{border:3px solid var(--ink); background:#fff; padding:24px; margin:22px 0 0}
+  .story .tag{display:inline-block; font-weight:900; font-size:12px; letter-spacing:.05em; background:var(--orange); color:var(--ink); border:2.5px solid var(--ink); padding:5px 12px}
+  .story.c2 .tag{background:var(--teal)} .story.c3 .tag{background:var(--pink); color:#fff} .story.c4 .tag{background:var(--yellow)}
+  .story.c5 .tag{background:var(--blue); color:#fff} .story.c6 .tag{background:var(--lime)}
+  .story h3{font-weight:900; font-size:22px; line-height:1.42; margin:15px 0 12px; letter-spacing:.005em}
+  .story p{font-size:15.5px; line-height:1.95; margin:0; font-weight:500}
+  /* ---- pull quote ---- */
+  .pull{background:var(--ink); color:var(--paper); border:3px solid var(--ink); padding:26px 26px; margin:16px 0 0}
+  .pull p{font-weight:800; font-size:20px; line-height:1.72; letter-spacing:.01em; margin:12px 0 0}
+  .pull .who{font-weight:800; font-size:13px; color:var(--yellow); margin:14px 0 0}
+  /* ---- sectors ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:11px; margin:24px 0 0}
+  .chip{font-weight:800; font-size:15px; border:2.5px solid var(--ink); padding:8px 14px}
+  .chip:nth-child(7n+1){background:var(--pink);color:#fff} .chip:nth-child(7n+2){background:var(--yellow)}
+  .chip:nth-child(7n+3){background:var(--teal)} .chip:nth-child(7n+4){background:var(--blue);color:#fff}
+  .chip:nth-child(7n+5){background:var(--lime)} .chip:nth-child(7n+6){background:var(--orange)}
+  .chip:nth-child(7n+7){background:var(--purple);color:#fff}
+  /* ---- closing ---- */
+  .closing{background:var(--pink); border:3px solid var(--ink); margin:62px 0 0; padding:40px 30px}
+  .closing .en{font-weight:900; font-size:12px; letter-spacing:.28em; color:var(--ink)}
+  .closing h2{font-weight:900; font-size:30px; line-height:1.35; margin:12px 0 20px; color:#fff}
+  .closing p{font-size:16px; line-height:1.9; color:var(--ink); margin:0 0 15px; font-weight:500}
+  .closing p a{font-weight:800; text-decoration:none; border-bottom:2.5px solid var(--ink); padding-bottom:1px}
+  .closing p a:hover{background:var(--yellow)}
+  .closing .sign{font-weight:800; font-size:13px; letter-spacing:.03em; margin-top:24px; padding-top:18px; border-top:3px solid var(--ink); line-height:1.8; color:var(--ink)}
+  .closing .sign b{font-size:15px}
+  /* ---- footer ---- */
+  .foot{text-align:center; margin:30px 0 0}
+  .foot p{font-size:11.5px; font-weight:600; color:#8a8172; letter-spacing:.02em; line-height:1.8; margin:0}
+  @media (max-width:640px){
+    .page{padding:0 16px 50px}
+    h1{font-size:34px; line-height:1.32}
+    .lead{column-count:1}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:3px solid var(--ink)}
+    .item{grid-template-columns:1fr; gap:2px}
+    .item .no{grid-row:auto; grid-column:1; font-size:58px}
+    .item h3,.item .bd{grid-column:1}
+    .sect .tt{font-size:25px}
+    .pull p{font-size:18px}
+    .closing h2{font-size:24px}
+  }
+  /* ---- gallery ---- */
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:22px 0 0}
+  .gallery img{width:100%; height:186px; object-fit:cover; border:1.5px solid var(--ink); display:block}
+  @media (max-width:640px){
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .gallery img{height:150px}
+  }
+  /* ---- 一覧へ戻る ---- */
+  .tolist{display:inline-block; margin:22px 0 0; font-weight:800; font-size:12.5px; letter-spacing:.06em;
+    border:2.5px solid var(--ink); background:#fff; color:var(--ink); padding:7px 13px; text-decoration:none}
+  .tolist:hover{background:var(--yellow)}
+  .tolist.bottom{margin:40px 0 0}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="tolist" href="/ai/">← イベント一覧</a>
+
+
+<div class="topbar">
+<span class="dot"></span><span>REPORT</span><span>SASEBO ｜ CLAUDE FOR OUR KIDS</span><span class="sp"></span><span>2026 . 08 . 22</span>
+</div>
+
+<header class="mast">
+<h1>九州初！Anthropicのサポートを受けた<span class="hi">Claude Community</span>イベントが佐世保で開催！<br>インパクトラボ形式では<span class="hi">日本初</span>開催！</h1>
+<p class="dek">Anthropic（アンソロピック）公認のClaude Community Ambassadorが主催するハッカソンイベントが佐世保で開催。地域課題に挑んだ今回のテーマは「若者流出を防げ！」。地域の大人と大学生らで編成したハッカソン6チーム全てが、その日のうちに地域課題解決に繋がるアプリを完成させました。</p>
+<p class="byline">文・<b>西信好真</b>（Claude Community Ambassador／西海みずき信用組合 地域振興室）　│　2026年8月22日（土）10:00〜17:40　佐世保市内（<ruby>懐霄館<rt>かいしょうかん</rt></ruby>9階ホール／オンド／コネクトベース）</p>
+</header>
+
+<figure class="photo">
+<span class="tab">SASEBO ’26</span>
+<img src="hackathon0822-photo-01.jpg" alt="懐霄館9階ホールでの集合写真">
+<figcaption>午前の部を終えて、<ruby>懐霄館<rt>かいしょうかん</rt></ruby>9階ホールで。手には参加者に配られたClaude Codeのマスコット「Clawd」。</figcaption>
+</figure>
+
+<div class="lead">
+<p>8月22日、佐世保で終日のハッカソン「SASEBO｜Claude for Our Kids／若者流出を防げ！街の本気の大人のハッカソン」を開催しました。米国のフロンティアAI開発・提供企業Anthropic（アンソロピック）のClaude Community公式イベントの中でも、社会課題に挑むプログラム「Impact Lab」としては日本初開催です。佐世保市の転出超過は年間1,813人で全都市でワースト1。うち10〜39歳が約73%（総務省「2025年 住民基本台帳人口移動報告」）。この問題に、地域の大人が真剣に向き合い、課題の当事者である学生と一緒にチームを作り、Claudeを使って実際に動くものを1日で作りあげました。制作に挑んだのは、大学生・地元の経営者・市外から来たエンジニアや識者混成の6チーム。合計23名。観覧や運営をあわせると、1日を通した参加者は約80名になりました。Anthropic Japanからも寒田美緒さん・七尾健太郎さんが佐世保まで駆けつけてくださいました。当日は、NHK・NBC長崎放送・テレビ佐世保・長崎新聞の取材も入りました。</p>
+</div>
+
+<div class="gloss">
+<div class="gt">はじめての方へ、この記事で使われている「ことば」</div>
+<p><b>ハッカソン</b>チームを組み、限られた時間で試作品を一気に作り上げるイベント。今回は約4時間。</p>
+<p><b>Claude Code</b>Anthropicの生成AI「Claude（クロード）」に文章で頼むだけで、プログラムの作成から実行までこなしてくれるツール。未来を先取りしたような体験で、今回の制作の主役。</p>
+<p><b>Impact Lab</b>Anthropicが公認する、社会課題をテーマとしたプログラム。今回が日本初開催。</p>
+<p><b>デモ</b>実際に端末上で動く試作品。スライドや構想の発表とは違い、「動くもの」をその場で見せること。</p>
+</div>
+
+<div class="stats">
+<div class="stat a"><div class="n"><small>約</small>80<small>名</small></div><div class="l">参加者（ハッカソン枠は23名）</div></div>
+<div class="stat b"><div class="n">6<small>チーム</small></div><div class="l">全チームが動くデモまで到達</div></div>
+<div class="stat c"><div class="n">4<small>時間</small></div><div class="l">制作時間（約）</div></div>
+<div class="stat d"><div class="n">1<small>回目</small></div><div class="l">Claude Communityイベント、インパクトラボとして全国初</div></div>
+</div>
+
+<div class="sect">
+<div class="en">PROGRAM</div>
+<span class="tt">一日の流れ</span>
+<p class="note">会場を移しながらの終日プログラムでした。</p>
+</div>
+
+<div class="items">
+<div class="item">
+<div class="no">01</div>
+<h3>開会式&amp;クロストーク（<ruby>懐霄館<rt>かいしょうかん</rt></ruby>9階ホール）</h3>
+<div class="bd"><p>午前の会場は、十八親和銀行に提供していただいた佐世保本店ビル別館・<ruby>懐霄館<rt>かいしょうかん</rt></ruby>。建築家・白井晟一の設計で、国の登録有形文化財になったばかりの建物です。開会式ではAnthropic Japanの七尾様からこのイベントについての説明があり、佐世保市 若者活躍・未来づくり課からは、まちの課題と強みについてのインプットがありました。続けてクロストーク「なぜ若者はまちを出ていくのか。まちは何を用意できるのか」を行い、ハッカソン参加チームに知っておいて欲しい、課題の背景にある情報を共有しました。</p></div>
+</div>
+<div class="item">
+<div class="no">02</div>
+<h3>制作（オンド／コネクトベース）</h3>
+<div class="bd"><p>11:30からは、チームごとに市内2か所の作業拠点へ移動。制作は約4時間。お題は運営からは固定せず、この街の高校生の悩みを6人のペルソナにまとめた資料などを各チームが読み込んで、それぞれで課題解決に繋がるアプリの内容を決めていきます。昼食には佐世保バーガーの名店のサンドイッチ、角煮まん、カステラなどを拠点に用意し、開発チームの手を止めずに作り続けられるようにしました。</p></div>
+</div>
+<div class="item">
+<div class="no">03</div>
+<h3>トークセッション「なぜ人は、そのまちに集まるのか」（15:00〜）</h3>
+<div class="bd"><p>制作と並行して、観覧参加の方に向けたゲストトークも実施。登壇したのは、佐賀県嬉野市塩田を拠点にするブロックチェーン研究者・落合渉悟さんです。人口流出とは正反対に、日本中からエンジニアや研究者が集まってくる場を作っている実践者によるトークで、人が集まる場所の実態を伺いました。</p></div>
+</div>
+<div class="item">
+<div class="no">04</div>
+<h3>成果発表・表彰（16:30〜）</h3>
+<div class="bd"><p>発表は1チーム3分＋質疑2分。審査は「若者の課題に応えているか」「実際に動いているか」「佐世保の街で本当に使えそうか」「Claudeの使い方」「伝わるか」の5項目・審査員4名の100点満点で行いました。</p></div>
+</div>
+
+<figure class="photo" style="margin-top:34px">
+<span class="tab t">会場</span>
+<img src="hackathon0822-photo-10.jpg" alt="懐霄館の外観">
+<figcaption>十八親和銀行 佐世保本店ビル別館・<ruby>懐霄館<rt>かいしょうかん</rt></ruby>。石張りの双塔に丸窓。建築家・白井晟一の代表作のひとつで、国の登録有形文化財。</figcaption>
+</figure>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab y">クロストーク</span>
+<img src="hackathon0822-photo-02.jpg" alt="クロストーク壇上の登壇者4名">
+<figcaption>クロストーク「なぜ若者はまちを出ていくのか。まちは何を用意できるのか」。左から進行の古川拓也さん（一般社団法人Tsunagas）、ベリー理彩さん（SaseboChange創設者）、中島大幸課長（佐世保市 若者活躍・未来づくり課）、西信。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">CROSSTALK</div>
+<span class="tt">「中途半端な街」と「レベル99の村」</span>
+<p class="note">クロストークは、参加者どうしで「佐世保に若者が残る理由」を話すところから始まりました。</p>
+</div>
+
+<div class="story c1">
+<span class="tag">午前｜会場との対話</span>
+<h3>ひとりの学生から出た言葉に、議論が盛り上がりました</h3>
+<p>口火を切ったのは、あるグループにいた東京出身の大学生の言葉でした。「東京は栄えている。五島には地方の魅力がある。でも佐世保は中途半端に栄えている」。この「中途半端」に会場と壇上が反応し、議論が転がっていきます。別のグループからは「地方都市は人口が減っている事実はあるのに、住民の危機感はまだ薄い事が多い。ずっと住むと決めている自分には緊急度が高い」といった声。壇上の受け止めはそれぞれで、中島課長は「56歳になると、ちょうどいい規模感。市街地に何でも揃っているのに、車で10分も走ると九十九島の国立公園が広がる。こんな都市はそうそうない」。また、別の登壇者からは、それなりの都市機能がありつつも、村ぐらいの親密さで人とつながれる強さがあるという意味で村カテゴリーで最大値まで発展した街として「佐世保はレベル99の村だ」という発言もありました。</p>
+</div>
+
+<div class="story c2">
+<span class="tag">午前｜若者の側から</span>
+<h3>挑戦の場は、なかった。だから自分で作った</h3>
+<p>若者代表で登壇した大学1年生のベリーさんは高校2年生のときに、高校横断型コミュニティSaseboChangeを立ち上げました。理由は「学校と家の往復以外のことをやってみたかったが、挑戦する場がなかった」から。最初の1年は交通費も自費。部活と時間が重なり、公欠も取りづらく、先生から「何をやっているのか分からないことはやめておけ」と言われたこともあったそうです。今年3月には、商店街の一部を貸し切って50m走のスポーツイベントを実施。「普段走ったら怒られる場所でも、企画があれば許される。『これってありなの？』という楽しくなることを街でやってみたい」と抱負を語りました。</p>
+</div>
+
+<div class="pull"><p>「チャレンジするなら佐世保。佐世保に行ったら、大人が寄ってたかって応援してくれる——いろんな地域の若い人が、夢を実現するために佐世保を目指す。そんな街を作りたい」</p><p class="who">佐世保市 若者活躍・未来づくり課　中島大幸課長</p></div>
+
+<div class="sect">
+<div class="en">TALK SESSION</div>
+<span class="tt">なぜ人は、そのまちに集まるのか</span>
+<p class="note">ゲストの落合渉悟さんは、ブロックチェーン（インターネット上でお金や記録を、管理者なしで安全にやり取りする技術）の研究者・エンジニア。町内会のような身近な自治をスマホで回すアプリ「Alga」の開発者で、著書に『僕たちはメタ国家で暮らすことに決めた』などもある。現在は嬉野市塩田で古民家5軒を直しながら、日本中から人が集まる場を作っています。</p>
+</div>
+
+<div class="story c3">
+<span class="tag">午後｜塩田の実践</span>
+<h3>場づくりは、個人の貯金の範囲で始められる</h3>
+<p>「ゼロから場づくりをするなら、部屋まで手を入れない。水回りだけ直すのが良い」。キッチンとトイレなら50万円以下。滞在はテントを買ってキャンプ場として成立させれば、維持費を抑え小さく始められる——というとても具体的なアドバイスから話は始まりました。いま準備している新しい本屋は、塩田津の伝統的建造物群保存地区にある237平米の物件。改修を全部自分で負担する代わりに、10年間の家賃を安く交渉したそうです。</p>
+</div>
+
+<div class="story c4">
+<span class="tag">午後｜AI時代のコミュニティ論</span>
+<h3>技術はAIに聞けば分かる。だから核を「思想」に移した</h3>
+<p>かつては「ブロックチェーンを教えます」で人を呼べていた。しかしAIに聞けば技術が分かる時代になり、教えるものを「思想の作り方」に移し、その受け皿となる本屋を作る——という転換をした話も。自宅では3台のPCでClaudeなどのAIを走らせ、自分の代わりに考え事とプログラム開発を進める仕組みまで作っています。田舎の低い固定費で「暇」を確保することが創造の条件になる、という戦略の背景の説明から、飼っているガチョウ11羽の話まで、場作りの話と技術の話が地続きに語られていきました。</p>
+</div>
+
+<div class="pull"><p>「結局は、地元に対する熱が、すべての始まりです」</p><p class="who">落合渉悟さん</p></div>
+
+<a class="btnlink" href="ochiai-talk-2026-08-22.html">▶ このトークをもっと詳しく知りたい方は、詳細版をどうぞ（別ページ・用語解説つき）</a>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab t">制作</span>
+<img src="hackathon0822-photo-03.jpg" alt="作業拠点での制作風景">
+<figcaption>作業拠点でのチーム制作。大学生・地元経営者・市外の社会人の混成チームで、議論と実装を並走させました。机の上にはClaude Codeのマスコット「Clawd」。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">SHOWCASE</div>
+<span class="tt">6チームが作ったもの</span>
+<p class="note">発表順に並べています。いずれも約4時間の短い制作で、動くデモまで到達しました。</p>
+</div>
+
+<div class="story c1">
+<span class="tag">Aチーム</span>
+<h3>「ゆい」——アンケートでは拾えない本音を、ログから読む</h3>
+<p>長崎弁で答えるAIチャット・住民が作る掲示板・スワイプ式の診断を備えたツールを統合。核心は機能そのものではなく、使ううちに無意識に溜まっていくログを、行政の施策づくりの根拠データにするという設計です。「行かない」とスワイプした理由も操作ログに残る。「アンケートとして身構えた回答ではなく、無意識のログにこそ本音がある」という提案でした。</p>
+</div>
+
+<div class="story c2">
+<span class="tag">Bチーム</span>
+<h3>「何するばい？」——やりたいことは、聞かない</h3>
+<p>課題資料のペルソナのひとり、「不満はない。やりたいこともない」という高校生に向けた進路アプリ。特徴は「やりたいことは聞かない」こと。代わりに「止められても、ついやってしまうことは？」と問いかけ、行動の癖から自己分析につなげます。ゴールは「知らなかった」を「知っている」に変えること。最終的には佐世保の業種・職業の紹介へと広げていく構想です。</p>
+</div>
+
+<div class="story c3">
+<span class="tag">Cチーム</span>
+<h3>「Nodo」——市民の要望に、実現までの道のりを返す</h3>
+<p>SNSには「市はこうすべきだ」という市民の声があふれるが、予算・人手・制度の壁までは市民には見えにくい。そこで要望を入力すると、実現までのロードマップと障壁、次の一歩をAIがアクションプランに整理して返すウェブアプリを制作。利用者に合わせた3つのプランでの情報の出し分けに加え、理想の佐世保像を入力すると仮想住民1,000人でシミュレーションする「バタフライエフェクト」という名の機能まで実装。審査員からは「着眼点が面白く、サイトの見せ方もこなれている」という講評でした。</p>
+</div>
+
+<div class="story c4">
+<span class="tag">Dチーム｜最優秀賞・若者賞</span>
+<h3>デート×インターン——不純な動機が、当事者意識に変わる</h3>
+<p>「デートの場所を調べても、出てくるのはハウステンボス。次もハウステンボス。初デートの定番は散歩が佐世保の大学生」。佐世保の若者の悩みを「情報がない」「お金がない」の2つに分解し、前者はLINEに届くイベント情報で、後者は「デート代を稼ぎたい」という欲求を佐世保の有償インターンシップに接続して解決するポータルサイトです。インターン先の企業からのフィードバックはプロフィールに積み上がり、就活にも使え、街への貢献が可視化されます。青春が動機で入っても、いつの間にか「この街に関わりたい」という当事者意識に変わっていくような構造を上手く設計していました。こちらのチームは4時間のうち約3時間を内容を固める議論に使ったそうです。</p>
+</div>
+
+<figure class="photo" style="margin-top:22px">
+<span class="tab y">Dチーム</span>
+<img src="hackathon0822-photo-08.jpg" alt="Dチームの発表スライド「デートの欲求をシビックプライドに！」">
+<figcaption>Dチームの発表。掲げたコンセプトは「デートの欲求をシビックプライドに！」。</figcaption>
+</figure>
+
+<div class="story c5">
+<span class="tag">Eチーム</span>
+<h3>「仕事図鑑」——中学生に、トレカで街の仕事を届ける</h3>
+<p>転出する10〜30代のうち、進路がまだ決まっていない中学生にフォーカス。中学生が10問のカジュアルなアンケートに答えると、「中学生に届く言葉」で作った佐世保にある職業の紹介カードとマッチングされる仕組みです。カードはトレーディングカード風で、パックを開く演出のアニメーション付き。裏面には楽しいこともつらいことも正直に書いてあります。テレビCMを打たない企業間取引の会社が佐世保に多くあることを知ってもらう狙いで制作され、審査員の中島課長からは「教育委員会が抱えている課題をまさに捉えた提案」という講評がありました。</p>
+</div>
+
+<div class="story c6">
+<span class="tag">Fチーム</span>
+<h3>「サセボ自習室トークン」——交通ICカードが、自習室の鍵になる</h3>
+<p>高校生の勉強場所の不足に対して、コワーキングスペース（共同の仕事場）やアーケードの空き店舗を、学生向け自習室としてネットワーク化する提案。京町のコワーキングスペース「コワークサセボ」で実運用されているスマートロック（ネット経由で開け閉めできる鍵）の仕組みを使い、交通ICカード（nimoca）をかざして入退室するところまで実機で動かしました。利用記録は自動で蓄積され、市は利用実績に応じて施設を補助する。「佐世保のアーケードの3階・4階は空いていて、22時以降は警察の巡回もあるセキュアな環境」という、現場を知る参加者ならではの提案が重なりました。審査員の落合さんの講評は「技術力が異様に高い。市の施策としての実現可能性が極めて高い」。</p>
+</div>
+
+<div class="pull"><p>「こういうイベントでは『開発が終わらなかった』『技術が足りなかった』がつきものでした。今回はそれがほとんどなかった。皆さんは課題の解決そのものに注力できていたと思います」</p><p class="who">Anthropic Japan　七尾健太郎さん</p></div>
+
+<figure class="photo" style="margin-top:22px">
+<span class="tab">ANTHROPIC</span>
+<img src="hackathon0822-photo-09.jpg" alt="Anthropic Japan 七尾健太郎さんからのメッセージ">
+<figcaption>発表を受けて、Anthropic Japanの七尾健太郎さんからメッセージ。寒田美緒さんからも講評がありました。</figcaption>
+</figure>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab y">発表</span>
+<img src="hackathon0822-photo-04.jpg" alt="成果発表の会場全景">
+<figcaption>成果発表は立ち見も出る満員（写真の後ろにも多数）。テレビカメラも入りました。スクリーンには、その日の午後に作られた動くデモが映ります。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">AWARD</div>
+<span class="tt">表彰——Dチームがダブル受賞</span>
+</div>
+
+<div class="story" style="margin-top:22px">
+<h3>「これが私たちの悩みだと思いました」</h3>
+<p>最優秀賞は、デート×インターンのDチーム。審査員4名の採点を集計すると、上位4チームが数点差にひしめく大接戦でした。若者代表の大学生の審査員ベリーさんが独自に選ぶ若者賞も「デート場所がないのは共感しかない。インターンで仕事に触れる機会は、自分もその時にあったらよかった」とDチームに贈られ、ダブル受賞となりました。賞品はAnthropic提供のカード型ミニコンピューター「Cardputer」。ハッカソン参加者全員に、Claude Codeのマスコット「Clawd」ちゃんのぬいぐるみ、観覧参加者にはステッカーが配られました。受賞チームからは「学生の悩みと『世の中はそういうことじゃない』という大人の視点を、すり合わせることに一番時間を使った。しっかり事業化していきたい」という、今後の継続を誓う力強い発言がありました。</p>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab">表彰</span>
+<img src="hackathon0822-photo-05.jpg" alt="最優秀賞の表彰">
+<figcaption>最優秀賞を受賞したDチーム。若者賞とのダブル受賞になりました。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">VOICES</div>
+<span class="tt">この日が終わったあとも</span>
+<p class="note">こうしたイベントでありがちな、発表して「よかったよかった」では終わりません。それぞれが次の動きを口にしています。</p>
+</div>
+
+<div class="story c2">
+<span class="tag">佐世保市</span>
+<h3>「ここだけで終わりにしない」</h3>
+<p>中島課長の総評は具体的でした。「面白い取り組みばかりでハッとさせられた。持ち帰って実現できるよう、関係部署にきちんと話をしながら進めていく」「次回以降も佐世保でこのハッカソンをやりたい」。</p>
+</div>
+
+<div class="story c3">
+<span class="tag">審査員・Anthropic</span>
+<h3>「ハッカソンで町おこし」</h3>
+<p>落合さんは自身のハッカソン遍歴に触れながら、「誰が何を作ったかを記録していけば、街の資産になる。AI以前はアイデアソン（アイデアを話し合うだけの会）止まりだったが、今日見た通り、エンジニアでなくても、もう作れる時代。今日から変わりますよ」。ベリーさんは「わずか数時間で事業化できそうなプロジェクトばかりが出てきた。全部事業化してほしい」。アンソロピックの寒田さんは「実際に悩みを抱える大学生が各チームにいたから、身近な課題に寄り添ったアイデアが多かった。今後もこういう場をAnthropicとして協力していきたい」と話しました。</p>
+</div>
+
+<div class="sect">
+<div class="en">CREDIT</div>
+<span class="tt">この日を支えた体制</span>
+</div>
+<div class="chips">
+<span class="chip">主催：西信好真（Claude Community Ambassador）</span>
+<span class="chip">主催：一般社団法人Tsunagas</span>
+<span class="chip">特別協力：佐世保市</span>
+<span class="chip">特別協力：西海みずき信用組合</span>
+<span class="chip">特別会場提供：十八親和銀行（懐霄館9階ホール）</span>
+<span class="chip">作業拠点：オンド</span>
+<span class="chip">作業拠点：NKS SASEBO CONNECT BASE</span>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<img src="hackathon0822-photo-06.jpg" alt="閉会後の集合写真">
+<figcaption>閉会後、コネクトベースの前で。手にはClaude Codeのマスコット「Clawd」と賞状。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">GALLERY</div>
+<span class="tt">この日の写真</span>
+</div>
+<div class="gallery">
+<img src="hackathon0822-g01.jpg" alt="開場準備。懐霄館の丸天窓の下でClawdを配置">
+<img src="hackathon0822-g02.jpg" alt="開会式のタイトルスライドと会場">
+<img src="hackathon0822-g03.jpg" alt="開会式で話す主催者">
+<img src="hackathon0822-g04.jpg" alt="Anthropic Japan 寒田さんの挨拶">
+<img src="hackathon0822-g05.jpg" alt="佐世保市・Tsunagasによるまちのインプット">
+<img src="hackathon0822-g06.jpg" alt="クロストークの対話ワークで盛り上がる参加者">
+<img src="hackathon0822-g07.jpg" alt="会場から発言する学生">
+<img src="hackathon0822-g08.jpg" alt="作業拠点でClawdを手に学生を激励">
+<img src="hackathon0822-g09.jpg" alt="成果発表のアプリデモ">
+<img src="hackathon0822-g10.jpg" alt="採点する審査員">
+<img src="hackathon0822-g11.jpg" alt="表彰発表の瞬間">
+<img src="hackathon0822-g12.jpg" alt="閉会の主催者挨拶">
+</div>
+<p style="text-align:right; font-size:12px; font-weight:700; color:#8a8172; letter-spacing:.04em; margin:10px 0 0">撮影：川上亮</p>
+
+<div class="closing">
+<div class="en">WHAT'S NEXT</div>
+<h2>成果物は、市の関係部署へ。次の開催の話も始まっています。</h2>
+<p>この日の6本のプロダクトは、佐世保市の関係部署に速やかに共有され、継続の意向があるチームには市が側面支援をしていきます。また、最優秀賞のチームはすでに事業化を宣言。佐世保市からは次回開催を望む声が上がりました。並行して毎月のAI勉強会を継続し、AIを使って街を楽しく変える市民を増やしていきます。最新のイベント情報は<a href="https://x.com/y_nishinobu" target="_blank" rel="noopener">X</a>をご参照ください。</p>
+<div class="sign"><b>西信</b>　西海みずき信用組合 地域振興室 ／ Claude Community Ambassador<br>2026年8月・佐世保</div>
+</div>
+
+<div class="foot">
+<p>本レポートは当日の記録（録音・議事録）をもとに、主催者が再構成したものです。登壇者・審査員以外の個別の発言は実名を伏せています。数値・引用は当日の発言に基づく概数・要旨です。</p>
+</div>
+<a class="tolist bottom" href="/ai/">← イベント一覧へ戻る</a>
+
+
+</div>
+</body>
+</html>

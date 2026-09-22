@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ローカルでつくる Small Business ワークショップ レポート｜2026.09.17 鳥栖</title>
+<link rel="canonical" href="https://y-nishinobu.soitgoes.page/ai/tosu-report-2026-09-17.html">
+<meta name="description" content="2026年9月17日、佐賀県鳥栖市のネスト鳥栖で開いた「ローカルでつくる Small Business」ワークショップのレポート。3時間のうち最初の1時間半を、隣の人の困りごとを聞き取る時間に使い、そこから Claude Code で実装。家事の頼みごとを送り合うアプリと、朝の持ち物を確認するアプリが発表されました。">
+<meta name="author" content="西信 好真">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="佐世保 ClaudeCode コミュニティ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ローカルでつくる Small Business ワークショップ レポート｜2026.09.17 鳥栖">
+<meta property="og:description" content="2026年9月17日、佐賀県鳥栖市のネスト鳥栖で開いた「ローカルでつくる Small Business」ワークショップのレポート。3時間のうち最初の1時間半を、隣の人の困りごとを聞き取る時間に使い、そこから Claude Code で実装。家事の頼みごとを送り合うアプリと、朝の持ち物を確認するアプリが発表されました。">
+<meta property="og:url" content="https://y-nishinobu.soitgoes.page/ai/tosu-report-2026-09-17.html">
+<meta property="og:image" content="https://y-nishinobu.soitgoes.page/ai/tosu0917-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ローカルでつくる Small Business ワークショップ レポート｜2026.09.17 鳥栖",
+  "description": "2026年9月17日、佐賀県鳥栖市のネスト鳥栖で開いた「ローカルでつくる Small Business」ワークショップのレポート。3時間のうち最初の1時間半を、隣の人の困りごとを聞き取る時間に使い、そこから Claude Code で実装。家事の頼みごとを送り合うアプリと、朝の持ち物を確認するアプリが発表されました。",
+  "url": "https://y-nishinobu.soitgoes.page/ai/tosu-report-2026-09-17.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://y-nishinobu.soitgoes.page/ai/tosu-report-2026-09-17.html" },
+  "inLanguage": "ja",
+  "datePublished": "2026-09-23",
+  "dateModified": "2026-09-23",
+  "author": { "@type": "Person", "name": "西信 好真", "alternateName": "Yoshimasa Nishinobu", "url": "https://y-nishinobu.soitgoes.page" },
+  "publisher": { "@type": "Person", "name": "西信 好真", "url": "https://y-nishinobu.soitgoes.page" },
+  "isPartOf": { "@type": "CollectionPage", "name": "佐世保 ClaudeCode コミュニティ ｜ イベントレポート", "url": "https://y-nishinobu.soitgoes.page/ai/" },
+  "image": "https://y-nishinobu.soitgoes.page/ai/tosu0917-01.jpg"
+}
+</script>
+<style>
+  :root{ --ink:#1b1b1b; --ink-2:#4a463f; --rule:#1b1b1b; --hairline:#d5d2cc; --accent:#a52a22; --paper:#fcfbf8; }
+  *{box-sizing:border-box}
+  html{font-size:16px;-webkit-text-size-adjust:100%}
+  html.fs-lg{font-size:18px} html.fs-xl{font-size:21px}
+  body{margin:0;padding:0 20px 80px;
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic Medium","Yu Gothic",sans-serif;
+    background:var(--paper);color:var(--ink);font-size:1rem;line-height:1.9;font-feature-settings:"palt"}
+  .wrap{max-width:760px;margin:0 auto}
+  .num{font-family:"Avenir Next Condensed","Roboto Condensed","Arial Narrow","Hiragino Sans",sans-serif;font-weight:700}
+  .fs-switch{display:flex;gap:6px;justify-content:flex-end;padding:14px 0 0}
+  .fs-switch button{font-family:inherit;font-size:.85rem;font-weight:700;color:var(--ink);
+    background:transparent;border:1px solid var(--ink);padding:4px 10px;cursor:pointer;line-height:1.4}
+  .fs-switch button.on{background:var(--ink);color:var(--paper)}
+  .masthead{border-bottom:3px solid var(--rule);padding:18px 0 20px;margin-bottom:34px}
+  .kicker{font-size:.85rem;letter-spacing:.26em;color:var(--ink-2);margin-bottom:12px}
+  h1{margin:0;font-size:clamp(1.6rem,4.4vw,2.2rem);font-weight:800;line-height:1.45}
+  .edition{border-top:1px solid var(--hairline);margin-top:16px;padding-top:10px;font-size:.9rem;color:var(--ink-2)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--rule);
+    padding-bottom:8px;margin:46px 0 20px}
+  .sec-head .no{font-size:1.9rem;line-height:1;color:var(--accent)}
+  .sec-head h2{margin:0;font-size:1.2rem;font-weight:800;letter-spacing:.04em}
+  h3{font-size:1.05rem;font-weight:800;margin:30px 0 8px}
+  p{margin:0 0 16px}
+  ul,ol{margin:0 0 18px;padding-left:1.4em} li{margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:.95rem}
+  th,td{text-align:left;vertical-align:top;padding:9px 10px 9px 0;border-bottom:1px solid var(--hairline)}
+  th{font-weight:800;white-space:nowrap}
+  thead th{border-bottom:2px solid var(--rule)}
+  .twrap{overflow-x:auto}
+  blockquote{margin:22px 0;padding:0 0 0 18px;border-left:3px solid var(--accent);
+    font-size:1.02rem;line-height:1.85;color:var(--ink)}
+  blockquote p:last-of-type{margin-bottom:0}
+  blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--ink-2);margin-top:10px}
+  figure{margin:26px 0}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:.88rem;color:var(--ink-2);padding-top:8px;line-height:1.7}
+  a{color:var(--accent);text-underline-offset:3px}
+  @media (max-width:520px){ th{white-space:normal} }
+</style>
+<style>
+  .tolist{display:inline-block;margin:14px 0 0;font-size:.9rem;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--hairline)}
+  .tolist:hover{color:var(--accent);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="tolist" href="/ai/">← イベント一覧</a>
+<div class="fs-switch">
+  <button data-fs="" class="on">標準</button>
+  <button data-fs="fs-lg">大</button>
+  <button data-fs="fs-xl">特大</button>
+</div>
+<header class="masthead">
+  <div class="kicker">CLAUDE COMMUNITY AMBASSADOR ／ 活動レポート</div>
+  <h1>ローカルでつくる Small Business</h1>
+  <div class="edition"><strong>TOSU｜CLAUDE CODE WORKSHOP</strong></p>
+<p>2026年9月17日（木）15:00〜18:00／ネスト鳥栖（NesXt
+TOSU）・佐賀県鳥栖市 主催＝一般社団法人InnoDrops ／ Claude Community
+Ambassador 西信好真</div>
+</header>
+
+<div class="sec-head"><h2>この日のプログラムについて</h2></div>
+<ul>
+<li><p><strong>Claudeにいきなり触らず、紙でしっかりと作るものを固める</strong></p>
+<p>3時間のうち最初の1時間半は、ペアを組んだ相手の困りごとに耳を傾ける時間に充てました。Claude
+Codeの画面を開いたのは、相手の抱える「課題」がワークシート上で整理できてからでした。</p></li>
+<li><p><strong>自分ではなく、隣に座る相手の悩みを解決するアプリをつくる</strong></p>
+<p>開発のテーマは、参加者同士が持ち寄ったリアルな日常の困りごと。作ったその場で本人にアプリを使ってもらい、率直なフィードバックを受け取り改善を行いました。</p></li>
+<li><p><strong>3時間の講座中に、実際に動くアプリが完成</strong></p>
+<p>夫婦間での家事の頼みごとを送り合うアプリや、朝の持ち物忘れを防ぐアプリ。最後の発表会では、実際の画面を動かしながら発表しました。</p></li>
+<li><p><strong>受講後アンケート結果では多くの参加者に行動変容の兆しが</strong></p>
+<p>終了後のアンケート（回答者11名）では、満足度が平均4.64点（5点満点）。11人中9人が「AIを使って取り組みたいことがある」と回答し、そのうち5人はすでに実務上で使える具体的なアイデアまで思い描いていました。</p></li>
+</ul>
+
+<div class="sec-head"><span class="no num">1</span><h2>3時間のセミナーのタイムテーブル</h2></div>
+<figure><img src="tosu0917-01.jpg" alt="会場の全景。参加者がノートパソコンを開いて机に向かい、スクリーンに資料が映っている" loading="lazy"><figcaption>会場となったネスト鳥栖。コワーキングスペースの一室を3時間借り切って開かれた。</figcaption></figure>
+<p>このワークショップの狙いは、単にClaude
+Codeの操作方法を覚えることではありません。地域の企業や個人が、自分たちの強み（アセット）を活かして新しい事業の種を作るきっかけにしてもらうことを目指しました。</p>
+<div class="twrap"><table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 93%" />
+</colgroup>
+<thead>
+<tr>
+<th>時刻</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15:00</td>
+<td>開場・オープニング。ペアでの自己紹介後、「なぜ地域でスモールビジネスなのか」という話題からスタート。</td>
+</tr>
+<tr>
+<td>15:15</td>
+<td><strong>デザイン思考</strong>の導入。9つの点を4本の直線で結ぶパズルで「枠の外に出る」練習をしてから、共感・定義・概念化・試作・検証の5段階の説明</td>
+</tr>
+<tr>
+<td>15:45</td>
+<td><strong>相互インタビュー</strong>。ワークシートに自分の「もやもや・悩み」を書き、ペアで10分ずつ聞き取る</td>
+</tr>
+<tr>
+<td>16:10</td>
+<td>聞き取った話の奥にある本音を言葉にする。「口にしていることと、本当に引っかかっていることは違う」。</td>
+</tr>
+<tr>
+<td>16:15</td>
+<td><strong>ペルソナと課題定義</strong>。同じ引っかかりを持つ人は他にどれくらいいるか</td>
+</tr>
+<tr>
+<td>16:25</td>
+<td>休憩。あわせて Anthropic から提供された APIクレジットを案内。</td>
+</tr>
+<tr>
+<td>16:35</td>
+<td><strong>Claude
+Codeで実装スタート</strong>。埋まったワークシートを設計図に、適宜ペアの相手からフィードバックをもらいながら進める。</td>
+</tr>
+<tr>
+<td>17:25</td>
+<td><strong>全体での発表</strong>。</td>
+</tr>
+<tr>
+<td>17:40</td>
+<td>次回、唐津開催回（10月24日）と、11月から始まる事業共創プログラムの案内</td>
+</tr>
+<tr>
+<td>17:55</td>
+<td>終了</td>
+</tr>
+</tbody>
+</table></div>
+<h3
+id="地域でのスモールビジネスの具体例として">「地域でのスモールビジネス」の具体例として</h3>
+<p>冒頭では、当日のテーマをイメージしやすいよう、長崎県佐世保市でのClaude活用の事例が紹介されました。就労支援事業所を営む石丸徹郎さん（ISIAL）が立ち上げた「エールリンク」という取り組みです。</p>
+<p>地元のクラブチームのTシャツを購入すると、売上の一部が活動資金としてチームへ還元され、商品の制作は就労支援事業所の利用者さんが担います。買い手は応援の気持ちとともに愛着の持てる服を手に入れ、福祉現場には仕事が生まれ、チーム側も後ろめたさなくファンへ購入を案内できる——関わる三方が自然とつながる設計です。</p>
+<p>事例を紹介した小山さんが特に注目したのは、「このアイデアがどこから生まれたのか」という視点の動かし方でした。</p>
+<blockquote>
+<p>「『福祉事業所のこのビジネスをどう伸ばそうか』という発想からスタートすると、たぶんここには行き着かないんですよね。関わっている人や、実際に服を着る人たちの困りごとを別の視点から捉え直していくと、パズルのピースがピタリとはまる。しかも今の時代、Claudeを使えば、そのアイデアを3日で形にできてしまうんです」</p>
+</blockquote>
+<p>「既存事業の延長で新しいことを始めよう」と構えてしまうと、どうしても枠の内側にとどまりがちです。小山さんはこれを視点の「捉え直し」と表現し、参加者にも同じ意識を持ってもらうよう呼びかけました。普段向き合っているクライアントや顧客を、少し角度を変えて眺めてみるだけで、リアルな生活者の顔が浮かび上がってくる。</p>
+<p>後半の実装パートで参加者たちが向き合ったのも、まさにこの「身近な誰かの困りごとを捉え直す」プロセスそのものでした。</p>
+<blockquote>
+<p>「大きなビジネスの価値はもちろん否定しません。ただ、地域に根ざした小さなビジネスを、ほとんどコストをかけずに自分たちの手で立ち上げられる世の中になってきています。それこそが、現場と距離が近いローカルで動く私たちの、何よりの強みになると信じています」</p>
+<cite>— 小山直子さん</cite></blockquote>
+
+<div class="sec-head"><span class="no num">2</span><h2>Claude Code を開く前に、課題の整理に使った1時間半</h2></div>
+<p>ワークショップの前半は、ほぼ全員がパソコンを横に置いたまま進行しました。投げかけられた問いは、極めてシンプルです。</p>
+<blockquote>
+<p>家庭・地域・学校・職場のどこかで、
+「なんとなくモヤモヤするけれど、うまく言葉にできていない」瞬間は
+どんなときですか?</p>
+<cite>— 当日の投影スライドより</cite></blockquote>
+<p>参加者は配られたA3用紙の「もやもや探検シート」に日常の違和感を書き出し、ペアを組んだ相手と10分ずつインタビューし合います。聞き手に求められるのは、相手が口にした言葉をそのまま受け取るのではなく、「その裏で何が引っかかっているのか」を掘り起こして一言にまとめることでした。</p>
+<p>進行役の猿渡さんは、「家族のために弁当を買って帰ったのに、誰も手をつけなかった」という自身の身近な体験を例に挙げました。表面的には「食べてもらえなかった」という出来事ですが、本当の違和感は別の感情にあった——そんな身近なズレを通して、本音をすくい上げるコツを伝えます。</p>
+<figure><img src="tosu0917-02.jpg" alt="スクリーンに「問い」のスライドが映り、参加者が机に向かっている会場" loading="lazy"><figcaption>前半のデザイン思考パート。この日の起点となる問いがスクリーンに投影されている。</figcaption></figure>
+<figure><img src="tosu0917-03.jpg" alt="ワークシートを挟んで向かい合い、聞き取りをしている二人" loading="lazy"><figcaption>ペアでの聞き取り。机の上にあるのは、この日のために用意された「もやもや探検シート」。</figcaption></figure>
+<p>この1時間半の作業について、後半のパートに入る直前、猿渡さんがこう言葉を添えました。</p>
+<blockquote>
+<p>「実は、ここがAIには絶対にできない領域なんです。その場の空気感や表情、声のトーンまでは読み取れません。この『感情を言語化するプロセス』だけは人にしかできず、だからこそ次のAIでの実装フェーズで大きな力を発揮します」</p>
+</blockquote>
+<p>事後アンケートでも、全4パートの中で最も満足度が高かったのがこのデザイン思考のパートでした（5点満点中
+4.73）。「AIに触る前に、まずは自分の頭でとことん考える大切さがわかった」「相手の言葉の奥にある本質を汲み取る難しさと面白さを感じた」といった感想が寄せられています。</p>
+
+<div class="sec-head"><span class="no num">3</span><h2>ワークシートが埋まってから、Claude Code を開く</h2></div>
+<p>後半はいよいよ、書き溜めたワークシートをClaude
+Codeに渡して実装に入ります。中には手書きのシートをスマートフォンで撮影し、そのまま画像として読み込ませた参加者もいました。文字を的確に読み取り、要件定義までスムーズに進めていくClaudeの様子に、参加者からは驚きの声も聞かれました。</p>
+<p>進行役からのアドバイスも、技術的な操作方法というよりは「AIとの向き合い方」に重きが置かれました。</p>
+<blockquote>
+<p>「『相手の課題を整理して、解決するアプリを作りたい』と前提を伝えてみてください。その上で、背景やペルソナをメモ書き程度でいいので共有する。そして『どんなアプリが作れそう？』とAIに相談しながら、壁打ちするように進めるのがコツです。インタビューで感じた生々しい感情やニュアンスもそのまま伝えると、AIは驚くほど意図を汲んでくれます」</p>
+</blockquote>
+<figure><img src="tosu0917-04.jpg" alt="机の上にワークシートとノートパソコンが並び、進行役が参加者と話している" loading="lazy"><figcaption>机の上にワークシートとPCを並べ、紙で整理した思考のメモをClaudeに渡していく参加者たち</figcaption></figure>
+<p>このワークショップの面白さは、「作ったアプリを届けたい相手がすぐ隣に座っていること」です。相手の悩みを考えながら作り、出来上がった瞬間に隣でテストしてもらえる。会場からは、こんな声も聞こえてきました。</p>
+<blockquote>
+<p>「これ、めちゃくちゃ楽しいですね。ファーストユーザーがすぐ隣にいる。自分のためだけに作っていても味気ないけれど、目の前にいる誰かのために手を動かす体験はすごく新鮮です」</p>
+</blockquote>
+
+<div class="sec-head"><span class="no num">4</span><h2>3時間でできあがったもの</h2></div>
+<figure><img src="tosu0917-05.jpg" alt="参加者がスクリーンの前に立ち、つくったアプリの画面を映しながら説明している" loading="lazy"><figcaption>左側にClaude
+Codeとの対話画面、右側に動くWebアプリを並べて全体に投影</figcaption></figure>
+<p>最後には、制作したアプリを全体で発表する時間を設けました。参加した2名が発表したアプリは、どちらも相手のリアルな日常の困りごとに向き合う内容でした。</p>
+<h3
+id="発表1家事の頼みごとを一言で送り合うアプリ">発表（1）：家事の頼みごとを、一言で送り合うアプリ</h3>
+<p>出発点は「洗濯物」にまつわる不満でした。自分は相手の服もたたむのに、相手はやってくれない。深掘りしていくと、課題は2点ありました。「家事の分担ルールが曖昧なこと」、そして不満顔の相手に「怒ってる？」と聞いても「怒ってない」と返ってきてしまい、感情の共有がうまくいかないことです。</p>
+<p>ターゲットは共働き・子育て中の30代後半の夫婦。日によって忙しさも体力も違うため、ガチガチの当番表を作っても続きません。最初はメッセージアプリ風に作り始めましたが、「文字を打つ手間があると結局使われなくなる」と判断し、操作を極限までシンプルに削ぎ落としました。</p>
+<p>画面には「ゴミ出し」「洗い物」「洗濯物たたみ」「お風呂そうじ」「保育園の送り・迎え」「買い物」「寝かしつけ」といったボタンが並び、1タップで依頼文が完成します。受け取った側も「やる」「あとで」「今日は無理」の3択でサッと返信。完了したら「ありがとう」をワンタップで送れます（定型にない要望は自由入力や音声入力にも対応）。</p>
+<p>制作の過程で、面白い変化もありました。当初は感謝を送ると「ポイント」が貯まる仕組みでしたが、作者が「これじゃ情緒がない。もっと気持ちが通い合うようにして」とClaudeに伝えたところ、画面に花が咲くデザインへと変化。5つ貯まると花束になる演出が自然と組み込まれました。花を咲かせるアイデアは指示したものではなく、Claude側の提案です。アプリ名もClaudeの案を採用し、発表者が手を入れたのは「『察して』より、ひとこと。」というキャッチコピーだけでした。</p>
+<h3
+id="発表2朝傘を持ったか確認するアプリ">発表（2）：朝、傘を持ったか確認するアプリ</h3>
+<p>こちらのアプリは、「出先で急な雨に降られるとコンビニでビニール傘を買い足してしまい、玄関に傘が溜まっていく」という日常のストレス。本音を探ると「そもそも余計な傘を持ち歩きたくない」という点に行き着き、移動が多い30〜40代の営業職を想定して開発が進みました。</p>
+<p>目指したのは「雨を予報するアプリ」ではなく、「朝の持ち物を忘れさせないアプリ」です。降水確率が一定を超える日の朝、傘と財布を持ったかだけを確認し、完了ボタンを押すシンプルな設計にしました。Claudeはまず画面のワイヤーフレームを提示して「こんなレイアウトでどうですか？」と確認を入れてからコードを書き始めており、前半で学んだペーパープロトタイプの手順をAI自身が自然となぞっていたのが印象的でした。</p>
+<p>発表後のフィードバックでは、「遠慮せずにどんどん要望をぶつけること」の大切さが共有されました。</p>
+<blockquote>
+<p>「要望をためらわずに伝えるほど、アウトプットの精度は上がります。『家族で使いたいからネットに公開して』『家族以外に見られないようパスワードをかけて』『スマホで見にくいから直して』と、気がついた要望を次々にぶつけていく。ある意味、自分のワガママを正直に投げ込むのが一番の近道です」</p>
+</blockquote>
+<p>発表中には「作業の途中でボタンが消えてしまった」というリアルなトラブルも共有され、そこから以下のような実践的なノウハウが挙げられました。</p>
+<ol type="1">
+<li><p><strong>「この機能は残したまま」とプロンプトに明記する（予期せぬ仕様崩れを防ぐ）</strong></p></li>
+<li><p><strong>一度に全部作らせず、機能を3〜5段階に分けて1つずつ実装する</strong></p></li>
+<li><p><strong>理想のデザインに近い参考画像やWebサイトのURLを渡す</strong></p></li>
+</ol>
+
+<div class="sec-head"><span class="no num">5</span><h2>参加者の反応</h2></div>
+<p><strong>事後アンケート n=11</strong>（2026年9月22日時点）</p>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>値</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全体満足度</td>
+<td><strong>4.64</strong>／5</td>
+<td>最高評価 8件</td>
+</tr>
+<tr>
+<td>推奨意向</td>
+<td><strong>4.55</strong>／5</td>
+<td>最高評価 8件</td>
+</tr>
+<tr>
+<td>行動意向あり</td>
+<td><strong>9</strong>／11</td>
+<td>うち5件は具体的な計画あり</td>
+</tr>
+</tbody>
+</table></div>
+<p>カリキュラム別では、デザイン思考（4.73）が最も高く、インタビュー実践・相互シェア（ともに4.64）、Claude
+Code体験（4.55）と続きました。回答者のうち7名がすでにClaudeに触れたことがあり、そのうち6名は業務で日常使いしている層でした。</p>
+<p>自由記述では、ツールの性能だけでなく「相手と向き合って課題を掘り下げるプロセス」についての感想が目立ちました。</p>
+<blockquote>
+<p>「アプリもシステムも、『誰に届けるか』を解像度高く想像することが何より重要で、これは新規事業づくりにもそのまま通じると感じました。自分の頭の中だけで終わらせず、外に発信して誰かに使ってもらう挑戦をもっとやってみます」</p>
+</blockquote>
+<blockquote>
+<p>「アプリ制作は初めてで、何から手をつければいいか悩みすぎて一歩が踏み出せずにいました。身近なモヤモヤを解くという切り口のおかげで、終始楽しく手を動かせました。届けたい相手の顔が見えていると、こんなにも手が止まらないものなんですね」</p>
+</blockquote>
+<p>一方で、日常的にClaudeを使いこなしている参加者3名からは「もっと時間が欲しかった」という声も。「あれもこれもと機能を詰め込みすぎて時間内に収まりきらなかった。一番届けたい機能だけに絞り込むステップがあると、時間内で完成度を上げられたかもしれない」といった、実践者ならではの前向きなフィードバックも寄せられています。</p>
+<p>※アンケートは9月24日まで回答を受け付けているため、数値は速報値です。</p>
+
+<div class="sec-head"><span class="no num">6</span><h2>当日に出た新しく重たい問い</h2></div>
+<p>終盤、主催である一般社団法人InnoDrops
+代表理事・小山直子さんが投げかけた問いが、印象に残っています。長年にわたり高校生や若者の探究学習に伴走してきた立場だからこその、自己反省を含んだ言葉でした。</p>
+<blockquote>
+<p>「いま世間では『子どもたちにどうAIを使わせるか』ばかりが議論されています。でも本当は、大人側のほうが本質を見失っているのではないでしょうか。さっきの実装中も、みなさんが指示していないのにAIが気を利かせて勝手に作ってくれた機能がたくさんありましたよね。</p>
+<p>去年までは、教育プログラムで関わる高校生たちに話を聞くとみんな『こうやりたかったから、こう作りました』と自分の言葉で主体的に語ってくれていました。ところが今年は、『AIが出してきたから』『AIが言うことを聞かないから』と答える子が急増したんです。これには強い危機感を覚えました。</p>
+<p>私たち伴走者がやるべきことは、ツールを教えることではなく『あなたが本当に気になっていること、やりたいことは何なの？』と問い続けることだったんだと、深く反省しています。そしてそれは大人も同じです。AIを使って何がしたいのか、それは本当に自分たちにとって意味があるものなのか——その原点を見失ってはいけないと感じています」</p>
+<cite>— 小山直子さん</cite></blockquote>
+<p>この言葉は、この日の前半に1時間半もの時間をかけて「もやもや」の言語化を行った、その理由そのものでした。</p>
+<p>AIを使えば、形だけのプロトタイプは一瞬で作れてしまう時代です。だからこそ、「なぜそれを作る必要があるのか」「誰のどんなペインを解決したいのか」それらを自分の言葉で語れるかが問われます。デザイン思考パートが最も高い満足度を得た背景には、AIに使われたのではなく、自分の意思でAIを使いこなせたという参加者の確かな手応えがあったように思えます。</p>
+
+<div class="sec-head"><span class="no num">7</span><h2>この先の展開</h2></div>
+<figure><img src="tosu0917-06.jpg" alt="主催者がスクリーンの前で次回イベントの案内をしている" loading="lazy"><figcaption>終盤、次回イベントの案内スライドが投影される</figcaption></figure>
+<p>最後に、参加者に向けて次なる挑戦の場が案内されました。</p>
+<h3>唐津会場｜10月24日（土）</h3>
+<p>同じく「ローカルでつくる Small
+Business」をテーマに、次回は1日完結型のハッカソンを開催します。</p>
+<p>会場は、2026年7月にオープンしたばかりの<a
+href="https://pla2.jp/">世界海洋プラスチックプランニングセンター「PLAPLA」</a>（唐津市鎮西町波戸）。テーマは「環境・漁業」です。地元の漁師さんや海洋プラ問題に取り組む現場の方々を招き、その場で生の声を聞きながら、課題を解決するプロダクトを共創していきます。</p>
+<p>お申し込み・詳細は <a href="https://luma.com/claude-flnb">Karatsu |
+Claude Code Impact Lab</a> から。</p>
+<h3>これまでの開催レポート</h3>
+<p>長崎県佐世保市では、地域の事業者・学生・エンジニアが集まるAIエージェント勉強会とミニハッカソンを毎月ひらいています。各回の記録はこちらにまとめています。</p>
+<p><strong><a href="https://y-nishinobu.soitgoes.page/ai/">佐世保
+ClaudeCode コミュニティ｜イベントレポート</a></strong></p>
+
+<div class="sec-head"><h2>開催概要</h2></div>
+<div class="twrap"><table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 91%" />
+</colgroup>
+<tbody>
+<tr>
+<td><strong>名称</strong></td>
+<td>TOSU | Claude Code Workshop ／ ローカルでつくる Small Business</td>
+</tr>
+<tr>
+<td><strong>日時</strong></td>
+<td>2026年9月17日（木）15:00〜18:00</td>
+</tr>
+<tr>
+<td><strong>会場</strong></td>
+<td>ネスト鳥栖（NesXt TOSU）　佐賀県鳥栖市元町1336-6 栄ビル2F</td>
+</tr>
+<tr>
+<td><strong>主催</strong></td>
+<td>一般社団法人InnoDrops／Claude Community Ambassador 西信好真</td>
+</tr>
+<tr>
+<td><strong>共催</strong></td>
+<td>NesXt鳥栖（寶結株式会社）</td>
+</tr>
+<tr>
+<td><strong>後援</strong></td>
+<td>佐賀県／公益財団法人佐賀県産業振興機構
+さが産業ミライ創造ベース（RYO-FU
+BASE）／佐賀県産業スマート化センター／鳥栖市</td>
+</tr>
+<tr>
+<td><strong>参加</strong></td>
+<td>参加費無料。当日参加者14名。参加者には Anthropic から API
+クレジットが提供された</td>
+</tr>
+</tbody>
+</table></div>
+
+<p style="margin-top:48px"><a class="tolist" href="/ai/">← イベント一覧へ戻る</a></p>
+</div>
+<script>
+document.querySelectorAll('.fs-switch button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.fs-switch button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); document.documentElement.className=b.dataset.fs;
+  });
+});
+</script>
+</body>
+</html>

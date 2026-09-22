@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>佐世保 ClaudeCode ミニハッカソン レポート｜2026.07.27</title>
+<link rel="canonical" href="https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-07-27.html">
+<meta name="description" content="2026年7月27日、佐世保で開いた3時間のミニハッカソンのレポート。6業種10名が、役所提出書類の自動入力・営業相談の取りこぼし防止・部活の送迎当番の管理など、自分の実務の道具をその場で作りました。">
+<meta name="author" content="西信 好真">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="佐世保 ClaudeCode コミュニティ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="佐世保 ClaudeCode ミニハッカソン レポート｜2026.07.27">
+<meta property="og:description" content="2026年7月27日、佐世保で開いた3時間のミニハッカソンのレポート。6業種10名が、役所提出書類の自動入力・営業相談の取りこぼし防止・部活の送迎当番の管理など、自分の実務の道具をその場で作りました。">
+<meta property="og:url" content="https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-07-27.html">
+<meta property="og:image" content="https://y-nishinobu.soitgoes.page/ai/hackathon-photo-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "佐世保 ClaudeCode ミニハッカソン レポート｜2026.07.27",
+  "description": "2026年7月27日、佐世保で開いた3時間のミニハッカソンのレポート。6業種10名が、役所提出書類の自動入力・営業相談の取りこぼし防止・部活の送迎当番の管理など、自分の実務の道具をその場で作りました。",
+  "url": "https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-07-27.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-07-27.html"
+  },
+  "inLanguage": "ja",
+  "datePublished": "2026-07-28",
+  "dateModified": "2026-07-28",
+  "author": {
+    "@type": "Person",
+    "name": "西信 好真",
+    "alternateName": "Yoshimasa Nishinobu",
+    "jobTitle": "地域振興室 副室長",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "西海みずき信用組合"
+    },
+    "url": "https://y-nishinobu.soitgoes.page"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "西信 好真",
+    "alternateName": "Yoshimasa Nishinobu",
+    "jobTitle": "地域振興室 副室長",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "西海みずき信用組合"
+    },
+    "url": "https://y-nishinobu.soitgoes.page"
+  },
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "name": "佐世保 ClaudeCode コミュニティ ｜ イベントレポート",
+    "url": "https://y-nishinobu.soitgoes.page/ai/"
+  },
+  "image": "https://y-nishinobu.soitgoes.page/ai/hackathon-photo-01.jpg"
+}
+</script>
+<style>
+  :root{
+    --ink:#141210;
+    --paper:#f7efdf;
+    --pink:#ff4f97;
+    --yellow:#ffcf28;
+    --teal:#1fc7ac;
+    --blue:#2f74ff;
+    --lime:#8ed01c;
+    --purple:#a163ff;
+    --orange:#ff7420;
+    --red:#ff3b2b;
+    --gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--gothic); font-size:16px; line-height:1.9; letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:940px; margin:0 auto; padding:0 22px 60px}
+  p{margin:0 0 15px}
+  /* ---- top bar ---- */
+  .topbar{
+    background:var(--teal); border:3px solid var(--ink);
+    margin:26px 0 0; padding:12px 18px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    font-weight:800; font-size:12px; letter-spacing:.22em;
+  }
+  .topbar .dot{width:11px;height:11px;background:var(--ink);border-radius:50%}
+  .topbar .sp{flex:1}
+  /* ---- masthead ---- */
+  .mast{margin:30px 0 0}
+  h1{font-family:var(--gothic); font-weight:900; font-size:52px; line-height:1.16; letter-spacing:-.02em; margin:0}
+  h1 .hi{background:var(--yellow); padding:.02em .12em; box-decoration-break:clone; -webkit-box-decoration-break:clone}
+  .dek{font-size:17px; line-height:1.85; margin:22px 0 0; max-width:660px; color:#2b2620; font-weight:600}
+  .byline{font-weight:700; font-size:12.5px; letter-spacing:.05em; margin:22px 0 0; padding-top:16px; border-top:3px solid var(--ink); color:#5b5347}
+  .byline b{color:var(--ink)}
+  /* ---- photo ---- */
+  .photo{position:relative; margin:34px 0 0; border:3px solid var(--ink); line-height:0}
+  .photo img{display:block; width:100%; height:auto}
+  .photo figcaption{font-size:12.5px; font-weight:700; letter-spacing:.02em; line-height:1.5; color:#fff; background:var(--ink); padding:10px 14px}
+  .tab{
+    position:absolute; top:0; left:0; z-index:2; font-weight:900; font-size:12.5px; letter-spacing:.08em;
+    background:var(--pink); color:var(--ink); border-right:3px solid var(--ink); border-bottom:3px solid var(--ink); padding:8px 14px;
+  }
+  .tab.y{background:var(--yellow)} .tab.t{background:var(--teal)}
+  /* ---- lead ---- */
+  .lead{margin:40px 0 0; column-count:2; column-gap:34px; font-size:16px; line-height:1.95; font-weight:500}
+  .lead p{margin:0}
+  .lead p::first-letter{font-family:var(--gothic); font-weight:900; font-size:64px; float:left; line-height:.72; padding:8px 12px 0 0; color:var(--red)}
+  /* ---- stats ---- */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:46px 0 0; border:3px solid var(--ink)}
+  .stat{padding:20px 8px 16px; text-align:center; border-right:3px solid var(--ink)}
+  .stat:last-child{border-right:none}
+  .stat.a{background:var(--pink)} .stat.b{background:var(--yellow)} .stat.c{background:var(--teal)} .stat.d{background:var(--blue); color:#fff}
+  .stat .n{font-weight:900; font-size:38px; line-height:1; letter-spacing:-.03em}
+  .stat .n small{font-size:16px}
+  .stat .l{font-size:11.5px; font-weight:800; letter-spacing:.03em; margin-top:9px; line-height:1.4}
+  .stat.d .l{color:#fff}
+  /* ---- section title ---- */
+  .sect{margin:62px 0 0}
+  .sect .en{font-weight:900; font-size:12px; letter-spacing:.28em; color:var(--red); margin:0 0 10px}
+  .sect .tt{display:inline-block; font-weight:900; font-size:32px; letter-spacing:-.01em; line-height:1.28; background:var(--ink); color:var(--paper); padding:7px 16px}
+  .sect .note{font-size:15.5px; margin:18px 0 0; color:#463f34; font-weight:500}
+  /* ---- insight list ---- */
+  .items{margin:24px 0 0; display:grid; gap:18px}
+  .item{border:3px solid var(--ink); background:#fff; padding:22px 24px; display:grid; grid-template-columns:92px 1fr; gap:6px 20px; align-items:start}
+  .item .no{font-weight:900; font-size:72px; line-height:.8; letter-spacing:-.05em; grid-row:1/3; align-self:center}
+  .item:nth-child(1) .no{color:var(--red)} .item:nth-child(2) .no{color:var(--blue)}
+  .item:nth-child(3) .no{color:var(--lime)} .item:nth-child(4) .no{color:var(--purple)}
+  .item h3{grid-column:2; font-weight:900; font-size:21px; line-height:1.42; margin:0 0 10px; letter-spacing:.005em}
+  .item .bd{grid-column:2; font-size:15.5px; line-height:1.9; font-weight:500}
+  .item .bd p{margin:0}
+  /* ---- stories ---- */
+  .story{border:3px solid var(--ink); background:#fff; padding:24px; margin:22px 0 0}
+  .story .tag{display:inline-block; font-weight:900; font-size:12px; letter-spacing:.05em; background:var(--orange); color:var(--ink); border:2.5px solid var(--ink); padding:5px 12px}
+  .story.c2 .tag{background:var(--teal)} .story.c3 .tag{background:var(--pink); color:#fff} .story.c4 .tag{background:var(--yellow)}
+  .story h3{font-weight:900; font-size:22px; line-height:1.42; margin:15px 0 12px; letter-spacing:.005em}
+  .story p{font-size:15.5px; line-height:1.95; margin:0; font-weight:500}
+  /* ---- pull quote ---- */
+  .pull{background:var(--ink); color:var(--paper); border:3px solid var(--ink); padding:26px 26px; margin:16px 0 0}
+  .pull .m{font-weight:900; font-size:40px; color:var(--yellow); line-height:0; display:block; height:24px}
+  .pull p{font-weight:800; font-size:20px; line-height:1.72; letter-spacing:.01em; margin:12px 0 0}
+  /* ---- sectors ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:11px; margin:24px 0 0}
+  .chip{font-weight:800; font-size:15px; border:2.5px solid var(--ink); padding:8px 14px}
+  .chip:nth-child(7n+1){background:var(--pink);color:#fff} .chip:nth-child(7n+2){background:var(--yellow)}
+  .chip:nth-child(7n+3){background:var(--teal)} .chip:nth-child(7n+4){background:var(--blue);color:#fff}
+  .chip:nth-child(7n+5){background:var(--lime)} .chip:nth-child(7n+6){background:var(--orange)}
+  .chip:nth-child(7n+7){background:var(--purple);color:#fff}
+  /* ---- closing ---- */
+  .closing{background:var(--pink); border:3px solid var(--ink); margin:62px 0 0; padding:40px 30px}
+  .closing .en{font-weight:900; font-size:12px; letter-spacing:.28em; color:var(--ink)}
+  .closing h2{font-weight:900; font-size:30px; line-height:1.35; margin:12px 0 20px; color:#fff}
+  .closing p{font-size:16px; line-height:1.9; color:var(--ink); margin:0 0 15px; font-weight:500}
+  .closing p a{font-weight:800; text-decoration:none; border-bottom:2.5px solid var(--ink); padding-bottom:1px}
+  .closing p a:hover{background:var(--yellow)}
+  .closing .sign{font-weight:800; font-size:13px; letter-spacing:.03em; margin-top:24px; padding-top:18px; border-top:3px solid var(--ink); line-height:1.8; color:var(--ink)}
+  .closing .sign b{font-size:15px}
+  /* ---- footer ---- */
+  .foot{text-align:center; margin:30px 0 0}
+  .foot p{font-size:11.5px; font-weight:600; color:#8a8172; letter-spacing:.02em; line-height:1.8; margin:0}
+  @media (max-width:640px){
+    .page{padding:0 16px 50px}
+    h1{font-size:34px}
+    .lead{column-count:1}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:3px solid var(--ink)}
+    .item{grid-template-columns:1fr; gap:2px}
+    .item .no{grid-row:auto; grid-column:1; font-size:58px}
+    .item h3,.item .bd{grid-column:1}
+    .sect .tt{font-size:25px}
+    .pull p{font-size:18px}
+    .closing h2{font-size:24px}
+  }
+  /* ---- deck carousel ---- */
+  .carousel{position:relative; border:3px solid var(--ink); overflow:hidden; margin:20px 0 0; background:#faf7ef; line-height:0; touch-action:pan-y}
+  .ctrack{display:flex; transition:transform .32s ease; will-change:transform}
+  .ctrack img{min-width:100%; width:100%; display:block; aspect-ratio:16/9; object-fit:contain; background:#faf7ef}
+  .cnav{position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border:3px solid var(--ink); background:var(--yellow); color:var(--ink); font-weight:900; font-size:26px; line-height:0; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0}
+  .cprev{left:12px} .cnext{right:12px}
+  .cnav:disabled{opacity:.3; cursor:default}
+  .cpage{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--paper); font-weight:800; font-size:13px; line-height:1; padding:6px 12px; letter-spacing:.06em; font-variant-numeric:tabular-nums}
+  .btnlink{display:inline-block; margin-top:14px; font-weight:800; font-size:14px; letter-spacing:.02em; border:3px solid var(--ink); background:var(--yellow); color:var(--ink); padding:11px 18px; text-decoration:none}
+  /* ---- gallery ---- */
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:22px 0 0}
+  .gallery img,.gallery .vid{width:100%; height:186px; object-fit:cover; border:1.5px solid var(--ink); display:block}
+  .gallery .vid{display:flex; align-items:center; justify-content:center; background:var(--ink); color:var(--paper); font-weight:800; font-size:13.5px; text-align:center; line-height:1.6; object-fit:unset}
+  @media (max-width:640px){
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .gallery img,.gallery .vid{height:150px}
+    .deck iframe{height:58vh}
+  }
+  /* ---- 一覧へ戻る ---- */
+  .tolist{display:inline-block; margin:22px 0 0; font-weight:800; font-size:12.5px; letter-spacing:.06em;
+    border:2.5px solid var(--ink); background:#fff; color:var(--ink); padding:7px 13px; text-decoration:none}
+  .tolist:hover{background:var(--yellow)}
+  .tolist.bottom{margin:40px 0 0}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="tolist" href="/ai/">← イベント一覧</a>
+
+
+<div class="topbar">
+<span class="dot"></span><span>REPORT</span><span>SASEBO CLAUDE CODE HACKATHON</span><span class="sp"></span><span>2026 . 07 . 27</span>
+</div>
+
+<header class="mast">
+<h1>3時間で、<span class="hi">自分の仕事の道具</span>を<br>作る</h1>
+<p class="dek">教わる、話を聞く会ではなく、全員がその場で手を動かし作る会にしました。</p>
+<p class="byline">文・<b>西信好真</b>（西海みずき信用組合 地域振興室／Claude Community Ambassador）　│　2026年7月27日（月）13:00〜16:00　佐世保市内＠オンド</p>
+</header>
+
+<figure class="photo">
+<span class="tab">SASEBO ’26</span>
+<img src="hackathon-photo-01.jpg" alt="会場全景">
+<figcaption>各自がノートPCを持ち込み、自分の作業を進める。講義形式ではなく共同作業に近く相互の教え合いが生まれていました。</figcaption>
+</figure>
+
+<div class="lead">
+<p>7月27日の午後、佐世保でミニハッカソンを開きました。3時間のプログラムを、作るものの宣言に30分、実制作に120分、成果物発表に30分。前回の交流会が「事例を持ち寄って紹介する会」だったのに対し、今回は、その場で全員が自分で作って持ち帰りました。集まったのは10名。福祉、広告、インテリア、NPO、製造と業種はばらばらで、Claude Codeを4か月使っている人も、今日が初めての人も同じテーブルに座りました。</p>
+</div>
+
+<div class="stats">
+<div class="stat a"><div class="n">10<small>名</small></div><div class="l">参加者</div></div>
+<div class="stat b"><div class="n">10<small>件</small></div><div class="l">「作るもの」宣言</div></div>
+<div class="stat c"><div class="n">120<small>分</small></div><div class="l">制作時間</div></div>
+<div class="stat d"><div class="n">6<small>業種</small></div><div class="l">参加者の業種</div></div>
+</div>
+
+<div class="sect">
+<div class="en">INSIGHT</div>
+<span class="tt">やってみて分かったこと</span>
+<p class="note">主催して見ていて、前回とは違うなと感じた点を4つ書きます。</p>
+</div>
+
+<div class="items">
+<div class="item">
+<div class="no">01</div>
+<h3>「宣言」から入ると、手が止まらない</h3>
+<div class="bd"><p>最初の30分で一人ずつ「今日これを作ります」と宣言をしてもらいました。何を作るか決めないまま画面に向かうとつまづきがちですが、宣言してしまうと、あとは手を動かすだけになります。また、お互いのテーマがわかるので、サポートもしやすくなりました。出てきたテーマは10件。全員が別々のものを作りました。</p></div>
+</div>
+<div class="item">
+<div class="no">02</div>
+<h3>出てきたテーマが、全部「自分の実務」だった</h3>
+<div class="bd"><p>役所と裁判所に出す書類の自動入力、営業の相談をLINEから拾って取りこぼしを防ぐ仕組み、夏休みの子どもの部活の送迎車の担当管理、インテリアの施工事例をまとめるサイト。どれも「今抱えている課題」に役立つ道具でした。</p></div>
+</div>
+<div class="item">
+<div class="no">03</div>
+<h3>初めての人と4か月目の人が、隣に座る</h3>
+<div class="bd"><p>制作タイムは、教え合いも自由にしました。詰まった人の画面を経験者が覗いて、その場でアドバイスする。この形だと、初心者向けの説明を全員で聞く時間が要りません。申込の時点で「聞いたことはあるが、使ったことはない」という方もいましたが、相互に教えられるのは、この形式の利点だと思います。</p></div>
+</div>
+<div class="item">
+<div class="no">04</div>
+<h3>最後は、セキュリティの話に</h3>
+<div class="bd"><p>「どれぐらい踏み込んで使って大丈夫なのか」という質問が制作中にも出ており、終盤はそのまま危機管理の情報交換の時間になりました。作れることが分かった直後に、どこまでAIに触らせるかの線引きの話に。この課題は、実際に使い始めた人たちの集まりならではだと思います。</p></div>
+</div>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab y">制作</span>
+<img src="hackathon-photo-04.jpg" alt="制作中の参加者たち">
+<figcaption>作業の合間に、隣の人の画面を見ながら手が止まった部分を教え合う。</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">HIGHLIGHTS</div>
+<span class="tt">当日出てきたもの</span>
+</div>
+
+<div class="story c1">
+<span class="tag">事例紹介｜福祉 × AI</span>
+<h3>受注から請求まで人が要らない通販、補助金を毎朝拾う仕組み、弁当の宅配</h3>
+<p>冒頭に、すでに事業として動いている仕組みの紹介がありました。福祉施設で製造した商品を、注文が入ったら施設へ発注し、発送して請求書まで出す——そこまで自動で回っていて、本人は入金の確認だけ。ほかに、全国の補助金情報を毎朝集めて自社に合うものを提案し、そのまま申請書の下書きまで作る仕組み。福祉施設が作った弁当を学童へ届けるサービスなど。</p>
+</div>
+
+<div class="pull"><p>「ロス品1,000個を別の商品に転用して、ブランディングもデザインも自分で。デザイナーに頼めば数百万の仕事が、自分の時間2日でできました。」</p></div>
+
+<div class="story c2">
+<span class="tag">制作テーマ</span>
+<h3>10年使えるアンケート基盤から、部活の送迎車の担当管理まで</h3>
+<p>制作時間に入る前の宣言の例。「アクセサリーの素材を作っている会社なので、10年・20年使い続けられるデータベース型のユーザーアンケートを作る」（製造業）。ゴルフの動画を投げると分析して練習メニューを返すアプリ。インテリアコーディネートのポートフォリオサイト。自分の習慣管理ツール。営業のAI秘書。夏休みの部活送迎の担当管理など</p>
+</div>
+
+<div class="story c3">
+<span class="tag">進め方</span>
+<h3>いきなり作らせない。壁打ち → 仕様書 → 実装</h3>
+<p>制作中に共有したコツです。最初から作らせるのではなく、まずAIとの壁打ちで機能を細かく詰め、それを仕様書のようなメモにまとめさせてから実装に入る。会話が長くなると精度が落ちてくるので、次に引き継ぐためのメモ（仕様と、どこまで進んだか）を先に作らせておく。</p>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<span class="tab t">議論</span>
+<img src="hackathon-photo-03.jpg" alt="テーブルを囲んで議論する参加者">
+<figcaption>近い実装テーマの場合は、情報共有も活発に</figcaption>
+</figure>
+
+<div class="sect">
+<div class="en">SECURITY</div>
+<span class="tt">どこまでAIに触らせるか、の線引き</span>
+<p class="note">終盤は、職員200名規模の社会福祉法人を経営する参加者から、4か月の実運用を踏まえた話がありました。</p>
+</div>
+
+<div class="story c4" style="margin-top:22px">
+<h3>社内展開は、まだ3人でとめている</h3>
+<p>使えば使うほど、全社員への展開は難しいと感じているそうです。理由は、パソコンの中のフォルダに広くアクセスでき、メールやカレンダーにも繋げられるため、福祉施設が扱う要配慮個人情報にそのまま手が届いてしまうから。現在は本人を含めて社内3名のみ。接続も、個人情報が入らないカレンダーだけに絞り、給与や決裁書のあるドライブ、利用者情報が添付されてくるメールは繋いでいないとのことでした。</p>
+</div>
+
+<div class="pull"><p>「大事な情報がある場合は、パソコン自体を分けるのが一番です。開発用にまっさらなミニPCを1台買いました。」</p></div>
+
+<div class="story" style="margin-top:22px">
+<h3>もうひとつは、外から仕込まれる悪意のあるAIへの指示</h3>
+<p>SNSで「これを入れるとAIの生産性が上がる」と紹介されているプロンプトに、人の目には見えない白い文字で、内部情報を外に送るような指示が混ぜてあることがある——という話も出ました。AIにブラウザを操作させる場合は、訪問先のページに同じ仕掛けがある可能性もあります。</p>
+<p>これらのリスクを「消される」と「漏れる」の2つに整理して説明がされました。一番確実なのは、AIに触らせたり、見せてはいけないものをそもそも触れさせないこと。ただし利便性は落ちます。現実的な線としては、外へのファイル送信は機会的にブロックして、人が承認しないと通らないようにする。フォルダ全体の横断検索は禁じて個別の呼び出しだけ許す、といった中間の対策があります。どこに線を引くかを決めたうえで、AI自身に「この環境で危ないところはどこか」を一番高度なAIに診断させるのも良いという話をしました。</p>
+</div>
+
+<div class="sect">
+<div class="en">SECTORS</div>
+<span class="tt">集まった「業種」</span>
+</div>
+<div class="chips">
+<span class="chip">金融</span><span class="chip">福祉</span><span class="chip">就労支援</span>
+<span class="chip">広告・地域メディア</span><span class="chip">インテリア・雑貨</span>
+<span class="chip">アクセサリー製造</span><span class="chip">NPO</span>
+</div>
+
+<figure class="photo" style="margin-top:56px">
+<img src="hackathon-photo-02.jpg" alt="窓際で話し込む二人">
+<figcaption>いろいろな場所で情報交換が自発的に行われました。</figcaption>
+</figure>
+
+<div class="closing">
+<div class="en">WHAT'S NEXT</div>
+<h2>次は、子どもの願いを大人が実装するイベントを企画中。</h2>
+<p>今回のミニハッカソンでも、多くの人が何らかのツールを動かすところまでは到達していました。実際に作る経験を重ねていくと、もっと上手に作りたい、もっと知りたいという欲求が自然に高まっていきます。それこそが習熟の一番の近道だと考えています。これからも様々な企画を行う予定です。最新のイベント情報は<a href="https://x.com/y_nishinobu" target="_blank" rel="noopener">X</a>をご参照ください。</p>
+<div class="sign"><b>西信</b>　西海みずき信用組合 地域振興室 ／ Claude Community Ambassador<br>2026年7月・佐世保</div>
+</div>
+
+<div class="foot">
+<p>本レポートは当日の記録をもとに、主催者が再構成したものです。個別の事例は発言者の実名を伏せ、内容を優先しています。数値・引用は当日の発言に基づく概数・要旨です。</p>
+</div>
+<a class="tolist bottom" href="/ai/">← イベント一覧へ戻る</a>
+
+
+</div>
+</body>
+</html>

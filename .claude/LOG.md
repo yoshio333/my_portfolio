@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-09-23（AI活動レポートを /ai/ に移設）
+
+### `public/ai/` 新設：ambassador-report の全レポートを集約
+- 変更: `~/dev/ambassador-report` の HTML 8本（一覧 index・レポート6本・event-proposal）＋参照画像55枚＋PDF1本を `public/ai/` へ複製。`/tankyu/` と同じ「public 配下の素のHTML」方式
+- 書き換え: canonical / og:url / og:image / JSON-LD の `https://ambassador-report.vercel.app/` → `https://y-nishinobu.soitgoes.page/ai/`。一覧へ戻るリンク `href="/index.html"` → `href="/ai/"`（絶対ルート参照のままだとポートフォリオのトップへ飛ぶ）。HTMLコメント（カード追加手順・セクション目印）は配信物から除去
+- 理由: AI勉強会まわりの公開物が3リポに分散し、ambassador-report は `X-Robots-Tag: noindex` が残って実は検索に載っていなかった。ノブ判断「今回のは私の活動報告だから個人ドメイン側」（2026-09-23）。コミュニティ共有サイトを作る時は別途 `ai.soitgoes.page` を立てる
+- `app/sitemap.ts`: `AI_REPORTS` 定数を追加し `/ai/`＋7ページを sitemap に載せる
+- `lib/content.ts`: ai-hackathon / ai-study カードの siteUrl を新URLへ
+- `public/llms.txt`: 旧URL2箇所を差し替え＋「AI Activity Reports」節を追加
+- `CLAUDE.md`: 「AI活動レポート（public/ai/）」節を追加（新しい回の足し方・文体正本の場所）
+- 既知: `next dev` では `/ai/`（ディレクトリ index）が404になる。`/tankyu/` も同じで、本番の Vercel 静的配信では200。`/ai/index.html` は dev でも200
+- 旧URL側: `~/dev/ambassador-report/vercel.json` を全パス 308 → `https://y-nishinobu.soitgoes.page/ai/:path*` に差し替え
+
+---
+
 ## 2026-03-19（セッション6）
 
 ### メールアドレスを全箇所変更

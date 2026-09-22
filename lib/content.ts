@@ -117,7 +117,7 @@ export const CONTENT = {
     cards: [
       {
         slug: 'ai-hackathon',
-        siteUrl: 'https://ambassador-report.vercel.app/hackathon-report-2026-08-22.html',
+        siteUrl: 'https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html',
         siteLabel: { EN: 'Read the Event Report ↗', JP: '開催レポートを見る ↗' },
         tag: { EN: 'AI Hackathon', JP: 'AIハッカソン' },
         year: { EN: '2026– / Sasebo, Saga', JP: '2026年〜　／　佐世保市、佐賀県' },
@@ -362,7 +362,7 @@ export const CONTENT = {
       },
       {
         slug: 'ai-study',
-        siteUrl: 'https://ambassador-report.vercel.app/events.html',
+        siteUrl: 'https://y-nishinobu.soitgoes.page/ai/',
         siteLabel: { EN: 'See Activity Reports ↗', JP: '活動レポートを見る ↗' },
         tag: { EN: 'AI Learning', JP: 'AI学習' },
         year: { EN: '2023– / Sasebo', JP: '2023年〜　／　佐世保市' },
