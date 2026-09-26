@@ -6,6 +6,18 @@ import { CONTENT } from '@/lib/content';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useLang, Lang } from '@/hooks/useLang';
 
+const awardTagStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-space-mono)',
+  fontSize: '0.68rem',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  letterSpacing: '0.08em',
+  color: '#000000',
+  border: '1px solid rgba(0,0,0,0.2)',
+  padding: '3px 10px',
+  textDecoration: 'none',
+};
+
 export default function AboutPage() {
   const [lang, setLang] = useLang();
   const isMobile = useIsMobile();
@@ -293,19 +305,13 @@ export default function AboutPage() {
                 {item.award[lang]}
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-                <Link href={`/work/${item.slug}`} style={{
-                  fontFamily: 'var(--font-space-mono)',
-                  fontSize: '0.68rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: '#000000',
-                  border: '1px solid rgba(0,0,0,0.2)',
-                  padding: '3px 10px',
-                  textDecoration: 'none',
-                }}>
-                  {item.project[lang]}
-                </Link>
+                {'slug' in item ? (
+                  <Link href={`/work/${item.slug}`} style={awardTagStyle}>
+                    {item.project[lang]}
+                  </Link>
+                ) : (
+                  <span style={awardTagStyle}>{item.project[lang]}</span>
+                )}
                 <span style={{
                   fontFamily: 'var(--font-space-mono)',
                   fontSize: '0.65rem',

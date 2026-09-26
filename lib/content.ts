@@ -545,6 +545,11 @@ export const CONTENT = {
     label: { EN: '[ Projects & Recognition ]', JP: '[ プロジェクト実績 ]' },
     items: [
       {
+        award: { EN: 'Mirai Ikusei Award 2026 — Mitsubishi Mirai Ikusei Foundation Award', JP: 'みらい育成アワード2026　三菱みらい育成財団賞' },
+        project: { EN: 'Minna no Tankyu LAB', JP: 'みんなの探究LAB' },
+        role: { EN: 'Operations & Instruction', JP: '運営・講座担当' },
+      },
+      {
         award: { EN: '1st Shinkumi Brand Award — Grand Prize', JP: '第１回しんくみブランド表彰　大賞' },
         project: { EN: 'Machi no Gakushoku', JP: 'まちの学食' },
         role: { EN: 'Planning & Implementation', JP: '企画・実装' },
