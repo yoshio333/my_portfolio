@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ローカルでつくる Small Business ハッカソン レポート｜2026.10.24 唐津</title>
+<link rel="canonical" href="https://y-nishinobu.soitgoes.page/ai/karatsu-report-2026-10-24.html">
+<meta name="description" content="2026年10月24日、佐賀県唐津市の PLAPLA で開いた「Karatsu | Claude Code Impact Lab」のレポート。漁師・市役所・研究者から唐津の海の課題を聞き、6チームが2時間でビジネスモデルとプロトタイプを発表。優秀賞は、補助金を探す手間を減らし成功報酬の一部を漁協に還元する仕組みでした。">
+<meta name="author" content="西信 好真">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="佐世保 ClaudeCode コミュニティ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ローカルでつくる Small Business ハッカソン レポート｜2026.10.24 唐津">
+<meta property="og:description" content="2026年10月24日、佐賀県唐津市の PLAPLA で開いた「Karatsu | Claude Code Impact Lab」のレポート。漁師・市役所・研究者から唐津の海の課題を聞き、6チームが2時間でビジネスモデルとプロトタイプを発表。優秀賞は、補助金を探す手間を減らし成功報酬の一部を漁協に還元する仕組みでした。">
+<meta property="og:url" content="https://y-nishinobu.soitgoes.page/ai/karatsu-report-2026-10-24.html">
+<meta property="og:image" content="https://y-nishinobu.soitgoes.page/ai/karatsu1024-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ローカルでつくる Small Business ハッカソン レポート｜2026.10.24 唐津",
+  "description": "2026年10月24日、佐賀県唐津市の PLAPLA で開いた「Karatsu | Claude Code Impact Lab」のレポート。漁師・市役所・研究者から唐津の海の課題を聞き、6チームが2時間でビジネスモデルとプロトタイプを発表。優秀賞は、補助金を探す手間を減らし成功報酬の一部を漁協に還元する仕組みでした。",
+  "url": "https://y-nishinobu.soitgoes.page/ai/karatsu-report-2026-10-24.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://y-nishinobu.soitgoes.page/ai/karatsu-report-2026-10-24.html" },
+  "inLanguage": "ja",
+  "datePublished": "2026-10-25",
+  "dateModified": "2026-10-25",
+  "author": { "@type": "Person", "name": "西信 好真", "alternateName": "Yoshimasa Nishinobu", "url": "https://y-nishinobu.soitgoes.page" },
+  "publisher": { "@type": "Person", "name": "西信 好真", "url": "https://y-nishinobu.soitgoes.page" },
+  "isPartOf": { "@type": "CollectionPage", "name": "佐世保 ClaudeCode コミュニティ ｜ イベントレポート", "url": "https://y-nishinobu.soitgoes.page/ai/" },
+  "image": "https://y-nishinobu.soitgoes.page/ai/karatsu1024-01.jpg"
+}
+</script>
+<style>
+  :root{ --ink:#1b1b1b; --ink-2:#4a463f; --rule:#1b1b1b; --hairline:#d5d2cc; --accent:#a52a22; --paper:#fcfbf8; }
+  *{box-sizing:border-box}
+  html{font-size:16px;-webkit-text-size-adjust:100%}
+  html.fs-lg{font-size:18px} html.fs-xl{font-size:21px}
+  body{margin:0;padding:0 20px 80px;
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic Medium","Yu Gothic",sans-serif;
+    background:var(--paper);color:var(--ink);font-size:1rem;line-height:1.9;font-feature-settings:"palt"}
+  .wrap{max-width:760px;margin:0 auto}
+  .num{font-family:"Avenir Next Condensed","Roboto Condensed","Arial Narrow","Hiragino Sans",sans-serif;font-weight:700}
+  .fs-switch{display:flex;gap:6px;justify-content:flex-end;padding:14px 0 0}
+  .fs-switch button{font-family:inherit;font-size:.85rem;font-weight:700;color:var(--ink);
+    background:transparent;border:1px solid var(--ink);padding:4px 10px;cursor:pointer;line-height:1.4}
+  .fs-switch button.on{background:var(--ink);color:var(--paper)}
+  .masthead{border-bottom:3px solid var(--rule);padding:18px 0 20px;margin-bottom:34px}
+  .kicker{font-size:.85rem;letter-spacing:.26em;color:var(--ink-2);margin-bottom:12px}
+  h1{margin:0;font-size:clamp(1.6rem,4.4vw,2.2rem);font-weight:800;line-height:1.45}
+  .edition{border-top:1px solid var(--hairline);margin-top:16px;padding-top:10px;font-size:.9rem;color:var(--ink-2)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--rule);
+    padding-bottom:8px;margin:46px 0 20px}
+  .sec-head .no{font-size:1.9rem;line-height:1;color:var(--accent)}
+  .sec-head h2{margin:0;font-size:1.2rem;font-weight:800;letter-spacing:.04em}
+  h3{font-size:1.05rem;font-weight:800;margin:30px 0 8px}
+  h4{font-size:1rem;font-weight:800;margin:26px 0 6px}
+  p{margin:0 0 16px}
+  ul,ol{margin:0 0 18px;padding-left:1.4em} li{margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:.95rem}
+  th,td{text-align:left;vertical-align:top;padding:9px 10px 9px 0;border-bottom:1px solid var(--hairline)}
+  th{font-weight:800;white-space:nowrap}
+  thead th{border-bottom:2px solid var(--rule)}
+  .twrap{overflow-x:auto}
+  blockquote{margin:22px 0;padding:0 0 0 18px;border-left:3px solid var(--accent);
+    font-size:1.02rem;line-height:1.85;color:var(--ink)}
+  blockquote p:last-of-type{margin-bottom:0}
+  blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--ink-2);margin-top:10px}
+  figure{margin:26px 0}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:.88rem;color:var(--ink-2);padding-top:8px;line-height:1.7}
+  a{color:var(--accent);text-underline-offset:3px}
+  @media (max-width:520px){ th{white-space:normal} }
+</style>
+<style>
+  .credit{margin-top:44px;padding-top:14px;border-top:1px solid var(--hairline);font-size:.9rem;color:var(--ink-2);letter-spacing:.02em}
+  .tolist{display:inline-block;margin:14px 0 0;font-size:.9rem;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--hairline)}
+  .tolist:hover{color:var(--accent);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="tolist" href="/ai/">← イベント一覧</a>
+<div class="fs-switch">
+  <button data-fs="" class="on">標準</button>
+  <button data-fs="fs-lg">大</button>
+  <button data-fs="fs-xl">特大</button>
+</div>
+<header class="masthead">
+  <div class="kicker">CLAUDE COMMUNITY AMBASSADOR ／ 活動レポート</div>
+  <h1>ローカルでつくる Small Business × Claude Code in KARATSU</h1>
+  <div class="edition"><strong>KARATSU｜CLAUDE CODE IMPACT LAB</strong><br>2026年10月24日（土）12:30〜17:00／PLAPLA（World Ocean Plastic Planning Center）・佐賀県唐津市<br>主催＝一般社団法人InnoDrops ／ Claude Community Ambassador 西信好真 ／ 唐津市DXイノベーションセンター（KDIC）</div>
+</header>
+
+<div class="sec-head"><h2>この日のプログラムについて</h2></div>
+<ul>
+<li><p><strong>作業の前に、漁師・市役所・研究者から唐津の海の課題をインプット</strong></p>
+<p>最初の30分は、漁師の袈裟丸彰蔵さん、唐津市の楢﨑徹さん、東北大学の小田切裕倫さんによる地域課題のインプット。3人はその後も会場に残り、各チームは作業中に何度でも話を聞きに行けました。</p></li>
+<li><p><strong>2時間で、6チームがビジネスモデルとプロトタイプを発表</strong></p>
+<p>藻場の減少、漁業者の高齢化、守っても稼げない構造など、同じ課題から出発して、スポーツイベント、供養の新サービス、企業向けのレポート作成支援、補助金の検索支援、海洋保護の企業研修プログラム、漁港の再利用と、6つの違う答えが出ました。</p></li>
+<li><p><strong>優秀賞は、補助金を探す手間を減らし、成功報酬の一部を漁協に還元する仕組みが受賞</strong></p>
+<p>佐賀大学の学生2人と社会人3人のチーム「佐賀大学とおじさんたち」。漁師の袈裟丸さんへのヒアリングから、「補助金の事務の煩雑さ」という課題に取り組みました。</p></li>
+<li><p><strong>イベント後アンケートでは、多くの参加者が「地域課題を事業の可能性として捉えられるようになった」と回答</strong></p>
+<p>終了後のアンケート（回答者22名）では、全体満足度が平均4.23点（5点満点）。「地域課題を事業の可能性として捉えられるようになった」という設問では平均4.55点で、5段階の4以上を全員がつけました。</p></li>
+</ul>
+
+<div class="sec-head"><span class="no num">1</span><h2>タイムテーブル</h2></div>
+<figure><img src="karatsu1024-01.jpg" alt="PLAPLA の体験ラボ。長机でノートパソコンを開いた参加者が作業している" loading="lazy"><figcaption>会場となったPLAPLAは、海ゴミをテーマにした体験型ミュージアム。ハッカソンはこちらの体験ラボ内で行われた。</figcaption></figure>
+<p>会場は唐津市鎮西町波戸の <a href="https://pla2.jp/">PLAPLA</a> です。</p>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>時刻</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:00</td>
+<td>Claude をまだ使ったことがない人向けの事前サポート</td>
+</tr>
+<tr>
+<td>12:10</td>
+<td>開幕・オープニング</td>
+</tr>
+<tr>
+<td>12:40</td>
+<td><strong>地域課題インプット</strong>。漁師・市役所・研究者の3人が唐津の海の現状を話し、質疑</td>
+</tr>
+<tr>
+<td>13:10</td>
+<td><strong>ハッカソン</strong>。チームでビジネスモデルと動くプロトタイプを作る（〜15:10）</td>
+</tr>
+<tr>
+<td>15:10</td>
+<td><strong>プロトタイプのピッチ</strong>。1チーム3分＋審査員との質疑</td>
+</tr>
+<tr>
+<td>16:10</td>
+<td>表彰・総評</td>
+</tr>
+<tr>
+<td>16:20</td>
+<td>KDIC（唐津市DXイノベーションセンター）と SANDlab の案内</td>
+</tr>
+<tr>
+<td>16:30</td>
+<td>集合写真・アンケート・交流</td>
+</tr>
+<tr>
+<td>17:00</td>
+<td>終了</td>
+</tr>
+</tbody>
+</table></div>
+
+<div class="sec-head"><span class="no num">2</span><h2>作る前に聞いた、唐津の海のこと</h2></div>
+<figure><img src="karatsu1024-02.jpg" alt="スクリーンにゲスト3人の写真と名前が映り、その前でマイクを持って話す登壇者" loading="lazy"><figcaption>地域課題インプット。スクリーンの左から袈裟丸彰蔵さん、小田切裕倫さん。</figcaption></figure>
+<h3>漁師の袈裟丸さん：25年、ウニを減らし続けてきた</h3>
+<p>袈裟丸さんは高校を出てから漁業一筋で、去年、海の課題に取り組む一般社団法人BLUE REVIVE を立ち上げました。唐津の海で磯焼け（海藻が消えて、海の中が砂漠のようになる状態）が進み始めたのは2000年ごろ。温暖化が話題になる前から、海藻を食べるウニを、素潜りで1個ずつ手で間引いてきました。</p>
+<p>海藻が減ると、魚も、アワビやサザエも減ってしまいます。藻場は魚の産卵場所であり、食物連鎖の場であり、CO2 を吸収する場でもあります。袈裟丸さんが挙げた課題は3つでした。</p>
+<ol type="1">
+<li>人手が足りない。これまでほぼ一人でやってきた</li>
+<li>「これだ」という手法がまだない</li>
+<li>温暖化により海の環境が昔と変わり、何が生えて何が棲むのかが分からない</li>
+</ol>
+<h3>唐津市の楢﨑さん：環境保全と経済がつながっていない</h3>
+<p>唐津市でカーボンニュートラルを担当する楢﨑さんは、市のデータを示しました。唐津の漁業者は平成25年から令和5年度までに約37%減り、65歳以上が半数近くを占めます。そして、藻場は52%減りました。</p>
+<blockquote>
+<p>「森で暮らす生き物にとって、森が半分以上なくなっているような状態。人間に置き換えると、町が半分以上なくなっているイメージです」</p>
+</blockquote>
+<p>有名な呼子のイカは藻場で卵を産み、育ちます。そのイカを食べたい人はたくさんいるのに、イカが育つ藻場を守る手間には、誰もお金を払っていない。楢﨑さんはこれを「環境保全と経済性がつながっていない」と表現しました。</p>
+<figure><img src="karatsu1024-03.jpg" alt="「ネイチャーポジティブ」について説明する唐津市の楢﨑徹さん" loading="lazy"><figcaption>インプットで投影されたスライド「唐津の海から考える、ネイチャーポジティブと地域ビジネスの可能性」。</figcaption></figure>
+<p>楢﨑さんは「AI を使うこと自体が目的にならないように」と、参加者に5つのポイントを伝えました。</p>
+<blockquote>
+<ol type="1">
+<li>誰のどんな困りごとを解決するのか</li>
+<li>それが誰の価値になり、誰がお金を払うのか</li>
+<li>地域の自然や文化を損なわずに、価値を生めるか</li>
+<li>小さく試して、効率よく続けられる仕組みにできるか</li>
+<li>海を守ることが誰かの仕事や収益につながるとしたら、どんな仕組みか</li>
+</ol>
+</blockquote>
+<p>トークセッションでは、海は誰のものか、という論点も出ました。農地には持ち主がいて、持ち主が手入れをします。海は「誰のものでもないけれど、誰かのものでもある」。この矛盾が、保全の手が進まない理由の一つだといいます。</p>
+<h3>研究者の小田切さん：違う軸で価値を見る</h3>
+<p>聞き手を務めた小田切さんは、ブルーカーボンの仕組みを補足しました。海藻を増やす活動そのものにはお金が入りません。それを CO2 の吸収量として測り、CO2 を出す企業に買ってもらう制度がブルーカーボンです。海藻を売る、魚を増やす、とは別の軸で価値をつけるやり方を、小田切さんは「迂回」と呼び、この日の作業でも必要になると話しました。</p>
+<p>質疑では参加者から「環境が変わったのなら、獲る魚を変えればよいのでは」という質問が出ました。楢﨑さんの答えは、獲れる魚が入れ替わったのではなく、そもそも獲れる量が減っているというもの。漁法を変えるには設備投資が要り、獲れても売れるかまで考えなければなりません。昔の唐津の海を知る漁師の思いもあり、合理的な理屈だけでは動かないことも共有されました。</p>
+
+<div class="sec-head"><span class="no num">3</span><h2>2時間でできあがったもの</h2></div>
+<figure><img src="karatsu1024-04.jpg" alt="チームのテーブルで、身ぶりを交えて話す袈裟丸さんと、聞き入る参加者" loading="lazy"><figcaption>作業中、チームのテーブルに招かれて話す袈裟丸さん（中央）。</figcaption></figure>
+<p>インプットのあとは、6チームに分かれ、2時間でビジネスモデルと動くプロトタイプを作りながら、3分のピッチの用意を進めました。各チームは、作業の前半で漁師の袈裟丸さんや唐津市の楢﨑さんをテーブルに呼び、ヒアリングを行いました。</p>
+<h3>6チームの発表</h3>
+<p>15時10分から、1チーム3分のピッチと審査員との質疑を行いました。ここからは発表順に、6チームのプランを紹介します。</p>
+<h4>チーム5 合戦「GASSEN」：ガンガゼの駆除をスポーツにする</h4>
+<figure><img src="karatsu1024-05.jpg" alt="「GASSEN 狩るほど、唐津の海に森が戻る。」と書かれたスライドの前に立つチーム" loading="lazy"><figcaption>チーム5「GASSEN」のピッチ。</figcaption></figure>
+<p>出発点は「海を守りたい、でも続けられない」。駆除しても給料にならず、人手も足りない。そこで、藻場を食べるガンガゼ（ウニの一種）を狩るほど海に藻場が戻る、というスポーツイベントの形で整理をしました。時期はガンガゼの産卵期より前の5月の連休、場所は波戸岬。ダイビング経験者向けの上級から、親子でゴミを拾う初級までレベルを分けて収益化します。</p>
+<h4>チーム「藻場葬」：藻場に散骨し、海藻を植える</h4>
+<p>メンバーの「妻から、死んだら海に骨をまいてほしいと言われている」という話から始まった企画です。漁師が普段の漁のついでに散骨し、故人の名前をつけた海藻を藻場に植える。毎年、海藻と海の様子のレポートが家族に届きます。葬儀社と組み、売上の一部を漁師と保全団体に回す計画で、審査員とのあいだでは、どこまでなら法的に問題ないかなどの議論がありました。</p>
+<h4>チーム「海の森レポート」：漁師が話すだけで、企業向けの成果報告ができる</h4>
+<p>保護活動を支援したい企業はいるのに「成果が見えにくい」。そこで、漁師が作業後にスマホに話すと、Claude が場所・人数・作業量・海の変化を抜き出して、日本語と英語の成果レポートにまとめる仕組みを作りました。</p>
+<h4>チーム「佐賀大学とおじさんたち」：補助金を探す時間を、海に出る時間に戻す（優秀賞）</h4>
+<p>袈裟丸さんへのヒアリングで出てきたのは、漁の事務の重さでした。締切の確認や書類づくりは、疲れた夜には後回しになる。自分が対象になるかも判断できない。チームは、3つの質問にボタンで答えるだけで、自分にあった補助金が見つかるツールを作りました。収益は、補助金が採択されたときの成功報酬10%。そのうち2%を漁協に還元し、後継者の教育や清掃に使ってもらうのが、ふつうの補助金コンサルとの違いです。</p>
+<h4>チーム「カフェに行きたい」：企業研修を、保全の仕事にする</h4>
+<p>森林保護のクレジットに比べて、海の保全はコストが高く、何を守ったかも見えにくい。そこで保護活動を企業の研修パッケージとして整え、社員が参加する保全作業に変える提案です。藻場を食べる魚の釣り大会や、漁師の話を聞く時間を企業研修プログラムにし、その記録を企業がCSRなどの説明に使える「証拠」として提供し、研修費や協賛金を獲得します。他のチームがお金の流れを作り解決を目指そうとするなか、同時に人手の確保にも繋がる点に審査員から評価がありました。</p>
+<h4>チーム「海の不動産屋さん」：漁港に、魚のタワーマンションを建てる</h4>
+<figure><img src="karatsu1024-06.jpg" alt="「藻場が消えた海に、魚の新しい住処を」と書かれたスライドを見る会場" loading="lazy"><figcaption>「海の不動産屋さん」チームのピッチ。</figcaption></figure>
+<p>高齢で漁に出られないなら、魚に来てもらう。使われなくなった漁港の中に、階ごとに住む魚を分けた住処を作り、カメラで数を見せる提案です。漁船の燃料と CO2 も減らせます。2時間で作成したプロトタイプは、LINEで相談するだけで、これまで売れなかった魚の販売ページを作れるツールでした。</p>
+
+<div class="sec-head"><span class="no num">4</span><h2>審査の質疑応答で出た問い</h2></div>
+<p>審査員からは、AIとどんな議論をし深めていったか。そして、そのプランが持つマイナス面を検討したか、などの質問が出ました。例えば、企業研修の提案には「研修を受け入れた場合に、地域側が失うものは何か」という質問が、漁師が研修に付き合えば、そのぶん漁に出る時間が減る。魚のタワーマンションの企画には「漁師は何が楽しくて漁をしているのか。漁に出なくなることを、どう捉えたか」など。各チームが作成したプロトタイプが、リアルな現状を捉えた上で課題解決に向かえているかをたずねる様々な質問が出ていました。</p>
+
+<div class="sec-head"><span class="no num">5</span><h2>審査結果と総評</h2></div>
+<figure><img src="karatsu1024-07.jpg" alt="「審査発表・表彰」と映ったスクリーンの前に並ぶ参加者" loading="lazy"><figcaption>優秀賞を受賞する「佐賀大学とおじさんたち」チーム</figcaption></figure>
+<p>優秀賞は「佐賀大学とおじさんたち」。メンバー全員に Claude の有料プラン1か月分が贈られ、副賞として唐津のお茶が手渡されました。受賞したチームは、年齢差が20歳以上ある5人。「最初の5分は沈黙だった」と振り返りつつ、「誰の何を解決するのか」を常にチェックポイントとして意識していたと話しました。</p>
+<p>審査員の一人、Karatsu DXlab の玉置大輔さんは、普段のシステム開発やウェブ制作をすべて Claude で行っているエンジニアです。審査の合間に、ピッチの音声を録音して AI が審査する仕組みをその場で作っていました。</p>
+<blockquote>
+<p>「今日使った API の金額を、あとで見てみてください。たぶん、ほとんど使えていないと思います。自分のアイデアが形になると一度知ってしまうと、どんどん使ってしまいます。慣れれば30分から1時間でいろいろなものが作れるので、今日で終わりにせず、もっと Claude に頼って作ってみてください」</p>
+<cite>— 玉置大輔さん</cite></blockquote>
+<p>InnoDrops の小山直子さんは、6チームのアイデアがどれも現場の声から出ていたことに触れました。</p>
+<blockquote>
+<p>「リアルな声を聞いて、その人にとっての価値を作ってみる。散骨の話も、ハンティングのイベントも、音声から企業に届くレポートも、漁港のタワーマンションも、現場の人に聞いたから出てきたアイデアだったと思います。小さく始めてみたら意外とできそう、と感じてもらえたら嬉しいです」</p>
+<cite>— 小山直子さん</cite></blockquote>
+<p>KDIC の運営に携わる福岡広兵さん（寶結株式会社）は、AI が事業づくりの速さを変えていると話しました。</p>
+<blockquote>
+<p>「9年ほど前から新規事業の支援をしていますが、当時なら、今日みなさんが2時間でやったことに丸1日から1日半かかっていました。AI で、アイデアを形にする速さが6分の1ほどに縮まっています。東京や大阪の大企業にしかできなかったことが、地方の一人のエンジニアや小さなチームでもできるようになったということです。しかも、事業づくりでいちばん大事なお客さんや市場の一次情報は、現場のある地方にあります。自分たちの目と耳で現場の情報を取り、AI を使って事業を作れば、街の未来を変えられると思っています」</p>
+<cite>— 福岡広兵さん</cite></blockquote>
+
+<div class="sec-head"><span class="no num">6</span><h2>参加者の反応</h2></div>
+<p><strong>事後アンケート n=22</strong>（2026年10月24日 19:12時点）</p>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>値</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全体満足度</td>
+<td><strong>4.23</strong>／5</td>
+<td>4以上が22人中19人</td>
+</tr>
+<tr>
+<td>推奨意向</td>
+<td><strong>4.41</strong>／5</td>
+<td>4以上が22人中22人</td>
+</tr>
+<tr>
+<td>地域課題を事業の可能性として捉えられるようになった</td>
+<td><strong>4.55</strong>／5</td>
+<td>4以上が22人中22人</td>
+</tr>
+<tr>
+<td>唐津の漁業・食文化・地域資源への理解が深まった</td>
+<td><strong>4.41</strong>／5</td>
+<td>4以上が22人中22人</td>
+</tr>
+</tbody>
+</table></div>
+<p>プログラム別では、地域課題インプットが4.50点と高く、自由記述にも「生の課題が聞けた」「市役所の方が来て話してくれるのは素晴らしい」といった声がありました。回答者22人のうち13人は、Claude を仕事や研究で日常的に使っている人でした。</p>
+<p>※アンケートは10月31日まで回答を受け付けているため、数値は速報値です。</p>
+
+<div class="sec-head"><span class="no num">7</span><h2>この先の展開</h2></div>
+<h3>12月、長崎でスポーツをテーマにしたハッカソン</h3>
+<p>佐世保、唐津に続いて、12月には長崎でスポーツをテーマにしたハッカソンを予定しています。詳細は決まりしだい、<a href="https://x.com/y_nishinobu">X</a> でお知らせします。</p>
+<p>唐津では11月から、InnoDrops の事業共創プログラム「SANDlab」も始まります。地域の中高生のアイデアを、企業と一緒に2か月でスモールビジネスの形にしていく取り組みです。</p>
+<h3>これまでの開催レポート</h3>
+<p>佐賀県では9月17日に、鳥栖でワークショップを開きました。</p>
+<p><strong><a href="tosu-report-2026-09-17.html">鳥栖｜ローカルでつくる Small Business（2026年9月17日）</a></strong></p>
+
+<div class="sec-head"><h2>開催概要</h2></div>
+<div class="twrap"><table>
+<tbody>
+<tr>
+<td><strong>名称</strong></td>
+<td>Karatsu | Claude Code Impact Lab ／ ローカルでつくる Small Business × Claude Code in KARATSU</td>
+</tr>
+<tr>
+<td><strong>日時</strong></td>
+<td>2026年10月24日（土）12:30〜17:00</td>
+</tr>
+<tr>
+<td><strong>会場</strong></td>
+<td>PLAPLA（World Ocean Plastic Planning Center）　佐賀県唐津市鎮西町波戸720-1</td>
+</tr>
+<tr>
+<td><strong>主催</strong></td>
+<td>一般社団法人InnoDrops／Claude Community Ambassador 西信好真／唐津市DXイノベーションセンター（KDIC）</td>
+</tr>
+<tr>
+<td><strong>後援</strong></td>
+<td>佐賀県／公益財団法人佐賀県産業振興機構 さが産業ミライ創造ベース（RYO-FU BASE）／佐賀県産業スマート化センター</td>
+</tr>
+<tr>
+<td><strong>審査員</strong></td>
+<td>小田切裕倫（東北大学）／玉置大輔（Karatsu DXlab）／福岡広兵（KDIC／寶結株式会社）／小山直子（InnoDrops）／西信好真</td>
+</tr>
+<tr>
+<td><strong>参加</strong></td>
+<td>ハッカソン6チーム。参加者には Anthropic から API クレジットが提供された</td>
+</tr>
+</tbody>
+</table></div>
+
+<p style="margin-top:24px"><a class="tolist" href="/ai/">← イベント一覧へ戻る</a></p>
+</div>
+<script>
+document.querySelectorAll('.fs-switch button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.fs-switch button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); document.documentElement.className=b.dataset.fs;
+  });
+});
+</script>
+</body>
+</html>

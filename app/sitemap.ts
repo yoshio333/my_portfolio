@@ -5,6 +5,7 @@ const siteUrl = 'https://y-nishinobu.soitgoes.page';
 
 // /ai/ 配下のAI活動レポート（public/ai/ の静的HTML）。新しい回を足したらここにも1行足す。
 const AI_REPORTS = [
+  { file: 'karatsu-report-2026-10-24.html', lastmod: '2026-10-25' },
   { file: 'tosu-report-2026-09-17.html', lastmod: '2026-09-23' },
   { file: 'hackathon-report-2026-08-22.html', lastmod: '2026-08-26' },
   { file: 'ochiai-talk-2026-08-22.html', lastmod: '2026-08-26' },

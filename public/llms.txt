@@ -30,6 +30,7 @@
 ## AI Activity Reports（/ai/）
 地域の事業者・学生とエージェントAIを実際に触るイベントの開催レポート。主催者が当日の記録から再構成し、個別事例は発言者の実名を伏せている。
 一覧: https://y-nishinobu.soitgoes.page/ai/
+- 2026-10-24 唐津 Claude Code ハッカソン「ローカルでつくる Small Business」 https://y-nishinobu.soitgoes.page/ai/karatsu-report-2026-10-24.html
 - 2026-09-17 鳥栖 Claude Code ワークショップ「ローカルでつくる Small Business」 https://y-nishinobu.soitgoes.page/ai/tosu-report-2026-09-17.html
 - 2026-08-22 SASEBO｜Claude for Our Kids ハッカソン https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html
 - 2026-08-22 落合渉悟トークセッション https://y-nishinobu.soitgoes.page/ai/ochiai-talk-2026-08-22.html
