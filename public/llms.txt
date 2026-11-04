@@ -35,6 +35,8 @@
 - 2026-08-22 SASEBO｜Claude for Our Kids ハッカソン https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-08-22.html
 - 2026-08-22 落合渉悟トークセッション https://y-nishinobu.soitgoes.page/ai/ochiai-talk-2026-08-22.html
 - 2026-07-27 佐世保 ClaudeCode ミニハッカソン https://y-nishinobu.soitgoes.page/ai/hackathon-report-2026-07-27.html
+- 学生の自主企画（成果物発表会の一覧） https://y-nishinobu.soitgoes.page/ai/students.html
+- 2026-11-04 学生自主企画 Claude Code 成果物発表会（第2回・お題：リアル×ゲーム） https://y-nishinobu.soitgoes.page/ai/student-showcase-report-2026-11-04.html
 - 2026-07-24 学生自主企画 Claude Code 成果物発表会 https://y-nishinobu.soitgoes.page/ai/student-showcase-report-2026-07-24.html
 - 2026-07-07 佐世保 ClaudeCode 交流会 https://y-nishinobu.soitgoes.page/ai/koryukai-report-2026-07-07.html
 
